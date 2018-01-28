@@ -35,5 +35,6 @@ namespace GestionVentas.Dato.Contexto
         public DbSet<presupuesto_trabajo_resumen_comision_desgloce> PresupuestoResumenComisionDesgloce { get; set; }
         public DbSet<presupuesto_trabajo_resumen_comision_detalle> PresupuestoResumenComisionDetalle { get; set; }
         public DbSet<presupuesto_trabajo_resumen_mo_detalle> PresupuestoResumenMoDetalle { get; set; }
+        public DbSet<presupuesto_control_orden_trabajo> PresupuestoControlOt { get; set; }
     }
 }
