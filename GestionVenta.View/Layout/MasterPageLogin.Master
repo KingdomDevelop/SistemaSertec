@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPageLogin.master.cs" Inherits="GestionVenta.View.Layout.MasterPageLogin" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="../content/css/StylesheetLogin.css" rel="stylesheet" />
+    <script src="../content/js/styleLogin.js"></script>
+    <title>Acceso</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+<!--
+    Revisar si sustituir el correo por un nombre de usuario
+    -->
+    <div class="container">
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus" />
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required" />
+                <div id="remember" class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me" /> Recordar
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Acceder</button>
+            </form><!-- /form -->
+            <a href="#" class="forgot-password">
+                ¿Recuperar Contraseña?
+            </a>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+
+
+        
+        </asp:ContentPlaceHolder>
+</body>
+</html>

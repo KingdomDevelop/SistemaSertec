@@ -1,0 +1,1052 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="bd_santiagoModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="flete_valor">
+          <Key>
+            <PropertyRef Name="idFlete_Valor" />
+          </Key>
+          <Property Name="idFlete_Valor" Type="int" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Valor" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hh_valorizacion">
+          <Key>
+            <PropertyRef Name="idHH_Valorizacion" />
+          </Key>
+          <Property Name="idHH_Valorizacion" Type="int" Nullable="false" />
+          <Property Name="Valor" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto">
+          <Key>
+            <PropertyRef Name="idPresupuesto" />
+          </Key>
+          <Property Name="idPresupuesto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha_Emision" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Presupuesto_Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Valor_UF_Referencial" Type="int" Nullable="false" />
+          <Property Name="Valor_HH_Referencial" Type="int" Nullable="false" />
+          <Property Name="Valor_Flete" Type="int" Nullable="false" />
+          <Property Name="idTecnico" Type="int" Nullable="false" />
+          <Property Name="idSupervisor" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_comercial">
+          <Key>
+            <PropertyRef Name="idpresupuesto_Comercial" />
+          </Key>
+          <Property Name="idpresupuesto_Comercial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Obra" Type="int" Nullable="false" />
+          <Property Name="Fecha_Aprobacion" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Numero_Ascensor" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="Nombre_Aprobador" Type="varchar" MaxLength="100" />
+          <Property Name="Telefono_Contacto" Type="int" />
+          <Property Name="Direccion" Type="varchar" MaxLength="150" />
+          <Property Name="Numero_presupuesto" Type="int" />
+        </EntityType>
+        <EntityType Name="presupuesto_comercial_condicion_venta">
+          <Key>
+            <PropertyRef Name="idpresupuesto_comercial_condicion_venta" />
+          </Key>
+          <Property Name="idpresupuesto_comercial_condicion_venta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="porcentaje_cinco" Type="varchar" MaxLength="5" />
+          <Property Name="porcentaje_quince" Type="varchar" MaxLength="5" />
+          <Property Name="porcentaje_otro" Type="varchar" MaxLength="5" />
+          <Property Name="valor_otro" Type="int" />
+          <Property Name="Pago_Completo_Termino_Trabajo" Type="varchar" MaxLength="5" />
+          <Property Name="Pago_Incompleto_Termino_TRabajo" Type="varchar" MaxLength="5" />
+          <Property Name="Cuotas" Type="int" Nullable="false" />
+          <Property Name="Numero_Cuotas" Type="int" Nullable="false" />
+          <Property Name="Otro_Descuento" Type="varchar" MaxLength="5" />
+          <Property Name="Descripcion_Otro_Descuento" Type="varchar" MaxLength="100" />
+          <Property Name="Copia_Presupuesto_Firmado" Type="varchar" MaxLength="5" />
+          <Property Name="Orden_Compra" Type="varchar" MaxLength="5" />
+          <Property Name="Otro_Medio" Type="varchar" MaxLength="5" />
+          <Property Name="Descripcion_Otro_Medio" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="presupuesto_comercial_detalle">
+          <Key>
+            <PropertyRef Name="idpresupuesto_comercial_detalle" />
+          </Key>
+          <Property Name="idpresupuesto_comercial_detalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="Horas_Pareja" Type="int" Nullable="false" />
+          <Property Name="Fletes" Type="int" Nullable="false" />
+          <Property Name="Dias_Trabajo" Type="int" Nullable="false" />
+          <Property Name="Fecha_Ejecucion" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Tecnico_Asignado" Type="varchar" MaxLength="100" />
+          <Property Name="Fecha_Inicio" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Fecha_Termino" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Guia_Despacho" Type="int" Nullable="false" />
+          <Property Name="Numero_Factura" Type="int" Nullable="false" />
+          <Property Name="Mes_Facturacion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_comercial_pago">
+          <Key>
+            <PropertyRef Name="idpresupuesto_comercial_pago" />
+          </Key>
+          <Property Name="idpresupuesto_comercial_pago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Numero_Cuota" Type="int" Nullable="false" />
+          <Property Name="Numero_Factura" Type="int" Nullable="false" />
+          <Property Name="Valor" Type="int" Nullable="false" />
+          <Property Name="Mes_Asociado" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_comercial_resumen">
+          <Key>
+            <PropertyRef Name="idpresupuesto_comercial_resumen" />
+          </Key>
+          <Property Name="idpresupuesto_comercial_resumen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Valor_Mano_Obra" Type="int" Nullable="false" />
+          <Property Name="Valor_Repuesto" Type="int" Nullable="false" />
+          <Property Name="Valor_Terceros" Type="int" Nullable="false" />
+          <Property Name="Valor_Fletes" Type="int" Nullable="false" />
+          <Property Name="SubTotal" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_orden_trabajo">
+          <Key>
+            <PropertyRef Name="idpresupuesto_orden_trabajo" />
+          </Key>
+          <Property Name="idpresupuesto_orden_trabajo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Obra" Type="varchar" MaxLength="150" />
+          <Property Name="Fecha_Aprobacion" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Ascensor" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Tecnico_Emisor" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Supervisor" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Aprobacion" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Telefono_Contacto" Type="int" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" />
+          <Property Name="Descripcion_Terceros" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="presupuesto_orden_trabajo_detalle">
+          <Key>
+            <PropertyRef Name="idpresupuesto_orden_Trabajo_detalle" />
+          </Key>
+          <Property Name="idpresupuesto_orden_Trabajo_detalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_tercero_comision">
+          <Key>
+            <PropertyRef Name="idPresupuesto_Tercero_Comision" />
+          </Key>
+          <Property Name="idPresupuesto_Tercero_Comision" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo_Comision" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Valor_porcentaje" Type="int" Nullable="false" />
+          <Property Name="Total_Porcentaje" Type="int" Nullable="false" />
+          <Property Name="Total_Neto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_tercero_detalle">
+          <Key>
+            <PropertyRef Name="idPresupuesto_Tercero_Detalle" />
+          </Key>
+          <Property Name="idPresupuesto_Tercero_Detalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Valor_Trabajo" Type="int" Nullable="false" />
+          <Property Name="Valor_MO" Type="int" Nullable="false" />
+          <Property Name="Valor_Comision1" Type="int" Nullable="false" />
+          <Property Name="Valor_Comision2" Type="int" Nullable="false" />
+          <Property Name="Total" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_tercero_flete">
+          <Key>
+            <PropertyRef Name="idpresupuesto_tercero_flete" />
+          </Key>
+          <Property Name="idpresupuesto_tercero_flete" Type="int" Nullable="false" />
+          <Property Name="Cantidad_Flete" Type="int" Nullable="false" />
+          <Property Name="Total" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_tercero_flete_detalle">
+          <Key>
+            <PropertyRef Name="idpresupuesto_tercero_flete_detalle" />
+          </Key>
+          <Property Name="idpresupuesto_tercero_flete_detalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Valor_Flete" Type="int" Nullable="false" />
+          <Property Name="Mano_Obra" Type="int" Nullable="false" />
+          <Property Name="Comision1" Type="int" Nullable="false" />
+          <Property Name="Comision2" Type="int" Nullable="false" />
+          <Property Name="Total" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_trabajo_resumen">
+          <Key>
+            <PropertyRef Name="idpresupuesto_trabajo_resumen" />
+          </Key>
+          <Property Name="idpresupuesto_trabajo_resumen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Resumen" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Sub_Total" Type="int" Nullable="false" />
+          <Property Name="Total_Neto_Comisiones" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_trabajo_resumen_detalle">
+          <Key>
+            <PropertyRef Name="idPresupuesto_Trabajo_Resumen_Detalle" />
+          </Key>
+          <Property Name="idPresupuesto_Trabajo_Resumen_Detalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Horas_Pareja" Type="int" Nullable="false" />
+          <Property Name="Sub_Total" Type="int" Nullable="false" />
+          <Property Name="Recargo_HHEE" Type="int" Nullable="false" />
+          <Property Name="Valor_Recargo" Type="int" Nullable="false" />
+          <Property Name="Total" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_trabajo_terceros">
+          <Key>
+            <PropertyRef Name="idPresupuesto_Trabajo_Terceros" />
+          </Key>
+          <Property Name="idPresupuesto_Trabajo_Terceros" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="Valor" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="repuesto_presupuesto">
+          <Key>
+            <PropertyRef Name="idRepuestoPresupuesto" />
+          </Key>
+          <Property Name="idRepuestoPresupuesto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Valor_Unitario" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Sub_Total" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="Hora_Par_Hombre" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="repuesto_presupuesto_detalle">
+          <Key>
+            <PropertyRef Name="idRepuesto_Presupuesto_Detalle" />
+          </Key>
+          <Property Name="idRepuesto_Presupuesto_Detalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Valor_MO" Type="int" Nullable="false" />
+          <Property Name="Valor_Comision1" Type="int" Nullable="false" />
+          <Property Name="Valor_Comision2" Type="int" Nullable="false" />
+          <Property Name="Total" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="repuestos">
+          <Key>
+            <PropertyRef Name="idRepuestos" />
+          </Key>
+          <Property Name="idRepuestos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo" Type="int" Nullable="false" />
+          <Property Name="Nombre_Articulo" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Marca" Type="varchar" MaxLength="45" />
+          <Property Name="Unidad" Type="varchar" MaxLength="45" />
+          <Property Name="Precio_Venta" Type="int" Nullable="false" />
+          <Property Name="Precio_Compra" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.bd_santiago.test' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="test">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="codigo" />
+            <PropertyRef Name="producto" />
+            <PropertyRef Name="marca" />
+            <PropertyRef Name="unidad" />
+            <PropertyRef Name="precio" />
+            <PropertyRef Name="proveedor" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="codigo" Type="int" Nullable="false" />
+          <Property Name="producto" Type="text" Nullable="false" />
+          <Property Name="marca" Type="text" Nullable="false" />
+          <Property Name="unidad" Type="text" Nullable="false" />
+          <Property Name="precio" Type="int" Nullable="false" />
+          <Property Name="proveedor" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="valor_moneda">
+          <Key>
+            <PropertyRef Name="idValor_Moneda" />
+          </Key>
+          <Property Name="idValor_Moneda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Valor_UF" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Valor_HP" Type="int" Nullable="false" />
+          <Property Name="Valor_Flete" Type="int" Nullable="false" />
+          <Property Name="Fecha_UF" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Estado" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <Association Name="Descripcion_resumen">
+          <End Role="repuesto_presupuesto" Type="Self.repuesto_presupuesto" Multiplicity="1" />
+          <End Role="presupuesto" Type="Self.presupuesto" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="repuesto_presupuesto">
+              <PropertyRef Name="idRepuestoPresupuesto" />
+            </Principal>
+            <Dependent Role="presupuesto">
+              <PropertyRef Name="idPresupuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="repuesto_presupuesto_detalle1">
+          <End Role="repuesto_presupuesto_detalle" Type="Self.repuesto_presupuesto_detalle" Multiplicity="1" />
+          <End Role="repuesto_presupuesto" Type="Self.repuesto_presupuesto" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="repuesto_presupuesto_detalle">
+              <PropertyRef Name="idRepuesto_Presupuesto_Detalle" />
+            </Principal>
+            <Dependent Role="repuesto_presupuesto">
+              <PropertyRef Name="idRepuestoPresupuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="valor_flete">
+          <End Role="flete_valor" Type="Self.flete_valor" Multiplicity="1" />
+          <End Role="presupuesto" Type="Self.presupuesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="flete_valor">
+              <PropertyRef Name="idFlete_Valor" />
+            </Principal>
+            <Dependent Role="presupuesto">
+              <PropertyRef Name="Valor_Flete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="valor_hh_usada">
+          <End Role="hh_valorizacion" Type="Self.hh_valorizacion" Multiplicity="1" />
+          <End Role="presupuesto" Type="Self.presupuesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hh_valorizacion">
+              <PropertyRef Name="idHH_Valorizacion" />
+            </Principal>
+            <Dependent Role="presupuesto">
+              <PropertyRef Name="Valor_HH_Referencial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="valor_uf_referencial">
+          <End Role="valor_moneda" Type="Self.valor_moneda" Multiplicity="1" />
+          <End Role="presupuesto" Type="Self.presupuesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="valor_moneda">
+              <PropertyRef Name="idValor_Moneda" />
+            </Principal>
+            <Dependent Role="presupuesto">
+              <PropertyRef Name="Valor_UF_Referencial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bd_santiagoModelStoreContainer">
+          <EntitySet Name="flete_valor" EntityType="Self.flete_valor" Schema="bd_santiago" store:Type="Tables" />
+          <EntitySet Name="hh_valorizacion" EntityType="Self.hh_valorizacion" Schema="bd_santiago" store:Type="Tables" />
+          <EntitySet Name="presupuesto" EntityType="Self.presupuesto" Schema="bd_santiago" store:Type="Tables" />
+          <EntitySet Name="presupuesto_comercial" EntityType="Self.presupuesto_comercial" Schema="bd_santiago" store:Type="Tables" />
+          <EntitySet Name="presupuesto_comercial_condicion_venta" EntityType="Self.presupuesto_comercial_condicion_venta" Schema="bd_santiago" store:Type="Tables" />
+          <EntitySet Name="presupuesto_comercial_detalle" EntityType="Self.presupuesto_comercial_detalle" Schema="bd_santiago" store:Type="Tables" />
+          <EntitySet Name="presupuesto_comercial_pago" EntityType="Self.presupuesto_comercial_pago" Schema="bd_santiago" store:Type="Tables" />
+          <EntitySet Name="presupuesto_comercial_resumen" EntityType="Self.presupuesto_comercial_resumen" Schema="bd_santiago" store:Type="Tables" />
+          <EntitySet Name="presupuesto_orden_trabajo" EntityType="Self.presupuesto_orden_trabajo" Schema="bd_santiago" store:Type="Tables" />
+          <EntitySet Name="presupuesto_orden_trabajo_detalle" EntityType="Self.presupuesto_orden_trabajo_detalle" Schema="bd_santiago" store:Type="Tables" />
+          <EntitySet Name="presupuesto_tercero_comision" EntityType="Self.presupuesto_tercero_comision" Schema="bd_santiago" store:Type="Tables" />
+          <EntitySet Name="presupuesto_tercero_detalle" EntityType="Self.presupuesto_tercero_detalle" Schema="bd_santiago" store:Type="Tables" />
+          <EntitySet Name="presupuesto_tercero_flete" EntityType="Self.presupuesto_tercero_flete" Schema="bd_santiago" store:Type="Tables" />
+          <EntitySet Name="presupuesto_tercero_flete_detalle" EntityType="Self.presupuesto_tercero_flete_detalle" Schema="bd_santiago" store:Type="Tables" />
+          <EntitySet Name="presupuesto_trabajo_resumen" EntityType="Self.presupuesto_trabajo_resumen" Schema="bd_santiago" store:Type="Tables" />
+          <EntitySet Name="presupuesto_trabajo_resumen_detalle" EntityType="Self.presupuesto_trabajo_resumen_detalle" Schema="bd_santiago" store:Type="Tables" />
+          <EntitySet Name="presupuesto_trabajo_terceros" EntityType="Self.presupuesto_trabajo_terceros" Schema="bd_santiago" store:Type="Tables" />
+          <EntitySet Name="repuesto_presupuesto" EntityType="Self.repuesto_presupuesto" Schema="bd_santiago" store:Type="Tables" />
+          <EntitySet Name="repuesto_presupuesto_detalle" EntityType="Self.repuesto_presupuesto_detalle" Schema="bd_santiago" store:Type="Tables" />
+          <EntitySet Name="repuestos" EntityType="Self.repuestos" Schema="bd_santiago" store:Type="Tables" />
+          <EntitySet Name="valor_moneda" EntityType="Self.valor_moneda" Schema="bd_santiago" store:Type="Tables" />
+          <EntitySet Name="test" EntityType="Self.test" store:Type="Tables" store:Schema="bd_santiago">
+            <DefiningQuery>SELECT
+`test`.`id`, 
+`test`.`codigo`, 
+`test`.`producto`, 
+`test`.`marca`, 
+`test`.`unidad`, 
+`test`.`precio`, 
+`test`.`proveedor`
+FROM `test` AS `test`</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="Descripcion_resumen" Association="Self.Descripcion_resumen">
+            <End Role="repuesto_presupuesto" EntitySet="repuesto_presupuesto" />
+            <End Role="presupuesto" EntitySet="presupuesto" />
+          </AssociationSet>
+          <AssociationSet Name="repuesto_presupuesto_detalle1" Association="Self.repuesto_presupuesto_detalle1">
+            <End Role="repuesto_presupuesto_detalle" EntitySet="repuesto_presupuesto_detalle" />
+            <End Role="repuesto_presupuesto" EntitySet="repuesto_presupuesto" />
+          </AssociationSet>
+          <AssociationSet Name="valor_flete" Association="Self.valor_flete">
+            <End Role="flete_valor" EntitySet="flete_valor" />
+            <End Role="presupuesto" EntitySet="presupuesto" />
+          </AssociationSet>
+          <AssociationSet Name="valor_hh_usada" Association="Self.valor_hh_usada">
+            <End Role="hh_valorizacion" EntitySet="hh_valorizacion" />
+            <End Role="presupuesto" EntitySet="presupuesto" />
+          </AssociationSet>
+          <AssociationSet Name="valor_uf_referencial" Association="Self.valor_uf_referencial">
+            <End Role="valor_moneda" EntitySet="valor_moneda" />
+            <End Role="presupuesto" EntitySet="presupuesto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bd_santiagoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="bd_santiagoEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="flete_valor" EntityType="bd_santiagoModel.flete_valor" />
+          <EntitySet Name="hh_valorizacion" EntityType="bd_santiagoModel.hh_valorizacion" />
+          <EntitySet Name="presupuesto" EntityType="bd_santiagoModel.presupuesto" />
+          <EntitySet Name="presupuesto_comercial" EntityType="bd_santiagoModel.presupuesto_comercial" />
+          <EntitySet Name="presupuesto_comercial_condicion_venta" EntityType="bd_santiagoModel.presupuesto_comercial_condicion_venta" />
+          <EntitySet Name="presupuesto_comercial_detalle" EntityType="bd_santiagoModel.presupuesto_comercial_detalle" />
+          <EntitySet Name="presupuesto_comercial_pago" EntityType="bd_santiagoModel.presupuesto_comercial_pago" />
+          <EntitySet Name="presupuesto_comercial_resumen" EntityType="bd_santiagoModel.presupuesto_comercial_resumen" />
+          <EntitySet Name="presupuesto_orden_trabajo" EntityType="bd_santiagoModel.presupuesto_orden_trabajo" />
+          <EntitySet Name="presupuesto_orden_trabajo_detalle" EntityType="bd_santiagoModel.presupuesto_orden_trabajo_detalle" />
+          <EntitySet Name="presupuesto_tercero_comision" EntityType="bd_santiagoModel.presupuesto_tercero_comision" />
+          <EntitySet Name="presupuesto_tercero_detalle" EntityType="bd_santiagoModel.presupuesto_tercero_detalle" />
+          <EntitySet Name="presupuesto_tercero_flete" EntityType="bd_santiagoModel.presupuesto_tercero_flete" />
+          <EntitySet Name="presupuesto_tercero_flete_detalle" EntityType="bd_santiagoModel.presupuesto_tercero_flete_detalle" />
+          <EntitySet Name="presupuesto_trabajo_resumen" EntityType="bd_santiagoModel.presupuesto_trabajo_resumen" />
+          <EntitySet Name="presupuesto_trabajo_resumen_detalle" EntityType="bd_santiagoModel.presupuesto_trabajo_resumen_detalle" />
+          <EntitySet Name="presupuesto_trabajo_terceros" EntityType="bd_santiagoModel.presupuesto_trabajo_terceros" />
+          <EntitySet Name="repuesto_presupuesto" EntityType="bd_santiagoModel.repuesto_presupuesto" />
+          <EntitySet Name="repuesto_presupuesto_detalle" EntityType="bd_santiagoModel.repuesto_presupuesto_detalle" />
+          <EntitySet Name="repuestos" EntityType="bd_santiagoModel.repuestos" />
+          <EntitySet Name="valor_moneda" EntityType="bd_santiagoModel.valor_moneda" />
+          <EntitySet Name="test" EntityType="bd_santiagoModel.test" />
+          <AssociationSet Name="Descripcion_resumen" Association="bd_santiagoModel.Descripcion_resumen">
+            <End Role="repuesto_presupuesto" EntitySet="repuesto_presupuesto" />
+            <End Role="presupuesto" EntitySet="presupuesto" />
+          </AssociationSet>
+          <AssociationSet Name="valor_uf_referencial" Association="bd_santiagoModel.valor_uf_referencial">
+            <End Role="valor_moneda" EntitySet="valor_moneda" />
+            <End Role="presupuesto" EntitySet="presupuesto" />
+          </AssociationSet>
+          <AssociationSet Name="valor_flete" Association="bd_santiagoModel.valor_flete">
+            <End Role="flete_valor" EntitySet="flete_valor" />
+            <End Role="presupuesto" EntitySet="presupuesto" />
+          </AssociationSet>
+          <AssociationSet Name="valor_hh_usada" Association="bd_santiagoModel.valor_hh_usada">
+            <End Role="hh_valorizacion" EntitySet="hh_valorizacion" />
+            <End Role="presupuesto" EntitySet="presupuesto" />
+          </AssociationSet>
+          <AssociationSet Name="repuesto_presupuesto_detalle1" Association="bd_santiagoModel.repuesto_presupuesto_detalle1">
+            <End Role="repuesto_presupuesto_detalle" EntitySet="repuesto_presupuesto_detalle" />
+            <End Role="repuesto_presupuesto" EntitySet="repuesto_presupuesto" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="flete_valor">
+          <Key>
+            <PropertyRef Name="idFlete_Valor" />
+          </Key>
+          <Property Name="idFlete_Valor" Type="Int32" Nullable="false" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Valor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="presupuesto" Relationship="bd_santiagoModel.valor_flete" FromRole="flete_valor" ToRole="presupuesto" />
+        </EntityType>
+        <EntityType Name="hh_valorizacion">
+          <Key>
+            <PropertyRef Name="idHH_Valorizacion" />
+          </Key>
+          <Property Name="idHH_Valorizacion" Type="Int32" Nullable="false" />
+          <Property Name="Valor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="presupuesto" Relationship="bd_santiagoModel.valor_hh_usada" FromRole="hh_valorizacion" ToRole="presupuesto" />
+        </EntityType>
+        <EntityType Name="presupuesto">
+          <Key>
+            <PropertyRef Name="idPresupuesto" />
+          </Key>
+          <Property Name="idPresupuesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha_Emision" Type="DateTime" Nullable="false" />
+          <Property Name="Presupuesto_Descripcion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Valor_UF_Referencial" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="repuesto_presupuesto" Relationship="bd_santiagoModel.Descripcion_resumen" FromRole="presupuesto" ToRole="repuesto_presupuesto" />
+          <NavigationProperty Name="valor_moneda" Relationship="bd_santiagoModel.valor_uf_referencial" FromRole="presupuesto" ToRole="valor_moneda" />
+          <Property Name="Valor_HH_Referencial" Type="Int32" Nullable="false" />
+          <Property Name="Valor_Flete" Type="Int32" Nullable="false" />
+          <Property Name="idTecnico" Type="Int32" Nullable="false" />
+          <Property Name="idSupervisor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="flete_valor" Relationship="bd_santiagoModel.valor_flete" FromRole="presupuesto" ToRole="flete_valor" />
+          <NavigationProperty Name="hh_valorizacion" Relationship="bd_santiagoModel.valor_hh_usada" FromRole="presupuesto" ToRole="hh_valorizacion" />
+        </EntityType>
+        <EntityType Name="presupuesto_comercial">
+          <Key>
+            <PropertyRef Name="idpresupuesto_Comercial" />
+          </Key>
+          <Property Name="idpresupuesto_Comercial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Obra" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_Aprobacion" Type="DateTime" Nullable="false" />
+          <Property Name="Numero_Ascensor" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre_Aprobador" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono_Contacto" Type="Int32" />
+          <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Numero_presupuesto" Type="Int32" />
+        </EntityType>
+        <EntityType Name="presupuesto_comercial_condicion_venta">
+          <Key>
+            <PropertyRef Name="idpresupuesto_comercial_condicion_venta" />
+          </Key>
+          <Property Name="idpresupuesto_comercial_condicion_venta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="porcentaje_cinco" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="porcentaje_quince" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="porcentaje_otro" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="valor_otro" Type="Int32" />
+          <Property Name="Pago_Completo_Termino_Trabajo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Pago_Incompleto_Termino_TRabajo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Cuotas" Type="Int32" Nullable="false" />
+          <Property Name="Numero_Cuotas" Type="Int32" Nullable="false" />
+          <Property Name="Otro_Descuento" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion_Otro_Descuento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Copia_Presupuesto_Firmado" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Orden_Compra" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Otro_Medio" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion_Otro_Medio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_comercial_detalle">
+          <Key>
+            <PropertyRef Name="idpresupuesto_comercial_detalle" />
+          </Key>
+          <Property Name="idpresupuesto_comercial_detalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Horas_Pareja" Type="Int32" Nullable="false" />
+          <Property Name="Fletes" Type="Int32" Nullable="false" />
+          <Property Name="Dias_Trabajo" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_Ejecucion" Type="DateTime" Nullable="false" />
+          <Property Name="Tecnico_Asignado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Inicio" Type="DateTime" Nullable="false" />
+          <Property Name="Fecha_Termino" Type="DateTime" Nullable="false" />
+          <Property Name="Guia_Despacho" Type="Int32" Nullable="false" />
+          <Property Name="Numero_Factura" Type="Int32" Nullable="false" />
+          <Property Name="Mes_Facturacion" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_comercial_pago">
+          <Key>
+            <PropertyRef Name="idpresupuesto_comercial_pago" />
+          </Key>
+          <Property Name="idpresupuesto_comercial_pago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Numero_Cuota" Type="Int32" Nullable="false" />
+          <Property Name="Numero_Factura" Type="Int32" Nullable="false" />
+          <Property Name="Valor" Type="Int32" Nullable="false" />
+          <Property Name="Mes_Asociado" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_comercial_resumen">
+          <Key>
+            <PropertyRef Name="idpresupuesto_comercial_resumen" />
+          </Key>
+          <Property Name="idpresupuesto_comercial_resumen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Valor_Mano_Obra" Type="Int32" Nullable="false" />
+          <Property Name="Valor_Repuesto" Type="Int32" Nullable="false" />
+          <Property Name="Valor_Terceros" Type="Int32" Nullable="false" />
+          <Property Name="Valor_Fletes" Type="Int32" Nullable="false" />
+          <Property Name="SubTotal" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_orden_trabajo">
+          <Key>
+            <PropertyRef Name="idpresupuesto_orden_trabajo" />
+          </Key>
+          <Property Name="idpresupuesto_orden_trabajo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+          <Property Name="Obra" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Aprobacion" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Ascensor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tecnico_Emisor" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Supervisor" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Aprobacion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono_Contacto" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion_Terceros" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_orden_trabajo_detalle">
+          <Key>
+            <PropertyRef Name="idpresupuesto_orden_Trabajo_detalle" />
+          </Key>
+          <Property Name="idpresupuesto_orden_Trabajo_detalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_tercero_comision">
+          <Key>
+            <PropertyRef Name="idPresupuesto_Tercero_Comision" />
+          </Key>
+          <Property Name="idPresupuesto_Tercero_Comision" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo_Comision" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Valor_porcentaje" Type="Int32" Nullable="false" />
+          <Property Name="Total_Porcentaje" Type="Int32" Nullable="false" />
+          <Property Name="Total_Neto" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_tercero_detalle">
+          <Key>
+            <PropertyRef Name="idPresupuesto_Tercero_Detalle" />
+          </Key>
+          <Property Name="idPresupuesto_Tercero_Detalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Valor_Trabajo" Type="Int32" Nullable="false" />
+          <Property Name="Valor_MO" Type="Int32" Nullable="false" />
+          <Property Name="Valor_Comision1" Type="Int32" Nullable="false" />
+          <Property Name="Valor_Comision2" Type="Int32" Nullable="false" />
+          <Property Name="Total" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_tercero_flete">
+          <Key>
+            <PropertyRef Name="idpresupuesto_tercero_flete" />
+          </Key>
+          <Property Name="idpresupuesto_tercero_flete" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad_Flete" Type="Int32" Nullable="false" />
+          <Property Name="Total" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_tercero_flete_detalle">
+          <Key>
+            <PropertyRef Name="idpresupuesto_tercero_flete_detalle" />
+          </Key>
+          <Property Name="idpresupuesto_tercero_flete_detalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Valor_Flete" Type="Int32" Nullable="false" />
+          <Property Name="Mano_Obra" Type="Int32" Nullable="false" />
+          <Property Name="Comision1" Type="Int32" Nullable="false" />
+          <Property Name="Comision2" Type="Int32" Nullable="false" />
+          <Property Name="Total" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_trabajo_resumen">
+          <Key>
+            <PropertyRef Name="idpresupuesto_trabajo_resumen" />
+          </Key>
+          <Property Name="idpresupuesto_trabajo_resumen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Resumen" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_Total" Type="Int32" Nullable="false" />
+          <Property Name="Total_Neto_Comisiones" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_trabajo_resumen_detalle">
+          <Key>
+            <PropertyRef Name="idPresupuesto_Trabajo_Resumen_Detalle" />
+          </Key>
+          <Property Name="idPresupuesto_Trabajo_Resumen_Detalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Horas_Pareja" Type="Int32" Nullable="false" />
+          <Property Name="Sub_Total" Type="Int32" Nullable="false" />
+          <Property Name="Recargo_HHEE" Type="Int32" Nullable="false" />
+          <Property Name="Valor_Recargo" Type="Int32" Nullable="false" />
+          <Property Name="Total" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presupuesto_trabajo_terceros">
+          <Key>
+            <PropertyRef Name="idPresupuesto_Trabajo_Terceros" />
+          </Key>
+          <Property Name="idPresupuesto_Trabajo_Terceros" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Valor" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="repuesto_presupuesto">
+          <Key>
+            <PropertyRef Name="idRepuestoPresupuesto" />
+          </Key>
+          <Property Name="idRepuestoPresupuesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="Valor_Unitario" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_Total" Type="Decimal" Nullable="false" />
+          <Property Name="Hora_Par_Hombre" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="presupuesto" Relationship="bd_santiagoModel.Descripcion_resumen" FromRole="repuesto_presupuesto" ToRole="presupuesto" />
+          <NavigationProperty Name="repuesto_presupuesto_detalle" Relationship="bd_santiagoModel.repuesto_presupuesto_detalle1" FromRole="repuesto_presupuesto" ToRole="repuesto_presupuesto_detalle" />
+        </EntityType>
+        <EntityType Name="repuesto_presupuesto_detalle">
+          <Key>
+            <PropertyRef Name="idRepuesto_Presupuesto_Detalle" />
+          </Key>
+          <Property Name="idRepuesto_Presupuesto_Detalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Valor_MO" Type="Int32" Nullable="false" />
+          <Property Name="Valor_Comision1" Type="Int32" Nullable="false" />
+          <Property Name="Valor_Comision2" Type="Int32" Nullable="false" />
+          <Property Name="Total" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="repuesto_presupuesto" Relationship="bd_santiagoModel.repuesto_presupuesto_detalle1" FromRole="repuesto_presupuesto_detalle" ToRole="repuesto_presupuesto" />
+        </EntityType>
+        <EntityType Name="repuestos">
+          <Key>
+            <PropertyRef Name="idRepuestos" />
+          </Key>
+          <Property Name="idRepuestos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="Int32" Nullable="false" />
+          <Property Name="Nombre_Articulo" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Marca" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Unidad" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Precio_Venta" Type="Int32" Nullable="false" />
+          <Property Name="Precio_Compra" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="valor_moneda">
+          <Key>
+            <PropertyRef Name="idValor_Moneda" />
+          </Key>
+          <Property Name="idValor_Moneda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Valor_UF" Type="Decimal" Nullable="false" />
+          <Property Name="Valor_HP" Type="Int32" Nullable="false" />
+          <Property Name="Valor_Flete" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_UF" Type="DateTime" Nullable="false" />
+          <Property Name="Estado" Type="SByte" Nullable="false" />
+          <NavigationProperty Name="presupuesto" Relationship="bd_santiagoModel.valor_uf_referencial" FromRole="valor_moneda" ToRole="presupuesto" />
+        </EntityType>
+        <EntityType Name="test">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="codigo" />
+            <PropertyRef Name="producto" />
+            <PropertyRef Name="marca" />
+            <PropertyRef Name="unidad" />
+            <PropertyRef Name="precio" />
+            <PropertyRef Name="proveedor" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="codigo" Type="Int32" Nullable="false" />
+          <Property Name="producto" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="marca" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="unidad" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="precio" Type="Int32" Nullable="false" />
+          <Property Name="proveedor" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="Descripcion_resumen">
+          <End Type="bd_santiagoModel.repuesto_presupuesto" Role="repuesto_presupuesto" Multiplicity="1" />
+          <End Type="bd_santiagoModel.presupuesto" Role="presupuesto" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="repuesto_presupuesto">
+              <PropertyRef Name="idRepuestoPresupuesto" />
+            </Principal>
+            <Dependent Role="presupuesto">
+              <PropertyRef Name="idPresupuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="valor_uf_referencial">
+          <End Type="bd_santiagoModel.valor_moneda" Role="valor_moneda" Multiplicity="1" />
+          <End Type="bd_santiagoModel.presupuesto" Role="presupuesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="valor_moneda">
+              <PropertyRef Name="idValor_Moneda" />
+            </Principal>
+            <Dependent Role="presupuesto">
+              <PropertyRef Name="Valor_UF_Referencial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="valor_flete">
+          <End Type="bd_santiagoModel.flete_valor" Role="flete_valor" Multiplicity="1" />
+          <End Type="bd_santiagoModel.presupuesto" Role="presupuesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="flete_valor">
+              <PropertyRef Name="idFlete_Valor" />
+            </Principal>
+            <Dependent Role="presupuesto">
+              <PropertyRef Name="Valor_Flete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="valor_hh_usada">
+          <End Type="bd_santiagoModel.hh_valorizacion" Role="hh_valorizacion" Multiplicity="1" />
+          <End Type="bd_santiagoModel.presupuesto" Role="presupuesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hh_valorizacion">
+              <PropertyRef Name="idHH_Valorizacion" />
+            </Principal>
+            <Dependent Role="presupuesto">
+              <PropertyRef Name="Valor_HH_Referencial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="repuesto_presupuesto_detalle1">
+          <End Type="bd_santiagoModel.repuesto_presupuesto_detalle" Role="repuesto_presupuesto_detalle" Multiplicity="1" />
+          <End Type="bd_santiagoModel.repuesto_presupuesto" Role="repuesto_presupuesto" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="repuesto_presupuesto_detalle">
+              <PropertyRef Name="idRepuesto_Presupuesto_Detalle" />
+            </Principal>
+            <Dependent Role="repuesto_presupuesto">
+              <PropertyRef Name="idRepuestoPresupuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bd_santiagoModelStoreContainer" CdmEntityContainer="bd_santiagoEntities" >
+          <EntitySetMapping Name="flete_valor">
+            <EntityTypeMapping TypeName="bd_santiagoModel.flete_valor">
+              <MappingFragment StoreEntitySet="flete_valor">
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="idFlete_Valor" ColumnName="idFlete_Valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hh_valorizacion">
+            <EntityTypeMapping TypeName="bd_santiagoModel.hh_valorizacion">
+              <MappingFragment StoreEntitySet="hh_valorizacion">
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="idHH_Valorizacion" ColumnName="idHH_Valorizacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="presupuesto">
+            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto">
+              <MappingFragment StoreEntitySet="presupuesto">
+                <ScalarProperty Name="idSupervisor" ColumnName="idSupervisor" />
+                <ScalarProperty Name="idTecnico" ColumnName="idTecnico" />
+                <ScalarProperty Name="Valor_Flete" ColumnName="Valor_Flete" />
+                <ScalarProperty Name="Valor_HH_Referencial" ColumnName="Valor_HH_Referencial" />
+                <ScalarProperty Name="Valor_UF_Referencial" ColumnName="Valor_UF_Referencial" />
+                <ScalarProperty Name="Presupuesto_Descripcion" ColumnName="Presupuesto_Descripcion" />
+                <ScalarProperty Name="Fecha_Emision" ColumnName="Fecha_Emision" />
+                <ScalarProperty Name="idPresupuesto" ColumnName="idPresupuesto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="presupuesto_comercial">
+            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_comercial">
+              <MappingFragment StoreEntitySet="presupuesto_comercial">
+                <ScalarProperty Name="Numero_presupuesto" ColumnName="Numero_presupuesto" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono_Contacto" ColumnName="Telefono_Contacto" />
+                <ScalarProperty Name="Nombre_Aprobador" ColumnName="Nombre_Aprobador" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Numero_Ascensor" ColumnName="Numero_Ascensor" />
+                <ScalarProperty Name="Fecha_Aprobacion" ColumnName="Fecha_Aprobacion" />
+                <ScalarProperty Name="Obra" ColumnName="Obra" />
+                <ScalarProperty Name="idpresupuesto_Comercial" ColumnName="idpresupuesto_Comercial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="presupuesto_comercial_condicion_venta">
+            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_comercial_condicion_venta">
+              <MappingFragment StoreEntitySet="presupuesto_comercial_condicion_venta">
+                <ScalarProperty Name="Descripcion_Otro_Medio" ColumnName="Descripcion_Otro_Medio" />
+                <ScalarProperty Name="Otro_Medio" ColumnName="Otro_Medio" />
+                <ScalarProperty Name="Orden_Compra" ColumnName="Orden_Compra" />
+                <ScalarProperty Name="Copia_Presupuesto_Firmado" ColumnName="Copia_Presupuesto_Firmado" />
+                <ScalarProperty Name="Descripcion_Otro_Descuento" ColumnName="Descripcion_Otro_Descuento" />
+                <ScalarProperty Name="Otro_Descuento" ColumnName="Otro_Descuento" />
+                <ScalarProperty Name="Numero_Cuotas" ColumnName="Numero_Cuotas" />
+                <ScalarProperty Name="Cuotas" ColumnName="Cuotas" />
+                <ScalarProperty Name="Pago_Incompleto_Termino_TRabajo" ColumnName="Pago_Incompleto_Termino_TRabajo" />
+                <ScalarProperty Name="Pago_Completo_Termino_Trabajo" ColumnName="Pago_Completo_Termino_Trabajo" />
+                <ScalarProperty Name="valor_otro" ColumnName="valor_otro" />
+                <ScalarProperty Name="porcentaje_otro" ColumnName="porcentaje_otro" />
+                <ScalarProperty Name="porcentaje_quince" ColumnName="porcentaje_quince" />
+                <ScalarProperty Name="porcentaje_cinco" ColumnName="porcentaje_cinco" />
+                <ScalarProperty Name="idpresupuesto_comercial_condicion_venta" ColumnName="idpresupuesto_comercial_condicion_venta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="presupuesto_comercial_detalle">
+            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_comercial_detalle">
+              <MappingFragment StoreEntitySet="presupuesto_comercial_detalle">
+                <ScalarProperty Name="Mes_Facturacion" ColumnName="Mes_Facturacion" />
+                <ScalarProperty Name="Numero_Factura" ColumnName="Numero_Factura" />
+                <ScalarProperty Name="Guia_Despacho" ColumnName="Guia_Despacho" />
+                <ScalarProperty Name="Fecha_Termino" ColumnName="Fecha_Termino" />
+                <ScalarProperty Name="Fecha_Inicio" ColumnName="Fecha_Inicio" />
+                <ScalarProperty Name="Tecnico_Asignado" ColumnName="Tecnico_Asignado" />
+                <ScalarProperty Name="Fecha_Ejecucion" ColumnName="Fecha_Ejecucion" />
+                <ScalarProperty Name="Dias_Trabajo" ColumnName="Dias_Trabajo" />
+                <ScalarProperty Name="Fletes" ColumnName="Fletes" />
+                <ScalarProperty Name="Horas_Pareja" ColumnName="Horas_Pareja" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="idpresupuesto_comercial_detalle" ColumnName="idpresupuesto_comercial_detalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="presupuesto_comercial_pago">
+            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_comercial_pago">
+              <MappingFragment StoreEntitySet="presupuesto_comercial_pago">
+                <ScalarProperty Name="Mes_Asociado" ColumnName="Mes_Asociado" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Numero_Factura" ColumnName="Numero_Factura" />
+                <ScalarProperty Name="Numero_Cuota" ColumnName="Numero_Cuota" />
+                <ScalarProperty Name="idpresupuesto_comercial_pago" ColumnName="idpresupuesto_comercial_pago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="presupuesto_comercial_resumen">
+            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_comercial_resumen">
+              <MappingFragment StoreEntitySet="presupuesto_comercial_resumen">
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Valor_Fletes" ColumnName="Valor_Fletes" />
+                <ScalarProperty Name="Valor_Terceros" ColumnName="Valor_Terceros" />
+                <ScalarProperty Name="Valor_Repuesto" ColumnName="Valor_Repuesto" />
+                <ScalarProperty Name="Valor_Mano_Obra" ColumnName="Valor_Mano_Obra" />
+                <ScalarProperty Name="idpresupuesto_comercial_resumen" ColumnName="idpresupuesto_comercial_resumen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="presupuesto_orden_trabajo">
+            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_orden_trabajo">
+              <MappingFragment StoreEntitySet="presupuesto_orden_trabajo">
+                <ScalarProperty Name="Descripcion_Terceros" ColumnName="Descripcion_Terceros" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Telefono_Contacto" ColumnName="Telefono_Contacto" />
+                <ScalarProperty Name="Aprobacion" ColumnName="Aprobacion" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Supervisor" ColumnName="Supervisor" />
+                <ScalarProperty Name="Tecnico_Emisor" ColumnName="Tecnico_Emisor" />
+                <ScalarProperty Name="Ascensor" ColumnName="Ascensor" />
+                <ScalarProperty Name="Fecha_Aprobacion" ColumnName="Fecha_Aprobacion" />
+                <ScalarProperty Name="Obra" ColumnName="Obra" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="idpresupuesto_orden_trabajo" ColumnName="idpresupuesto_orden_trabajo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="presupuesto_orden_trabajo_detalle">
+            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_orden_trabajo_detalle">
+              <MappingFragment StoreEntitySet="presupuesto_orden_trabajo_detalle">
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="idpresupuesto_orden_Trabajo_detalle" ColumnName="idpresupuesto_orden_Trabajo_detalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="presupuesto_tercero_comision">
+            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_tercero_comision">
+              <MappingFragment StoreEntitySet="presupuesto_tercero_comision">
+                <ScalarProperty Name="Total_Neto" ColumnName="Total_Neto" />
+                <ScalarProperty Name="Total_Porcentaje" ColumnName="Total_Porcentaje" />
+                <ScalarProperty Name="Valor_porcentaje" ColumnName="Valor_porcentaje" />
+                <ScalarProperty Name="Tipo_Comision" ColumnName="Tipo_Comision" />
+                <ScalarProperty Name="idPresupuesto_Tercero_Comision" ColumnName="idPresupuesto_Tercero_Comision" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="presupuesto_tercero_detalle">
+            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_tercero_detalle">
+              <MappingFragment StoreEntitySet="presupuesto_tercero_detalle">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Valor_Comision2" ColumnName="Valor_Comision2" />
+                <ScalarProperty Name="Valor_Comision1" ColumnName="Valor_Comision1" />
+                <ScalarProperty Name="Valor_MO" ColumnName="Valor_MO" />
+                <ScalarProperty Name="Valor_Trabajo" ColumnName="Valor_Trabajo" />
+                <ScalarProperty Name="idPresupuesto_Tercero_Detalle" ColumnName="idPresupuesto_Tercero_Detalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="presupuesto_tercero_flete">
+            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_tercero_flete">
+              <MappingFragment StoreEntitySet="presupuesto_tercero_flete">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Cantidad_Flete" ColumnName="Cantidad_Flete" />
+                <ScalarProperty Name="idpresupuesto_tercero_flete" ColumnName="idpresupuesto_tercero_flete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="presupuesto_tercero_flete_detalle">
+            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_tercero_flete_detalle">
+              <MappingFragment StoreEntitySet="presupuesto_tercero_flete_detalle">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Comision2" ColumnName="Comision2" />
+                <ScalarProperty Name="Comision1" ColumnName="Comision1" />
+                <ScalarProperty Name="Mano_Obra" ColumnName="Mano_Obra" />
+                <ScalarProperty Name="Valor_Flete" ColumnName="Valor_Flete" />
+                <ScalarProperty Name="idpresupuesto_tercero_flete_detalle" ColumnName="idpresupuesto_tercero_flete_detalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="presupuesto_trabajo_resumen">
+            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_trabajo_resumen">
+              <MappingFragment StoreEntitySet="presupuesto_trabajo_resumen">
+                <ScalarProperty Name="Total_Neto_Comisiones" ColumnName="Total_Neto_Comisiones" />
+                <ScalarProperty Name="Sub_Total" ColumnName="Sub_Total" />
+                <ScalarProperty Name="Resumen" ColumnName="Resumen" />
+                <ScalarProperty Name="idpresupuesto_trabajo_resumen" ColumnName="idpresupuesto_trabajo_resumen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="presupuesto_trabajo_resumen_detalle">
+            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_trabajo_resumen_detalle">
+              <MappingFragment StoreEntitySet="presupuesto_trabajo_resumen_detalle">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Valor_Recargo" ColumnName="Valor_Recargo" />
+                <ScalarProperty Name="Recargo_HHEE" ColumnName="Recargo_HHEE" />
+                <ScalarProperty Name="Sub_Total" ColumnName="Sub_Total" />
+                <ScalarProperty Name="Horas_Pareja" ColumnName="Horas_Pareja" />
+                <ScalarProperty Name="idPresupuesto_Trabajo_Resumen_Detalle" ColumnName="idPresupuesto_Trabajo_Resumen_Detalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="presupuesto_trabajo_terceros">
+            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_trabajo_terceros">
+              <MappingFragment StoreEntitySet="presupuesto_trabajo_terceros">
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="idPresupuesto_Trabajo_Terceros" ColumnName="idPresupuesto_Trabajo_Terceros" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="repuesto_presupuesto">
+            <EntityTypeMapping TypeName="bd_santiagoModel.repuesto_presupuesto">
+              <MappingFragment StoreEntitySet="repuesto_presupuesto">
+                <ScalarProperty Name="Hora_Par_Hombre" ColumnName="Hora_Par_Hombre" />
+                <ScalarProperty Name="Sub_Total" ColumnName="Sub_Total" />
+                <ScalarProperty Name="Valor_Unitario" ColumnName="Valor_Unitario" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="idRepuestoPresupuesto" ColumnName="idRepuestoPresupuesto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="repuesto_presupuesto_detalle">
+            <EntityTypeMapping TypeName="bd_santiagoModel.repuesto_presupuesto_detalle">
+              <MappingFragment StoreEntitySet="repuesto_presupuesto_detalle">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Valor_Comision2" ColumnName="Valor_Comision2" />
+                <ScalarProperty Name="Valor_Comision1" ColumnName="Valor_Comision1" />
+                <ScalarProperty Name="Valor_MO" ColumnName="Valor_MO" />
+                <ScalarProperty Name="idRepuesto_Presupuesto_Detalle" ColumnName="idRepuesto_Presupuesto_Detalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="repuestos">
+            <EntityTypeMapping TypeName="bd_santiagoModel.repuestos">
+              <MappingFragment StoreEntitySet="repuestos">
+                <ScalarProperty Name="Precio_Compra" ColumnName="Precio_Compra" />
+                <ScalarProperty Name="Precio_Venta" ColumnName="Precio_Venta" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Nombre_Articulo" ColumnName="Nombre_Articulo" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="idRepuestos" ColumnName="idRepuestos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="valor_moneda">
+            <EntityTypeMapping TypeName="bd_santiagoModel.valor_moneda">
+              <MappingFragment StoreEntitySet="valor_moneda">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fecha_UF" ColumnName="Fecha_UF" />
+                <ScalarProperty Name="Valor_Flete" ColumnName="Valor_Flete" />
+                <ScalarProperty Name="Valor_HP" ColumnName="Valor_HP" />
+                <ScalarProperty Name="Valor_UF" ColumnName="Valor_UF" />
+                <ScalarProperty Name="idValor_Moneda" ColumnName="idValor_Moneda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="test">
+            <EntityTypeMapping TypeName="bd_santiagoModel.test">
+              <MappingFragment StoreEntitySet="test">
+                <ScalarProperty Name="proveedor" ColumnName="proveedor" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="unidad" ColumnName="unidad" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="producto" ColumnName="producto" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

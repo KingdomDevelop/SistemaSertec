@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{61FD14AA-39B6-4D25-9171-F5E11B0D841E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GestionVentas.Negocio</RootNamespace>
+    <AssemblyName>GestionVentas.Negocio</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dto\PresupuestoComercialDto.cs" />
+    <Compile Include="Dto\PresupuestoDto.cs" />
+    <Compile Include="Dto\PresupuestoOrdenTrabajoDto.cs" />
+    <Compile Include="Dto\PresupuestoRepuestoDetalleDto.cs" />
+    <Compile Include="Dto\PresupuestoRepuestoDto.cs" />
+    <Compile Include="Dto\PresupuestoResumenMoDetalleDto.cs" />
+    <Compile Include="Dto\PresupuestoTercerosDto.cs" />
+    <Compile Include="Dto\PresupuestoTrabajoResumenDto.cs" />
+    <Compile Include="Dto\PresupuestoTRComercialDetalleDto.cs" />
+    <Compile Include="Dto\PresupuestoTRComisionDesgloceDto.cs" />
+    <Compile Include="Dto\PresupuestoTRComisionDetalleDto.cs" />
+    <Compile Include="Implementacion\PresupuestoSvcImpl.cs" />
+    <Compile Include="Interfaz\IPresupuestoSvc.cs" />
+    <Compile Include="Mappers\NegocioMapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\GestionVentas.Dato\GestionVentas.Dato.csproj">
+      <Project>{df215716-1866-4dbb-a079-f84a77f72a09}</Project>
+      <Name>GestionVentas.Dato</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

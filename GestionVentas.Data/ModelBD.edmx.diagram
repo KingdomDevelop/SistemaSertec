@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0b5b02ba48364473b80b815dbba618aa" Name="Diagram1" >
+        <EntityTypeShape EntityType="bd_santiagoModel.flete_valor" Width="1.5" PointX="11.875" PointY="2.5" />
+        <EntityTypeShape EntityType="bd_santiagoModel.hh_valorizacion" Width="1.5" PointX="10" PointY="3.125" />
+        <EntityTypeShape EntityType="bd_santiagoModel.presupuesto" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="bd_santiagoModel.presupuesto_comercial" Width="2.125" PointX="4.75" PointY="0.625" />
+        <EntityTypeShape EntityType="bd_santiagoModel.presupuesto_comercial_condicion_venta" Width="2.375" PointX="5.875" PointY="4.875" />
+        <EntityTypeShape EntityType="bd_santiagoModel.presupuesto_comercial_detalle" Width="1.5" PointX="2.75" PointY="7.75" />
+        <EntityTypeShape EntityType="bd_santiagoModel.presupuesto_comercial_pago" Width="2.375" PointX="7.375" PointY="0.5" />
+        <EntityTypeShape EntityType="bd_santiagoModel.presupuesto_comercial_resumen" Width="1.5" PointX="8.5" PointY="4.75" />
+        <EntityTypeShape EntityType="bd_santiagoModel.presupuesto_orden_trabajo" Width="1.5" PointX="8.375" PointY="7.875" />
+        <EntityTypeShape EntityType="bd_santiagoModel.presupuesto_orden_trabajo_detalle" Width="2.5" PointX="7" PointY="3.25" />
+        <EntityTypeShape EntityType="bd_santiagoModel.presupuesto_tercero_comision" Width="1.5" PointX="4.75" PointY="9.75" />
+        <EntityTypeShape EntityType="bd_santiagoModel.presupuesto_tercero_detalle" Width="2.25" PointX="3.625" PointY="4" />
+        <EntityTypeShape EntityType="bd_santiagoModel.presupuesto_tercero_flete" Width="2.125" PointX="10.125" PointY="7.25" />
+        <EntityTypeShape EntityType="bd_santiagoModel.presupuesto_tercero_flete_detalle" Width="1.5" PointX="10.75" PointY="9.75" />
+        <EntityTypeShape EntityType="bd_santiagoModel.presupuesto_trabajo_resumen" Width="2.25" PointX="10.25" PointY="0.5" />
+        <EntityTypeShape EntityType="bd_santiagoModel.presupuesto_trabajo_resumen_detalle" Width="1.5" PointX="6.75" PointY="11.75" />
+        <EntityTypeShape EntityType="bd_santiagoModel.presupuesto_trabajo_terceros" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="bd_santiagoModel.repuesto_presupuesto" Width="1.875" PointX="2.375" PointY="0.5" />
+        <EntityTypeShape EntityType="bd_santiagoModel.repuesto_presupuesto_detalle" Width="1.5" PointX="2.75" PointY="12.75" />
+        <EntityTypeShape EntityType="bd_santiagoModel.repuestos" Width="1.5" PointX="12" PointY="4.625" />
+        <EntityTypeShape EntityType="bd_santiagoModel.valor_moneda" Width="1.5" PointX="0.5" PointY="4.875" />
+        <EntityTypeShape EntityType="bd_santiagoModel.test" Width="1.5" PointX="12.75" PointY="7.75" />
+        <AssociationConnector Association="bd_santiagoModel.Descripcion_resumen" />
+        <AssociationConnector Association="bd_santiagoModel.valor_uf_referencial" />
+        <AssociationConnector Association="bd_santiagoModel.valor_flete" />
+        <AssociationConnector Association="bd_santiagoModel.valor_hh_usada" />
+        <AssociationConnector Association="bd_santiagoModel.repuesto_presupuesto_detalle1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

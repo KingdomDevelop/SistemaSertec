@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GestionVentas.Negocio.Dto
+{
+   public class PresupuestoTrabajoResumenDto
+    {
+        public int PresupuestoTrabajoResumenId { get; set; }
+        public int Presupuesto { get; set; }
+        public string Descripcion { get; set; }
+        public decimal Subtotal { get; set; }
+        public decimal TotalnetoComisiones { get; set; }
+    }
+}
