@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entidades\PresupuestoComercialEntity.cs" />
+    <Compile Include="Entidades\PresupuestoControlOtEntity.cs" />
     <Compile Include="Entidades\PresupuestoEntity.cs" />
     <Compile Include="Entidades\PresupuestoOrdenTrabajoEntity.cs" />
     <Compile Include="Entidades\PresupuestoRepuestoDetalleEntity.cs" />

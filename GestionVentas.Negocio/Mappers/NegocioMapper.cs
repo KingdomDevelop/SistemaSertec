@@ -190,6 +190,20 @@ namespace GestionVentas.Negocio.Mappers
                 TotalnetoComisiones = dto.TotalnetoComisiones
             };
         }
-
+        public static PresupuestoControlOtEntity PresupuestoControlOtEntity(PresupuestoControlOtDto dto)
+        {
+            return new PresupuestoControlOtEntity
+            {
+                FechaTerminoSupervisor = dto.FechaTerminoSupervisor,
+                FechaTerminoTecnico = dto.FechaTerminoTecnico,
+                FechaTerminoVenta = dto.FechaTerminoVenta,
+                Guia = dto.Guia,
+                NumeroGuia = dto.NumeroGuia,
+                NumeroVentas = dto.NumeroVentas,
+                PresupuestoOrdenTrabajo = dto.PresupuestoOrdenTrabajo,
+                Supervisor = dto.Supervisor,
+                Tecnico = dto.Tecnico
+            };
+        }
     }
 }

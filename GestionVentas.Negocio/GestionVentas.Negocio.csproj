@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dto\PresupuestoComercialDto.cs" />
+    <Compile Include="Dto\PresupuestoControlOtDto.cs" />
     <Compile Include="Dto\PresupuestoDto.cs" />
     <Compile Include="Dto\PresupuestoOrdenTrabajoDto.cs" />
     <Compile Include="Dto\PresupuestoRepuestoDetalleDto.cs" />

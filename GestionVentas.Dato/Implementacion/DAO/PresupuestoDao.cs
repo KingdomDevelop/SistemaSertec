@@ -249,7 +249,7 @@ namespace GestionVentas.Dato.DAO
                     Valor_Comision_2 = entidad.ValorComision2,
                     Ppto_trabajo_resumen_comision_detalle = entidad.PresupuestoTrComisionDetalle,
                     Valor_Flete = entidad.ValorFlete,
-                    Valor_Mano_Obra = entidad.ValorManoObra                    
+                    Valor_Mano_Obra = entidad.ValorManoObra
                 };
 
                 contexto.PresupuestoResumenComisionDesgloce.Add(ppto);
@@ -264,7 +264,7 @@ namespace GestionVentas.Dato.DAO
             using (var contexto = new ContextoBdSantiago())
             {
                 var ppto = new presupuesto_trabajo_resumen
-                { 
+                {
                     Presupuesto = entidad.Presupuesto,
                     Descripcion = entidad.Descripcion,
                     SubTotal = entidad.Subtotal,
@@ -279,5 +279,27 @@ namespace GestionVentas.Dato.DAO
             return idResultado;
         }
 
+        public void guardarPresupuestoControlOt(PresupuestoControlOtEntity entidad)
+        {
+            using (var contexto = new ContextoBdSantiago())
+            {
+                var ppto = new presupuesto_control_orden_trabajo
+                {
+                    Presupuesto_Orden_Trabajo = entidad.PresupuestoOrdenTrabajo,
+                    Fecha_Termino_Supervisor = entidad.FechaTerminoSupervisor,
+                    Fecha_Termino_Tecnico = entidad.FechaTerminoTecnico,
+                    Fecha_Termino_Venta = entidad.FechaTerminoVenta,
+                    Numero_Guia = entidad.NumeroGuia,
+                    Numero_Ventas = entidad.NumeroVentas,
+                    Supervisor = entidad.Supervisor,
+                    Tecnico = entidad.Tecnico
+                };
+
+                contexto.PresupuestoControlOt.Add(ppto);
+                contexto.SaveChanges();
+            }
+        }
+
     }
 }
+
