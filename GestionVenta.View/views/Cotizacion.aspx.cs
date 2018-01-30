@@ -105,6 +105,10 @@ namespace GestionVenta.View.Layout
             var NewPtoTer = new PresupuestoTercerosDto();
             var NewPtoResumen = new PresupuestoTrabajoResumenDto();
 
+            TabRepRep.ToString();
+            HtmlTableRow tr = TabRepRep.FindControl("tr5") as HtmlTableRow;
+            HtmlTableCell td = tr.FindControl("td5") as HtmlTableCell;
+            //Label lbl = td.FindControl("lblParemeter5") as Label;
 
             info.FechaEmision = Convert.ToDateTime(td_fecha.Text);
             info.ValorFlete = Convert.ToInt16(td_flete_id.Text);
@@ -123,7 +127,7 @@ namespace GestionVenta.View.Layout
             NewPto.TecnicoEmisor = td_tec.Text;
             NewPto.Supervisor = td_sup.Text;
             NewPto.Descripcion = tf_detalleArea.Value.ToString();
-            NewPto.DescripcionTerceros = tf_terceros.Text;
+            //NewPto.DescripcionTerceros = tf_terceros.Text;
             NewPto.Direccion = "Direccion 2040 Gatito";
             NewPto.TelefonoContacto =111111111;
             NewPto.FechaAprobacion = DateTime.Now;
@@ -132,18 +136,18 @@ namespace GestionVenta.View.Layout
 
             NewPtoRep.Presupuesto = idCot;
             NewPtoRep.Repuesto = 1;
-            NewPtoRep.Cantidad = Convert.ToInt32(tf_cantidad.Text);
-            NewPtoRep.Codigo=Convert.ToInt32(tf_codigo.Text);
-            NewPtoRep.ValorUnitario = Convert.ToInt32(tf_valor.Text);
-            NewPtoRep.SubTotal = Convert.ToInt32(tf_subtotal.Text);
-            NewPtoRep.HoraParHombre = Convert.ToInt32(tf_hp2);
+            //NewPtoRep.Cantidad = Convert.ToInt32(tf_cantidad.Text);
+            //NewPtoRep.Codigo=Convert.ToInt32(tf_codigo.Text);
+            //NewPtoRep.ValorUnitario = Convert.ToInt32(tf_valor.Text);
+            //NewPtoRep.SubTotal = Convert.ToInt32(tf_subtotal.Text);
+            //NewPtoRep.HoraParHombre = Convert.ToInt32(tf_hp2);
 
             var ResultPre = ppto.guardarPresupuestoRepuesto(NewPtoRep);
 
             
             NewPtoTer.Presupuesto = idCot;
-            NewPtoTer.Descripcion = tf_terceros.Text;
-            NewPtoTer.Valor = Convert.ToInt32(tf_valter.Text);
+            //NewPtoTer.Descripcion = tf_terceros.Text;
+            //NewPtoTer.Valor = Convert.ToInt32(tf_valter.Text);
 
 
             var ResultTerc = ppto.guardarPresupuestoTerceros(NewPtoTer);
@@ -184,5 +188,29 @@ namespace GestionVenta.View.Layout
                 return false;
             }
         }
+
+
+
+        public static Control FindById(this Page p, string id)
+        {
+        return FindByIdRecursive(p, id);
+        }
+
+        private static Control FindByIdRecursive(Control root, string id)
+        {
+            if (root.ID == id)
+            return root;
+
+                foreach (Control c in root.Controls)
+                {
+                    Control c2 = FindByIdRecursive(c, id);
+                    if (c2 != null)
+                    return c2;
+                }
+
+            return null;
+        }
+
+        
     }
 }

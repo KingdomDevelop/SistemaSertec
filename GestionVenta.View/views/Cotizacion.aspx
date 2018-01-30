@@ -7,7 +7,7 @@
 
     
        
- <script  src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script  src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
 <script  src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script  src="https://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
@@ -15,10 +15,6 @@
 <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css"/>
 
 <link href="../content/css/StyleDataTable.css" rel="stylesheet" />
-
-        <!-- Pop Up -->
-  <script src="../content/js/scripts-Pop-up.js"></script>
-  <link href="../content/css/pop-up.css" rel="stylesheet" />
 
 <!-- header -->
     <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
@@ -178,7 +174,7 @@
                           </div>
                         </div>
                         <hr/>
-                        <table class="table table-striped">
+                        <table runat="server" class="table table-striped">
                                 <tr>                                    
                                     <td>BREVE DESCRIPCION DE LA REPARACION A EFECTUAR</td>                                    
                                 </tr>
@@ -192,113 +188,91 @@
                                 </td>
                             </tr>
                         </table>
-                        <hr/> 
-                        <table class="table table-striped">
-                                <tr>
-                                    <td></td>                                        
-                                    <td>REPUESTOS Y/O REPARACION</td>
-                                    <td>CANT.</td>
-                                    <td>CODIGO</td>
-                                    <td>VALOR UNITARIO</td>
-                                    <td>SUB TOTAL</td>
-                                    <td>HP</td>
-                                    <td></td>
-                                </tr>
-                            <tr>
-                                <td><input type="checkbox"/></td>
-                                <td>
-                                    <asp:TextBox ID="tf_repuesto" runat="server" style="width:100%"></asp:TextBox>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="tf_cantidad" runat="server" style="width:100%"></asp:TextBox>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="tf_codigo" runat="server" style="width:100%"></asp:TextBox>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="tf_valor" runat="server" style="width:100%"></asp:TextBox>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="tf_subtotal" runat="server" style="width:100%"></asp:TextBox>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="tf_hp2" runat="server" style="width:100%"></asp:TextBox>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr style="width:90%">
-                            <td style="width:5%"></td>	
-                                <td style="width:40%">
-                           <!--         <button type="submit" class="btn btn-success btn-sm"  runat="server" id="btn_aRepuesto">Agregar Repuesto</button>
-                                    <button type="submit" class="btn btn-warning btn-sm">Quitar Repuesto</button> -->
-                                 
-                                    <asp:Button ID="btn_agregarRepuesto" runat="server" Text="Agregar Repuesto" class="btn btn-success btn-sm" OnClick="btn_agregarRepuesto_Click"  />
-                                    <asp:Button ID="btn_quitarRepuesto" runat="server" Text="Quitar Repuesto" class="btn btn-warning btn-sm" OnClick="btn_quitarRepuesto_Click"  />
-
-                                </td>
-
-                                <td></td>	
-                                <td></td>
-                                <td>TOTAL</td>
-                                <td>
-                                      <asp:TextBox  name="total" id="idTotal"  runat="server" ViewStateMode="Enabled" style="width:100%"></asp:TextBox> 
-                                </td>
-                                <td>
-                                       <asp:TextBox  name="totalhp" id="idTotalHP"  runat="server" ViewStateMode="Enabled" style="width:100%"></asp:TextBox> 
-                                </td>
-                            </tr>
-                        </table>
-                        <hr/> 
-                  
-                           <div class='wrap'>
-                              <div class='content'>
-                                 
-                                  <h6>Well Hello!</h6>
-                          
-                                    <q>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</q>
-                               </div>
-                             </div>
-                          
-                           <b class='button glyphicon glyphicon-plus' href='#'>Glosa</b>
-                      
                         <hr />
-                        <table class="table table-striped">
+                        <div class="table table-striped">
+                        <table id="TabRepRep" runat="server" class="table order-list">
+                        <thead>
+                            <tr>
+                                <td>REPUESTOS Y/O REPARACION</td>
+                                <td>CANT.</td>
+                                <td>CODIGO</td>
+                                <td>VALOR UNITARIO</td>
+                                <td>SUB TOTAL</td>
+                                <td>HP</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-sm-2">
+                                    <input type="text" runat="server" name="tfRepuesto" style="width:90%" class="form-control" />
+                                </td>
+                                <td class="col-sm-2">
+                                    <input type="text" runat="server" name="tfCantidad" style="width:90%" class="form-control"/>
+                                </td>
+                                <td class="col-sm-2">
+                                    <input type="text" runat="server" name="tfCodigo" style="width:90%" class="form-control"/>
+                                </td>
+                                <td class="col-sm-2">
+                                    <input type="number" runat="server" name="tfValor" style="width:90%" class="form-control"/>
+                                </td>
+                                <td class="col-sm-2">
+                                    <input type="number" runat="server" name="tfSubtotal" style="width:90%" class="form-control"/>
+                                </td>
+                                <td class="col-sm-2">
+                                    <input type="number" runat="server" name="tfHp2" style="width:90%" class="form-control"/>
+                                </td>
+                                <td class="col-sm-2"><a class="deleteRow"></a>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5" style="text-align: left;">
+                                    <input type="button" class="btn btn-success btn-sm" id="addrow" value="Agregar Repuesto" />
+                                </td>
+                            </tr>
+                            <tr>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    </div>
+                        <hr /> 
+                        <hr />
+                        <table id="TabTrapTer" runat="server" class="table table-light">
+                            <thead>
                                 <tr>
-                                    <td></td>                                    
                                     <td>TRABAJOS TERCEROS</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>VALOR</td>                 
+                                    <td>VALOR</td>
+                                    <td>TOTAL</td>
                                 </tr>
-                            <tr>
-                                <td><input type="checkbox"/></td>
-                                <td>
-                                      <asp:TextBox  name="terceros" id="tf_terceros"  runat="server" ViewStateMode="Enabled" style="width:100%"></asp:TextBox> 
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                        <asp:TextBox  name="valorterceros" id="tf_valter"  runat="server" ViewStateMode="Enabled" style="width:100%"></asp:TextBox> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td><button type="submit" class="btn btn-success btn-sm" >Agregar Trabajo</button>
-                                    <button type="submit" class="btn btn-warning btn-sm" >Quitar Trabajo</button>
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>		
-                                <td>TOTAL</td>
-                                <td>
-                                  <asp:TextBox  name="total" id="idTotalTrabTercero"  runat="server" ViewStateMode="Enabled" style="width:100%"></asp:TextBox> 
-                                </td>
-                            </tr>
-                        </table>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="col-sm-4">
+                                        <input type="text"  name="tf_terceros" style="width:90%" class="form-control" />
+                                    </td>
+                                    <td class="col-sm-4">
+                                        <input type="text"  name="tf_valter"  style="width:60%" class="form-control"/>
+                                    </td>
+
+                                    <td class="col-sm-2"><a class="deleteRow"></a>
+                        
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2" style="text-align: left;">
+                                        <input type="button" class="btn btn-success btn-sm" id="addrowTrabTer" value="Agregar Trabajo"/>
+                                    </td>
+                                    <td colspan="1" style="text-align: left;">
+                                        <asp:TextBox  name="total" id="idTotalTrabTercero"  runat="server" ViewStateMode="Enabled" style="width:90%"></asp:TextBox> 
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>                      
+                        <hr />
                         <hr/> 
                         <table class="table table-striped">
                                 <tr>                                    
@@ -319,38 +293,38 @@
                             </tr>
                             <tr>
                                 <td>MANO DE OBRA</td>		
-                                <td><input type="text" name="mano1" value="0" style="width:100%"/></td>
-                                <td><input type="text" name="mano2" value="0" style="width:100%"/></td>
+                                <td><input type="text" name="mano1" value="0" runat="server" style="width:100%"/></td>
+                                <td><input type="text" name="mano2" value="0" runat="server" style="width:100%"/></td>
                                 <td>SUB TOTAL</td>
-                                <td><input type="text" name="horaspareja" value="0" style="width:100%"/></td>
+                                <td><input type="text" name="horaspareja" value="0" runat="server" style="width:100%"/></td>
                             </tr>
                             <tr>
                                 <td>REPUESTOS</td>		
-                                <td><input type="text" name="rep1" value="0" style="width:100%"/></td>
-                                <td><input type="text" name="rep2" value="0" style="width:100%"/></td>
+                                <td><input type="text" name="rep1" value="0" runat="server" style="width:100%"/></td>
+                                <td><input type="text" name="rep2" value="0" runat="server" style="width:100%"/></td>
                                 <td>HORAS PAREJA</td>
-                                <td><input type="text" name="subtotalmano" value="0" style="width:100%"/></td>
+                                <td><input type="text" name="subtotalmano" value="0" runat="server" style="width:100%"/></td>
                             </tr>
                             <tr>
                                 <td>TERCEROS</td>		
-                                <td><input type="text" name="ter1" value="0" style="width:100%"/></td>
-                                <td><input type="text" name="ter2" value="0" style="width:100%"/></td>
+                                <td><input type="text" name="ter1" value="0" runat="server" style="width:100%"/></td>
+                                <td><input type="text" name="ter2" value="0" runat="server" style="width:100%"/></td>
                                 <td>RECARGO HH.EE.</td>
-                                <td><input type="text" name="recargo" value="0" style="width:100%"/></td>
+                                <td><input type="text" name="recargo" value="0" runat="server" style="width:100%"/></td>
                             </tr>
                             <tr>
                                 <td>FLETES</td>		
-                                <td><input type="text" name="fle1" value="0" style="width:100%"/></td>
-                                <td><input type="text" name="fle2" value="0" style="width:100%"/></td>
+                                <td><input type="text" name="fle1" value="0" runat="server" style="width:100%"/></td>
+                                <td><input type="text" name="fle2" value="0" runat="server" style="width:100%"/></td>
                                 <td>VALOR RECARGO</td>
-                                <td><input type="text" name="valorecargo" value="0" style="width:100%"/></td>
+                                <td><input type="text" name="valorecargo" value="0" runat="server" style="width:100%"/></td>
                             </tr>
                             <tr>
                                 <td>SUB-TOTAL</td>		
-                                <td><input type="text" name="sub1" value="0" style="width:100%"/></td>
-                                <td><input type="text" name="sub2" value="0" style="width:100%"/></td>
+                                <td><input type="text" name="sub1" value="0" runat="server" style="width:100%"/></td>
+                                <td><input type="text" name="sub2" value="0" runat="server" style="width:100%"/></td>
                                 <td>TOTAL MANO DE OBRA</td>
-                                <td><input type="text" name="tmdo" value="0" style="width:100%"/></td>
+                                <td><input type="text" name="tmdo" value="0" runat="server" style="width:100%"/></td>
                             </tr>
                             <tr>
                                 <td>COMISIONES</td>		
@@ -361,22 +335,22 @@
                             </tr>
                             <tr>
                                 <td>VENTAS (3%)</td>		
-                                <td><input type="text" name="venta1" value="0" style="width:100%"/></td>
-                                <td><input type="text" name="venta2" value="0" style="width:100%"/></td>
+                                <td><input type="text" name="venta1" value="0" runat="server" style="width:100%"/></td>
+                                <td><input type="text" name="venta2" value="0" runat="server" style="width:100%"/></td>
                                 <td>FLETES (CANTIDAD)</td>
-                                <td><input type="text" name="cant_fletes" value="0" style="width:100%" /></td>
+                                <td><input type="text" name="cant_fletes" value="0" runat="server" style="width:100%" /></td>
                             </tr>
                             <tr>
                                 <td>MARGEN DE VENTA (20%)</td>		
-                                <td><input type="text" name="margen1" value="0" style="width:100%" /></td>
-                                <td><input type="text" name="margen2" value="0" style="width:100%"/></td>
+                                <td><input type="text" name="margen1" value="0" runat="server" style="width:100%" /></td>
+                                <td><input type="text" name="margen2" value="0" runat="server" style="width:100%"/></td>
                                 <td>TOTAL</td>
-                                <td><input type="text" name="total_fletes" value="0" style="width:100%" /></td>
+                                <td><input type="text" name="total_fletes" value="0" runat="server" style="width:100%" /></td>
                             </tr>
                             <tr>
                                 <td>TOTAL NETO</td>		
-                                <td><input type="text" name="tn1" value="0" style="width:100%" /></td>
-                                <td><input type="text" name="tn2" value="0"  style="width:100%" /></td>
+                                <td><input type="text" name="tn1" value="0" runat="server"  style="width:100%" /></td>
+                                <td><input type="text" name="tn2" value="0" runat="server" style="width:100%" /></td>
 
                               <td ></td>
                               <td ></td>
@@ -427,6 +401,67 @@
 
              return false;
          });
+
+         $(document).ready(function () {
+             var counter = 0;
+
+             $("#addrow").on("click", function () {
+                 var newRow = $("<tr>");
+                 var cols = "";
+
+                 cols += '<td><input type="text" class="form-control" runat="server" style="width:90%" name="tfRepuesto' + counter + '"/></td>';
+                 cols += '<td><input type="text" class="form-control" runat="server" style="width:90%" name="tfCantidad' + counter + '"/></td>';
+                 cols += '<td><input type="text" class="form-control" runat="server" style="width:90%" name="tfCodigo' + counter + '"/></td>';
+                 cols += '<td><input type="number" class="form-control" runat="server" style="width:90%" name="tfValor' + counter + '"/></td>';
+                 cols += '<td><input type="number" class="form-control" runat="server" style="width:90%" name="tfCodigo' + counter + '"/></td>';
+                 cols += '<td><input type="number" class="form-control" runat="server" style="width:90%" name="tfHp2' + counter + '"/></td>';
+
+                 cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Eliminar"></td>';
+                 newRow.append(cols);
+                 $("table.order-list").append(newRow);
+                 counter++;
+             });
+
+             $("#addrowTrabTer").on("click", function () {
+                 var newRow = $("<tr>");
+                 var cols = "";
+
+                 cols += '<td><input type="text" class="form-control" style="width:90%" name="tf_terceros' + counter + '"/></td>';
+                 cols += '<td><input type="text" class="form-control" style="width:60%" name="tf_valter' + counter + '"/></td>';
+
+                 cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Eliminar"></td>';
+                 newRow.append(cols);
+                 $("table.table-light").append(newRow);
+                 counter++;
+             });
+
+
+             $("table.order-list").on("click", ".ibtnDel", function (event) {
+                 $(this).closest("tr").remove();
+                 counter -= 1
+             });
+
+             $("table.table-light").on("click", ".ibtnDel", function (event) {
+                $(this).closest("tr").remove();
+                counter -= 1
+            });
+
+         });
+
+
+
+         function calculateRow(row) {
+             var price = +row.find('input[name^="price"]').val();
+
+         }
+
+         function calculateGrandTotal() {
+             var grandTotal = 0;
+             $("table.order-list").find('input[name^="price"]').each(function () {
+                 grandTotal += +$(this).val();
+             });
+             $("#grandtotal").text(grandTotal.toFixed(2));
+         }
 
 
      </script>
