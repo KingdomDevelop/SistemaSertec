@@ -8,6 +8,11 @@ using GestionVentas.Negocio.Implementacion;
 using GestionVentas.Negocio.Mappers;
 using GestionVentas.Negocio.Dto;
 using System.Web.UI.HtmlControls;
+using System.Data;
+using System.Net;
+using System.IO;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace GestionVenta.View.Layout
 {
@@ -29,7 +34,17 @@ namespace GestionVenta.View.Layout
 
             if (!this.Page.IsPostBack)
             {
-                CargaVariables();
+
+                 CargaVariables();
+                 this.BindGrid();
+
+                //    // HTTP Post
+                //}
+                //else
+                //{
+                //    // HTTP Get
+
+
             }
 
 
@@ -60,16 +75,40 @@ namespace GestionVenta.View.Layout
             td_fecha.Text = DateTime.Now.ToString("d/M/yyyy");
         }
 
+        private void BindGrid()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("NameRep");
+            dt.Columns.Add("Cantidad");
+            dt.Columns.Add("Codigo");
+            dt.Columns.Add("Valor");
+            dt.Columns.Add("SubTotal");
+            dt.Columns.Add("HP");
+
+
+            DataRow workRow = dt.NewRow();
+
+            workRow[0] = "Smith";
+            workRow[1] = "Smith";
+            workRow[2] = "Smith";
+            workRow[3] = "Smith";
+            workRow[4] = "Smith";
+            workRow[5] = "Smith";
+
+            dt.Rows.Add(workRow);
+
+            GridViewAgregarRep.DataSource = dt;
+            GridViewAgregarRep.DataBind();
+        }
+
         public void ObtenerData()
         {
 
             //llamamos al objeto Presupuesto
             string myStringFromTheInput = td_obra.Value;
             td_obra.Value="Esto es una prueba de codigo";
-
-
-
         }
+
 
         public void BorrarData()
         {
@@ -105,10 +144,27 @@ namespace GestionVenta.View.Layout
             var NewPtoTer = new PresupuestoTercerosDto();
             var NewPtoResumen = new PresupuestoTrabajoResumenDto();
 
-            TabRepRep.ToString();
-            HtmlTableRow tr = TabRepRep.FindControl("tr5") as HtmlTableRow;
-            HtmlTableCell td = tr.FindControl("td5") as HtmlTableCell;
-            //Label lbl = td.FindControl("lblParemeter5") as Label;
+            DataTable aa = new DataTable();
+
+            formCotizacion.Controls.ToString();
+
+            string[] controls = Request.Form.AllKeys;
+            string value = Request.Form["tf"];
+
+            foreach (Control _textbox in formCotizacion.Controls)
+            {
+                string a=  _textbox.ToString();
+                string b = _textbox.ClientID.ToString();
+                string c = _textbox.ID.ToString();
+
+            }
+            //HtmlTableRow tr = TabRepRep.FindControl("tr") as HtmlTableRow;
+            //HtmlTableCell td = tr.FindControl("td") as HtmlTableCell;
+
+            //foreach (System.Web.UI.HtmlControls.HtmlTableRow us in tab.Rows)
+            //{
+            //    string txt = us.Cells[0].InnerText;
+            //}
 
             info.FechaEmision = Convert.ToDateTime(td_fecha.Text);
             info.ValorFlete = Convert.ToInt16(td_flete_id.Text);
@@ -162,55 +218,101 @@ namespace GestionVenta.View.Layout
 
         }
 
+        protected void BtnAgregarRep_Click(object sender, EventArgs e)
+        {
 
-        public void AgregarPrimerGrupo()
+            //string name = txtName.Text;
+            //string country = txtCountry.Text;
+            //string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+            //using (SqlConnection con = new SqlConnection(constr))
+            //{
+            //    using (SqlCommand cmd = new SqlCommand("Customers_CRUD"))
+            //    {
+            //        cmd.CommandType = CommandType.StoredProcedure;
+            //        cmd.Parameters.AddWithValue("@Action", "INSERT");
+            //        cmd.Parameters.AddWithValue("@Name", name);
+            //        cmd.Parameters.AddWithValue("@Country", country);
+            //        cmd.Connection = con;
+            //        con.Open();
+            //        cmd.ExecuteNonQuery();
+            //        con.Close();
+            //    }
+            //}
+            this.BindGrid();
+        }
+
+        protected void BtnAgregarTrapTer_Click(object sender, EventArgs e)
         {
 
         }
 
-        protected void td_fecha_TextChanged(object sender, EventArgs e)
-        {
-            if (EsFecha(td_fecha.Text) == false)
-            {  }
 
+        protected void OnRowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridViewAgregarRep.EditIndex = e.NewEditIndex;
+            this.BindGrid();
         }
 
-        public static Boolean EsFecha(String fecha)
+        protected void OnRowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            try
+            GridViewRow row = GridViewAgregarRep.Rows[e.RowIndex];
+            //int customerId = Convert.ToInt32(GridViewAgregarRep.DataKeys[e.RowIndex].Values[0]);
+            //string name = (row.FindControl("txtName") as TextBox).Text;
+            //string country = (row.FindControl("txtCountry") as TextBox).Text;
+            //string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+            //using (SqlConnection con = new SqlConnection(constr))
+            //{
+            //    using (SqlCommand cmd = new SqlCommand("Customers_CRUD"))
+            //    {
+            //        cmd.CommandType = CommandType.StoredProcedure;
+            //        cmd.Parameters.AddWithValue("@Action", "UPDATE");
+            //        cmd.Parameters.AddWithValue("@CustomerId", customerId);
+            //        cmd.Parameters.AddWithValue("@Name", name);
+            //        cmd.Parameters.AddWithValue("@Country", country);
+            //        cmd.Connection = con;
+            //        con.Open();
+            //        cmd.ExecuteNonQuery();
+            //        con.Close();
+            //    }
+            //}
+            GridViewAgregarRep.EditIndex = -1;
+            this.BindGrid();
+        }
+
+        protected void OnRowCancelingEdit(object sender, EventArgs e)
+        {
+            GridViewAgregarRep.EditIndex = -1;
+            this.BindGrid();
+        }
+
+        protected void OnRowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            //int customerId = Convert.ToInt32(GridViewAgregarRep.DataKeys[e.RowIndex].Values[0]);
+            //string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+            //using (SqlConnection con = new SqlConnection(constr))
+            //{
+            //    using (SqlCommand cmd = new SqlCommand("Customers_CRUD"))
+            //    {
+            //        cmd.CommandType = CommandType.StoredProcedure;
+            //        cmd.Parameters.AddWithValue("@Action", "DELETE");
+            //        cmd.Parameters.AddWithValue("@CustomerId", customerId);
+            //        cmd.Connection = con;
+            //        con.Open();
+            //        cmd.ExecuteNonQuery();
+            //        con.Close();
+            //    }
+            //}
+            this.BindGrid();
+        }
+
+        protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != GridViewAgregarRep.EditIndex)
             {
-                DateTime.Parse(fecha);
-                return true;
-            }
-            catch
-            {
-               
-                return false;
+              //  (e.Row.Cells[2].Controls[2] as LinkButton).Attributes["onclick"] = "return confirm('Do you want to delete this row?');";
             }
         }
 
 
-
-        public static Control FindById(this Page p, string id)
-        {
-        return FindByIdRecursive(p, id);
-        }
-
-        private static Control FindByIdRecursive(Control root, string id)
-        {
-            if (root.ID == id)
-            return root;
-
-                foreach (Control c in root.Controls)
-                {
-                    Control c2 = FindByIdRecursive(c, id);
-                    if (c2 != null)
-                    return c2;
-                }
-
-            return null;
-        }
-
-        
     }
 }

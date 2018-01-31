@@ -130,31 +130,112 @@ namespace GestionVenta.View.Layout {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea tf_detalleArea;
         
         /// <summary>
-        /// TabRepRep control.
+        /// tfRepuesto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTable TabRepRep;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tfRepuesto;
         
         /// <summary>
-        /// TabTrapTer control.
+        /// tfCantidad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTable TabTrapTer;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tfCantidad;
         
         /// <summary>
-        /// idTotalTrabTercero control.
+        /// tfCodigo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox idTotalTrabTercero;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tfCodigo;
+        
+        /// <summary>
+        /// tfValor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl tfValor;
+        
+        /// <summary>
+        /// tfSubtotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl tfSubtotal;
+        
+        /// <summary>
+        /// tfHp2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl tfHp2;
+        
+        /// <summary>
+        /// Btn_AgregarRep control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Btn_AgregarRep;
+        
+        /// <summary>
+        /// GridViewAgregarRep control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewAgregarRep;
+        
+        /// <summary>
+        /// tf_terceros control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tf_terceros;
+        
+        /// <summary>
+        /// tf_valter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tf_valter;
+        
+        /// <summary>
+        /// Btn_AgregarTrabTer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Btn_AgregarTrabTer;
+        
+        /// <summary>
+        /// GridViewAgregarTrabTer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewAgregarTrabTer;
         
         /// <summary>
         /// tf_duracion control.

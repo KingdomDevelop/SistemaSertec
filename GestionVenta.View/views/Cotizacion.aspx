@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" runat="server" contentplaceholderid="ContentPlaceHolder1">
 
        
-    <form id="formCotizacion" runat="server">
+<form id="formCotizacion" runat="server">
 
     
        
@@ -190,7 +190,7 @@
                         </table>
                         <hr />
                         <div class="table table-striped">
-                        <table id="TabRepRep" runat="server" class="table order-list">
+                        <table id="TabRepRep" class="table order-list">
                         <thead>
                             <tr>
                                 <td>REPUESTOS Y/O REPARACION</td>
@@ -204,75 +204,145 @@
                         <tbody>
                             <tr>
                                 <td class="col-sm-2">
-                                    <input type="text" runat="server" name="tfRepuesto" style="width:90%" class="form-control" />
+                                    <input type="text"  runat="server" name="tfRepuesto" id="tfRepuesto" style="width:90%" class="form-control" />
                                 </td>
                                 <td class="col-sm-2">
-                                    <input type="text" runat="server" name="tfCantidad" style="width:90%" class="form-control"/>
+                                    <input type="text"  runat="server" name="tfCantidad" id="tfCantidad" style="width:90%" class="form-control"/>
                                 </td>
                                 <td class="col-sm-2">
-                                    <input type="text" runat="server" name="tfCodigo" style="width:90%" class="form-control"/>
+                                    <input type="text"  runat="server" name="tfCodigo" id="tfCodigo" style="width:90%" class="form-control"/>
                                 </td>
                                 <td class="col-sm-2">
-                                    <input type="number" runat="server" name="tfValor" style="width:90%" class="form-control"/>
+                                    <input type="number"  runat="server" name="tfValor" id="tfValor" style="width:90%" class="form-control"/>
                                 </td>
                                 <td class="col-sm-2">
-                                    <input type="number" runat="server" name="tfSubtotal" style="width:90%" class="form-control"/>
+                                    <input type="number"  runat="server" name="tfSubtotal" id="tfSubtotal" style="width:90%" class="form-control"/>
                                 </td>
                                 <td class="col-sm-2">
-                                    <input type="number" runat="server" name="tfHp2" style="width:90%" class="form-control"/>
+                                    <input type="number"  runat="server" name="tfHp2"  id="tfHp2" style="width:90%" class="form-control"/>
                                 </td>
-                                <td class="col-sm-2"><a class="deleteRow"></a>
+<%--                                <td class="col-sm-2"><a class="deleteRow"></a>
 
-                                </td>
+                                </td>--%>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td colspan="5" style="text-align: left;">
-                                    <input type="button" class="btn btn-success btn-sm" id="addrow" value="Agregar Repuesto" />
+                                   <%-- <input type="button" class="btn btn-success btn-sm" id="addrow" value="Agregar Repuesto" />--%>
+                                     <asp:Button ID="Btn_AgregarRep" runat="server" class="btn btn-success btn-sm"  Text="Agregar Repuesto" OnClick="BtnAgregarRep_Click"  />
                                 </td>
-                            </tr>
-                            <tr>
                             </tr>
                         </tfoot>
                     </table>
                     </div>
                         <hr /> 
+                        <div class="container">
+                            <div class="row" style="overflow-x:scroll; overflow-y:scroll;">
+                                <asp:GridView ID="GridViewAgregarRep" runat="server" AutoGenerateColumns="false"  EmptyDataText="No records has been added." 
+                                    CssClass="footable" OnRowDataBound="OnRowDataBound" OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit"
+                                    OnRowUpdating="OnRowUpdating" OnRowDeleting="OnRowDeleting">
+                                          <Columns>
+                                                <asp:TemplateField HeaderText="REPUESTOS Y/O REPARACION" ControlStyle-CssClass="col-6">
+                                                    <ItemTemplate>
+                                                        <div class="row">
+                                                            <asp:Label ID="lblName" runat="server"  Width="150px" Text='<%# Eval("NameRep") %>'></asp:Label>
+                                                        </div>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <div class="row">
+                                                            <asp:TextBox ID="txtName" runat="server" Width="150px" Text='<%# Eval("NameRep") %>'></asp:TextBox>
+                                                         </div>>
+                                                    </EditItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="CANTIDAD" ControlStyle-CssClass="col-6">
+                                                    <ItemTemplate>
+                                                        <div class="row">
+                                                            <asp:Label ID="lblCantidad" runat="server" Width="80px" Text='<%# Eval("Cantidad") %>'></asp:Label>
+                                                        </div>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <div class="row">
+                                                            <asp:TextBox ID="txtCantidad" runat="server" Width="80px" Text='<%# Eval("Cantidad") %>'></asp:TextBox>
+                                                        </div>
+                                                    </EditItemTemplate>
+                                                </asp:TemplateField>
+                                                 <asp:TemplateField HeaderText="CÓDIGO" ControlStyle-CssClass="col-6">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblCodigo" runat="server" Width="80px" Text='<%# Eval("Codigo") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="txtCodigo" runat="server" Width="80px" Text='<%# Eval("Codigo") %>'></asp:TextBox>
+                                                    </EditItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="VALOR UNITARIO" ControlStyle-CssClass="col-6">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblValor" runat="server" Width="80px" Text='<%# Eval("Valor") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <EditItemTemplate>
+                                                    <asp:TextBox ID="txtValor" runat="server" Width="80px" Text='<%# Eval("Valor") %>'></asp:TextBox>
+                                                </EditItemTemplate>
+                                               </asp:TemplateField>
+                                               <asp:TemplateField HeaderText="SUB-TOTAL" ControlStyle-CssClass="col-6">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblSubTotal" runat="server" Width="80px" Text='<%# Eval("SubTotal") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <EditItemTemplate>
+                                                    <asp:TextBox ID="txtSubTotal" runat="server" Width="80px" Text='<%# Eval("SubTotal") %>'></asp:TextBox>
+                                                </EditItemTemplate>
+                                            </asp:TemplateField>
+                                             <asp:TemplateField HeaderText="HP" ControlStyle-CssClass="col-6">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblHP" runat="server" Width="80px" Text='<%# Eval("HP") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <EditItemTemplate>
+                                                    <asp:TextBox ID="txtHP" runat="server" Width="80px" Text='<%# Eval("HP") %>'></asp:TextBox>
+                                                </EditItemTemplate>
+                                            </asp:TemplateField>
+                                                <asp:CommandField ButtonType="Link" ShowEditButton="true" ShowDeleteButton="true" ControlStyle-CssClass="col-6"/>
+                        </Columns>
+                                    <SelectedRowStyle BackColor="#CCFFFF" BorderStyle="Solid" Font-Bold="True" />
+                                </asp:GridView>
+                            </div>
+                        </div>
                         <hr />
-                        <table id="TabTrapTer" runat="server" class="table table-light">
+                        <table id="TabTrapTer" class="table table-light">
                             <thead>
                                 <tr>
                                     <td>TRABAJOS TERCEROS</td>
                                     <td>VALOR</td>
-                                    <td>TOTAL</td>
+             <%--                       <td>TOTAL</td>--%>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td class="col-sm-4">
-                                        <input type="text"  name="tf_terceros" style="width:90%" class="form-control" />
+                                        <input type="text"  runat="server" name="tf_terceros"  id="tf_terceros" style="width:90%" class="form-control" />
                                     </td>
                                     <td class="col-sm-4">
-                                        <input type="text"  name="tf_valter"  style="width:60%" class="form-control"/>
+                                        <input type="text"  runat="server" name="tf_valter" id="tf_valter"  style="width:60%" class="form-control"/>
                                     </td>
 
-                                    <td class="col-sm-2"><a class="deleteRow"></a>
+<%--                                    <td class="col-sm-2"><a class="deleteRow"></a>
                         
-                                    </td>
+                                    </td>--%>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <td colspan="2" style="text-align: left;">
-                                        <input type="button" class="btn btn-success btn-sm" id="addrowTrabTer" value="Agregar Trabajo"/>
+                                        <%--<input type="button" class="btn btn-success btn-sm" id="addrowTrabTer" value="Agregar Trabajo"/>--%>
+                                        <asp:Button ID="Btn_AgregarTrabTer" runat="server" class="btn btn-success btn-sm"  Text="Agregar Trabajo" OnClick="BtnAgregarTrapTer_Click"  />
                                     </td>
-                                    <td colspan="1" style="text-align: left;">
-                                        <asp:TextBox  name="total" id="idTotalTrabTercero"  runat="server" ViewStateMode="Enabled" style="width:90%"></asp:TextBox> 
-                                    </td>
+                                    <%--<td colspan="1" style="text-align: left;">--%>
+                                       <%-- <asp:TextBox  name="total" id="idTotalTrabTercero"  runat="server" ViewStateMode="Enabled" style="width:90%"></asp:TextBox> --%>
+                                   <%-- </td>--%>
                                 </tr>
                             </tfoot>
                         </table>                      
                         <hr />
+                        <asp:GridView ID="GridViewAgregarTrabTer" runat="server">
+                        </asp:GridView>
                         <hr/> 
                         <table class="table table-striped">
                                 <tr>                                    
@@ -402,66 +472,66 @@
              return false;
          });
 
-         $(document).ready(function () {
-             var counter = 0;
+         //$(document).ready(function () {
+         //    var counter = 0;
 
-             $("#addrow").on("click", function () {
-                 var newRow = $("<tr>");
-                 var cols = "";
+         //    $("#addrow").on("click", function () {
+         //        var newRow = $("<tr>");
+         //        var cols = "";
 
-                 cols += '<td><input type="text" class="form-control" runat="server" style="width:90%" name="tfRepuesto' + counter + '"/></td>';
-                 cols += '<td><input type="text" class="form-control" runat="server" style="width:90%" name="tfCantidad' + counter + '"/></td>';
-                 cols += '<td><input type="text" class="form-control" runat="server" style="width:90%" name="tfCodigo' + counter + '"/></td>';
-                 cols += '<td><input type="number" class="form-control" runat="server" style="width:90%" name="tfValor' + counter + '"/></td>';
-                 cols += '<td><input type="number" class="form-control" runat="server" style="width:90%" name="tfCodigo' + counter + '"/></td>';
-                 cols += '<td><input type="number" class="form-control" runat="server" style="width:90%" name="tfHp2' + counter + '"/></td>';
+         //        cols += '<td><input type="text" class="form-control"  runat="server" style="width:90%" name="tfRepuesto' + counter + '"/></td>';
+         //        cols += '<td><input type="text" class="form-control"  runat="server" style="width:90%" name="tfCantidad' + counter + '"/></td>';
+         //        cols += '<td><input type="text" class="form-control" runat="server" style="width:90%" name="tfCodigo' + counter + '"/></td>';
+         //        cols += '<td><input type="number" class="form-control" runat="server" style="width:90%" name="tfValor' + counter + '"/></td>';
+         //        cols += '<td><input type="number" class="form-control" runat="server" style="width:90%" name="tfCodigo' + counter + '"/></td>';
+         //        cols += '<td><input type="number" class="form-control" runat="server" style="width:90%" name="tfHp2' + counter + '"/></td>';
 
-                 cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Eliminar"></td>';
-                 newRow.append(cols);
-                 $("table.order-list").append(newRow);
-                 counter++;
-             });
+         //        cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Eliminar"></td>';
+         //        newRow.append(cols);
+         //        $("table.order-list").append(newRow);
+         //        counter++;
+         //    });
 
-             $("#addrowTrabTer").on("click", function () {
-                 var newRow = $("<tr>");
-                 var cols = "";
+         //    $("#addrowTrabTer").on("click", function () {
+         //        var newRow = $("<tr>");
+         //        var cols = "";
 
-                 cols += '<td><input type="text" class="form-control" style="width:90%" name="tf_terceros' + counter + '"/></td>';
-                 cols += '<td><input type="text" class="form-control" style="width:60%" name="tf_valter' + counter + '"/></td>';
+         //        cols += '<td><input type="text" class="form-control" runat="server" style="width:90%" name="tf_terceros' + counter + '" /></td>';
+         //        cols += '<td><input type="text" class="form-control" runat="server" style="width:60%" name="tf_valter' + counter + '" /></td>';
 
-                 cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Eliminar"></td>';
-                 newRow.append(cols);
-                 $("table.table-light").append(newRow);
-                 counter++;
-             });
-
-
-             $("table.order-list").on("click", ".ibtnDel", function (event) {
-                 $(this).closest("tr").remove();
-                 counter -= 1
-             });
-
-             $("table.table-light").on("click", ".ibtnDel", function (event) {
-                $(this).closest("tr").remove();
-                counter -= 1
-            });
-
-         });
+         //        cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Eliminar"></td>';
+         //        newRow.append(cols);
+         //        $("table.table-light").append(newRow);
+         //        counter++;
+         //    });
 
 
+         //    $("table.order-list").on("click", ".ibtnDel", function (event) {
+         //        $(this).closest("tr").remove();
+         //        counter -= 1
+         //    });
 
-         function calculateRow(row) {
-             var price = +row.find('input[name^="price"]').val();
+         //    $("table.table-light").on("click", ".ibtnDel", function (event) {
+         //       $(this).closest("tr").remove();
+         //       counter -= 1
+         //   });
 
-         }
+         //});
 
-         function calculateGrandTotal() {
-             var grandTotal = 0;
-             $("table.order-list").find('input[name^="price"]').each(function () {
-                 grandTotal += +$(this).val();
-             });
-             $("#grandtotal").text(grandTotal.toFixed(2));
-         }
+
+
+         //function calculateRow(row) {
+         //    var price = +row.find('input[name^="price"]').val();
+
+         //}
+
+         //function calculateGrandTotal() {
+         //    var grandTotal = 0;
+         //    $("table.order-list").find('input[name^="price"]').each(function () {
+         //        grandTotal += +$(this).val();
+         //    });
+         //    $("#grandtotal").text(grandTotal.toFixed(2));
+         //}
 
 
      </script>
