@@ -65,6 +65,7 @@
     <Compile Include="Entidades\PresupuestoControlOtEntity.cs" />
     <Compile Include="Entidades\PresupuestoEntity.cs" />
     <Compile Include="Entidades\PresupuestoOrdenTrabajoEntity.cs" />
+    <Compile Include="Entidades\PresupuestoOtRepEntity.cs" />
     <Compile Include="Entidades\PresupuestoRepuestoDetalleEntity.cs" />
     <Compile Include="Entidades\PresupuestoRepuestoEntity.cs" />
     <Compile Include="Entidades\PresupuestoResumenMoDetalleEntity.cs" />

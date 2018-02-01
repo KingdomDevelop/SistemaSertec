@@ -45,6 +45,7 @@
     <Compile Include="Dto\PresupuestoControlOtDto.cs" />
     <Compile Include="Dto\PresupuestoDto.cs" />
     <Compile Include="Dto\PresupuestoOrdenTrabajoDto.cs" />
+    <Compile Include="Dto\PresupuestoOtRepDto.cs" />
     <Compile Include="Dto\PresupuestoRepuestoDetalleDto.cs" />
     <Compile Include="Dto\PresupuestoRepuestoDto.cs" />
     <Compile Include="Dto\PresupuestoResumenMoDetalleDto.cs" />
