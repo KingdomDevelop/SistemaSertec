@@ -135,7 +135,7 @@ namespace GestionVentas.Dato.DAO
 
             using (var contexto = new ContextoBdSantiago())
             {
-                var ppto = new presupuesto_repuesto
+                var ppto = new presupesto_repuesto
                 {
                     Cantidad = entidad.Cantidad,
                     Codigo = entidad.Codigo,

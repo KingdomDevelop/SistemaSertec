@@ -78,6 +78,7 @@ namespace GestionVenta.View.Layout
         private void BindGrid()
         {
             DataTable dt = new DataTable();
+            DataTable dt2 = new DataTable();
             dt.Columns.Add("NameRep");
             dt.Columns.Add("Cantidad");
             dt.Columns.Add("Codigo");
@@ -85,8 +86,11 @@ namespace GestionVenta.View.Layout
             dt.Columns.Add("SubTotal");
             dt.Columns.Add("HP");
 
+            dt2.Columns.Add("TrapTer");
+            dt2.Columns.Add("Valor");
 
             DataRow workRow = dt.NewRow();
+            DataRow workRow2 = dt2.NewRow();
 
             workRow[0] = "Smith";
             workRow[1] = "Smith";
@@ -94,11 +98,17 @@ namespace GestionVenta.View.Layout
             workRow[3] = "Smith";
             workRow[4] = "Smith";
             workRow[5] = "Smith";
+            workRow2[0] = "DATO ONE";
+            workRow2[1] = "DATO TO";
 
             dt.Rows.Add(workRow);
+            dt2.Rows.Add(workRow2);
 
             GridViewAgregarRep.DataSource = dt;
             GridViewAgregarRep.DataBind();
+
+            GridViewAgregarTrabTer.DataSource = dt2;
+            GridViewAgregarTrabTer.DataBind();
         }
 
         public void ObtenerData()
@@ -250,12 +260,18 @@ namespace GestionVenta.View.Layout
         protected void OnRowEditing(object sender, GridViewEditEventArgs e)
         {
             GridViewAgregarRep.EditIndex = e.NewEditIndex;
+
+            GridViewAgregarTrabTer.EditIndex = e.NewEditIndex;
+            
             this.BindGrid();
         }
 
         protected void OnRowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            
             GridViewRow row = GridViewAgregarRep.Rows[e.RowIndex];
+
+            GridViewRow row2 = GridViewAgregarTrabTer.Rows[e.RowIndex];
             //int customerId = Convert.ToInt32(GridViewAgregarRep.DataKeys[e.RowIndex].Values[0]);
             //string name = (row.FindControl("txtName") as TextBox).Text;
             //string country = (row.FindControl("txtCountry") as TextBox).Text;
@@ -310,6 +326,11 @@ namespace GestionVenta.View.Layout
             if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != GridViewAgregarRep.EditIndex)
             {
               //  (e.Row.Cells[2].Controls[2] as LinkButton).Attributes["onclick"] = "return confirm('Do you want to delete this row?');";
+            }
+
+            if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != GridViewAgregarTrabTer.EditIndex)
+            {
+                //  (e.Row.Cells[2].Controls[2] as LinkButton).Attributes["onclick"] = "return confirm('Do you want to delete this row?');";
             }
         }
 

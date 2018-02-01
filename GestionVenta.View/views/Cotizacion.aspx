@@ -82,7 +82,7 @@
             <!-- column 2 -->
             <a href="#"><strong>NUEVA COTIZACION</strong></a>
             <hr/>            
-                    <div class="table-responsive">
+                    <div class="table-responsive" style="width:auto">
                         <table class="table table-striped">
                             <tr>
                                 <th>CALCULO DE PRESUPUESTO</th>
@@ -137,10 +137,7 @@
                                 </tr>       
                                  </table>
                           </div>
-
                           <div class="col-md-4">
-                              
-                             
                                   <table class="table table-striped">  
                                   <tr>
                                     <td>VALOR UF</td>
@@ -174,7 +171,7 @@
                           </div>
                         </div>
                         <hr/>
-                        <table runat="server" class="table table-striped">
+                                 <table runat="server" class="table table-striped">
                                 <tr>                                    
                                     <td>BREVE DESCRIPCION DE LA REPARACION A EFECTUAR</td>                                    
                                 </tr>
@@ -190,7 +187,7 @@
                         </table>
                         <hr />
                         <div class="table table-striped">
-                        <table id="TabRepRep" class="table order-list">
+                                <table id="TabRepRep" class="table order-list">
                         <thead>
                             <tr>
                                 <td>REPUESTOS Y/O REPARACION</td>
@@ -235,36 +232,28 @@
                             </tr>
                         </tfoot>
                     </table>
-                    </div>
+                        </div>
                         <hr /> 
-                        <div class="container">
-                            <div class="row" style="overflow-x:scroll; overflow-y:scroll;">
+                        <div class="container" style="width:auto">
+                                <div class="row" style="overflow-x:scroll; overflow-y:scroll; width:auto">
                                 <asp:GridView ID="GridViewAgregarRep" runat="server" AutoGenerateColumns="false"  EmptyDataText="No records has been added." 
-                                    CssClass="footable" OnRowDataBound="OnRowDataBound" OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit"
+                                    CssClass="footable" Width="100%" OnRowDataBound="OnRowDataBound" OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit"
                                     OnRowUpdating="OnRowUpdating" OnRowDeleting="OnRowDeleting">
                                           <Columns>
                                                 <asp:TemplateField HeaderText="REPUESTOS Y/O REPARACION" ControlStyle-CssClass="col-6">
                                                     <ItemTemplate>
-                                                        <div class="row">
                                                             <asp:Label ID="lblName" runat="server"  Width="150px" Text='<%# Eval("NameRep") %>'></asp:Label>
-                                                        </div>
                                                     </ItemTemplate>
                                                     <EditItemTemplate>
-                                                        <div class="row">
                                                             <asp:TextBox ID="txtName" runat="server" Width="150px" Text='<%# Eval("NameRep") %>'></asp:TextBox>
-                                                         </div>>
                                                     </EditItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="CANTIDAD" ControlStyle-CssClass="col-6">
                                                     <ItemTemplate>
-                                                        <div class="row">
                                                             <asp:Label ID="lblCantidad" runat="server" Width="80px" Text='<%# Eval("Cantidad") %>'></asp:Label>
-                                                        </div>
                                                     </ItemTemplate>
                                                     <EditItemTemplate>
-                                                        <div class="row">
                                                             <asp:TextBox ID="txtCantidad" runat="server" Width="80px" Text='<%# Eval("Cantidad") %>'></asp:TextBox>
-                                                        </div>
                                                     </EditItemTemplate>
                                                 </asp:TemplateField>
                                                  <asp:TemplateField HeaderText="CÓDIGO" ControlStyle-CssClass="col-6">
@@ -299,14 +288,15 @@
                                                     <asp:TextBox ID="txtHP" runat="server" Width="80px" Text='<%# Eval("HP") %>'></asp:TextBox>
                                                 </EditItemTemplate>
                                             </asp:TemplateField>
-                                                <asp:CommandField ButtonType="Link" ShowEditButton="true" ShowDeleteButton="true" ControlStyle-CssClass="col-6"/>
+                                            <asp:CommandField ButtonType="Link" ShowEditButton="true" ShowDeleteButton="true" ControlStyle-CssClass="col-6"/>
                         </Columns>
                                     <SelectedRowStyle BackColor="#CCFFFF" BorderStyle="Solid" Font-Bold="True" />
                                 </asp:GridView>
                             </div>
                         </div>
                         <hr />
-                        <table id="TabTrapTer" class="table table-light">
+                        <div class="table table-striped">
+                               <table id="TabTrapTer" class="table table-light">
                             <thead>
                                 <tr>
                                     <td>TRABAJOS TERCEROS</td>
@@ -340,11 +330,37 @@
                                 </tr>
                             </tfoot>
                         </table>                      
+                        </div>
                         <hr />
-                        <asp:GridView ID="GridViewAgregarTrabTer" runat="server">
-                        </asp:GridView>
+                        <div class="container" style="width:auto">
+                           <div class="row" style="overflow-x:scroll; overflow-y:scroll; width:auto">
+                            <asp:GridView ID="GridViewAgregarTrabTer" runat="server"  AutoGenerateColumns="false"  EmptyDataText="No records has been added." 
+                                    CssClass="footable" Width="100%" OnRowDataBound="OnRowDataBound" OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit"
+                                    OnRowUpdating="OnRowUpdating" OnRowDeleting="OnRowDeleting">
+                                <Columns>
+                                    <asp:TemplateField HeaderText="TRABAJOS TERCEROS" ControlStyle-CssClass="col-6">
+                                        <ItemTemplate>
+                                                <asp:Label ID="lblTrapTer" runat="server"  Width="150px" Text='<%# Eval("TrapTer") %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                                <asp:TextBox ID="txtTrapTer" runat="server" Width="150px" Text='<%# Eval("TrapTer") %>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="VALOR" ControlStyle-CssClass="col-6">
+                                        <ItemTemplate>
+                                                <asp:Label ID="lblValor" runat="server" Width="80px" Text='<%# Eval("Valor") %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                                <asp:TextBox ID="txtValor" runat="server" Width="80px" Text='<%# Eval("Valor") %>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:CommandField ButtonType="Link" ItemStyle-Width="20px" ShowEditButton="true" ShowDeleteButton="true" ControlStyle-CssClass="col-6"/>
+                                    </Columns>
+                            </asp:GridView>
+                           </div>
+                        </div>
                         <hr/> 
-                        <table class="table table-striped">
+                             <table class="table table-striped">
                                 <tr>                                    
                                     <td>DURACION DE TRABAJOS</td>
                                     <td>
