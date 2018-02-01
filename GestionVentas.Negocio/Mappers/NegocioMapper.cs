@@ -205,5 +205,16 @@ namespace GestionVentas.Negocio.Mappers
                 Tecnico = dto.Tecnico
             };
         }
+
+        public static PresupuestoOtRepEntity PresupuestoOtRepuesto(PresupuestoOtRepDto dto)
+        {
+            return new PresupuestoOtRepEntity
+            {
+                PresupuestoOrdenTrabajo = dto.PresupuestoOrdenTrabajo,
+                Cantidad = dto.Cantidad,
+                Codigo = dto.Codigo,
+                Descripcion = dto.Descripcion
+            };
+        }
     }
 }

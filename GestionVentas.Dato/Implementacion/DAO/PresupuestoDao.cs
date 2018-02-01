@@ -135,7 +135,7 @@ namespace GestionVentas.Dato.DAO
 
             using (var contexto = new ContextoBdSantiago())
             {
-                var ppto = new presupuesto_repuesto
+                var ppto = new presupesto_repuesto
                 {
                     Cantidad = entidad.Cantidad,
                     Codigo = entidad.Codigo,
@@ -296,6 +296,23 @@ namespace GestionVentas.Dato.DAO
                 };
 
                 contexto.PresupuestoControlOt.Add(ppto);
+                contexto.SaveChanges();
+            }
+        }
+
+        public void guardarPresupuestoOtRep(PresupuestoOtRepEntity entidad)
+        {
+            using (var contexto = new ContextoBdSantiago())
+            {
+                var ppto = new presupuesto_orden_trabajo_repuesto_reparacion
+                {
+                    Cantidad = entidad.Cantidad,
+                    Codigo = entidad.Codigo,
+                    Descripcion = entidad.Descripcion,
+                    Presupuesto_Orden_Trabajo = entidad.PresupuestoOrdenTrabajo
+                };
+
+                contexto.PrespuestoOtRespuestoReparacion.Add(ppto);
                 contexto.SaveChanges();
             }
         }

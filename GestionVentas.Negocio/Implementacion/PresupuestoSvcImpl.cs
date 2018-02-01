@@ -87,6 +87,10 @@ namespace GestionVentas.Negocio.Implementacion
             presupuestoDao.guardarPresupuestoControlOt(NegocioMapper.PresupuestoControlOtEntity(pptoControlOt));
         }
 
+        public void guardarPresupuestoOtRep(PresupuestoOtRepDto pptoOtRepuesto)
+        {
+
+        }
 
     }
 }
