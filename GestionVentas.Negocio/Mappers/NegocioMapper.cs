@@ -206,7 +206,7 @@ namespace GestionVentas.Negocio.Mappers
             };
         }
 
-        public static PresupuestoOtRepEntity PresupuestoOtRepuesto(PresupuestoOtRepDto dto)
+        public static PresupuestoOtRepEntity PresupuestoOtRepuestoEntity(PresupuestoOtRepDto dto)
         {
             return new PresupuestoOtRepEntity
             {

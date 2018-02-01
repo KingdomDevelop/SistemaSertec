@@ -89,7 +89,7 @@ namespace GestionVentas.Negocio.Implementacion
 
         public void guardarPresupuestoOtRep(PresupuestoOtRepDto pptoOtRepuesto)
         {
-
+            presupuestoDao.guardarPresupuestoOtRep(NegocioMapper.PresupuestoOtRepuestoEntity(pptoOtRepuesto));
         }
 
     }
