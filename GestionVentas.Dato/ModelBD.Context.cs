@@ -26,7 +26,7 @@ namespace GestionVentas.Dato
         }
     
         public DbSet<moneda> moneda { get; set; }
-        public DbSet<presupuesto_repuesto> presupesto_repuesto { get; set; }
+        public DbSet<presupesto_repuesto> presupesto_repuesto { get; set; }
         public DbSet<presupuesto> presupuesto { get; set; }
         public DbSet<presupuesto_comercial> presupuesto_comercial { get; set; }
         public DbSet<presupuesto_comercial_condicion_venta> presupuesto_comercial_condicion_venta { get; set; }
@@ -34,6 +34,7 @@ namespace GestionVentas.Dato
         public DbSet<presupuesto_comercial_resumen> presupuesto_comercial_resumen { get; set; }
         public DbSet<presupuesto_control_orden_trabajo> presupuesto_control_orden_trabajo { get; set; }
         public DbSet<presupuesto_orden_trabajo> presupuesto_orden_trabajo { get; set; }
+        public DbSet<presupuesto_orden_trabajo_repuesto_reparacion> presupuesto_orden_trabajo_repuesto_reparacion { get; set; }
         public DbSet<presupuesto_repuesto_desgloce> presupuesto_repuesto_desgloce { get; set; }
         public DbSet<presupuesto_trabajo_resumen> presupuesto_trabajo_resumen { get; set; }
         public DbSet<presupuesto_trabajo_resumen_comercial_detalle> presupuesto_trabajo_resumen_comercial_detalle { get; set; }

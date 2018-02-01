@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Ging\Desktop\Sistema\SistemaGestionVentas_12012018\SistemaGestionVentas\GestionVentas.Dato\ModelBD.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Ging\Documents\Desarrollos\Sertec\SistemaSertec\GestionVentas.Dato\ModelBD.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

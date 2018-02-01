@@ -16,7 +16,7 @@ namespace GestionVentas.Dato
     {
         public presupuesto()
         {
-            this.presupesto_repuesto = new HashSet<presupuesto_repuesto>();
+            this.presupesto_repuesto = new HashSet<presupesto_repuesto>();
             this.presupuesto_trabajo_resumen = new HashSet<presupuesto_trabajo_resumen>();
             this.presupuesto_comercial = new HashSet<presupuesto_comercial>();
             this.presupuesto_orden_trabajo = new HashSet<presupuesto_orden_trabajo>();
@@ -31,7 +31,7 @@ namespace GestionVentas.Dato
         public System.DateTime Fecha_Emision { get; set; }
     
         public virtual moneda moneda { get; set; }
-        public virtual ICollection<presupuesto_repuesto> presupesto_repuesto { get; set; }
+        public virtual ICollection<presupesto_repuesto> presupesto_repuesto { get; set; }
         public virtual ICollection<presupuesto_trabajo_resumen> presupuesto_trabajo_resumen { get; set; }
         public virtual ICollection<presupuesto_comercial> presupuesto_comercial { get; set; }
         public virtual ICollection<presupuesto_orden_trabajo> presupuesto_orden_trabajo { get; set; }

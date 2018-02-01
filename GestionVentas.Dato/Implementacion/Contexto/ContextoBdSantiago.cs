@@ -26,7 +26,7 @@ namespace GestionVentas.Dato.Contexto
         public DbSet<presupuesto> Presupuesto { get; set; }
         public DbSet<presupuesto_comercial> PresupuestoComercial { get; set; }
         public DbSet<presupuesto_orden_trabajo> PresupuestoOrdenTrabajo { get; set; }
-        public DbSet<presupuesto_repuesto> PresupuestoRepuesto { get; set; } //presupesto_repuesto
+        public DbSet<presupesto_repuesto> PresupuestoRepuesto { get; set; } //presupesto_repuesto
         public DbSet<presupuesto_repuesto_desgloce> PresupuestoRepuestoDetalle { get; set; }
         public DbSet<presupuesto_trabajo_terceros> PresupuestoTerceros { get; set; }
         public DbSet<repuesto> Repuesto { get; set; }
@@ -36,5 +36,6 @@ namespace GestionVentas.Dato.Contexto
         public DbSet<presupuesto_trabajo_resumen_comision_detalle> PresupuestoResumenComisionDetalle { get; set; }
         public DbSet<presupuesto_trabajo_resumen_mo_detalle> PresupuestoResumenMoDetalle { get; set; }
         public DbSet<presupuesto_control_orden_trabajo> PresupuestoControlOt { get; set; }
+        public DbSet<presupuesto_orden_trabajo_repuesto_reparacion> PrespuestoOtRespuestoReparacion { get; set; }
     }
 }

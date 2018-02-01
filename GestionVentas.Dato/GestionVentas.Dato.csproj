@@ -96,6 +96,9 @@
     <Compile Include="moneda.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="presupesto_repuesto.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="presupuesto.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
@@ -117,7 +120,7 @@
     <Compile Include="presupuesto_orden_trabajo.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
-    <Compile Include="presupuesto_repuesto.cs">
+    <Compile Include="presupuesto_orden_trabajo_repuesto_reparacion.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
     <Compile Include="presupuesto_repuesto_desgloce.cs">
@@ -166,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="ModelBD.edmx.diagram">
       <DependentUpon>ModelBD.edmx</DependentUpon>
     </None>

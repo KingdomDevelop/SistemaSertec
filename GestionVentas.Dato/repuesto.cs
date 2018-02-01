@@ -16,7 +16,7 @@ namespace GestionVentas.Dato
     {
         public repuesto()
         {
-            this.presupesto_repuesto = new HashSet<presupuesto_repuesto>();
+            this.presupesto_repuesto = new HashSet<presupesto_repuesto>();
         }
     
         public int PK_repuesto_id { get; set; }
@@ -27,6 +27,6 @@ namespace GestionVentas.Dato
         public int Precio_Compra { get; set; }
         public Nullable<int> Precio_Venta { get; set; }
     
-        public virtual ICollection<presupuesto_repuesto> presupesto_repuesto { get; set; }
+        public virtual ICollection<presupesto_repuesto> presupesto_repuesto { get; set; }
     }
 }

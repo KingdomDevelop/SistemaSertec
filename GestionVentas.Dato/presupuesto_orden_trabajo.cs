@@ -17,6 +17,7 @@ namespace GestionVentas.Dato
         public presupuesto_orden_trabajo()
         {
             this.presupuesto_control_orden_trabajo = new HashSet<presupuesto_control_orden_trabajo>();
+            this.presupuesto_orden_trabajo_repuesto_reparacion = new HashSet<presupuesto_orden_trabajo_repuesto_reparacion>();
         }
     
         public int PK_Presupuesto_Orden_Trabajo_id { get; set; }
@@ -35,5 +36,6 @@ namespace GestionVentas.Dato
     
         public virtual presupuesto presupuesto1 { get; set; }
         public virtual ICollection<presupuesto_control_orden_trabajo> presupuesto_control_orden_trabajo { get; set; }
+        public virtual ICollection<presupuesto_orden_trabajo_repuesto_reparacion> presupuesto_orden_trabajo_repuesto_reparacion { get; set; }
     }
 }
