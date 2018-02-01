@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GestionVentas.Negocio.Dto;
+using GestionVentas.Negocio.Implementacion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,7 +14,6 @@ namespace GestionVenta.View.Layout
         protected void Page_Load(object sender, EventArgs e)
         {
             LlenoGrid();
-
         }
 
         public void LlenoGrid()
@@ -68,6 +69,67 @@ namespace GestionVenta.View.Layout
             //}
         }
 
+        protected void BtnGuardar_Click(object sender, EventArgs e)
+        {
+            //GuardarPresupuestoOrdenTrabajo
+            //GuardarPresupuestoControlOT
+            //GuardarPresupuestoOTRep
+            var ppto = new PresupuestoSvcImpl();
+            //var ppor = new PresupuestoOtRepDto();
+            var ppot = new PresupuestoOrdenTrabajoDto(); //1
 
+            var ppco = new PresupuestoControlOtDto();//2
+            
+            var ppor = new PresupuestoOtRepDto();//3
+
+
+            //ppot.PresupuestoOrdenTrabajoId
+            ppot.Presupuesto = 3;
+            ppot.Fecha = DateTime.Now;
+            ppot.Obra = "13";
+            ppot.FechaAprobacion= DateTime.Now;
+            ppot.Ascensor = "1234";
+            ppot.TecnicoEmisor = "Maximiliano B";
+            ppot.Supervisor = "Rodrigo A";
+            ppot.Direccion = "Santiago 123";
+            ppot.Aprobacion = DateTime.Now;
+            ppot.TelefonoContacto = 12345678;
+            ppot.Descripcion = "Descripción de Inserción";
+            ppot.DescripcionTerceros = "Descripcion Terceros de Inserción";
+
+            var Result = ppto.guardarPresupuestoOrdenTrabajo(ppot);
+
+            //ppco.PresupuestoControlOtId;
+
+            ppco.PresupuestoOrdenTrabajo = 2;
+            ppco.FechaTerminoTecnico= DateTime.Now;
+            ppco.NumeroGuia = 001;
+            ppco.Tecnico = "Maximiliano B";
+            ppco.FechaTerminoSupervisor = DateTime.Now;
+            ppco.Supervisor = "Rodrigo A";
+            ppco.NumeroVentas = 0;
+            ppco.FechaTerminoVenta= DateTime.Now;
+
+            ppto.guardarPresupuestoControlOt(ppco);
+
+
+            //
+            //ppco.Guia;
+            //
+
+
+            //ppor.PresupuestoOtRepId; 
+            ppor.PresupuestoOrdenTrabajo = 2;
+            ppor.Descripcion = "Nombre de la reparacion y/o Repuesto";
+            ppor.Cantidad = 10;
+            ppor.Codigo = "VC0165";
+
+            ppto.guardarPresupuestoOtRep(ppor);
+
+
+
+
+
+        }
     }
 }

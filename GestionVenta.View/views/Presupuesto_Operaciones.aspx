@@ -326,6 +326,9 @@
                 </div>
             <!--/row-->
                 <hr/>
+                <div class="table-responsive">
+                        <asp:Button ID="Btn_Guardar" runat="server" class="btn btn-primary btn-block"  Text="GUARDAR" OnClick="BtnGuardar_Click"  />
+                 </div>
                 <hr/>
 
             </div>
