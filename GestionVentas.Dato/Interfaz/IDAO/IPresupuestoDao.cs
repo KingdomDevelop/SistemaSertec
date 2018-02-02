@@ -23,5 +23,6 @@ namespace GestionVentas.Dato.Interfaz.IDAO
         int guardarPresupuestoResumen(PresupuestoTrabajoResumenEntity entidad);
         void guardarPresupuestoControlOt(PresupuestoControlOtEntity entidad);
         void guardarPresupuestoOtRep(PresupuestoOtRepEntity entidad);
+        int guardarPresupuestoComisionDetalle(PresupuestoTRComisionDetalleEntity entidad);
     }
 }
