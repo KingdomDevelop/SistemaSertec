@@ -31,13 +31,13 @@ namespace GestionVenta.View.Layout {
         protected global::System.Web.UI.WebControls.TextBox TxtObra;
         
         /// <summary>
-        /// Control TxtFechaApro.
+        /// Control CalendarFechaApro.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtFechaApro;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl CalendarFechaApro;
         
         /// <summary>
         /// Control TxtEmpresa.
@@ -94,13 +94,13 @@ namespace GestionVenta.View.Layout {
         protected global::System.Web.UI.WebControls.TextBox TxtSupervisor;
         
         /// <summary>
-        /// Control TextFechaApro.
+        /// Control DropDownListPresupuestos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextFechaApro;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListPresupuestos;
         
         /// <summary>
         /// Control Txt_APROBPOR.
@@ -155,6 +155,42 @@ namespace GestionVenta.View.Layout {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTextArea Textarea_trabTerc;
+        
+        /// <summary>
+        /// Control TxtBoxGuia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtBoxGuia;
+        
+        /// <summary>
+        /// Control TxtBoxTec.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtBoxTec;
+        
+        /// <summary>
+        /// Control TxtBoxSup.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtBoxSup;
+        
+        /// <summary>
+        /// Control TxtBoxNumVen.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtBoxNumVen;
         
         /// <summary>
         /// Control Btn_Guardar.

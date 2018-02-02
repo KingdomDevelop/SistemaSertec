@@ -90,7 +90,9 @@
                                     </tr>
                                     <tr>
                                         <td>Fecha Aprobación</td>
-                                          <td> <asp:TextBox ID="TxtFechaApro" runat="server"></asp:TextBox> </td>
+                                        <td>
+                                            <input id="CalendarFechaApro" runat="server" type="datetime-local" style="height:25px"/>
+                                        </td>
                                           <td> <asp:TextBox ID="TxtEmpresa" runat="server"></asp:TextBox> </td>
                                           <td> <asp:TextBox ID="TxtRut" runat="server"></asp:TextBox> </td>
                                     </tr>
@@ -147,7 +149,7 @@
                                         <td style="width:10%"></td>
                                         <td style="width:10%"></td>
                                         <td style="width:20%"></td>
-                                        <td style="width:40%"> <asp:TextBox ID="TextFechaApro" runat="server"></asp:TextBox> </td>
+                                        <td style="width:40%"> <asp:DropDownList ID="DropDownListPresupuestos" runat="server" Width="50px"></asp:DropDownList></td>
                                     </tr>
                                     </tbody>
 
@@ -287,13 +289,16 @@
                                         <td>FECHA</td>
                                         <td>...</td>
                                         <td>GUIA N°</td>
-                                        <td>...</td>
+                                        <td><asp:TextBox ID="TxtBoxGuia" runat="server"></asp:TextBox>
+                                        </td>
                                         <td>TECNICO</td>
-                                        <td>...</td>
+                                        <td><asp:TextBox ID="TxtBoxTec" runat="server"></asp:TextBox>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>SUPERVISOR</td>
-                                        <td>...</td>
+                                        <td><asp:TextBox ID="TxtBoxSup" runat="server"></asp:TextBox>
+                                        </td>
                                         <td>FECHA</td>
                                         <td>...</td>
                                         <td>FIRMA</td>
@@ -301,7 +306,8 @@
                                     </tr>
                                     <tr>
                                         <td>VENTAS</td>
-                                        <td>0</td>
+                                        <td><asp:TextBox ID="TxtBoxNumVen" runat="server"></asp:TextBox>
+                                        </td>
                                         <td>FECHA</td>
                                         <td>02-OCT</td>
                                         <td>FIRMA</td>

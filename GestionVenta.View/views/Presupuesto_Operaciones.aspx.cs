@@ -6,11 +6,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 
 namespace GestionVenta.View.Layout
 {
     public partial class Formulario_web13 : System.Web.UI.Page
     {
+        String _SelectDropList;
         protected void Page_Load(object sender, EventArgs e)
         {
             LlenoGrid();
@@ -19,6 +21,29 @@ namespace GestionVenta.View.Layout
         public void LlenoGrid()
         {
             List<string> TodoRepuestos = new List<string>();
+
+            List<KeyValuePair<int, string>> datos = new List<KeyValuePair<int, string>>()
+
+                {
+                    new KeyValuePair<int, string> (2, "2"),
+                    new KeyValuePair<int, string> (3, "3")
+                };
+
+            //Indicamos cúales van a ser los datos a asociar
+
+            DropDownListPresupuestos.DataSource = datos;
+
+            //Definimos el campo que contendrá los valores para el control
+
+            DropDownListPresupuestos.DataValueField = "Key";
+
+            //Definimos el campo que contendrá los textos que se verán en el control
+
+            DropDownListPresupuestos.DataTextField = "Value";
+
+            //Enlazamos los valores de los datos con el contenido del Control
+
+            DropDownListPresupuestos.DataBind();
 
             TodoRepuestos.Add("");
             TodoRepuestos.Add("");
@@ -69,6 +94,13 @@ namespace GestionVenta.View.Layout
             //}
         }
 
+        protected void DropDownListPresupuestos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _SelectDropList = DropDownListPresupuestos.SelectedItem.ToString();
+        }
+
+
+
         protected void BtnGuardar_Click(object sender, EventArgs e)
         {
             //GuardarPresupuestoOrdenTrabajo
@@ -82,54 +114,67 @@ namespace GestionVenta.View.Layout
             
             var ppor = new PresupuestoOtRepDto();//3
 
-
+            if (CalendarFechaApro.Value == "")
+            {
+                //MessageBox.ShowMessage("Favor, ingresar fecha de aprobación", this.Page);
+                return;
+            }
             //ppot.PresupuestoOrdenTrabajoId
             ppot.Presupuesto = 3;
             ppot.Fecha = DateTime.Now;
-            ppot.Obra = "13";
-            ppot.FechaAprobacion= DateTime.Now;
-            ppot.Ascensor = "1234";
-            ppot.TecnicoEmisor = "Maximiliano B";
-            ppot.Supervisor = "Rodrigo A";
-            ppot.Direccion = "Santiago 123";
-            ppot.Aprobacion = DateTime.Now;
-            ppot.TelefonoContacto = 12345678;
-            ppot.Descripcion = "Descripción de Inserción";
-            ppot.DescripcionTerceros = "Descripcion Terceros de Inserción";
+            ppot.Obra = TxtObra.Text;
+            ppot.FechaAprobacion = Convert.ToDateTime(CalendarFechaApro.Value.ToString());// DateTime.Now;
+            ppot.Ascensor = TxtAscen.Text;
+            ppot.TecnicoEmisor = TxtTecEm.Text;
+            ppot.Supervisor = TxtSupervisor.Text;
+            ppot.Direccion = TxtDireccion.Text;
+            ppot.Aprobacion = Convert.ToDateTime(CalendarFechaApro.Value.ToString());// DateTime.Now;
+            ppot.TelefonoContacto = Convert.ToInt32(Txt_TELCONTA.Text);
+            ppot.Descripcion = tf_detalleArea.Value.ToString();// "Descripción de Inserción";
+            ppot.DescripcionTerceros = Textarea_trabTerc.Value.ToString();// "Descripcion Terceros de Inserción";
 
             var Result = ppto.guardarPresupuestoOrdenTrabajo(ppot);
 
             //ppco.PresupuestoControlOtId;
 
-            ppco.PresupuestoOrdenTrabajo = 2;
+            ppco.PresupuestoOrdenTrabajo = Result;
             ppco.FechaTerminoTecnico= DateTime.Now;
-            ppco.NumeroGuia = 001;
-            ppco.Tecnico = "Maximiliano B";
+            ppco.NumeroGuia = Convert.ToInt32(TxtBoxGuia.Text);
+            ppco.Tecnico = TxtBoxTec.Text;
             ppco.FechaTerminoSupervisor = DateTime.Now;
-            ppco.Supervisor = "Rodrigo A";
-            ppco.NumeroVentas = 0;
+            ppco.Supervisor = TxtBoxSup.Text;
+            ppco.NumeroVentas = Convert.ToInt32(TxtBoxNumVen.Text);
             ppco.FechaTerminoVenta= DateTime.Now;
 
             ppto.guardarPresupuestoControlOt(ppco);
-
-
             //
             //ppco.Guia;
             //
-
-
             //ppor.PresupuestoOtRepId; 
-            ppor.PresupuestoOrdenTrabajo = 2;
+            ppor.PresupuestoOrdenTrabajo = Result;
             ppor.Descripcion = "Nombre de la reparacion y/o Repuesto";
             ppor.Cantidad = 10;
             ppor.Codigo = "VC0165";
 
             ppto.guardarPresupuestoOtRep(ppor);
 
-
-
-
-
+            CalendarFechaApro.Value = Convert.ToString(DateTime.Now);
+            TxtObra.Text = "";
+            TxtAscen.Text = "";
+            TxtTecEm.Text = "";
+            TxtSupervisor.Text = "";
+            TxtDireccion.Text = "";
+            Txt_TELCONTA.Text = "";
+            tf_detalleArea.Value = "";
+            Textarea_trabTerc.Value = "";
+            TxtBoxGuia.Text = "";
+            TxtBoxTec.Text = "";
+            TxtBoxSup.Text = "";
+            TxtBoxNumVen.Text = "";
+            Txt_APROBPOR.Text = "";
+            Txt_VENDEDOR.Text = "";
+            TxtEmpresa.Text = "";
+            TxtRut.Text = "";
         }
     }
 }

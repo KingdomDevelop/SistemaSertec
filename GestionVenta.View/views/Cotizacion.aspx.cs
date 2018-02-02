@@ -153,10 +153,23 @@ namespace GestionVenta.View.Layout
             var NewPtoRep = new PresupuestoRepuestoDto();
             var NewPtoTer = new PresupuestoTercerosDto();
             var NewPtoResumen = new PresupuestoTrabajoResumenDto();
+            var NewPtoResumenDet = new PresupuestoResumenMoDetalleDto();
+            var NewPtoTRComDetalle = new PresupuestoTRComisionDetalleDto();
 
-            DataTable aa = new DataTable();
+            //guardarPresupuestoResumen
+            //guardarPresupuestoResumenMoDetalle
+            //guardarPresupuestoTrabajoComisionDetalle
 
-            formCotizacion.Controls.ToString();
+            //NewPtoResumen
+            //ppto.guardarPresupuestoResumen
+
+            //NewPtoResumenDet
+            //ppto.guardarPresupuestoResumenMoDetalle
+
+            //NewPtoTRComDetalle
+            //ppto.guardarPresupuestoTrabajoComercialDetalle
+
+            //formCotizacion.Controls.ToString();
 
             string[] controls = Request.Form.AllKeys;
             string value = Request.Form["tf"];
@@ -168,6 +181,7 @@ namespace GestionVenta.View.Layout
                 string c = _textbox.ID.ToString();
 
             }
+
             //HtmlTableRow tr = TabRepRep.FindControl("tr") as HtmlTableRow;
             //HtmlTableCell td = tr.FindControl("td") as HtmlTableCell;
 
