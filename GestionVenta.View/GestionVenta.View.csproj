@@ -54,6 +54,7 @@
     <Content Include="content\js\bootstrap.min.js" />
     <Content Include="content\js\scripts-Pop-up.js" />
     <Content Include="content\js\scripts.js" />
+    <Content Include="content\js\style.js" />
     <Content Include="views\Presupuesto_Operaciones.aspx" />
     <Content Include="views\Presupuesto_Contabilidad.aspx" />
     <Content Include="views\Cotizacion.aspx" />
