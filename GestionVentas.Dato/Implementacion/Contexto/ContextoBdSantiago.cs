@@ -37,5 +37,7 @@ namespace GestionVentas.Dato.Contexto
         public DbSet<presupuesto_trabajo_resumen_mo_detalle> PresupuestoResumenMoDetalle { get; set; }
         public DbSet<presupuesto_control_orden_trabajo> PresupuestoControlOt { get; set; }
         public DbSet<presupuesto_orden_trabajo_repuesto_reparacion> PrespuestoOtRespuestoReparacion { get; set; }
+        public DbSet<usuario> Usuario { get; set; }
+        public DbSet<persona> Persona { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using GestionVentas.Dato.Contexto;
 using GestionVentas.Dato.DAO;
+using GestionVentas.Dato.Implementacion.DAO;
 using GestionVentas.Dato.Interfaz.IDAO;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,11 @@ namespace GestionVentas.Dato
         public static IPresupuestoDao PresupuestoDao()
         {
             return new PresupuestoDao();
+        }
+
+        public static IUsuarioDao UsuarioDao()
+        {
+            return new UsuarioDao();
         }
 
     }

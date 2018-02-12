@@ -74,11 +74,15 @@
     <Compile Include="Entidades\PresupuestoTRComercialDetalleEntity.cs" />
     <Compile Include="Entidades\PresupuestoTRComisionDesgloceEntity.cs" />
     <Compile Include="Entidades\PresupuestoTRComisionDetalleEntity.cs" />
+    <Compile Include="Entidades\Usuario\PersonaEntity.cs" />
+    <Compile Include="Entidades\Usuario\UsuarioEntity.cs" />
     <Compile Include="Implementacion\Contexto\ContextoBdInicializador.cs" />
     <Compile Include="Implementacion\Contexto\ContextoBdSantiago.cs" />
     <Compile Include="Implementacion\DAO\PresupuestoDao.cs" />
     <Compile Include="DataAccess.cs" />
+    <Compile Include="Implementacion\DAO\UsuarioDao.cs" />
     <Compile Include="Interfaz\IDAO\IPresupuestoDao.cs" />
+    <Compile Include="Interfaz\IDAO\IUsuarioDao.cs" />
     <Compile Include="ModelBD.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -95,6 +99,9 @@
       <DependentUpon>ModelBD.edmx</DependentUpon>
     </Compile>
     <Compile Include="moneda.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="persona.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
     <Compile Include="presupesto_repuesto.cs">
@@ -156,6 +163,9 @@
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
     <Compile Include="tipo_moneda.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usuario.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
     <Compile Include="valor_esfuerzo.cs">

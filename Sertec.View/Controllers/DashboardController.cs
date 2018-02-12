@@ -13,5 +13,15 @@ namespace Sertec.View.Controllers
         {
             return View();
         }
+
+        public ActionResult Home(int idUsuario)
+        {
+            return View();
+        }
+
+        public ActionResult Cotizacion()
+        {
+            return View();
+        }
     }
 }

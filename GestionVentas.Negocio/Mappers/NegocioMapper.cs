@@ -1,5 +1,7 @@
 ﻿using GestionVentas.Dato.Entidades;
+using GestionVentas.Dato.Entidades.Usuario;
 using GestionVentas.Negocio.Dto;
+using GestionVentas.Negocio.Dto.Usuario;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -214,6 +216,19 @@ namespace GestionVentas.Negocio.Mappers
                 Cantidad = dto.Cantidad,
                 Codigo = dto.Codigo,
                 Descripcion = dto.Descripcion
+            };
+        }
+
+        public static UsuarioDto UsuarioToDto(UsuarioEntity entidad)
+        {
+            return new UsuarioDto
+            {
+                Email = entidad.Email,
+                Estado = entidad.Estado,
+                Login = entidad.Login,
+                Password = entidad.Password,
+                PersonaId = entidad.PersonaId,
+                UsuarioId = entidad.UsuarioId
             };
         }
     }

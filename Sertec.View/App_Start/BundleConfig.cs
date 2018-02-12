@@ -29,6 +29,15 @@ namespace Sertec.View
                       "~/Content/site.css",
                       "~/Content/styles.css"));
 
+            //Home
+            bundles.Add(new ScriptBundle("~/bundles/Home").Include(
+                        "~/Scripts/Home/bootstrap.min.js",
+                        "~/Scripts/Home/scripts.js"));
+
+            bundles.Add(new StyleBundle("~/Content/Home").Include(
+                      "~/Content/Home/bootstrap.min.css",
+                      "~/Content/Home/Styles.css"));
+
         }
     }
 }

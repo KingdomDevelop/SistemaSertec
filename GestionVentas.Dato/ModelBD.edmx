@@ -14,6 +14,16 @@
           <Property Name="Estado" Type="bit" Nullable="false" />
           <Property Name="Tipo_moneda" Type="tinyint" Nullable="false" />
         </EntityType>
+        <EntityType Name="persona">
+          <Key>
+            <PropertyRef Name="PK_Persona_id" />
+          </Key>
+          <Property Name="PK_Persona_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="150" />
+          <Property Name="Apellido" Type="varchar" MaxLength="150" />
+          <Property Name="Cargo" Type="varchar" MaxLength="150" />
+          <Property Name="Fecha Ingreso" Type="datetime" Precision="0" />
+        </EntityType>
         <EntityType Name="presupesto_repuesto">
           <Key>
             <PropertyRef Name="PK_ppto_repuesto_id" />
@@ -263,6 +273,17 @@
           <Property Name="PK_Tipo_moneda_id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="PK_Usuario_id" />
+          </Key>
+          <Property Name="PK_Usuario_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="150" />
+          <Property Name="Email" Type="varchar" MaxLength="150" />
+          <Property Name="Password" Type="varchar" MaxLength="150" />
+          <Property Name="Usuario_id" Type="int" />
+          <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="valor_esfuerzo">
           <Key>
@@ -525,8 +546,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Usuario_Persona">
+          <End Role="persona" Type="Self.persona" Multiplicity="0..1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="persona">
+              <PropertyRef Name="PK_Persona_id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="Usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="bd_santiagoModelStoreContainer">
           <EntitySet Name="moneda" EntityType="Self.moneda" Schema="santiago" store:Type="Tables" />
+          <EntitySet Name="persona" EntityType="Self.persona" Schema="santiago" store:Type="Tables" />
           <EntitySet Name="presupesto_repuesto" EntityType="Self.presupesto_repuesto" Schema="santiago" store:Type="Tables" />
           <EntitySet Name="presupuesto" EntityType="Self.presupuesto" Schema="santiago" store:Type="Tables" />
           <EntitySet Name="presupuesto_comercial" EntityType="Self.presupuesto_comercial" Schema="santiago" store:Type="Tables" />
@@ -547,6 +581,7 @@
           <EntitySet Name="repuesto" EntityType="Self.repuesto" Schema="santiago" store:Type="Tables" />
           <EntitySet Name="tipo_esfuerzo" EntityType="Self.tipo_esfuerzo" Schema="santiago" store:Type="Tables" />
           <EntitySet Name="tipo_moneda" EntityType="Self.tipo_moneda" Schema="santiago" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="santiago" store:Type="Tables" />
           <EntitySet Name="valor_esfuerzo" EntityType="Self.valor_esfuerzo" Schema="santiago" store:Type="Tables" />
           <AssociationSet Name="FK_Moneda_Tipo_Moneda" Association="Self.FK_Moneda_Tipo_Moneda">
             <End Role="tipo_moneda" EntitySet="tipo_moneda" />
@@ -632,6 +667,10 @@
             <End Role="valor_esfuerzo" EntitySet="valor_esfuerzo" />
             <End Role="presupuesto" EntitySet="presupuesto" />
           </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Persona" Association="Self.FK_Usuario_Persona">
+            <End Role="persona" EntitySet="persona" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -639,6 +678,7 @@
       <Schema Namespace="bd_santiagoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="bd_santiagoEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="moneda" EntityType="bd_santiagoModel.moneda" />
+          <EntitySet Name="persona" EntityType="bd_santiagoModel.persona" />
           <EntitySet Name="presupesto_repuesto" EntityType="bd_santiagoModel.presupesto_repuesto" />
           <EntitySet Name="presupuesto" EntityType="bd_santiagoModel.presupuesto" />
           <EntitySet Name="presupuesto_comercial" EntityType="bd_santiagoModel.presupuesto_comercial" />
@@ -659,6 +699,7 @@
           <EntitySet Name="repuesto" EntityType="bd_santiagoModel.repuesto" />
           <EntitySet Name="tipo_esfuerzo" EntityType="bd_santiagoModel.tipo_esfuerzo" />
           <EntitySet Name="tipo_moneda" EntityType="bd_santiagoModel.tipo_moneda" />
+          <EntitySet Name="usuario" EntityType="bd_santiagoModel.usuario" />
           <EntitySet Name="valor_esfuerzo" EntityType="bd_santiagoModel.valor_esfuerzo" />
           <AssociationSet Name="FK_Moneda_Tipo_Moneda" Association="bd_santiagoModel.FK_Moneda_Tipo_Moneda">
             <End Role="tipo_moneda" EntitySet="tipo_moneda" />
@@ -667,6 +708,10 @@
           <AssociationSet Name="FK_Presupuesto_Moneda" Association="bd_santiagoModel.FK_Presupuesto_Moneda">
             <End Role="moneda" EntitySet="moneda" />
             <End Role="presupuesto" EntitySet="presupuesto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Persona" Association="bd_santiagoModel.FK_Usuario_Persona">
+            <End Role="persona" EntitySet="persona" />
+            <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
           <AssociationSet Name="FK_Ppto_Repuesto_Desgloce_Presupesto_Repuesto" Association="bd_santiagoModel.FK_Ppto_Repuesto_Desgloce_Presupesto_Repuesto">
             <End Role="presupesto_repuesto" EntitySet="presupesto_repuesto" />
@@ -755,6 +800,17 @@
           <Property Name="Tipo_moneda" Type="SByte" Nullable="false" />
           <NavigationProperty Name="tipo_moneda1" Relationship="bd_santiagoModel.FK_Moneda_Tipo_Moneda" FromRole="moneda" ToRole="tipo_moneda" />
           <NavigationProperty Name="presupuesto" Relationship="bd_santiagoModel.FK_Presupuesto_Moneda" FromRole="moneda" ToRole="presupuesto" />
+        </EntityType>
+        <EntityType Name="persona">
+          <Key>
+            <PropertyRef Name="PK_Persona_id" />
+          </Key>
+          <Property Name="PK_Persona_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Cargo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Ingreso" Type="DateTime" />
+          <NavigationProperty Name="usuario" Relationship="bd_santiagoModel.FK_Usuario_Persona" FromRole="persona" ToRole="usuario" />
         </EntityType>
         <EntityType Name="presupesto_repuesto">
           <Key>
@@ -1044,6 +1100,18 @@
           <Property Name="Estado" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="moneda" Relationship="bd_santiagoModel.FK_Moneda_Tipo_Moneda" FromRole="tipo_moneda" ToRole="moneda" />
         </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="PK_Usuario_id" />
+          </Key>
+          <Property Name="PK_Usuario_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Usuario_id" Type="Int32" />
+          <Property Name="Estado" Type="Boolean" />
+          <NavigationProperty Name="persona" Relationship="bd_santiagoModel.FK_Usuario_Persona" FromRole="usuario" ToRole="persona" />
+        </EntityType>
         <EntityType Name="valor_esfuerzo">
           <Key>
             <PropertyRef Name="PK_Valor_esfuerzo_id" />
@@ -1076,6 +1144,18 @@
             </Principal>
             <Dependent Role="presupuesto">
               <PropertyRef Name="Valor_moneda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Persona">
+          <End Type="bd_santiagoModel.persona" Role="persona" Multiplicity="0..1" />
+          <End Type="bd_santiagoModel.usuario" Role="usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="persona">
+              <PropertyRef Name="PK_Persona_id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="Usuario_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1320,6 +1400,17 @@
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Valor_moneda" ColumnName="Valor_moneda" />
                 <ScalarProperty Name="PK_valor_moneda_id" ColumnName="PK_valor_moneda_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="persona">
+            <EntityTypeMapping TypeName="bd_santiagoModel.persona">
+              <MappingFragment StoreEntitySet="persona">
+                <ScalarProperty Name="Fecha_Ingreso" ColumnName="Fecha Ingreso" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="PK_Persona_id" ColumnName="PK_Persona_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1590,6 +1681,18 @@
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="PK_Tipo_moneda_id" ColumnName="PK_Tipo_moneda_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="bd_santiagoModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Usuario_id" ColumnName="Usuario_id" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="PK_Usuario_id" ColumnName="PK_Usuario_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -26,6 +26,7 @@ namespace GestionVentas.Dato
         }
     
         public DbSet<moneda> moneda { get; set; }
+        public DbSet<persona> persona { get; set; }
         public DbSet<presupesto_repuesto> presupesto_repuesto { get; set; }
         public DbSet<presupuesto> presupuesto { get; set; }
         public DbSet<presupuesto_comercial> presupuesto_comercial { get; set; }
@@ -46,6 +47,7 @@ namespace GestionVentas.Dato
         public DbSet<repuesto> repuesto { get; set; }
         public DbSet<tipo_esfuerzo> tipo_esfuerzo { get; set; }
         public DbSet<tipo_moneda> tipo_moneda { get; set; }
+        public DbSet<usuario> usuario { get; set; }
         public DbSet<valor_esfuerzo> valor_esfuerzo { get; set; }
     }
 }

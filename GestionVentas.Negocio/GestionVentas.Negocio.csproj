@@ -54,8 +54,12 @@
     <Compile Include="Dto\PresupuestoTRComercialDetalleDto.cs" />
     <Compile Include="Dto\PresupuestoTRComisionDesgloceDto.cs" />
     <Compile Include="Dto\PresupuestoTRComisionDetalleDto.cs" />
+    <Compile Include="Dto\Usuario\PersonaDto.cs" />
+    <Compile Include="Dto\Usuario\UsuarioDto.cs" />
     <Compile Include="Implementacion\PresupuestoSvcImpl.cs" />
+    <Compile Include="Implementacion\UsuarioSvcImpl.cs" />
     <Compile Include="Interfaz\IPresupuestoSvc.cs" />
+    <Compile Include="Interfaz\IUsuarioSvc.cs" />
     <Compile Include="Mappers\NegocioMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

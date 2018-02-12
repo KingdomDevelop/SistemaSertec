@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title -Sertec</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css" />
+    @Styles.Render("~/Content/Home")
+    @Scripts.Render("~/bundles/Home")
+
+
+</head>
+<body>
+    <div>
+        <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+
+                    <a class="navbar-brand" href="#">Dashboard</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user" style="width:20%"></i> Admin <span class="caret"></span></a>
+                            <ul id="g-account-menu" class="dropdown-menu" role="menu">
+                                <li><a href="#">Mi Perfil</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            @Html.ActionLink("Salir","Index","Acceso",new { @class = "glyphicon glyphicon-lock", Style = "width:25%" })
+                            
+                            @*<a href="#"><i class="glyphicon glyphicon-lock" style="width:25%"></i> Salir</a>*@
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /container -->
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3">
+                    <!-- Left column -->
+                    <a href="#"><strong><i class="glyphicon glyphicon-transfer" style="width:10%"> </i>Herramientas</strong></a>
+                    <hr />
+                    <ul class="nav nav-stacked">
+                        <li class="nav-header">
+                            <a href="#" data-toggle="collapse" data-target="#userMenu"> Acciones</a>
+                            <ul class="nav nav-stacked collapse in" id="userMenu">
+                                <li class="active"><a href="Cotizacion.aspx"> <i class="glyphicon glyphicon-list-alt" style="width:10%"></i>  Nueva Cotización</a></li>
+                                <li><a href="#"><i class="glyphicon glyphicon-envelope" style="width:10%"></i> Messages <span class="badge badge-info">4</span></a></li>
+                                <li><a href="#"><i class="glyphicon glyphicon-list-alt" style="width:10%"></i>  Listado Cotizaciones</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <hr /><a href="#"><strong><i class="glyphicon glyphicon-link" style="width:20%"></i> Departamento</strong></a>
+                    <hr />
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="nav-header"></li>
+                        <li><a href="Presupuesto_Contabilidad.aspx"><i class="glyphicon glyphicon-list-alt" style="width:10%"></i> Contabilidad</a></li>
+                        <li><a href="Presupuesto_Operaciones.aspx"><i class="glyphicon glyphicon-briefcase" style="width:10%"></i> Operaciones</a></li>
+                    </ul>
+                    <hr />
+                    <hr /><a href="#"><strong><i class="glyphicon glyphicon-list" style="width:20%"></i> Resumen</strong></a>
+                    <hr />
+                    <ul class="nav nav-stacked">
+                        <li class="active"><a rel="nofollow" href="http://goo.gl/pQoXEh" target="ext" style="width:10%"> Resumen Mensual</a></li>
+                        <li><a rel="nofollow" href="https://wrapbootstrap.com/?ref=bootply" style="width:10%"> Resumen Anual</a></li>
+                        <li><a rel="nofollow" href="http://bootstrapzero.com"> BootstrapZero</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-9">
+                    @RenderBody()
+                    <hr />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="text-center">
+        <p>&copy; 2018 - Sertec</p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
