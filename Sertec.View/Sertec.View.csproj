@@ -195,6 +195,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DashboardViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -269,6 +270,8 @@
     <Content Include="Views\Shared\_LayoutHome.cshtml" />
     <Content Include="Views\Dashboard\Home.cshtml" />
     <Content Include="Views\Dashboard\Cotizacion.cshtml" />
+    <Content Include="Views\Dashboard\PresupuestoRepuesto.cshtml" />
+    <Content Include="Views\Dashboard\PresupuestoTrabajoTercero.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

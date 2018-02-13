@@ -62,25 +62,6 @@ namespace Sertec.View.Controllers
             ModelState.AddModelError("", "Contraseña y/o Usuario Incorrecto");
             return View("Index");
 
-            //switch (result)
-            //{
-            //    case SignInStatus.Success:
-            //        var userId = SignInManager.AuthenticationManager.AuthenticationResponseGrant.Identity.GetUserId();
-            //        //_transversalSvc.IngresarRegistroActividad(DateTime.Now, "Usuario ingresa al sistema", model.Email);
-            //        return RedirectToLocal(returnUrl); //Resultado Exitoso, a que controlador final ira
-            //    case SignInStatus.LockedOut:
-            //        var userToLock = await UserManager.FindByNameAsync(model.Email);
-            //        //_transversalSvc.IngresarRegistroActividad(DateTime.Now, "Se bloquea cuenta por exceso de intentos fallidos", model.Email);
-            //        if (userToLock != null)
-            //        {
-            //            await UserManager.AccessFailedAsync(userToLock.Id);
-            //        }
-            //        return View("Lockout");
-            //    case SignInStatus.RequiresVerification:
-            //        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-            //    case SignInStatus.Failure:
-            //    default:
-
         }
     }
         //public ApplicationSignInManager SignInManager
