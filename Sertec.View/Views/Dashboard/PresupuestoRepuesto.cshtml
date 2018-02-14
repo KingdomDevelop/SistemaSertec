@@ -2,7 +2,7 @@
 @model PresupuestoRepuestoViewModel
 
 <div class="table table-striped">
-    @using (Html.BeginForm("AgregarRepuesto", "Dashboard", FormMethod.Post, new { id = "formNuevoRepuesto" }))
+    @using (Html.BeginForm("IngresarRepuesto_Submit", "Dashboard", FormMethod.Post, new { id = "formNuevoRepuesto" }))
     {
 
     <table id="TabRepRep" class="table order-list">
@@ -47,7 +47,7 @@
         <tfoot>
             <tr>
                 <td colspan="5" style="text-align: left;">
-                    <button class="btn btn-success btn-sm" type="submit">Agregar Repuesto</button>
+                    <button id="btnCrearRep" class="btn btn-success btn-sm" type="submit">Agregar Repuesto</button>
                 </td>
             </tr>
         </tfoot>

@@ -1,0 +1,80 @@
+﻿@using Sertec.View.Models
+@model IList<PresupuestoRepuestoViewModel>
+@{
+    IList<PresupuestoRepuestoViewModel> prueba = new List<PresupuestoRepuestoViewModel>();
+    prueba.Add(new PresupuestoRepuestoViewModel
+    {
+        Cantidad = 10,
+        HoraParHombre = 12,
+        Respuesto = "Repuesto de Prueba",
+        Codigo = 12344,
+        RepuestoId = 1,
+        SubTotal = 150,
+        ValorUnitario = 15
+    });
+}
+<div class="table table-striped">
+    <table id="TabRepRep" class="table order-list">
+        <thead>
+            <tr>
+                <td>REPUESTOS Y/O REPARACION</td>
+                <td>CANT.</td>
+                <td>CODIGO</td>
+                <td>VALOR UNITARIO</td>
+                <td>SUB TOTAL</td>
+                <td>HP</td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (prueba == null)
+            {
+                <tr>
+                    <td colspan="6" class="mensaje">
+                        No existen fechas ingresadas
+                    </td>
+                </tr>
+            }
+            else
+            {
+                foreach (PresupuestoRepuestoViewModel item in prueba)
+                {
+                    <tr>
+                        <td class="col-sm-2">
+                            @*@Html.TextBoxFor(m => m.Respuesto, new { @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
+                                @Html.ValidationMessageFor(m => m.Respuesto, "", new { @class = "text-danger" })*@
+                            @item.Respuesto
+                        </td>
+                        <td class="col-sm-2">
+                            @*@Html.TextBoxFor(m => m.Cantidad, new { @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
+                                @Html.ValidationMessageFor(m => m.Cantidad, "", new { @class = "text-danger" })*@
+                            @item.Cantidad
+                        </td>
+                        <td class="col-sm-2">
+                            @*@Html.TextBoxFor(m => m.Codigo, new { @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
+                                @Html.ValidationMessageFor(m => m.Codigo, "", new { @class = "text-danger" })*@
+                            @item.Codigo
+                        </td>
+                        <td class="col-sm-2">
+                            @*@Html.TextBoxFor(m => m.ValorUnitario, new { @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
+                                @Html.ValidationMessageFor(m => m.ValorUnitario, "", new { @class = "text-danger" })*@
+                            @item.ValorUnitario
+                        </td>
+                        <td class="col-sm-2">
+                            @*@Html.TextBoxFor(m => m.SubTotal, new { @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
+                                @Html.ValidationMessageFor(m => m.SubTotal, "", new { @class = "text-danger" })*@
+                            @item.SubTotal
+                        </td>
+                        <td class="col-sm-2">
+                            @*@Html.TextBoxFor(m => m.HoraParHombre, new { @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
+                                @Html.ValidationMessageFor(m => m.HoraParHombre, "", new { @class = "text-danger" })*@
+                            @item.HoraParHombre
+                        </td>
+                        <td class="col-sm-1">
+                            <button class="btn btn-success btn-sm" type="submit">Eliminar</button>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

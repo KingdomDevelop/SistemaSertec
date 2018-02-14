@@ -10,6 +10,7 @@ namespace Sertec.View.Models
         //primera parte 
         public int PresupuestoId { get; set; }
         public DateTime FechaEmision { get; set; }
+        public string Obra { get; set; }
         public string Ascensor { get; set; }
         public string TecEmisor { get; set; }
         public string Supervisor { get; set; }
@@ -45,5 +46,17 @@ namespace Sertec.View.Models
         public string Terceros { get; set; } 
         public int ValTer { get; set; }
   
+    }
+
+    public class TecnicoViewModel
+    {
+        public int Id { get; set; }
+        public string Nombre {get;set;}
+    }
+
+    public class SupervisorViewModel
+    {
+        public int IdSupervisor { get; set; }
+        public string NombreSupervisor { get; set; }
     }
 }
