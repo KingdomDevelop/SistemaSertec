@@ -2,16 +2,7 @@
 @model IList<PresupuestoRepuestoViewModel>
 @{
     IList<PresupuestoRepuestoViewModel> prueba = new List<PresupuestoRepuestoViewModel>();
-    prueba.Add(new PresupuestoRepuestoViewModel
-    {
-        Cantidad = 10,
-        HoraParHombre = 12,
-        Respuesto = "Repuesto de Prueba",
-        Codigo = 12344,
-        RepuestoId = 1,
-        SubTotal = 150,
-        ValorUnitario = 15
-    });
+    prueba = (List<PresupuestoRepuestoViewModel>)Session["repuesto"];
 }
 <div class="table table-striped">
     <table id="TabRepRep" class="table order-list">

@@ -5,52 +5,52 @@
     @using (Html.BeginForm("IngresarRepuesto_Submit", "Dashboard", FormMethod.Post, new { id = "formNuevoRepuesto" }))
     {
 
-    <table id="TabRepRep" class="table order-list">
-        <thead>
-            <tr>
-                <td>REPUESTOS Y/O REPARACION</td>
-                <td>CANT.</td>
-                <td>CODIGO</td>
-                <td>VALOR UNITARIO</td>
-                <td>SUB TOTAL</td>
-                <td>HP</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="col-sm-2">
-                    @Html.TextBoxFor( m => m.Respuesto, new { @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
-                    @Html.ValidationMessageFor(m => m.Respuesto, "", new { @class = "text-danger" })
-                </td>
-                <td class="col-sm-2">
-                    @Html.TextBoxFor(m => m.Cantidad, new { @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
-                    @Html.ValidationMessageFor(m => m.Cantidad, "", new { @class = "text-danger" })
-                </td>
-                <td class="col-sm-2">
-                    @Html.TextBoxFor(m => m.Codigo, new { @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
-                    @Html.ValidationMessageFor(m => m.Codigo, "", new { @class = "text-danger" })
-                </td>
-                <td class="col-sm-2">
-                    @Html.TextBoxFor(m => m.ValorUnitario, new { @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
-                    @Html.ValidationMessageFor(m => m.ValorUnitario, "", new { @class = "text-danger" })
-                </td>
-                <td class="col-sm-2">
-                    @Html.TextBoxFor(m => m.SubTotal, new { @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
-                    @Html.ValidationMessageFor(m => m.SubTotal, "", new { @class = "text-danger" })
-                </td>
-                <td class="col-sm-2">
-                    @Html.TextBoxFor(m => m.HoraParHombre, new { @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
-                    @Html.ValidationMessageFor(m => m.HoraParHombre, "", new { @class = "text-danger" })
-                </td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="5" style="text-align: left;">
-                    <button id="btnCrearRep" class="btn btn-success btn-sm" type="submit">Agregar Repuesto</button>
-                </td>
-            </tr>
-        </tfoot>
-    </table>
+        <table id="TabRepRep" class="table order-list">
+            <thead>
+                <tr>
+                    <td>REPUESTOS Y/O REPARACION</td>
+                    <td>CANT.</td>
+                    <td>CODIGO</td>
+                    <td>VALOR UNITARIO</td>
+                    <td>SUB TOTAL</td>
+                    <td>HP</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-sm-2">
+                        @Html.TextBoxFor(m => m.Respuesto, new { id = "repuestoId", @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
+                        @Html.ValidationMessageFor(m => m.Respuesto, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="col-sm-2">
+                        @Html.TextBoxFor(m => m.Cantidad, new { id = "CantidadId", @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
+                        @Html.ValidationMessageFor(m => m.Cantidad, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="col-sm-2">
+                        @Html.TextBoxFor(m => m.Codigo, new { id = "CodigoId", @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
+                        @Html.ValidationMessageFor(m => m.Codigo, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="col-sm-2">
+                        @Html.TextBoxFor(m => m.ValorUnitario, new { id = "ValorUnitarioID", @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
+                        @Html.ValidationMessageFor(m => m.ValorUnitario, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="col-sm-2">
+                        @Html.TextBoxFor(m => m.SubTotal, new { id = "SubTotalId", @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
+                        @Html.ValidationMessageFor(m => m.SubTotal, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="col-sm-2">
+                        @Html.TextBoxFor(m => m.HoraParHombre, new { id = "HhId", @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
+                        @Html.ValidationMessageFor(m => m.HoraParHombre, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5" style="text-align: left;">
+                        <button id="btnCrearRep" class="btn btn-success btn-sm">Agregar Repuesto</button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
     }
 </div>

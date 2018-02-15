@@ -68,7 +68,7 @@ namespace Sertec.View.Controllers
                 Session["repuesto"] = listModel;
             }
             #endregion
-            return PartialView("PresupuestoRepuestoList",model);
+            return PartialView("PresupuestoRepuestoList");
         }
 
    

@@ -5,214 +5,222 @@
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
 
-        <a href="#"><strong>NUEVA COTIZACION</strong></a>
-        <hr />
+<script type="text/javascript" language="javascript">
+    var urlAgregarRepuesto = "@Url.Action("IngresarRepuesto_Submit", "Dashboard")";
+</script>
+
+<a href="#"><strong>NUEVA COTIZACION</strong></a>
+<hr />
 <div>
-    @using (Html.BeginForm("AgregarRepuesto", "Dashboard", FormMethod.Post, new { id = "formNuevoRepuesto" }))
+    @using (Html.BeginForm("AgregarCotizacion", "Dashboard", FormMethod.Post, new { id = "formNuevaCotizacion" }))
     {
         <table class="table table-striped">
             <tr>
                 <th>CALCULO DE PRESUPUESTO</th>
             </tr>
         </table>
-            <hr />
-            <div class="row">
-                <div class="col-md-7">
-                    <table class="table table-striped">
-                        <tr>
-                            <td>OBRA</td>
-                            <td>
-                                @Html.TextBoxFor(m => m.Obra, new { @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
-                                @Html.ValidationMessageFor(m => m.Obra, "", new { @class = "text-danger" })
-                            </td>
-                            <td style="width: 8px"></td>
-                        </tr>
-                        <tr>
-                            <td>FECHA EMISION INFORME</td>
-                            <td>
-                                <input id="td_fecha" type="datetime-local" name="fecha" class="form-fecha input-md" style="width:90%" value="2018-06-01T08:30">
-                            </td>
-                            <td style="width: 8px"></td>
-                        </tr>
-                        <tr>
-                            <td>ASCENSOR</td>
-                            <td>
-                                @Html.TextBoxFor(m => m.Ascensor, new { @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
-                                @Html.ValidationMessageFor(m => m.Ascensor, "", new { @class = "text-danger" })
-                            </td>
-                            <td style="width: 8px"></td>
-                        </tr>
-                        <tr>
-                            <td>TECNICO EMISOR</td>
-                            <td>
-                                @Html.DropDownList("accountid", new SelectList(ViewBag.Supervisor, "IdSupervisor", "NombreSupervisor"), new { @class = "form-control input-md", Style = "width:90%" })
-                            </td>
-                            <td style="width: 8px"></td>
-                        </tr>
-                        <tr>
-                            <td>SUPERVISOR</td>
-                            <td>
-                                @Html.DropDownList("accountid", new SelectList(ViewBag.Tecnicos, "Id", "Nombre"), new { @class = "form-control input-md", Style = "width:90%" })
-                            </td>
-                            <td style="width: 8px"></td>
-                        </tr>
-                        <tr>
-                            <td>PRESUPUESTO REP N°</td>
-                            <td>
-                                @Html.TextBoxFor(m => m.PresupuestoNumero, new { @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
-                                @Html.ValidationMessageFor(m => m.PresupuestoNumero, "", new { @class = "text-danger" })
-                            </td>
-                            <td style="width: 8px"></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="col-md-4">
-                    <table class="table table-striped">
-                        <tr>
-                            <td>VALOR UF</td>
-                            <td><input type="text" name="obra" id="td_uf" style="width:90%" /></td>
-                        </tr>
-
-                        <tr>
-                            <td>VALOR HP</td>
-                            <td><input type="number" name="hp" id="td_hp" style="width:90%" /></td>
-                        </tr>
-                        <tr>
-                            <td>VALOR FLETE</td>
-                            <td><input type="number" name="flete" id="td_flete" style="width:90%" /></td>
-
-                        </tr>
-                        <tr>
-                            <td>FECHA CALC</td>
-                            <td> <asp:TextBox name="fecha2" id="td_fecha2" ViewStateMode="Enabled" style="width:90%;" class="form-control input-md"></asp:TextBox> </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>PPTO N°</td>
-                            <td>
-                                <asp:TextBox name="fecha2" id="td_ppto" ViewStateMode="Enabled" style="width:90%;" class="form-control input-md"></asp:TextBox>
-                            </td>
-                            <td></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <hr />
-            <table class="table table-striped">
-                <tr>
-                    <td>BREVE DESCRIPCION DE LA REPARACION A EFECTUAR</td>
-                </tr>
-                <tr>
-                    <td>
-                        <textarea id="tf_detalleArea" rows="4" cols="50" style="width:100%"></textarea>
-                    </td>
-                </tr>
-            </table>
-            <hr />
-            {
-                Html.RenderPartial("PresupuestoRepuesto");
-                <br />
-                Html.RenderPartial("PresupuestoRepuestoList");
-                <br />
-                Html.RenderPartial("PresupuestoTrabajoTercero");
-            }
-                <hr />
-            <table class="table table-striped">
+        <hr />
+        <div class="row">
+            <div class="col-md-7">
+                <table class="table table-striped">
                     <tr>
-                        <td>DURACION DE TRABAJOS</td>
+                        <td>OBRA</td>
                         <td>
-                            <input type="text" name="duracion" value="0" id="tf_duracion" style="width:100%" />
+                            @Html.TextBoxFor(m => m.Obra, new { @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
+                            @Html.ValidationMessageFor(m => m.Obra, "", new { @class = "text-danger" })
                         </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td style="width: 8px"></td>
                     </tr>
                     <tr>
-                        <td>RESUMEN</td>
-                        <td>VALOR</td>
-                        <td>%</td>
-                        <td>MANO DE OBRA</td>
-                        <td>VALOR</td>
-                    </tr>
-                    <tr>
-                        <td>MANO DE OBRA</td>
-                        <td><input type="text" name="mano1" value="0" style="width:100%" /></td>
-                        <td><input type="text" name="mano2" value="0" style="width:100%" /></td>
-                        <td>SUB TOTAL</td>
-                        <td><input type="text" name="horaspareja" value="0" style="width:100%" /></td>
-                    </tr>
-                    <tr>
-                        <td>REPUESTOS</td>
-                        <td><input type="text" name="rep1" value="0" style="width:100%" /></td>
-                        <td><input type="text" name="rep2" value="0" style="width:100%" /></td>
-                        <td>HORAS PAREJA</td>
-                        <td><input type="text" name="subtotalmano" value="0" style="width:100%" /></td>
-                    </tr>
-                    <tr>
-                        <td>TERCEROS</td>
-                        <td><input type="text" name="ter1" value="0" style="width:100%" /></td>
-                        <td><input type="text" name="ter2" value="0" style="width:100%" /></td>
-                        <td>RECARGO HH.EE.</td>
-                        <td><input type="text" name="recargo" value="0" style="width:100%" /></td>
-                    </tr>
-                    <tr>
-                        <td>FLETES</td>
-                        <td><input type="text" name="fle1" value="0" style="width:100%" /></td>
-                        <td><input type="text" name="fle2" value="0" style="width:100%" /></td>
-                        <td>VALOR RECARGO</td>
-                        <td><input type="text" name="valorecargo" value="0" style="width:100%" /></td>
-                    </tr>
-                    <tr>
-                        <td>SUB-TOTAL</td>
-                        <td><input type="text" name="sub1" value="0" style="width:100%" /></td>
-                        <td><input type="text" name="sub2" value="0" style="width:100%" /></td>
-                        <td>TOTAL MANO DE OBRA</td>
-                        <td><input type="text" name="tmdo" value="0" style="width:100%" /></td>
-                    </tr>
-                    <tr>
-                        <td>COMISIONES</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>VENTAS (3%)</td>
-                        <td><input type="text" name="venta1" value="0" style="width:100%" /></td>
-                        <td><input type="text" name="venta2" value="0" style="width:100%" /></td>
-                        <td>FLETES (CANTIDAD)</td>
-                        <td><input type="text" name="cant_fletes" value="0" style="width:100%" /></td>
-                    </tr>
-                    <tr>
-                        <td>MARGEN DE VENTA (20%)</td>
-                        <td><input type="text" name="margen1" value="0" style="width:100%" /></td>
-                        <td><input type="text" name="margen2" value="0" style="width:100%" /></td>
-                        <td>TOTAL</td>
-                        <td><input type="text" name="total_fletes" value="0" style="width:100%" /></td>
-                    </tr>
-                    <tr>
-                        <td>TOTAL NETO</td>
-                        <td><input type="text" name="tn1" value="0" style="width:100%" /></td>
-                        <td><input type="text" name="tn2" value="0" style="width:100%" /></td>
-
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>FECHA EMISION INFORME</td>
                         <td>
-                            <input type="button" class="btn btn-danger btn-block " value="CANCELAR">
+                            <input id="td_fecha" type="datetime-local" name="fecha" class="form-fecha input-md" style="width:90%" value="2018-06-01T08:30">
                         </td>
+                        <td style="width: 8px"></td>
+                    </tr>
+                    <tr>
+                        <td>ASCENSOR</td>
                         <td>
-                            <input type="button" class="btn btn-primary btn-block" id="Button2" value="FINALIZAR" />
+                            @Html.TextBoxFor(m => m.Ascensor, new { @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
+                            @Html.ValidationMessageFor(m => m.Ascensor, "", new { @class = "text-danger" })
                         </td>
+                        <td style="width: 8px"></td>
+                    </tr>
+                    <tr>
+                        <td>TECNICO EMISOR</td>
+                        <td>
+                            @Html.DropDownList("accountid", new SelectList(ViewBag.Supervisor, "IdSupervisor", "NombreSupervisor"), new { @class = "form-control input-md", Style = "width:90%" })
+                        </td>
+                        <td style="width: 8px"></td>
+                    </tr>
+                    <tr>
+                        <td>SUPERVISOR</td>
+                        <td>
+                            @Html.DropDownList("accountid", new SelectList(ViewBag.Tecnicos, "Id", "Nombre"), new { @class = "form-control input-md", Style = "width:90%" })
+                        </td>
+                        <td style="width: 8px"></td>
+                    </tr>
+                    <tr>
+                        <td>PRESUPUESTO REP N°</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.PresupuestoNumero, new { @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
+                            @Html.ValidationMessageFor(m => m.PresupuestoNumero, "", new { @class = "text-danger" })
+                        </td>
+                        <td style="width: 8px"></td>
                     </tr>
                 </table>
-   }
- </div>
+            </div>
+            <div class="col-md-4">
+                <table class="table table-striped">
+                    <tr>
+                        <td>VALOR UF</td>
+                        <td><input type="text" name="obra" id="td_uf" style="width:90%" /></td>
+                    </tr>
 
-    <div class="panel panel-default">
-    </div>
+                    <tr>
+                        <td>VALOR HP</td>
+                        <td><input type="number" name="hp" id="td_hp" style="width:90%" /></td>
+                    </tr>
+                    <tr>
+                        <td>VALOR FLETE</td>
+                        <td><input type="number" name="flete" id="td_flete" style="width:90%" /></td>
+
+                    </tr>
+                    <tr>
+                        <td>FECHA CALC</td>
+                        <td> <asp:TextBox name="fecha2" id="td_fecha2" ViewStateMode="Enabled" style="width:90%;" class="form-control input-md"></asp:TextBox> </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>PPTO N°</td>
+                        <td>
+                            <asp:TextBox name="fecha2" id="td_ppto" ViewStateMode="Enabled" style="width:90%;" class="form-control input-md"></asp:TextBox>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <hr />
+        <table class="table table-striped">
+            <tr>
+                <td>BREVE DESCRIPCION DE LA REPARACION A EFECTUAR</td>
+            </tr>
+            <tr>
+                <td>
+                    <textarea id="tf_detalleArea" rows="4" cols="50" style="width:100%"></textarea>
+                </td>
+            </tr>
+        </table>
+        <hr />
+        {
+            Html.RenderPartial("PresupuestoRepuesto");
+        }
+        <br />
+            <div id="repuestoList">
+            </div>
+        //Html.RenderPartial("PresupuestoRepuestoList");
+        <br />
+        {
+            Html.RenderPartial("PresupuestoTrabajoTercero");
+        }
+        <hr />
+        <table class="table table-striped">
+            <tr>
+                <td>DURACION DE TRABAJOS</td>
+                <td>
+                    <input type="text" name="duracion" value="0" id="tf_duracion" style="width:100%" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>RESUMEN</td>
+                <td>VALOR</td>
+                <td>%</td>
+                <td>MANO DE OBRA</td>
+                <td>VALOR</td>
+            </tr>
+            <tr>
+                <td>MANO DE OBRA</td>
+                <td><input type="text" name="mano1" value="0" style="width:100%" /></td>
+                <td><input type="text" name="mano2" value="0" style="width:100%" /></td>
+                <td>SUB TOTAL</td>
+                <td><input type="text" name="horaspareja" value="0" style="width:100%" /></td>
+            </tr>
+            <tr>
+                <td>REPUESTOS</td>
+                <td><input type="text" name="rep1" value="0" style="width:100%" /></td>
+                <td><input type="text" name="rep2" value="0" style="width:100%" /></td>
+                <td>HORAS PAREJA</td>
+                <td><input type="text" name="subtotalmano" value="0" style="width:100%" /></td>
+            </tr>
+            <tr>
+                <td>TERCEROS</td>
+                <td><input type="text" name="ter1" value="0" style="width:100%" /></td>
+                <td><input type="text" name="ter2" value="0" style="width:100%" /></td>
+                <td>RECARGO HH.EE.</td>
+                <td><input type="text" name="recargo" value="0" style="width:100%" /></td>
+            </tr>
+            <tr>
+                <td>FLETES</td>
+                <td><input type="text" name="fle1" value="0" style="width:100%" /></td>
+                <td><input type="text" name="fle2" value="0" style="width:100%" /></td>
+                <td>VALOR RECARGO</td>
+                <td><input type="text" name="valorecargo" value="0" style="width:100%" /></td>
+            </tr>
+            <tr>
+                <td>SUB-TOTAL</td>
+                <td><input type="text" name="sub1" value="0" style="width:100%" /></td>
+                <td><input type="text" name="sub2" value="0" style="width:100%" /></td>
+                <td>TOTAL MANO DE OBRA</td>
+                <td><input type="text" name="tmdo" value="0" style="width:100%" /></td>
+            </tr>
+            <tr>
+                <td>COMISIONES</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>VENTAS (3%)</td>
+                <td><input type="text" name="venta1" value="0" style="width:100%" /></td>
+                <td><input type="text" name="venta2" value="0" style="width:100%" /></td>
+                <td>FLETES (CANTIDAD)</td>
+                <td><input type="text" name="cant_fletes" value="0" style="width:100%" /></td>
+            </tr>
+            <tr>
+                <td>MARGEN DE VENTA (20%)</td>
+                <td><input type="text" name="margen1" value="0" style="width:100%" /></td>
+                <td><input type="text" name="margen2" value="0" style="width:100%" /></td>
+                <td>TOTAL</td>
+                <td><input type="text" name="total_fletes" value="0" style="width:100%" /></td>
+            </tr>
+            <tr>
+                <td>TOTAL NETO</td>
+                <td><input type="text" name="tn1" value="0" style="width:100%" /></td>
+                <td><input type="text" name="tn2" value="0" style="width:100%" /></td>
+
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <input type="button" class="btn btn-danger btn-block " value="CANCELAR">
+                </td>
+                <td>
+                    <input type="submit" class="btn btn-primary btn-block" id="Button2" value="FINALIZAR" />
+                </td>
+            </tr>
+        </table>
+    }
+</div>
+
+<div class="panel panel-default">
+</div>
 

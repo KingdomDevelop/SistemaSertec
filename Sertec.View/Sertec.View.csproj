@@ -219,6 +219,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Dashboard\Cotizacion.js" />
     <Content Include="Scripts\Home\bootstrap.min.js" />
     <Content Include="Scripts\Home\scripts.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

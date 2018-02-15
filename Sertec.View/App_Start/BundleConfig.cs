@@ -32,7 +32,8 @@ namespace Sertec.View
             //Home
             bundles.Add(new ScriptBundle("~/bundles/Home").Include(
                         "~/Scripts/Home/bootstrap.min.js",
-                        "~/Scripts/Home/scripts.js"));
+                        "~/Scripts/Home/scripts.js",
+                        "~/Scripts/Dashboard/Cotizacion.js"));
 
             bundles.Add(new StyleBundle("~/Content/Home").Include(
                       "~/Content/Home/bootstrap.min.css",
