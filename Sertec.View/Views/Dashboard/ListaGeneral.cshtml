@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 }
 <h2>ListaGeneral</h2>
 
@@ -37,145 +38,565 @@
         </div>
 
         <hr>
-
-            <h1>Click the filter icon <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Developers</h3>
-                            <div class="pull-right">
-                                <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
-                                    <i class="glyphicon glyphicon-filter"></i>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Developers" />
-                        </div>
-                        <table class="table table-hover" id="dev-table">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Username</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Kilgore</td>
-                                    <td>Trout</td>
-                                    <td>kilgore</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Bob</td>
-                                    <td>Loblaw</td>
-                                    <td>boblahblah</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Holden</td>
-                                    <td>Caulfield</td>
-                                    <td>penceyreject</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="panel panel-success">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Tasks</h3>
-                            <div class="pull-right">
-                                <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
-                                    <i class="glyphicon glyphicon-filter"></i>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <input type="text" class="form-control" id="task-table-filter" data-action="filter" data-filters="#task-table" placeholder="Filter Tasks" />
-                        </div>
-                        <table class="table table-hover" id="task-table">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Task</th>
-                                    <th>Assignee</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Site Wireframes</td>
-                                    <td>John Smith</td>
-                                    <td>in progress</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Mobile Landing Page</td>
-                                    <td>Kilgore Trout</td>
-                                    <td>completed</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Add SEO tags</td>
-                                    <td>Bob Loblaw</td>
-                                    <td>failed qa</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Migrate to Bootstrap 3</td>
-                                    <td>Emily Hoenikker</td>
-                                    <td>in progress</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Update jQuery library</td>
-                                    <td>Holden Caulfield</td>
-                                    <td>deployed</td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>Issues in IE7</td>
-                                    <td>Jane Doe</td>
-                                    <td>failed qa</td>
-                                </tr>
-                                <tr>
-                                    <td>7</td>
-                                    <td>Bugs from Sprint 14</td>
-                                    <td>Kilgore Trout</td>
-                                    <td>completed</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-              
-            </div>
-        </div>
     </div>
 </div>
-<div class="panel panel-default" style="width: 500px; padding: 10px; margin: 10px">
+<div class="panel panel-default">
     <div id="Tabs" role="tabpanel">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
             <li class="active">
-                <a href="#personal" aria-controls="personal" role="tab" data-toggle="tab">
-                    Personal
+                <a href="#personal" aria-controls="personal" role="tab" data-toggle="tab" >
+                    <i class="glyphicon glyphicon-th-list"></i>
+                    <br> Lista General
                 </a>
             </li>
-            <li><a href="#employment" aria-controls="employment" role="tab" data-toggle="tab">Employment</a></li>
+            <li>
+                <a href="#employment" aria-controls="employment" role="tab" data-toggle="tab">
+                    <i class="glyphicon glyphicon-th-large"></i>
+                    <br> Lista Contabilidad
+                </a>
+            </li>
         </ul>
         <!-- Tab panes -->
-        <div class="tab-content" style="padding-top: 20px">
+        <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="personal">
-                This is Personal Information Tab
+                <hr>
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Registro</h3>
+                                <div class="pull-right">
+                                    <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+                                        @*<i class="glyphicon glyphicon-filter"></i>*@
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Buscar en la lista" />
+                            </div>
+                            <table class="table table-hover" id="dev-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>CLIENTE</th>
+                                        <th>RUT</th>
+                                        <th>N° PPTO</th>
+                                        <th>MONTO</th>
+                                        <th>ESTADO</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Hotel abc</td>
+                                        <td>11111111-1</td>
+                                        <td>526</td>
+                                        <td>250.000</td>
+                                        <td>EN CURSO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>CUARTEL MILITAL 1</td>
+                                        <td>222222222-2</td>
+                                        <td>985</td>
+                                        <td>950.000</td>
+                                        <td>FINALIZADO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Holden</td>
+                                        <td>88888888-8</td>
+                                        <td>425</td>
+                                        <td>150.000</td>
+                                        <td>NULO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>ASCESORIAS X</td>
+                                        <td>66666666-6</td>
+                                        <td>852</td>
+                                        <td>20.000</td>
+                                        <td>RECHAZADO</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="employment">
-                This is Employment Information Tab
+                <div class="col-sm-12">
+
+                    <!-- column 2 -->
+                    <hr />
+                    <div class="row">
+                        <!-- center left-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4>DETALLE:</h4>
+                            </div>
+                            <div class="panel-body">
+                                <!--      Primera Tabla --->
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+
+                                        <tbody>
+                                            <tr>
+                                                <td>Obra</td>
+                                                <td> <input type="text" id="TxtObra" name="Obra"></td>
+                                                <td>Empresa</td>
+                                                <td>Rut</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Fecha Aprobación</td>
+                                                <td><input type="text" id="TxtFechaApro" name="FechaApro"></td>
+                                                <td><input type="text" id="TxtEmpresa" name="Empresa"></td>
+                                                <td><input type="text" id="TxtRut" name="Rut"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ascensor</td>
+                                                <td> <input type="text" id="TxtAscen" name="Ascen"></td>
+                                                <td>Dirección</td>
+                                                <td>..</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tecnico Emisor</td>
+                                                <td> <input type="text" id="TxtTecEm" name="TecEm"></td>
+                                                <td> <input type="text" id="TxtDireccion" name="Direccion"></td>
+                                                <td>..</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Supervisor</td>
+                                                <td> <input type="text" id="TxtSupervisor" name="Supervisor"></td>
+                                                <td>..</td>
+                                                <td>..</td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                            <!--/panel-body-->
+                        </div>
+                        <!--/panel-->
+
+                        <hr />
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4>New Requests</h4>
+                            </div>
+                            <div class="panel-body">
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item active">INFORMO A UD. QUE CON ESTA FECHA SE HA APROBADO LO SIGUIENTE:</a>
+                                    <table class="table table-striped">
+
+                                        <tbody>
+                                            <tr>
+                                                <td style="width:10%"></td>
+                                                <td style="width:10%"></td>
+                                                <td style="width:10%"></td>
+                                                <td style="width:10%"></td>
+                                                <td style="width:30%">PRESUPUESTO REP N°</td>
+                                                <td style="width:30%"></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:10%"></td>
+                                                <td style="width:10%"></td>
+                                                <td style="width:10%"></td>
+                                                <td style="width:10%"></td>
+                                                <td style="width:20%"></td>
+                                                <td style="width:40%"><input type="text" id="TextFechaApro" name="FechaApro"></td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                    <table class="table table-striped">
+
+                                        <tbody>
+                                            <tr>
+                                                <td style="width:20%">APROBADO POR</td>
+                                                <td style="width:50%"><input type="text" id="Txt_APROBPOR" name="APROBPOR"></td>
+                                                <td style="width:30%"> VENDEDOR</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:20%">TELEFONO CONTACTO</td>
+                                                <td style="width:50%">
+                                                    <input type="text" id="Txt_TELCONTA" name="TELCONTA">
+                                                </td>
+                                                <td style="width:30%">
+                                                    <input type="text" id="Txt_VENDEDOR" name="VENDEDOR">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                    <a href="#" class="list-group-item">BREVE DESCRIPCION DE LA REPARACIÓN A EFECTUAR</a>
+
+                                    <table class="table table-striped">
+
+                                        <tbody>
+                                            <td>
+                                                <textarea name="detalleArea"  id="tf_detalleArea" rows="4" cols="50">Enter text here...</textarea>
+                                            </td>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--/col-->
+                        <!-- COLUMNA IZQUIERDA-->
+                        <div class="col-md-6">
+                            <div class="panel panel-default">
+
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td>HORAS PAREJAS VENDIDAS</td>
+                                                <td>2 </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>FLETES</td>
+                                                <td>56</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>DURACIÓN DE TRABAJOS (días)</td>
+                                                <td>25</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>FECHA PROBABLE DE EJECUCIÓN</td>
+                                                <td>02-OCT</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>TECNICO ASIGNADO</td>
+                                                <td>AG</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>FECHA INICIO</td>
+                                                <td>01-OCT</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>FECHA TERMINO</td>
+                                                <td>01-OCT</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>GUIA DE DESPACHO N°</td>
+                                                <td>256</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>FACTURA N°</td>
+                                                <td>1009</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>MES FACTURACIÓN</td>
+                                                <td>OCTUBRE</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>..</td>
+                                                <td>..</td>
+                                                <td>..</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:60%">RESUMEN</th>
+                                                <th style="width:30%">VALOR</th>
+                                                <th style="width:10%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>MANO DE OBRA</td>
+                                                <td>121.500 </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>REPUESTOS</td>
+                                                <td>285.00</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>TERCEROS</td>
+                                                <td>0</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>FLETES</td>
+                                                <td>20.250</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>SUB-TOTAL</td>
+                                                <td>426.750</td>
+                                                <td>..</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <hr />
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:60%">COMISIONES</th>
+                                                <th style="width:30%"></th>
+                                                <th style="width:10%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>3% VENDEDOR</td>
+                                                <td>12.803</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>1.8% OTROS</td>
+                                                <td>85.350</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>TOTAL NETO</td>
+                                                <td>524.903</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>..</td>
+                                                <td>..</td>
+                                                <td>..</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!--/panel-->
+
+                        </div>
+
+                        <!--/col-span-6-->
+                        <!-- COLUMNA DERECHA-->
+                        <div class="col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4>FACTURACIÓN EN CUOTAS</h4>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>N° CUOTA</th>
+                                                <th>N° FACTURA</th>
+                                                <th>VALOR</th>
+                                                <th>MES</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>...</td>
+                                                <td>...</td>
+                                                <td>...</td>
+                                                <td>...</td>
+                                            </tr>
+                                            <tr>
+                                                <td>...</td>
+                                                <td>...</td>
+                                                <td>...</td>
+                                                <td>...</td>
+                                            </tr>
+                                            <tr>
+                                                <td>...</td>
+                                                <td>...</td>
+                                                <td>...</td>
+                                                <td>...</td>
+                                            </tr>
+                                            <tr>
+                                                <td>...</td>
+                                                <td>...</td>
+                                                <td>...</td>
+                                                <td>...</td>
+                                            </tr>
+                                            <tr>
+                                                <td>...</td>
+                                                <td>...</td>
+                                                <td>...</td>
+                                                <td>...</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                            <!--/panel-->
+
+                            <div id="foreign_checkbox" class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title">
+                                        <h4>CONDICIONES DE VENTA</h4>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <div><a href="#">Descuentos Ofrecidos</a> </div>
+                                    <div class="col-xs-4 text-center" style="width:100%">
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" class="radio" value="1" name="fooby[3][]" />
+                                                 </td>
+                                                <td>  
+                                                     5%
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" class="radio" value="1" name="fooby[3][]" />
+                                                </td>
+                                                <td>
+                                                    15%
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" class="radio" value="1" name="fooby[3][]" />
+                                                </td>
+                                                <td>
+                                                    OTRO
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="TextBox_Otro" name="Otro">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <HR />
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <td>
+                                                <div><a href="#">Forma de Pago</a> </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                                <div class="col-xs-4" style="width:100%">
+                                                    <table class="table table-striped">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <input type="checkbox" class="radio" value="1" name="fooby[2][]" />
+                                                                </td>
+                                                                <td>
+                                                                    100% Contra factura al termino de los trabajos
+                                                                </td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <input type="checkbox" class="radio" value="1" name="fooby[2][]" />
+                                                                </td>
+                                                                <td>
+                                                                    50% Con la orden y saldo contra factura
+                                                                </td>
+                                                                
+                                                                <td></td>
+</tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <input type="checkbox" class="radio" value="1" name="fooby[2][]" />
+                                                                </td>
+                                                                <td>N° Cuotas</td>
+                                                                <td><input type="text" id="TextBox_Cuotas" name="Cuotas"></td>
+                                                            </tr>
+                                                            <tr style="width:90%">
+                                                                <td style="width:10%">
+                                                                    <input type="checkbox" class="radio" value="1" name="fooby[2][]" />
+                                                                </td>
+                                                                <td>
+                                                                    Otro (Indicar)
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" id="TextBox_Otros" name="Otros">
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                </div>
+                                                <hr />
+                                                <hr />
+
+                                    <div>
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <td><a href="#">Medio de Aprobación</a>
+                                                </td>
+                                            </tr>
+                                         </table>
+                                    </div>
+
+                                    <div class="col-xs-4" style="width:100%">
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" class="radio" value="1" name="fooby[1][]" />
+                                                </td>
+                                                <td>
+                                                    Copia de presupuesto firmado
+                                                </td>
+                                                <td></td>
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" class="radio" value="2" name="fooby[1][]" />
+                                                </td>
+                                                <td>
+                                                    Orden de compra a travez de Chile Compra
+                                                </td>
+                                                <td></td>
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" class="radio" value="3" name="fooby[1][]" />
+                                                    </td>
+                                                <td>
+                                                    Otro (Indicar)
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="TextBox_OtroMedioApro" name="OtroMedioApro">
+                                                </td>
+                                                </tr>
+                                          </table>
+                                        </div>
+
+                                </div>
+                            </div>
+                            <!--/panel-->
+
+                        </div>
+
+
+                    </div>
+                    <!--/row-->
+
+                </div>
+                <!--/col-span-9-->
             </div>
         </div>
     </div>
