@@ -69,6 +69,7 @@ function btnCrearTerceros() {
 }
 
 function eliminarRepuesto($repuestoId) {
+    
     $.ajax({
         type: "POST",
         url: urlEliminarRepuesto + "/" + $repuestoId,
@@ -78,8 +79,9 @@ function eliminarRepuesto($repuestoId) {
         },
         success: function (response) {
             $($divRepuesto).html(response);
-        }
+        }            
     });
+
 }
 
 function eliminarTerceros($tercerosId) {
@@ -102,7 +104,7 @@ function soloNumeros(e) {
 }
 
 /* Sumar dos números. */
-function sumar(n,valor) {
+function sumar(n, valor) {
 
     var total = 0;
     valor = parseInt(valor); // Convertir el valor a un entero (número).

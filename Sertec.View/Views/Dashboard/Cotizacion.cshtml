@@ -51,14 +51,14 @@
                     <tr>
                         <td>TECNICO EMISOR</td>
                         <td>
-                            @Html.DropDownList("accountid", new SelectList(ViewBag.Supervisor, "IdSupervisor", "NombreSupervisor"), new { @class = "form-control input-md", Style = "width:90%" })
+                            @Html.DropDownListFor(s=>s.TecEmisor, new SelectList(ViewBag.Supervisor, "IdSupervisor", "NombreSupervisor"), new { @class = "form-control input-md", Style = "width:90%" })
                         </td>
                         <td style="width: 8px"></td>
                     </tr>
                     <tr>
                         <td>SUPERVISOR</td>
                         <td>
-                            @Html.DropDownList("accountid", new SelectList(ViewBag.Tecnicos, "Id", "Nombre"), new { @class = "form-control input-md", Style = "width:90%" })
+                            @Html.DropDownListFor(s => s.Supervisor, new SelectList(ViewBag.Tecnicos, "Id", "Nombre"), new { @class = "form-control input-md", Style = "width:90%" })
                         </td>
                         <td style="width: 8px"></td>
                     </tr>

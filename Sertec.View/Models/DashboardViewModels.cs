@@ -70,13 +70,13 @@ namespace Sertec.View.Models
 
     public class TecnicoViewModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Nombre {get;set;}
     }
 
     public class SupervisorViewModel
     {
-        public int IdSupervisor { get; set; }
+        public string IdSupervisor { get; set; }
         public string NombreSupervisor { get; set; }
     }
 

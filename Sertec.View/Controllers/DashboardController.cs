@@ -37,21 +37,21 @@ namespace Sertec.View.Controllers
 
             var tecnicosList = new List<TecnicoViewModel>();
 
-            tecnicosList.Add(new TecnicoViewModel { Id = 1, Nombre = "AGC" });
-            tecnicosList.Add(new TecnicoViewModel { Id = 2, Nombre = "LLN" });
-            tecnicosList.Add(new TecnicoViewModel { Id = 2, Nombre = "MGC" });
-            tecnicosList.Add(new TecnicoViewModel { Id = 2, Nombre = "GLN" });
-            tecnicosList.Add(new TecnicoViewModel { Id = 2, Nombre = "Otro" });
+            tecnicosList.Add(new TecnicoViewModel { Id = "AGC", Nombre = "AGC" });
+            tecnicosList.Add(new TecnicoViewModel { Id = "LLN", Nombre = "LLN" });
+            tecnicosList.Add(new TecnicoViewModel { Id = "MGC", Nombre = "MGC" });
+            tecnicosList.Add(new TecnicoViewModel { Id = "GLN", Nombre = "GLN" });
+            tecnicosList.Add(new TecnicoViewModel { Id = "Otro", Nombre = "Otro" });
 
             ViewBag.Tecnicos = tecnicosList;
 
             var supList = new List<SupervisorViewModel>();
 
-            supList.Add(new SupervisorViewModel { IdSupervisor = 1, NombreSupervisor = "AGC" });
-            supList.Add(new SupervisorViewModel { IdSupervisor = 2, NombreSupervisor = "LLN" });
-            supList.Add(new SupervisorViewModel { IdSupervisor = 2, NombreSupervisor = "MGC" });
-            supList.Add(new SupervisorViewModel { IdSupervisor = 2, NombreSupervisor = "GLN" });
-            supList.Add(new SupervisorViewModel { IdSupervisor = 2, NombreSupervisor = "Otro" });
+            supList.Add(new SupervisorViewModel { IdSupervisor = "AGC", NombreSupervisor = "AGC" });
+            supList.Add(new SupervisorViewModel { IdSupervisor = "LLN", NombreSupervisor = "LLN" });
+            supList.Add(new SupervisorViewModel { IdSupervisor = "MGC", NombreSupervisor = "MGC" });
+            supList.Add(new SupervisorViewModel { IdSupervisor = "GLN", NombreSupervisor = "GLN" });
+            supList.Add(new SupervisorViewModel { IdSupervisor = "Otro", NombreSupervisor = "Otro" });
 
             ViewBag.Supervisor = supList;
 
@@ -123,7 +123,7 @@ namespace Sertec.View.Controllers
             if (Session["terceros"] != null)
             {
                 IList<PresupuestoTrabajoTercerosViewModel> listTercero = new List<PresupuestoTrabajoTercerosViewModel>();
-                listTercero = (List<PresupuestoTrabajoTercerosViewModel>)Session["repuesto"];
+                listTercero = (List<PresupuestoTrabajoTercerosViewModel>)Session["terceros"];
 
 
                 foreach (var tercero in listTercero)
