@@ -11,11 +11,11 @@
         <tbody>
             <tr>
                 <td class="col-sm-4">
-                    @Html.TextBoxFor(m => m.Terceros, new { @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
+                    @Html.TextBoxFor(m => m.Terceros, new { id = "tercerosId", @class = "form-control", Style = "width:90%", maxlength = 50 })
                     @Html.ValidationMessageFor(m => m.Terceros, "", new { @class = "text-danger" })
                 </td>
                 <td class="col-sm-4">
-                    @Html.TextBoxFor(m => m.ValTer, new { @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
+                    @Html.TextBoxFor(m => m.ValTer, new { id = "valorTerceros", @class = "form-control", Style = "width:90%", maxlength = 50 })
                     @Html.ValidationMessageFor(m => m.ValTer, "", new { @class = "text-danger" })
                 </td>
             </tr>
@@ -23,7 +23,7 @@
         <tfoot>
             <tr>
                 <td colspan="2" style="text-align: left;">
-                    <input type="button" class="btn btn-success btn-sm" id="Btn_AgregarTrabTer" value="Agregar Trabajo" />
+                    <button id="btnCrearTer" class="btn btn-success btn-sm">Agregar Trabajo</button>
                 </td>
             </tr>
         </tfoot>

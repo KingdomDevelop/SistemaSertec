@@ -17,11 +17,11 @@
             </tr>
         </thead>
         <tbody>
-            @if (prueba == null)
+            @if (prueba == null || prueba.Count() == 0)
             {
                 <tr>
                     <td colspan="6" class="mensaje">
-                        No existen fechas ingresadas
+                        No existen repuestos ingresados.
                     </td>
                 </tr>
             }
@@ -61,7 +61,8 @@
                             @item.HoraParHombre
                         </td>
                         <td class="col-sm-1">
-                            <button class="btn btn-success btn-sm" type="submit">Eliminar</button>
+                            <input class="hidden repuestoId" value="@item.RepuestoId" />
+                            <button class="btn btn-success btn-sm" onclick="eliminarRepuesto(@item.RepuestoId)">Eliminar</button>
                         </td>
                     </tr>
                 }
