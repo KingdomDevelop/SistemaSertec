@@ -85,7 +85,7 @@ namespace GestionVentas.Dato.DAO
                         PresupuestoId = c.Presupuesto,
                         PresupuestoComercialId = c.Presupuesto_Comercial_id,
                         Obra = (int)c.Obra,
-                        FechaAprobacion = Convert.ToDateTime(c.Fecha_Aprobacion),
+                        FechaAprobacion = (DateTime)c.Fecha_Aprobacion,
                         NumeroAscensor = (int)c.Numero_Ascensor,
                         Descripcion = c.Descripcion,
                         NombreAprobador = c.Nombre_Aprobador,

@@ -19,7 +19,7 @@
                     @Html.ValidationMessageFor(m => m.Respuesto, "", new { @class = "text-danger" })
                 </td>
                 <td class="col-sm-2">
-                    @Html.TextBoxFor(m => m.Cantidad, new { id = "CantidadId", onKeyPress = "return soloNumeros(event)", @class = "form-control", Style = "width:90%", maxlength = 50 })
+                    @Html.TextBoxFor(m => m.Cantidad, new { id = "CantidadId", Value = "0", onKeyPress = "return soloNumeros(event)", onchange = "sumar('1',this.value);", @class = "form-control", Style = "width:90%", maxlength = 50 })
                     @Html.ValidationMessageFor(m => m.Cantidad, "", new { @class = "text-danger" })
                 </td>
                 <td class="col-sm-2">
@@ -27,11 +27,11 @@
                     @Html.ValidationMessageFor(m => m.Codigo, "", new { @class = "text-danger" })
                 </td>
                 <td class="col-sm-2">
-                    @Html.TextBoxFor(m => m.ValorUnitario, new { id = "ValorUnitarioID", @class = "form-control", Style = "width:90%", maxlength = 50 })
+                    @Html.TextBoxFor(m => m.ValorUnitario, new { id = "ValorUnitarioID", Value = "0", @class = "form-control", onchange = "sumar('2',this.value);",Style = "width:90%", maxlength = 50 })
                     @Html.ValidationMessageFor(m => m.ValorUnitario, "", new { @class = "text-danger" })
                 </td>
                 <td class="col-sm-2">
-                    @Html.TextBoxFor(m => m.SubTotal, new { id = "SubTotalId", @class = "form-control", Style = "width:90%", maxlength = 50 })
+                    @Html.TextBoxFor(m => m.SubTotal, new { id = "SubTotalId", Value = "0", @class = "form-control", Style = "width:90%", maxlength = 50 })
                     @Html.ValidationMessageFor(m => m.SubTotal, "", new { @class = "text-danger" })
                 </td>
                 <td class="col-sm-2">

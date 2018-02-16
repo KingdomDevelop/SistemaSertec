@@ -193,7 +193,7 @@
                     @Html.TextBoxFor(m => m.ValorTerceros, new { @class = "form-control", onKeyPress = "return soloNumeros(event)", Style = "width:100%", required = "required", maxlength = 25 })
                     @Html.ValidationMessageFor(m => m.ValorTerceros, "", new { @class = "text-danger" })
                 </td>
-                <td><input type="text" name="ter2" value="0" style="width:100%" disabled="disabled"/></td>
+                <td><input type="text" name="ter2" value="0" style="width:100%" disabled="disabled" /></td>
                 <td>RECARGO HH.EE.</td>
                 <td>
                     @Html.TextBoxFor(m => m.RecargoHHEE, new { @class = "form-control", onKeyPress = "return soloNumeros(event)", Style = "width:100%", required = "required", maxlength = 25 })
@@ -285,6 +285,3 @@
         </table>
     }
 </div>
-
-
-

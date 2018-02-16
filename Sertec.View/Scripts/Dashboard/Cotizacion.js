@@ -100,3 +100,26 @@ function soloNumeros(e) {
     var key = window.Event ? e.which : e.keyCode
     return ((key >= 48 && key <= 57) || (key == 8))
 }
+
+/* Sumar dos números. */
+function sumar(n,valor) {
+
+    var total = 0;
+    valor = parseInt(valor); // Convertir el valor a un entero (número).
+
+    n1 = document.getElementById('CantidadId').value;
+    n2 = document.getElementById('ValorUnitarioID').value;
+
+
+    total = document.getElementById('SubTotalId').value//.innerHTML;
+    // Aquí valido si hay un valor previo, si no hay datos, le pongo un cero "0".
+    total = (total == null || total == undefined || total == "") ? 0 : total;
+
+    /* Esta es la suma. */
+    if (total == 0)
+        total = (parseInt(total) + parseInt(valor));
+    else
+        total = (parseInt(n1) * parseInt(n2));
+    // Colocar el resultado de la suma en el control "span".
+    document.getElementById('SubTotalId').value = total;
+}
