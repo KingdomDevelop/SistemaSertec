@@ -19,5 +19,7 @@ namespace GestionVentas.Negocio.Interfaz
         int guardarPresupuestoRepuesto(PresupuestoRepuestoDto presupuestoRepuesto);
 
         int guardarPresupuestoTerceros(PresupuestoTercerosDto presupuestoTercero);
+
+        int guardarPresupuestoResumen(PresupuestoTrabajoResumenDto presupuestoResumen);
     }
 }

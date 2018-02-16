@@ -277,6 +277,7 @@
     <Content Include="Views\Dashboard\PresupuestoTrabajoTercero.cshtml" />
     <Content Include="Views\Dashboard\PresupuestoRepuestoList.cshtml" />
     <Content Include="Views\Dashboard\ListaGeneral.cshtml" />
+    <Content Include="Views\Dashboard\TrabajoTerceroList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
