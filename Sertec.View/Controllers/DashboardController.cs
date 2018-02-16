@@ -48,6 +48,16 @@ namespace Sertec.View.Controllers
 
         public ActionResult ListaGeneral()
         {
+            var GeneralList = new List<ListaGeneralViewModel>();
+
+            GeneralList.Add(new ListaGeneralViewModel { idLista = 1, RutCliente = "11111111-1", NombreCliente = "Hotel abc" , Nppto =101, Monto =200000, Estado = "EN CURSO" });
+            GeneralList.Add(new ListaGeneralViewModel { idLista = 2, RutCliente = "55555555-5", NombreCliente = "CUARTEL MILITAL 1", Nppto = 102, Monto= 50000,Estado = "FINALIZADO" });
+            GeneralList.Add(new ListaGeneralViewModel { idLista = 3, RutCliente = "33333333-3", NombreCliente = "Holden", Nppto =103, Monto = 870000,Estado = "NULO" });
+            GeneralList.Add(new ListaGeneralViewModel { idLista = 4, RutCliente = "99999999-9", NombreCliente = "ASCESORIAS X", Nppto =104, Monto =150000,Estado = "RECHAZADO" });
+            GeneralList.Add(new ListaGeneralViewModel { idLista = 5, RutCliente = "1-K", NombreCliente = "Otro", Nppto =105, Monto =90000,Estado = ""});
+
+            ViewBag.ListGeneral = GeneralList;
+
             return View();
         }
         [HttpPost]

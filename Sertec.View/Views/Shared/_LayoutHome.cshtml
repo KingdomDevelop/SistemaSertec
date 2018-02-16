@@ -32,8 +32,8 @@
                             </ul>
                         </li>
                         <li>
-                            @Html.ActionLink("Salir","Index","Acceso",new { @class = "glyphicon glyphicon-lock", Style = "width:25%" })
-                            
+                            @Html.ActionLink("Salir", "Index", "Acceso", new { @class = "glyphicon glyphicon-lock", Style = "width:25%" })
+
                             @*<a href="#"><i class="glyphicon glyphicon-lock" style="width:25%"></i> Salir</a>*@
                         </li>
                     </ul>
@@ -50,11 +50,11 @@
                     <hr />
                     <ul class="nav nav-stacked">
                         <li class="nav-header">
-                            <a href="#" data-toggle="collapse" data-target="#userMenu"> Acciones</a>
+                            @*<a href="#" data-toggle="collapse" data-target="#userMenu"> Acciones</a>*@
                             <ul class="nav nav-stacked collapse in" id="userMenu">
-                                <li class="active"><a href="Cotizacion.aspx"> <i class="glyphicon glyphicon-list-alt" style="width:10%"></i>  Nueva Cotización</a></li>
-                                <li><a href="#"><i class="glyphicon glyphicon-envelope" style="width:10%"></i> Messages <span class="badge badge-info">4</span></a></li>
-                                <li><a href="#"><i class="glyphicon glyphicon-list-alt" style="width:10%"></i>  Listado Cotizaciones</a></li>
+                                <li class="active"><i></i>@Html.ActionLink(" Nueva Cotización", "Cotizacion", "Dashboard", new { @class = "glyphicon glyphicon-list-alt", Style = "width:100%" })</li>
+                                @*<li><a href="#"><i class="glyphicon glyphicon-envelope" style="width:10%"></i> Messages <span class="badge badge-info">4</span></a></li>*@
+                                @*<li><a href="#"><i class="glyphicon glyphicon-list-alt" style="width:10%"></i>  Listado Cotizaciones</a></li>*@
                             </ul>
                         </li>
                     </ul>
@@ -62,16 +62,16 @@
                     <hr />
                     <ul class="nav nav-pills nav-stacked">
                         <li class="nav-header"></li>
-                        <li><a href="Presupuesto_Contabilidad.aspx"><i class="glyphicon glyphicon-list-alt" style="width:10%"></i> Contabilidad</a></li>
-                        <li><a href="Presupuesto_Operaciones.aspx"><i class="glyphicon glyphicon-briefcase" style="width:10%"></i> Operaciones</a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-list-alt" style="width:10%"></i>Perfil</a></li>
+                        @* <li><a href="Presupuesto_Operaciones.aspx"><i class="glyphicon glyphicon-briefcase" style="width:10%"></i> Operaciones</a></li>*@
                     </ul>
                     <hr />
-                    <hr /><a href="#"><strong><i class="glyphicon glyphicon-list" style="width:20%"></i> Resumen</strong></a>
+                    <a href="#"><strong><i class="glyphicon glyphicon-list" style="width:20%"></i> Resumen</strong></a>
                     <hr />
                     <ul class="nav nav-stacked">
-                        <li class="active"><a rel="nofollow" href="http://goo.gl/pQoXEh" target="ext" style="width:10%"> Resumen Mensual</a></li>
-                        <li><a rel="nofollow" href="https://wrapbootstrap.com/?ref=bootply" style="width:10%"> Resumen Anual</a></li>
-                        <li><a rel="nofollow" href="http://bootstrapzero.com"> BootstrapZero</a></li>
+                        <li class="active">@Html.ActionLink("Resumen Mensual", "ListaGeneral", "Dashboard")</li>
+                        @*<li><a rel="nofollow" href="https://wrapbootstrap.com/?ref=bootply" style="width:10%"> Resumen Anual</a></li>
+                            <li><a rel="nofollow" href="http://bootstrapzero.com"> BootstrapZero</a></li>*@
                     </ul>
                 </div>
                 <div class="col-sm-9">

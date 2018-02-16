@@ -13,9 +13,9 @@
     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 }
-<h2>ListaGeneral</h2>
+<h2>Lista Resumen</h2>
 
-<hr>
+@*<hr>
 <div class="panel panel-default">
     <div id="Tabs" role="tabpanel">
         <div class="btn-group btn-group-justified">
@@ -39,7 +39,7 @@
 
         <hr>
     </div>
-</div>
+</div>*@
 <div class="panel panel-default">
     <div id="Tabs" role="tabpanel">
         <!-- Nav tabs -->
@@ -87,38 +87,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @foreach (var name in ViewBag.ListGeneral)
+                                {
                                     <tr>
-                                        <td>1</td>
-                                        <td>Hotel abc</td>
-                                        <td>11111111-1</td>
-                                        <td>526</td>
-                                        <td>250.000</td>
-                                        <td>EN CURSO</td>
+                                        <td>@name.idLista</td>
+                                        <td>@name.RutCliente</td>
+                                        <td>@name.NombreCliente</td>
+                                        <td>@name.Nppto</td>
+                                        <td>@name.Monto</td>
+                                        <td>@name.Estado</td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>CUARTEL MILITAL 1</td>
-                                        <td>222222222-2</td>
-                                        <td>985</td>
-                                        <td>950.000</td>
-                                        <td>FINALIZADO</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Holden</td>
-                                        <td>88888888-8</td>
-                                        <td>425</td>
-                                        <td>150.000</td>
-                                        <td>NULO</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>ASCESORIAS X</td>
-                                        <td>66666666-6</td>
-                                        <td>852</td>
-                                        <td>20.000</td>
-                                        <td>RECHAZADO</td>
-                                    </tr>
+                                }
                                 </tbody>
                             </table>
                         </div>
@@ -191,7 +170,6 @@
                                 <div class="list-group">
                                     <a href="#" class="list-group-item active">INFORMO A UD. QUE CON ESTA FECHA SE HA APROBADO LO SIGUIENTE:</a>
                                     <table class="table table-striped">
-
                                         <tbody>
                                             <tr>
                                                 <td style="width:10%"></td>
@@ -199,21 +177,11 @@
                                                 <td style="width:10%"></td>
                                                 <td style="width:10%"></td>
                                                 <td style="width:30%">PRESUPUESTO REP N°</td>
-                                                <td style="width:30%"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width:10%"></td>
-                                                <td style="width:10%"></td>
-                                                <td style="width:10%"></td>
-                                                <td style="width:10%"></td>
-                                                <td style="width:20%"></td>
                                                 <td style="width:40%"><input type="text" id="TextFechaApro" name="FechaApro"></td>
                                             </tr>
                                         </tbody>
-
                                     </table>
                                     <table class="table table-striped">
-
                                         <tbody>
                                             <tr>
                                                 <td style="width:20%">APROBADO POR</td>
@@ -233,13 +201,13 @@
 
                                     </table>
                                     <a href="#" class="list-group-item">BREVE DESCRIPCION DE LA REPARACIÓN A EFECTUAR</a>
-
                                     <table class="table table-striped">
-
                                         <tbody>
-                                            <td>
-                                                <textarea name="detalleArea"  id="tf_detalleArea" rows="4" cols="50">Enter text here...</textarea>
-                                            </td>
+                                            <tr>
+                                                <td>
+                                                    <textarea name="detalleArea" id="tf_detalleArea" rows="4" cols="50">Enter text here...</textarea>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -250,7 +218,6 @@
                         <!-- COLUMNA IZQUIERDA-->
                         <div class="col-md-6">
                             <div class="panel panel-default">
-
                                 <div class="table-responsive">
                                     <table class="table table-striped">
                                         <tbody>
@@ -303,11 +270,6 @@
                                                 <td>MES FACTURACIÓN</td>
                                                 <td>OCTUBRE</td>
                                                 <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>..</td>
-                                                <td>..</td>
-                                                <td>..</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -445,10 +407,7 @@
                                     </table>
                                 </div>
                             </div>
-
-
                             <!--/panel-->
-
                             <div id="foreign_checkbox" class="panel panel-default">
                                 <div class="panel-heading">
                                     <div class="panel-title">
@@ -456,50 +415,56 @@
                                     </div>
                                 </div>
                                 <div class="panel-body">
-                                    <div><a href="#">Descuentos Ofrecidos</a> </div>
-                                    <div class="col-xs-4 text-center" style="width:100%">
-                                        <table class="table table-striped">
-                                            <tr>
-                                                <td>
-                                                    <input type="checkbox" class="radio" value="1" name="fooby[3][]" />
-                                                 </td>
-                                                <td>  
-                                                     5%
-                                                </td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <input type="checkbox" class="radio" value="1" name="fooby[3][]" />
-                                                </td>
-                                                <td>
-                                                    15%
-                                                </td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <input type="checkbox" class="radio" value="1" name="fooby[3][]" />
-                                                </td>
-                                                <td>
-                                                    OTRO
-                                                </td>
-                                                <td>
-                                                    <input type="text" id="TextBox_Otro" name="Otro">
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                    <HR />
                                     <table class="table table-striped">
                                         <tr>
                                             <td>
-                                                <div><a href="#">Forma de Pago</a> </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                                <div class="col-xs-4" style="width:100%">
+                                                <div><a href="#">Descuentos Ofrecidos</a> </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                                <div class="col-xs-4 text-center" style="width:100%">
                                                     <table class="table table-striped">
+                                                        <tr>
+                                                            <td>
+                                                                <input type="checkbox" class="radio" value="1" name="fooby[3][]" />
+                                                            </td>
+                                                            <td>
+                                                                5%
+                                                            </td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="checkbox" class="radio" value="1" name="fooby[3][]" />
+                                                            </td>
+                                                            <td>
+                                                                15%
+                                                            </td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="checkbox" class="radio" value="1" name="fooby[3][]" />
+                                                            </td>
+                                                            <td>
+                                                                OTRO
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" id="TextBox_Otro" name="Otro">
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <HR />
+                                                <table class="table table-striped">
+                                                    <tr>
+                                                        <td>
+                                                            <div><a href="#">Forma de Pago</a> </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <div class="col-xs-4" style="width:100%">
+                                                    <table class="table table-striped" style="width:100%">
                                                         <tbody>
                                                             <tr>
                                                                 <td>
@@ -509,6 +474,7 @@
                                                                     100% Contra factura al termino de los trabajos
                                                                 </td>
                                                                 <td></td>
+
                                                             </tr>
                                                             <tr>
                                                                 <td>
@@ -517,9 +483,9 @@
                                                                 <td>
                                                                     50% Con la orden y saldo contra factura
                                                                 </td>
-                                                                
+
                                                                 <td></td>
-</tr>
+                                                            </tr>
                                                             <tr>
                                                                 <td>
                                                                     <input type="checkbox" class="radio" value="1" name="fooby[2][]" />
@@ -538,63 +504,59 @@
                                                                     <input type="text" id="TextBox_Otros" name="Otros">
                                                                 </td>
                                                             </tr>
-                                                            </tbody>
-                                                        </table>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                                 <hr />
                                                 <hr />
+                                                <div>
+                                                    <table class="table table-striped">
+                                                        <tr>
+                                                            <td>
+                                                                <a href="#">Medio de Aprobación</a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
 
-                                    <div>
-                                        <table class="table table-striped">
-                                            <tr>
-                                                <td><a href="#">Medio de Aprobación</a>
-                                                </td>
-                                            </tr>
-                                         </table>
-                                    </div>
-
-                                    <div class="col-xs-4" style="width:100%">
-                                        <table class="table table-striped">
-                                            <tr>
-                                                <td>
-                                                    <input type="checkbox" class="radio" value="1" name="fooby[1][]" />
-                                                </td>
-                                                <td>
-                                                    Copia de presupuesto firmado
-                                                </td>
-                                                <td></td>
-                                            <tr>
-                                                <td>
-                                                    <input type="checkbox" class="radio" value="2" name="fooby[1][]" />
-                                                </td>
-                                                <td>
-                                                    Orden de compra a travez de Chile Compra
-                                                </td>
-                                                <td></td>
-                                            <tr>
-                                                <td>
-                                                    <input type="checkbox" class="radio" value="3" name="fooby[1][]" />
-                                                    </td>
-                                                <td>
-                                                    Otro (Indicar)
-                                                </td>
-                                                <td>
-                                                    <input type="text" id="TextBox_OtroMedioApro" name="OtroMedioApro">
-                                                </td>
-                                                </tr>
-                                          </table>
-                                        </div>
+                                                <div class="col-xs-4" style="width:100%">
+                                                    <table class="table table-striped">
+                                                        <tr>
+                                                            <td>
+                                                                <input type="checkbox" class="radio" value="1" name="fooby[1][]" />
+                                                            </td>
+                                                            <td>
+                                                                Copia de presupuesto firmado
+                                                            </td>
+                                                            <td></td>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="checkbox" class="radio" value="2" name="fooby[1][]" />
+                                                            </td>
+                                                            <td>
+                                                                Orden de compra a travez de Chile Compra
+                                                            </td>
+                                                            <td></td>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="checkbox" class="radio" value="3" name="fooby[1][]" />
+                                                            </td>
+                                                            <td>
+                                                                Otro (Indicar)
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" id="TextBox_OtroMedioApro" name="OtroMedioApro">
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
 
                                 </div>
                             </div>
                             <!--/panel-->
-
                         </div>
-
-
                     </div>
                     <!--/row-->
-
                 </div>
                 <!--/col-span-9-->
             </div>
