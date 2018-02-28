@@ -239,5 +239,10 @@ namespace Sertec.View.Controllers
             #endregion
             return PartialView("TrabajoTerceroList");
         }
+
+        public ActionResult PerfilUsuario()
+        {
+            return View();
+        }
     }
 }
