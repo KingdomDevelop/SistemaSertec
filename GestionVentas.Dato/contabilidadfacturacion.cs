@@ -12,19 +12,15 @@ namespace GestionVentas.Dato
     using System;
     using System.Collections.Generic;
     
-    public partial class presupuesto_trabajo_terceros
+    public partial class contabilidadfacturacion
     {
-        public presupuesto_trabajo_terceros()
-        {
-            this.presupuesto_trabajo_terceros_desgloce = new HashSet<presupuesto_trabajo_terceros_desgloce>();
-        }
-    
-        public int PK_ppto_trabajo_terceros_id { get; set; }
-        public int Presupuesto { get; set; }
-        public string Descripcion { get; set; }
+        public int PK_FacturacionID { get; set; }
+        public Nullable<int> NumeroCuota { get; set; }
+        public Nullable<int> NumeroFactura { get; set; }
         public Nullable<decimal> Valor { get; set; }
+        public Nullable<int> Mes { get; set; }
+        public Nullable<int> PK_ContabilidadID { get; set; }
     
-        public virtual presupuesto presupuesto1 { get; set; }
-        public virtual ICollection<presupuesto_trabajo_terceros_desgloce> presupuesto_trabajo_terceros_desgloce { get; set; }
+        public virtual contabilidad contabilidad { get; set; }
     }
 }

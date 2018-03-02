@@ -19,11 +19,11 @@ namespace GestionVentas.Dato
             this.usuario = new HashSet<usuario>();
         }
     
-        public int PK_Persona_id { get; set; }
+        public int PK_PersonaID { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Cargo { get; set; }
-        public Nullable<System.DateTime> Fecha_Ingreso { get; set; }
+        public Nullable<System.DateTime> FechaIngreso { get; set; }
     
         public virtual ICollection<usuario> usuario { get; set; }
     }

@@ -14,12 +14,12 @@ namespace GestionVentas.Dato
     
     public partial class usuario
     {
-        public int PK_Usuario_id { get; set; }
+        public int PK_UsuarioID { get; set; }
         public string Login { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public Nullable<int> Usuario_id { get; set; }
         public Nullable<bool> Estado { get; set; }
+        public Nullable<int> PK_PersonaID { get; set; }
     
         public virtual persona persona { get; set; }
     }

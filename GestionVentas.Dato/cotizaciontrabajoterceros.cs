@@ -12,17 +12,13 @@ namespace GestionVentas.Dato
     using System;
     using System.Collections.Generic;
     
-    public partial class tipo_moneda
+    public partial class cotizaciontrabajoterceros
     {
-        public tipo_moneda()
-        {
-            this.moneda = new HashSet<moneda>();
-        }
+        public int CotizacionTercerosID { get; set; }
+        public string Terceros { get; set; }
+        public Nullable<decimal> ValorTerceros { get; set; }
+        public Nullable<int> PK_Cotizacion_ID { get; set; }
     
-        public sbyte PK_Tipo_moneda_id { get; set; }
-        public string Descripcion { get; set; }
-        public bool Estado { get; set; }
-    
-        public virtual ICollection<moneda> moneda { get; set; }
+        public virtual cotizacion cotizacion { get; set; }
     }
 }

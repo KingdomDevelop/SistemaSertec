@@ -194,7 +194,7 @@ namespace GestionVenta.View.Layout
             info.ValorFlete = Convert.ToInt16(td_flete_id.Text);
             info.ValorHH = Convert.ToInt16(td_hp_id.Text);
             info.ValorMoneda = Convert.ToInt16(td_uf_id.Text);
-            info.Descripcion = tf_detalleArea.Value.ToString();// tf_detalle.Text;
+            //info.Descripcion = tf_detalleArea.Value.ToString();// tf_detalle.Text;
 
 
             var idCot = ppto.guardarPresupuesto(info);

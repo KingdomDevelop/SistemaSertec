@@ -16,13 +16,35 @@ namespace GestionVentas.Negocio.Mappers
         {
             return new PresupuestoEntity
             {
-                Descripcion = presupuesto.Descripcion,
-                FechaEmision = presupuesto.FechaEmision.ToString(),
-                //el id no se guarda a entidad por ser identity
-                PresupuestoId = presupuesto.PresupuestoId,
-                ValorFlete = (byte)presupuesto.ValorFlete,
-                ValorHH = (byte)presupuesto.ValorHH,
+                Ascensor = presupuesto.Ascensor,
+                ValorVenta = presupuesto.ValorVenta,
+                ValorUf = presupuesto.ValorUf,
+                ValorTerceros = presupuesto.ValorTerceros,
+                ValorRepuestos = presupuesto.ValorRepuestos,
+                ValorMargenVenta = presupuesto.ValorMargenVenta,
+                ValorManoObra = presupuesto.ValorManoObra,
+                ValorHP = presupuesto.ValorHP,
+                CantidadFletes = presupuesto.CantidadFletes,
+                DetalleDescrip = presupuesto.DetalleDescrip,
+                DuracionTrabajo = presupuesto.DuracionTrabajo,
+                FechaCalculo = presupuesto.FechaCalculo,
+                FechaEmision = presupuesto.FechaEmision,
+                HorasParejas = presupuesto.HorasParejas,
+                Obra = presupuesto.Obra,
+                PresupuestoNumero = presupuesto.PresupuestoNumero,
+                RecargoHHEE = presupuesto.RecargoHHEE,
+                Subtotal = presupuesto.Subtotal,
+                SubtotalManoObra = presupuesto.SubtotalManoObra,
+                Supervisor = presupuesto.Supervisor,
+                TecEmisor = presupuesto.TecEmisor,
+                Total = presupuesto.Total,
+                TotalFletes = presupuesto.TotalFletes,
+                TotalnetoComisiones = presupuesto.TotalnetoComisiones,
+                ValorFlete = presupuesto.ValorFlete,
+                ValorFletes = presupuesto.ValorFletes,
+                ValorHH = presupuesto.ValorHH,
                 ValorMoneda = presupuesto.ValorMoneda
+
             };
         }
 
@@ -30,12 +52,36 @@ namespace GestionVentas.Negocio.Mappers
         {
             return new PresupuestoDto
             {
-                Descripcion = entidad.Descripcion,
+                DetalleDescrip = entidad.DetalleDescrip,
                 ValorMoneda = entidad.ValorMoneda,
-                FechaEmision = Convert.ToDateTime(entidad.FechaEmision),
+                FechaEmision = entidad.FechaEmision,
                 PresupuestoId = entidad.PresupuestoId,
                 ValorFlete = entidad.ValorFlete,
-                ValorHH = entidad.ValorHH
+                ValorHH = entidad.ValorHH,
+                Ascensor = entidad.Ascensor,
+                CantidadFletes = entidad.CantidadFletes,
+                DuracionTrabajo = entidad.DuracionTrabajo,
+                FechaCalculo = entidad.FechaCalculo,
+                HorasParejas = entidad.HorasParejas,
+                Obra = entidad.Obra,
+                PresupuestoNumero = entidad.PresupuestoNumero,
+                RecargoHHEE = entidad.RecargoHHEE,
+                Subtotal = entidad.Subtotal,
+                SubtotalManoObra = entidad.SubtotalManoObra,
+                Supervisor = entidad.Supervisor,
+                TecEmisor = entidad.TecEmisor,
+                Total = entidad.Total,
+                TotalFletes = entidad.TotalFletes,
+                TotalnetoComisiones = entidad.TotalnetoComisiones,
+                ValorFletes = entidad.ValorFletes,
+                ValorHP = entidad.ValorHP,
+                ValorManoObra = entidad.ValorManoObra,
+                ValorMargenVenta = entidad.ValorMargenVenta,
+                ValorRepuestos = entidad.ValorRepuestos,
+                ValorTerceros = entidad.ValorTerceros,
+                ValorUf = entidad.ValorUf,
+                ValorVenta = entidad.ValorVenta
+
             };
         }
 

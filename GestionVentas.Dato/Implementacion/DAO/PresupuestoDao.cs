@@ -21,18 +21,13 @@ namespace GestionVentas.Dato.DAO
             {
 
 
-                var datos = context.Presupuesto;
+                var datos = context.Cotizacion;
 
                 if (datos.Any())
                 {
                     lstPresupuesto = datos.Select(c => new PresupuestoEntity
                     {
-                        PresupuestoId = c.PK_Presupuesto_id,
-                        Descripcion = c.Presupuesto_descripcion,
-                        FechaEmision = c.Fecha_Emision.ToString(),
-                        ValorFlete = (byte)c.Valor_Flete,
-                        ValorHH = (byte)c.Valor_HH,
-                        ValorMoneda = c.Valor_moneda
+
                     }).ToList();
                 }
 
@@ -45,26 +40,49 @@ namespace GestionVentas.Dato.DAO
 
         public int guardarPresupuesto(PresupuestoEntity entidad)
         {
-            int idResultado;
+            int idResultado = 0;
 
             using (var contexto = new ContextoBdSantiago())
             {
-                var fecha = Convert.ToDateTime(entidad.FechaEmision);
 
-                var ppto = new presupuesto
+                var cot = new cotizacion
                 {
-                    Fecha_Emision = fecha,
-                    Presupuesto_descripcion = entidad.Descripcion,
-                    Valor_moneda = entidad.ValorMoneda,
-                    Valor_HH = (sbyte)entidad.ValorHH,
-                    Valor_Flete = (sbyte)entidad.ValorFlete
+                    Obra = entidad.Obra,
+                    DuracionTrabajo = entidad.DuracionTrabajo,
+                    DescripcionDetalle = entidad.DetalleDescrip,
+                    FechaCalculo = entidad.FechaCalculo,
+                    FechaEmision = entidad.FechaEmision,
+                    HorasParejas = entidad.HorasParejas,
+                    Ascensor = entidad.Ascensor,
+                    CantidadFletes = entidad.CantidadFletes,
+                    PresupuestoNumero = entidad.PresupuestoNumero,
+                    RecargoHHEE = entidad.RecargoHHEE,
+                    SubTotal = entidad.Subtotal,
+                    SubTotalManoObra = entidad.SubtotalManoObra,
+                    Supervisor = entidad.Supervisor,
+                    TecnicoEmisor = entidad.TecEmisor,
+                    Total = entidad.Total,
+                    TotalFletes = entidad.TotalFletes,
+                    TotalNetoComisiones = entidad.TotalnetoComisiones,
+                    ValorFlete = entidad.ValorFlete,
+                    ValorFletes = entidad.ValorFletes,
+                    ValorHH = entidad.ValorHH,
+                    ValorHP = entidad.ValorHP,
+                    ValorManoObra = entidad.ValorManoObra,
+                    ValorMargenVenta = entidad.ValorMargenVenta,
+                    ValorMoneda = entidad.ValorMoneda,
+                    ValorRepuestos = entidad.ValorRepuestos,
+                    ValorTerceros = entidad.ValorTerceros,
+                    ValorUf = entidad.ValorUf,
+                    ValorVenta = entidad.ValorVenta
+
                 };
 
-                contexto.Presupuesto.Add(ppto);
+                contexto.Cotizacion.Add(cot);
                 contexto.SaveChanges();
 
                 //retornamos el id del objeto, validar que entregue el identity
-                idResultado = ppto.PK_Presupuesto_id;
+                idResultado = cot.PK_Cotizacion_ID;
             }
 
             return idResultado;
@@ -76,23 +94,23 @@ namespace GestionVentas.Dato.DAO
 
             using (var context = new ContextoBdSantiago())
             {
-                var datos = context.PresupuestoComercial;
+                //var datos = context.PresupuestoComercial;
 
-                if (datos.Any())
-                {
-                    lstPptoComercial = datos.Select(c => new PresupuestoComercialEntity
-                    {
-                        PresupuestoId = c.Presupuesto,
-                        PresupuestoComercialId = c.Presupuesto_Comercial_id,
-                        Obra = (int)c.Obra,
-                        FechaAprobacion = (DateTime)c.Fecha_Aprobacion,
-                        NumeroAscensor = (int)c.Numero_Ascensor,
-                        Descripcion = c.Descripcion,
-                        NombreAprobador = c.Nombre_Aprobador,
-                        TelefonoContacto = (int)c.Telefono_Contacto,
-                        Direccion = c.Direccion
-                    }).ToList();
-                }
+                //if (datos.Any())
+                //{
+                //    lstPptoComercial = datos.Select(c => new PresupuestoComercialEntity
+                //    {
+                //        PresupuestoId = c.Presupuesto,
+                //        PresupuestoComercialId = c.Presupuesto_Comercial_id,
+                //        Obra = (int)c.Obra,
+                //        FechaAprobacion = (DateTime)c.Fecha_Aprobacion,
+                //        NumeroAscensor = (int)c.Numero_Ascensor,
+                //        Descripcion = c.Descripcion,
+                //        NombreAprobador = c.Nombre_Aprobador,
+                //        TelefonoContacto = (int)c.Telefono_Contacto,
+                //        Direccion = c.Direccion
+                //    }).ToList();
+                //}
             }
             return lstPptoComercial;
 
@@ -100,30 +118,30 @@ namespace GestionVentas.Dato.DAO
 
         public int guardarPresupuestoOrdenTrabajo(PresupuestoOrdenTrabajoEntity entidad)
         {
-            int idResultado;
+            int idResultado = 0;
 
             using (var contexto = new ContextoBdSantiago())
             {
-                var ppto = new presupuesto_orden_trabajo
-                {
-                    Presupuesto = entidad.PresupuestoId,
-                    Fecha = entidad.Fecha,
-                    Obra = entidad.Obra,
-                    Fecha_Aprobacion = entidad.FechaAprobacion,
-                    Ascensor = entidad.Ascensor,
-                    Tecnico_Emisor = entidad.TecnicoEmisor,
-                    Supervisor = entidad.Supervisor,
-                    Direccion = entidad.Direccion,
-                    Aprobacion = entidad.Aprobacion,
-                    Telefono_Contacto = entidad.TelefonoContacto,
-                    Descripcion = entidad.Descripcion,
-                    Descripcion_Terceros = entidad.DescripcionTerceros
-                };
+                //var ppto = new presupuesto_orden_trabajo
+                //{
+                //    Presupuesto = entidad.PresupuestoId,
+                //    Fecha = entidad.Fecha,
+                //    Obra = entidad.Obra,
+                //    Fecha_Aprobacion = entidad.FechaAprobacion,
+                //    Ascensor = entidad.Ascensor,
+                //    Tecnico_Emisor = entidad.TecnicoEmisor,
+                //    Supervisor = entidad.Supervisor,
+                //    Direccion = entidad.Direccion,
+                //    Aprobacion = entidad.Aprobacion,
+                //    Telefono_Contacto = entidad.TelefonoContacto,
+                //    Descripcion = entidad.Descripcion,
+                //    Descripcion_Terceros = entidad.DescripcionTerceros
+                //};
 
-                contexto.PresupuestoOrdenTrabajo.Add(ppto);
-                contexto.SaveChanges();
+                //contexto.PresupuestoOrdenTrabajo.Add(ppto);
+                //contexto.SaveChanges();
 
-                idResultado = ppto.PK_Presupuesto_Orden_Trabajo_id;
+                //idResultado = ppto.PK_Presupuesto_Orden_Trabajo_id;
             }
 
             return idResultado;
@@ -131,25 +149,25 @@ namespace GestionVentas.Dato.DAO
 
         public int guardarPresupuestoRepuesto(PresupuestoRepuestoEntity entidad)
         {
-            int idResultado;
+            int idResultado = 0;
 
             using (var contexto = new ContextoBdSantiago())
             {
-                var ppto = new presupesto_repuesto
+                var ppto = new cotizacionrepuesto
                 {
                     Cantidad = entidad.Cantidad,
                     Codigo = entidad.Codigo,
-                    Hora_Par_Hombre = entidad.HoraParHombre,
-                    Presupuesto = entidad.Presupuesto,
-                    Repuesto = entidad.Repuesto,
-                    Sub_Total = entidad.SubTotal,
-                    Valor_Unitario = entidad.ValorUnitario
+                    HoraParHombre = entidad.HoraParHombre,
+                    PK_Cotizacion_ID = entidad.Presupuesto,
+                    Repuesto = entidad.Repuesto.ToString(),
+                    SubTotal = entidad.SubTotal,
+                    ValorUnitario = entidad.ValorUnitario
                 };
 
-                contexto.PresupuestoRepuesto.Add(ppto);
+                contexto.CotizacionRepuesto.Add(ppto);
                 contexto.SaveChanges();
 
-                idResultado = ppto.PK_ppto_repuesto_id;
+                idResultado = ppto.CotizacionRepuestoID;
             }
 
             return idResultado;
@@ -157,21 +175,21 @@ namespace GestionVentas.Dato.DAO
 
         public int guardarPresupuestoTerceros(PresupuestoTercerosEntity entidad)
         {
-            int idResultado;
+            int idResultado = 0;
 
             using (var contexto = new ContextoBdSantiago())
             {
-                var ppto = new presupuesto_trabajo_terceros
+                var ppto = new cotizaciontrabajoterceros
                 {
-                    Presupuesto = entidad.Presupuesto,
-                    Descripcion = entidad.Descripcion,
-                    Valor = entidad.Valor
+                    Terceros = entidad.Descripcion,
+                    ValorTerceros = entidad.Valor,
+                    PK_Cotizacion_ID = entidad.Presupuesto
                 };
 
-                contexto.PresupuestoTerceros.Add(ppto);
+                contexto.CotizacionTerceros.Add(ppto);
                 contexto.SaveChanges();
 
-                idResultado = ppto.PK_ppto_trabajo_terceros_id;
+                idResultado = ppto.CotizacionTercerosID;
             }
 
             return idResultado;
@@ -181,17 +199,17 @@ namespace GestionVentas.Dato.DAO
         {
             using (var contexto = new ContextoBdSantiago())
             {
-                var ppto = new presupuesto_repuesto_desgloce
-                {
-                    Presupuesto_Repuesto = entidad.PresupuestoTrabajoTerceros,
-                    Valor_Comision_1 = entidad.ValorComision1,
-                    Valor_Comision_2 = entidad.ValorComision2,
-                    Valor_Mano_Obra = entidad.ValorManoObra,
-                    Valor_Repuesto = entidad.ValorTrabajoTaller
-                };
+                //var ppto = new presupuesto_repuesto_desgloce
+                //{
+                //    Presupuesto_Repuesto = entidad.PresupuestoTrabajoTerceros,
+                //    Valor_Comision_1 = entidad.ValorComision1,
+                //    Valor_Comision_2 = entidad.ValorComision2,
+                //    Valor_Mano_Obra = entidad.ValorManoObra,
+                //    Valor_Repuesto = entidad.ValorTrabajoTaller
+                //};
 
-                contexto.PresupuestoRepuestoDetalle.Add(ppto);
-                contexto.SaveChanges();
+                //contexto.PresupuestoRepuestoDetalle.Add(ppto);
+                //contexto.SaveChanges();
 
             }
         }
@@ -200,40 +218,40 @@ namespace GestionVentas.Dato.DAO
         {
             using (var contexto = new ContextoBdSantiago())
             {
-                var ppto = new presupuesto_trabajo_resumen_mo_detalle
-                {
-                    Horas_Parejas = entidad.HorasParejas,
-                    Recargo_HH_EE = entidad.RecargoHHEE,
-                    SubTotal = entidad.Subtotal,
-                    Total = entidad.Total,
-                    Presupuesto_Trabajo_Resumen = entidad.PresupuestoTrabajoResumen
-                };
+                //var ppto = new presupuesto_trabajo_resumen_mo_detalle
+                //{
+                //    Horas_Parejas = entidad.HorasParejas,
+                //    Recargo_HH_EE = entidad.RecargoHHEE,
+                //    SubTotal = entidad.Subtotal,
+                //    Total = entidad.Total,
+                //    Presupuesto_Trabajo_Resumen = entidad.PresupuestoTrabajoResumen
+                //};
 
-                contexto.PresupuestoResumenMoDetalle.Add(ppto);
-                contexto.SaveChanges();
+                //contexto.PresupuestoResumenMoDetalle.Add(ppto);
+                //contexto.SaveChanges();
 
             }
         }
 
         public int guardarPresupuestoComisionDetalle(PresupuestoTRComisionDetalleEntity entidad)
         {
-            int idResultado;
+            int idResultado = 0;
 
             using (var contexto = new ContextoBdSantiago())
             {
-                var ppto = new presupuesto_trabajo_resumen_comision_detalle
-                {
-                    Cantidad_Fletes = entidad.CantidadFletes,
-                    Presupuesto_Trabajo_Resumen = entidad.PresupuestoTrabajoResumen,
-                    Total_Fletes = entidad.TotalFletes,
-                    Valor_Margen_Venta = entidad.ValorMargenVenta,
-                    Valor_Venta = entidad.ValorVenta
-                };
+                //var ppto = new presupuesto_trabajo_resumen_comision_detalle
+                //{
+                //    Cantidad_Fletes = entidad.CantidadFletes,
+                //    Presupuesto_Trabajo_Resumen = entidad.PresupuestoTrabajoResumen,
+                //    Total_Fletes = entidad.TotalFletes,
+                //    Valor_Margen_Venta = entidad.ValorMargenVenta,
+                //    Valor_Venta = entidad.ValorVenta
+                //};
 
-                contexto.PresupuestoResumenComisionDetalle.Add(ppto);
-                contexto.SaveChanges();
+                //contexto.PresupuestoResumenComisionDetalle.Add(ppto);
+                //contexto.SaveChanges();
 
-                idResultado = ppto.PK_ppto_trabajo_resumen_comision_detalle_id;
+                //idResultado = ppto.PK_ppto_trabajo_resumen_comision_detalle_id;
             }
             return idResultado;
         }
@@ -242,39 +260,39 @@ namespace GestionVentas.Dato.DAO
         {
             using (var contexto = new ContextoBdSantiago())
             {
-                var ppto = new presupuesto_trabajo_resumen_comision_desgloce
-                {
-                    Total = entidad.Total,
-                    Valor_Comision_1 = entidad.ValorComision1,
-                    Valor_Comision_2 = entidad.ValorComision2,
-                    Ppto_trabajo_resumen_comision_detalle = entidad.PresupuestoTrComisionDetalle,
-                    Valor_Flete = entidad.ValorFlete,
-                    Valor_Mano_Obra = entidad.ValorManoObra
-                };
+                //var ppto = new presupuesto_trabajo_resumen_comision_desgloce
+                //{
+                //    Total = entidad.Total,
+                //    Valor_Comision_1 = entidad.ValorComision1,
+                //    Valor_Comision_2 = entidad.ValorComision2,
+                //    Ppto_trabajo_resumen_comision_detalle = entidad.PresupuestoTrComisionDetalle,
+                //    Valor_Flete = entidad.ValorFlete,
+                //    Valor_Mano_Obra = entidad.ValorManoObra
+                //};
 
-                contexto.PresupuestoResumenComisionDesgloce.Add(ppto);
-                contexto.SaveChanges();
+                //contexto.PresupuestoResumenComisionDesgloce.Add(ppto);
+                //contexto.SaveChanges();
             }
         }
 
         public int guardarPresupuestoResumen(PresupuestoTrabajoResumenEntity entidad)
         {
-            int idResultado;
+            int idResultado = 0;
 
             using (var contexto = new ContextoBdSantiago())
             {
-                var ppto = new presupuesto_trabajo_resumen
-                {
-                    Presupuesto = entidad.Presupuesto,
-                    Descripcion = entidad.Descripcion,
-                    SubTotal = entidad.Subtotal,
-                    Total_Neto_Comsiones = entidad.TotalnetoComisiones
-                };
+                //var ppto = new presupuesto_trabajo_resumen
+                //{
+                //    Presupuesto = entidad.Presupuesto,
+                //    Descripcion = entidad.Descripcion,
+                //    SubTotal = entidad.Subtotal,
+                //    Total_Neto_Comsiones = entidad.TotalnetoComisiones
+                //};
 
-                contexto.PresupuestoTrabajoResumen.Add(ppto);
-                contexto.SaveChanges();
+                //contexto.PresupuestoTrabajoResumen.Add(ppto);
+                //contexto.SaveChanges();
 
-                idResultado = ppto.PK_Presupuesto_Trabajo_Resumen_id;
+                //idResultado = ppto.PK_Presupuesto_Trabajo_Resumen_id;
             }
             return idResultado;
         }
@@ -283,20 +301,20 @@ namespace GestionVentas.Dato.DAO
         {
             using (var contexto = new ContextoBdSantiago())
             {
-                var ppto = new presupuesto_control_orden_trabajo
-                {
-                    Presupuesto_Orden_Trabajo = entidad.PresupuestoOrdenTrabajo,
-                    Fecha_Termino_Supervisor = entidad.FechaTerminoSupervisor,
-                    Fecha_Termino_Tecnico = entidad.FechaTerminoTecnico,
-                    Fecha_Termino_Venta = entidad.FechaTerminoVenta,
-                    Numero_Guia = entidad.NumeroGuia,
-                    Numero_Ventas = entidad.NumeroVentas,
-                    Supervisor = entidad.Supervisor,
-                    Tecnico = entidad.Tecnico
-                };
+                //var ppto = new presupuesto_control_orden_trabajo
+                //{
+                //    Presupuesto_Orden_Trabajo = entidad.PresupuestoOrdenTrabajo,
+                //    Fecha_Termino_Supervisor = entidad.FechaTerminoSupervisor,
+                //    Fecha_Termino_Tecnico = entidad.FechaTerminoTecnico,
+                //    Fecha_Termino_Venta = entidad.FechaTerminoVenta,
+                //    Numero_Guia = entidad.NumeroGuia,
+                //    Numero_Ventas = entidad.NumeroVentas,
+                //    Supervisor = entidad.Supervisor,
+                //    Tecnico = entidad.Tecnico
+                //};
 
-                contexto.PresupuestoControlOt.Add(ppto);
-                contexto.SaveChanges();
+                //contexto.PresupuestoControlOt.Add(ppto);
+                //contexto.SaveChanges();
             }
         }
 
@@ -304,16 +322,21 @@ namespace GestionVentas.Dato.DAO
         {
             using (var contexto = new ContextoBdSantiago())
             {
-                var ppto = new presupuesto_orden_trabajo_repuesto_reparacion
-                {
-                    Cantidad = entidad.Cantidad,
-                    Codigo = entidad.Codigo,
-                    Descripcion = entidad.Descripcion,
-                    Presupuesto_Orden_Trabajo = entidad.PresupuestoOrdenTrabajo
-                };
+                //var ppto = new cotizacionrepuesto
+                //{
+                //    Cantidad = entidad.Cantidad,
+                //    Codigo = Convert.ToInt32(entidad.Codigo),
+                //    CotizacionRepuestoID = entidad.PresupuestoOtRepId,
+                //    HoraParHombre = entidad.HoraParHombre,
+                //    Repuesto = entidad.Descripcion,
+                //    ValorUnitario = entidad.ValorUnitario,
+                //    SubTotal = entidad.SubTotal
 
-                contexto.PrespuestoOtRespuestoReparacion.Add(ppto);
-                contexto.SaveChanges();
+                //};
+
+                //contexto.CotizacionRepuesto.Add(ppto);
+                //contexto.SaveChanges();
+
             }
         }
 

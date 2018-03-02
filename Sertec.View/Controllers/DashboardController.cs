@@ -60,7 +60,7 @@ namespace Sertec.View.Controllers
 
         public ActionResult ListaGeneral()
         {
-            var a =_presupuestoSvc.obtenerPresupuestos();
+            var a = _presupuestoSvc.obtenerPresupuestos();
             var b = _presupuestoSvc.obtenerPresupuestoComercial();
             var GeneralList = new List<ListaGeneralViewModel>();
 
@@ -80,24 +80,49 @@ namespace Sertec.View.Controllers
 
             var idCot = _presupuestoSvc.guardarPresupuesto(new PresupuestoDto
             {
-                Descripcion = model.DetalleDescrip,
+                DetalleDescrip = model.DetalleDescrip,
                 FechaEmision = model.FechaEmision,
-                ValorFlete = 1, //Valor mientras, se debe referenciar
-                ValorHH = 1, //Valor mientras, se debe referenciar
-                ValorMoneda = 1 //Valor mientras, se debe referenciar
+                ValorFlete = model.ValorFlete,
+                ValorHH = model.ValorHH,
+                ValorMoneda = model.ValorMoneda,
+                Ascensor = model.Ascensor,
+                CantidadFletes = model.CantidadFletes,
+                DuracionTrabajo = model.DuracionTrabajo,
+                FechaCalculo = model.FechaCalculo,
+                HorasParejas = model.HorasParejas,
+                Obra = model.Obra,
+                PresupuestoNumero = model.PresupuestoNumero,
+                RecargoHHEE = model.RecargoHHEE,
+                Subtotal = model.Subtotal,
+                SubtotalManoObra = model.SubtotalManoObra,
+                Supervisor = model.Supervisor,
+                TecEmisor = model.TecEmisor,
+                Total = model.Total,
+                TotalFletes = model.TotalFletes,
+                TotalnetoComisiones = model.TotalnetoComisiones,
+                ValorFletes = model.ValorFletes,
+                ValorHP = Convert.ToDecimal(model.ValorHP),
+                ValorManoObra = model.ValorManoObra,
+                ValorMargenVenta = model.ValorMargenVenta,
+                ValorRepuestos = model.ValorRepuestos,
+                ValorTerceros = model.ValorTerceros,
+                ValorUf = Convert.ToDecimal(model.ValorUf),
+                ValorVenta = model.ValorVenta
+
+
             });
 
-            var pptoOt = _presupuestoSvc.guardarPresupuestoOrdenTrabajo(new PresupuestoOrdenTrabajoDto
-            {
-                Presupuesto = idCot,
-                Obra = model.Obra,
-                Fecha = model.FechaCalculo,
-                Ascensor = model.Ascensor,
-                TecnicoEmisor = model.TecEmisor,
-                Supervisor = model.Supervisor,
-                Descripcion = model.DetalleDescrip,
-                FechaAprobacion = model.FechaEmision,
-            });
+            //var pptoOt = _presupuestoSvc.guardarPresupuestoOrdenTrabajo(new PresupuestoOrdenTrabajoDto
+            //{
+            //    Presupuesto = idCot,
+            //    Obra = model.Obra,
+            //    Fecha = model.FechaCalculo,
+            //    Ascensor = model.Ascensor,
+            //    TecnicoEmisor = model.TecEmisor,
+            //    Supervisor = model.Supervisor,
+            //    Descripcion = model.DetalleDescrip,
+            //    FechaAprobacion = model.FechaEmision,
+            //});
             if (Session["repuesto"] != null)
             {
                 IList<PresupuestoRepuestoViewModel> listRepuesto = new List<PresupuestoRepuestoViewModel>();
@@ -138,14 +163,14 @@ namespace Sertec.View.Controllers
                 }
             }
 
-            var resumenId = _presupuestoSvc.guardarPresupuestoResumen(new PresupuestoTrabajoResumenDto
-            {
-                Presupuesto = idCot
+            //var resumenId = _presupuestoSvc.guardarPresupuestoResumen(new PresupuestoTrabajoResumenDto
+            //{
+            //    Presupuesto = idCot
 
-            });
+            //});
 
 
-            return View("");
+            return RedirectToAction("Cotizacion");
         }
 
 

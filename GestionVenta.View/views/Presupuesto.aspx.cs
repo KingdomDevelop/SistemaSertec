@@ -27,10 +27,10 @@ namespace GestionVenta.View.Layout
 
             obtLista.obtenerPresupuestos();
 
-            var consulta = (from p in obtLista.obtenerPresupuestos() select new { p.Descripcion, p.FechaEmision }).ToList();
+            //var consulta = (from p in obtLista.obtenerPresupuestos() select new { p.Descripcion, p.FechaEmision }).ToList();
 
             //var query = from datos in obtLista.obtenerPresupuestos().AsEnumerable()
-            //            select new
+            //            select /*new*/
             //            {
             //              //  id = datos.Field<int>("Id"),
             //                Descripcion = datos.Descripcion,
@@ -39,7 +39,7 @@ namespace GestionVenta.View.Layout
             //            };
 
             //TablaPresupuesto
-            GridViewPresupuesto.DataSource = consulta;
+            //GridViewPresupuesto.DataSource = consulta;
             GridViewPresupuesto.DataBind();
 
 

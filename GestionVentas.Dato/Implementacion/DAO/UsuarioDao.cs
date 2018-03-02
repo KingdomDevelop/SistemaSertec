@@ -29,7 +29,7 @@ namespace GestionVentas.Dato.Implementacion.DAO
                         usuario.Estado = (bool)usuarioValido.Estado;
                         usuario.Login = usuarioValido.Login;
                         usuario.Password = usuarioValido.Password;
-                        usuario.UsuarioId = (int)usuarioValido.Usuario_id;
+                        usuario.UsuarioId = (int)usuarioValido.PK_UsuarioID;
                     }
                 }
             }

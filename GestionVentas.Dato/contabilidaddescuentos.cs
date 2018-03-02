@@ -12,15 +12,14 @@ namespace GestionVentas.Dato
     using System;
     using System.Collections.Generic;
     
-    public partial class presupuesto_trabajo_resumen_mo_detalle
+    public partial class contabilidaddescuentos
     {
-        public int PK_ppto_trabajo_resumen_mo_detalle_id { get; set; }
-        public int Presupuesto_Trabajo_Resumen { get; set; }
-        public Nullable<decimal> Horas_Parejas { get; set; }
-        public Nullable<decimal> SubTotal { get; set; }
-        public Nullable<decimal> Recargo_HH_EE { get; set; }
-        public Nullable<decimal> Total { get; set; }
+        public Nullable<bool> Cinco { get; set; }
+        public Nullable<bool> Quince { get; set; }
+        public Nullable<bool> Otro { get; set; }
+        public Nullable<int> ValorOtro { get; set; }
+        public int PK_ContabilidadID { get; set; }
     
-        public virtual presupuesto_trabajo_resumen presupuesto_trabajo_resumen1 { get; set; }
+        public virtual contabilidad contabilidad { get; set; }
     }
 }

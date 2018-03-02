@@ -12,15 +12,16 @@ namespace GestionVentas.Dato
     using System;
     using System.Collections.Generic;
     
-    public partial class presupuesto_repuesto_desgloce
+    public partial class contabilidadformapago
     {
-        public int PK_ppto_repuesto_desgloce_id { get; set; }
-        public int Presupuesto_Repuesto { get; set; }
-        public decimal Valor_Repuesto { get; set; }
-        public decimal Valor_Mano_Obra { get; set; }
-        public decimal Valor_Comision_1 { get; set; }
-        public decimal Valor_Comision_2 { get; set; }
+        public Nullable<bool> Cien { get; set; }
+        public Nullable<bool> Cincuenta { get; set; }
+        public Nullable<bool> Cuotas { get; set; }
+        public Nullable<int> CantidadCuotas { get; set; }
+        public Nullable<bool> Otro { get; set; }
+        public string DescripcionOtro { get; set; }
+        public int PK_ContabilidadID { get; set; }
     
-        public virtual presupesto_repuesto presupesto_repuesto { get; set; }
+        public virtual contabilidad contabilidad { get; set; }
     }
 }

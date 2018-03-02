@@ -12,14 +12,14 @@ namespace GestionVentas.Dato
     using System;
     using System.Collections.Generic;
     
-    public partial class presupuesto_orden_trabajo_repuesto_reparacion
+    public partial class contabilidadaprobacion
     {
-        public int PK_Presupuesto_OC_Rep_id { get; set; }
-        public int Presupuesto_Orden_Trabajo { get; set; }
-        public string Descripcion { get; set; }
-        public Nullable<int> Cantidad { get; set; }
-        public string Codigo { get; set; }
+        public Nullable<bool> PresupuestoFirmado { get; set; }
+        public Nullable<bool> OrdenCompra { get; set; }
+        public Nullable<bool> Otro { get; set; }
+        public string DescripcionOtro { get; set; }
+        public int PK_ContabilidadID { get; set; }
     
-        public virtual presupuesto_orden_trabajo presupuesto_orden_trabajo1 { get; set; }
+        public virtual contabilidad contabilidad { get; set; }
     }
 }

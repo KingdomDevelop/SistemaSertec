@@ -5,1385 +5,647 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="bd_santiagoModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="moneda">
+        <EntityType Name="contabilidad">
           <Key>
-            <PropertyRef Name="PK_valor_moneda_id" />
+            <PropertyRef Name="PK_ContabilidadID" />
           </Key>
-          <Property Name="PK_valor_moneda_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Valor_moneda" Type="decimal" Precision="19" Scale="6" Nullable="false" />
-          <Property Name="Estado" Type="bit" Nullable="false" />
-          <Property Name="Tipo_moneda" Type="tinyint" Nullable="false" />
+          <Property Name="PK_ContabilidadID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="100" />
+          <Property Name="PersonaAprobacion" Type="varchar" MaxLength="100" />
+          <Property Name="TelefonoContacto" Type="varchar" MaxLength="15" />
+          <Property Name="PK_Cotizacion_ID" Type="int" />
+          <Property Name="Vendedor" Type="varchar" MaxLength="200" />
+          <Property Name="FechaEjecucion" Type="datetime" Precision="0" />
+          <Property Name="FechaInicio" Type="datetime" Precision="0" />
+          <Property Name="FechaTermino" Type="datetime" Precision="0" />
+          <Property Name="GuiaDespacho" Type="int" Nullable="false" />
+          <Property Name="Factura" Type="int" />
+          <Property Name="MesFacturacion" Type="int" />
+          <Property Name="ComisionVendedor" Type="int" />
+          <Property Name="ComisionOtros" Type="int" />
+        </EntityType>
+        <EntityType Name="contabilidadaprobacion">
+          <Key>
+            <PropertyRef Name="PK_ContabilidadID" />
+          </Key>
+          <Property Name="PresupuestoFirmado" Type="bool" />
+          <Property Name="OrdenCompra" Type="bool" />
+          <Property Name="Otro" Type="bool" />
+          <Property Name="DescripcionOtro" Type="varchar" MaxLength="200" />
+          <Property Name="PK_ContabilidadID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="contabilidaddescuentos">
+          <Key>
+            <PropertyRef Name="PK_ContabilidadID" />
+          </Key>
+          <Property Name="Cinco" Type="bool" />
+          <Property Name="Quince" Type="bool" />
+          <Property Name="Otro" Type="bool" />
+          <Property Name="ValorOtro" Type="int" />
+          <Property Name="PK_ContabilidadID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="contabilidadfacturacion">
+          <Key>
+            <PropertyRef Name="PK_FacturacionID" />
+          </Key>
+          <Property Name="PK_FacturacionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumeroCuota" Type="int" />
+          <Property Name="NumeroFactura" Type="int" />
+          <Property Name="Valor" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="Mes" Type="int" />
+          <Property Name="PK_ContabilidadID" Type="int" />
+        </EntityType>
+        <EntityType Name="contabilidadformapago">
+          <Key>
+            <PropertyRef Name="PK_ContabilidadID" />
+          </Key>
+          <Property Name="Cien" Type="bool" />
+          <Property Name="Cincuenta" Type="bool" />
+          <Property Name="Cuotas" Type="bool" />
+          <Property Name="CantidadCuotas" Type="int" />
+          <Property Name="Otro" Type="bool" />
+          <Property Name="DescripcionOtro" Type="varchar" MaxLength="200" />
+          <Property Name="PK_ContabilidadID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cotizacion">
+          <Key>
+            <PropertyRef Name="PK_Cotizacion_ID" />
+          </Key>
+          <Property Name="PK_Cotizacion_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaEmision" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Obra" Type="varchar" MaxLength="100" />
+          <Property Name="Ascensor" Type="varchar" MaxLength="100" />
+          <Property Name="TecnicoEmisor" Type="varchar" MaxLength="100" />
+          <Property Name="Supervisor" Type="varchar" MaxLength="100" />
+          <Property Name="PresupuestoNumero" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ValorUf" Type="decimal" Precision="19" Scale="6" Nullable="false" />
+          <Property Name="ValorHP" Type="decimal" Precision="19" Scale="6" Nullable="false" />
+          <Property Name="ValorFlete" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="FechaCalculo" Type="datetime" Precision="0" />
+          <Property Name="DescripcionDetalle" Type="varchar" MaxLength="200" />
+          <Property Name="DuracionTrabajo" Type="int" />
+          <Property Name="ValorMoneda" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="ValorHH" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="HorasParejas" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="SubTotalManoObra" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="RecargoHHEE" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="Total" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="ValorVenta" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="ValorMargenVenta" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="CantidadFletes" Type="int" />
+          <Property Name="TotalFletes" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="ValorManoObra" Type="int" />
+          <Property Name="ValorRepuestos" Type="int" />
+          <Property Name="ValorTerceros" Type="int" />
+          <Property Name="ValorTerceras" Type="int" />
+          <Property Name="ValorFletes" Type="int" />
+          <Property Name="SubTotal" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="TotalNetoComisiones" Type="decimal" Precision="19" Scale="6" />
+        </EntityType>
+        <EntityType Name="cotizacionrepuesto">
+          <Key>
+            <PropertyRef Name="CotizacionRepuestoID" />
+          </Key>
+          <Property Name="CotizacionRepuestoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Repuesto" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="int" />
+          <Property Name="ValorUnitario" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="SubTotal" Type="decimal" Precision="19" Scale="6" Nullable="false" />
+          <Property Name="HoraParHombre" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="PK_Cotizacion_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="cotizaciontrabajoterceros">
+          <Key>
+            <PropertyRef Name="CotizacionTercerosID" />
+          </Key>
+          <Property Name="CotizacionTercerosID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Terceros" Type="varchar" MaxLength="200" />
+          <Property Name="ValorTerceros" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="PK_Cotizacion_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="operaciones">
+          <Key>
+            <PropertyRef Name="PK_Operaciones_ID" />
+          </Key>
+          <Property Name="PK_Operaciones_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaTecnico" Type="datetime" Precision="0" />
+          <Property Name="NumeroGuia" Type="char" MaxLength="20" />
+          <Property Name="Tecnico" Type="varchar" MaxLength="150" />
+          <Property Name="Supervisor" Type="varchar" MaxLength="150" />
+          <Property Name="FechaSupervisor" Type="datetime" Precision="0" />
+          <Property Name="Ventas" Type="int" />
+          <Property Name="FechaVentas" Type="datetime" Precision="0" />
+          <Property Name="PK_ContabilidadID" Type="int" />
         </EntityType>
         <EntityType Name="persona">
           <Key>
-            <PropertyRef Name="PK_Persona_id" />
+            <PropertyRef Name="PK_PersonaID" />
           </Key>
-          <Property Name="PK_Persona_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PK_PersonaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="150" />
           <Property Name="Apellido" Type="varchar" MaxLength="150" />
-          <Property Name="Cargo" Type="varchar" MaxLength="150" />
-          <Property Name="Fecha Ingreso" Type="datetime" Precision="0" />
-        </EntityType>
-        <EntityType Name="presupesto_repuesto">
-          <Key>
-            <PropertyRef Name="PK_ppto_repuesto_id" />
-          </Key>
-          <Property Name="PK_ppto_repuesto_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Presupuesto" Type="int" Nullable="false" />
-          <Property Name="Repuesto" Type="int" Nullable="false" />
-          <Property Name="Cantidad" Type="int" Nullable="false" />
-          <Property Name="Codigo" Type="int" Nullable="false" />
-          <Property Name="Valor_Unitario" Type="int" Nullable="false" />
-          <Property Name="Sub_Total" Type="int" Nullable="false" />
-          <Property Name="Hora_Par_Hombre" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="presupuesto">
-          <Key>
-            <PropertyRef Name="PK_Presupuesto_id" />
-          </Key>
-          <Property Name="PK_Presupuesto_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Presupuesto_descripcion" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="Valor_moneda" Type="int" Nullable="false" />
-          <Property Name="Valor_HH" Type="tinyint" Nullable="false" />
-          <Property Name="Valor_Flete" Type="tinyint" Nullable="false" />
-          <Property Name="Fecha_Emision" Type="datetime" Precision="0" Nullable="false" />
-        </EntityType>
-        <EntityType Name="presupuesto_comercial">
-          <Key>
-            <PropertyRef Name="Presupuesto_Comercial_id" />
-          </Key>
-          <Property Name="Presupuesto_Comercial_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Presupuesto" Type="int" Nullable="false" />
-          <Property Name="Obra" Type="int" />
-          <Property Name="Fecha_Aprobacion" Type="datetime" Precision="0" />
-          <Property Name="Numero_Ascensor" Type="int" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="200" />
-          <Property Name="Nombre_Aprobador" Type="varchar" MaxLength="100" />
-          <Property Name="Telefono_Contacto" Type="int" />
-          <Property Name="Direccion" Type="varchar" MaxLength="150" />
-        </EntityType>
-        <EntityType Name="presupuesto_comercial_condicion_venta">
-          <Key>
-            <PropertyRef Name="PK_ppto_comercial_condicion_venta_id" />
-          </Key>
-          <Property Name="PK_ppto_comercial_condicion_venta_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Presupuesto_Comercial" Type="int" Nullable="false" />
-          <Property Name="Porcentaje_Cinco" Type="bit" />
-          <Property Name="Porcentaje_Quince" Type="bit" />
-          <Property Name="Porcentaje_Otro" Type="bit" />
-          <Property Name="Valor_Porcentaje_Otro" Type="int" />
-          <Property Name="Pago_Completo_Termino_Trabajo" Type="bit" />
-          <Property Name="Pago_Incompleto_Termino_Trabajo" Type="bit" />
-          <Property Name="Cuotas" Type="bit" />
-          <Property Name="Numero_Cuotas" Type="int" />
-          <Property Name="Otro_Descuento" Type="bit" />
-          <Property Name="Copia_Presupuesto_Firmado" Type="bit" />
-          <Property Name="Orden_Compra" Type="bit" />
-          <Property Name="Otro_Medio" Type="bit" />
-          <Property Name="Descripcion_Otro_Medio" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="presupuesto_comercial_detalle">
-          <Key>
-            <PropertyRef Name="PK_Presupuesto_Comercial_Detalle_id" />
-          </Key>
-          <Property Name="PK_Presupuesto_Comercial_Detalle_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Presupuesto_Comercial" Type="int" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="200" />
-          <Property Name="Horas_Pareja" Type="int" />
-          <Property Name="Fletes" Type="int" />
-          <Property Name="Dias_Trabajos" Type="int" />
-          <Property Name="Fecha_Ejecucion" Type="datetime" Precision="0" />
-          <Property Name="Tecnico_Asignado" Type="varchar" MaxLength="100" />
-          <Property Name="Fecha_Inicio" Type="datetime" Precision="0" />
-          <Property Name="Fecha_Termino" Type="datetime" Precision="0" />
-          <Property Name="Guia_Despacho" Type="int" />
-          <Property Name="Numero_Factura" Type="int" />
-          <Property Name="Mes_Facturacion" Type="int" />
-        </EntityType>
-        <EntityType Name="presupuesto_comercial_resumen">
-          <Key>
-            <PropertyRef Name="PK_Presupuesto_Comercial_Resumen_id" />
-          </Key>
-          <Property Name="PK_Presupuesto_Comercial_Resumen_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Presupuesto_Comercial_Detalle" Type="int" Nullable="false" />
-          <Property Name="Valor_Mano_Obra" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Valor_Repuesto" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Valor_Terceros" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Valor_Fletes" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Subtotal" Type="decimal" Precision="19" Scale="6" />
-        </EntityType>
-        <EntityType Name="presupuesto_control_orden_trabajo">
-          <Key>
-            <PropertyRef Name="PK_Presupuesto_Control_OC_id" />
-          </Key>
-          <Property Name="PK_Presupuesto_Control_OC_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Presupuesto_Orden_Trabajo" Type="int" Nullable="false" />
-          <Property Name="Fecha_Termino_Tecnico" Type="datetime" Precision="0" />
-          <Property Name="Numero_Guia" Type="int" />
-          <Property Name="Tecnico" Type="varchar" MaxLength="150" />
-          <Property Name="Fecha_Termino_Supervisor" Type="datetime" Precision="0" />
-          <Property Name="Supervisor" Type="varchar" MaxLength="150" />
-          <Property Name="Numero_Ventas" Type="int" />
-          <Property Name="Fecha_Termino_Venta" Type="datetime" Precision="0" />
-        </EntityType>
-        <EntityType Name="presupuesto_orden_trabajo">
-          <Key>
-            <PropertyRef Name="PK_Presupuesto_Orden_Trabajo_id" />
-          </Key>
-          <Property Name="PK_Presupuesto_Orden_Trabajo_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Presupuesto" Type="int" Nullable="false" />
-          <Property Name="Fecha" Type="datetime" Precision="0" />
-          <Property Name="Obra" Type="varchar" MaxLength="50" />
-          <Property Name="Fecha_Aprobacion" Type="datetime" Precision="0" />
-          <Property Name="Ascensor" Type="varchar" MaxLength="50" />
-          <Property Name="Tecnico_Emisor" Type="varchar" MaxLength="150" />
-          <Property Name="Supervisor" Type="varchar" MaxLength="150" />
-          <Property Name="Direccion" Type="varchar" MaxLength="200" />
-          <Property Name="Aprobacion" Type="datetime" Precision="0" />
-          <Property Name="Telefono_Contacto" Type="int" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="250" />
-          <Property Name="Descripcion_Terceros" Type="varchar" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="presupuesto_orden_trabajo_repuesto_reparacion">
-          <Key>
-            <PropertyRef Name="PK_Presupuesto_OC_Rep_id" />
-          </Key>
-          <Property Name="PK_Presupuesto_OC_Rep_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Presupuesto_Orden_Trabajo" Type="int" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="150" />
-          <Property Name="Cantidad" Type="int" />
-          <Property Name="Codigo" Type="varchar" MaxLength="150" />
-        </EntityType>
-        <EntityType Name="presupuesto_repuesto_desgloce">
-          <Key>
-            <PropertyRef Name="PK_ppto_repuesto_desgloce_id" />
-          </Key>
-          <Property Name="PK_ppto_repuesto_desgloce_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Presupuesto_Repuesto" Type="int" Nullable="false" />
-          <Property Name="Valor_Repuesto" Type="decimal" Precision="19" Scale="6" Nullable="false" />
-          <Property Name="Valor_Mano_Obra" Type="decimal" Precision="19" Scale="6" Nullable="false" />
-          <Property Name="Valor_Comision_1" Type="decimal" Precision="19" Scale="6" Nullable="false" />
-          <Property Name="Valor_Comision_2" Type="decimal" Precision="19" Scale="6" Nullable="false" />
-        </EntityType>
-        <EntityType Name="presupuesto_trabajo_resumen">
-          <Key>
-            <PropertyRef Name="PK_Presupuesto_Trabajo_Resumen_id" />
-          </Key>
-          <Property Name="PK_Presupuesto_Trabajo_Resumen_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Presupuesto" Type="int" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="200" />
-          <Property Name="SubTotal" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Total_Neto_Comsiones" Type="decimal" Precision="19" Scale="6" />
-        </EntityType>
-        <EntityType Name="presupuesto_trabajo_resumen_comercial_detalle">
-          <Key>
-            <PropertyRef Name="PK_ppto_trabajo_resumen_comercial_detalle_id" />
-          </Key>
-          <Property Name="PK_ppto_trabajo_resumen_comercial_detalle_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Presupuesto_Trabajo_Resumen" Type="int" Nullable="false" />
-          <Property Name="Valor_Mano_Obra" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Valor_Repuestos" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Valor_Terceros" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Valor_Fletes" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="SubTotal" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Porcentaje_Comision_Vendedor" Type="int" />
-          <Property Name="Valor_Comision_Vendedor" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Porcentaje_Comision_Otro_Vendedor" Type="int" />
-          <Property Name="Valor_Comision_Otro_Vendedor" Type="decimal" Precision="19" Scale="6" />
-        </EntityType>
-        <EntityType Name="presupuesto_trabajo_resumen_comision_desgloce">
-          <Key>
-            <PropertyRef Name="PK_ppto_trabajo_resumen_comision_desgloce_id" />
-          </Key>
-          <Property Name="PK_ppto_trabajo_resumen_comision_desgloce_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ppto_trabajo_resumen_comision_detalle" Type="int" Nullable="false" />
-          <Property Name="Valor_Flete" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Valor_Mano_Obra" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Valor_Comision_1" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Valor_Comision_2" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Total" Type="decimal" Precision="19" Scale="6" />
-        </EntityType>
-        <EntityType Name="presupuesto_trabajo_resumen_comision_detalle">
-          <Key>
-            <PropertyRef Name="PK_ppto_trabajo_resumen_comision_detalle_id" />
-          </Key>
-          <Property Name="PK_ppto_trabajo_resumen_comision_detalle_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Presupuesto_Trabajo_Resumen" Type="int" Nullable="false" />
-          <Property Name="Valor_Venta" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Valor_Margen_Venta" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Cantidad_Fletes" Type="int" />
-          <Property Name="Total_Fletes" Type="decimal" Precision="19" Scale="6" />
-        </EntityType>
-        <EntityType Name="presupuesto_trabajo_resumen_mo_detalle">
-          <Key>
-            <PropertyRef Name="PK_ppto_trabajo_resumen_mo_detalle_id" />
-          </Key>
-          <Property Name="PK_ppto_trabajo_resumen_mo_detalle_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Presupuesto_Trabajo_Resumen" Type="int" Nullable="false" />
-          <Property Name="Horas_Parejas" Type="decimal" Precision="10" Scale="2" />
-          <Property Name="SubTotal" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Recargo_HH_EE" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Total" Type="decimal" Precision="19" Scale="6" />
-        </EntityType>
-        <EntityType Name="presupuesto_trabajo_terceros">
-          <Key>
-            <PropertyRef Name="PK_ppto_trabajo_terceros_id" />
-          </Key>
-          <Property Name="PK_ppto_trabajo_terceros_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Presupuesto" Type="int" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="200" />
-          <Property Name="Valor" Type="decimal" Precision="19" Scale="6" />
-        </EntityType>
-        <EntityType Name="presupuesto_trabajo_terceros_desgloce">
-          <Key>
-            <PropertyRef Name="PK_ppto_trabajo_terceros_desgloce_id" />
-          </Key>
-          <Property Name="PK_ppto_trabajo_terceros_desgloce_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Presupuesto_Trabajo_Tercero" Type="int" Nullable="false" />
-          <Property Name="Valor_Trabajo_Taller" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Valor_Mano_Obra" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Valor_Comision_1" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Valor_Comision_2" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Total" Type="decimal" Precision="19" Scale="6" />
-        </EntityType>
-        <EntityType Name="repuesto">
-          <Key>
-            <PropertyRef Name="PK_repuesto_id" />
-          </Key>
-          <Property Name="PK_repuesto_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Codigo_repuesto" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Nombre_Articulo" Type="varchar" MaxLength="50" />
-          <Property Name="Marca_Articulo" Type="varchar" MaxLength="50" />
-          <Property Name="Unidad" Type="int" Nullable="false" />
-          <Property Name="Precio_Compra" Type="int" Nullable="false" />
-          <Property Name="Precio_Venta" Type="int" />
-        </EntityType>
-        <EntityType Name="tipo_esfuerzo">
-          <Key>
-            <PropertyRef Name="PK_Tipo_esfuerzo_id" />
-          </Key>
-          <Property Name="PK_Tipo_esfuerzo_id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Descripcion_esfuerzo" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Estado" Type="bit" />
-        </EntityType>
-        <EntityType Name="tipo_moneda">
-          <Key>
-            <PropertyRef Name="PK_Tipo_moneda_id" />
-          </Key>
-          <Property Name="PK_Tipo_moneda_id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="Cargo" Type="varchar" MaxLength="50" />
+          <Property Name="FechaIngreso" Type="datetime" Precision="0" />
         </EntityType>
         <EntityType Name="usuario">
           <Key>
-            <PropertyRef Name="PK_Usuario_id" />
+            <PropertyRef Name="PK_UsuarioID" />
           </Key>
-          <Property Name="PK_Usuario_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Login" Type="varchar" MaxLength="150" />
-          <Property Name="Email" Type="varchar" MaxLength="150" />
-          <Property Name="Password" Type="varchar" MaxLength="150" />
-          <Property Name="Usuario_id" Type="int" />
-          <Property Name="Estado" Type="bit" />
+          <Property Name="PK_UsuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="bool" />
+          <Property Name="PK_PersonaID" Type="int" />
         </EntityType>
-        <EntityType Name="valor_esfuerzo">
-          <Key>
-            <PropertyRef Name="PK_Valor_esfuerzo_id" />
-          </Key>
-          <Property Name="PK_Valor_esfuerzo_id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Descripcion_Esfuerzo" Type="varchar" MaxLength="50" />
-          <Property Name="Valor_Esfuerzo" Type="decimal" Precision="19" Scale="6" />
-          <Property Name="Estado" Type="bit" />
-        </EntityType>
-        <Association Name="FK_Moneda_Tipo_Moneda">
-          <End Role="tipo_moneda" Type="Self.tipo_moneda" Multiplicity="1" />
-          <End Role="moneda" Type="Self.moneda" Multiplicity="*" />
+        <Association Name="Relationship1">
+          <End Role="cotizacion" Type="Self.cotizacion" Multiplicity="0..1" />
+          <End Role="cotizacionrepuesto" Type="Self.cotizacionrepuesto" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tipo_moneda">
-              <PropertyRef Name="PK_Tipo_moneda_id" />
+            <Principal Role="cotizacion">
+              <PropertyRef Name="PK_Cotizacion_ID" />
             </Principal>
-            <Dependent Role="moneda">
-              <PropertyRef Name="Tipo_moneda" />
+            <Dependent Role="cotizacionrepuesto">
+              <PropertyRef Name="PK_Cotizacion_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Ppto_Comercial_Condicion_Venta">
-          <End Role="presupuesto_comercial_detalle" Type="Self.presupuesto_comercial_detalle" Multiplicity="1" />
-          <End Role="presupuesto_comercial_condicion_venta" Type="Self.presupuesto_comercial_condicion_venta" Multiplicity="*" />
+        <Association Name="Relationship2">
+          <End Role="cotizacion" Type="Self.cotizacion" Multiplicity="0..1" />
+          <End Role="cotizaciontrabajoterceros" Type="Self.cotizaciontrabajoterceros" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="presupuesto_comercial_detalle">
-              <PropertyRef Name="PK_Presupuesto_Comercial_Detalle_id" />
+            <Principal Role="cotizacion">
+              <PropertyRef Name="PK_Cotizacion_ID" />
             </Principal>
-            <Dependent Role="presupuesto_comercial_condicion_venta">
-              <PropertyRef Name="Presupuesto_Comercial" />
+            <Dependent Role="cotizaciontrabajoterceros">
+              <PropertyRef Name="PK_Cotizacion_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Ppto_Comercial_Detalle">
-          <End Role="presupuesto_comercial" Type="Self.presupuesto_comercial" Multiplicity="1" />
-          <End Role="presupuesto_comercial_detalle" Type="Self.presupuesto_comercial_detalle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto_comercial">
-              <PropertyRef Name="Presupuesto_Comercial_id" />
-            </Principal>
-            <Dependent Role="presupuesto_comercial_detalle">
-              <PropertyRef Name="Presupuesto_Comercial" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ppto_Comercial_Resumen">
-          <End Role="presupuesto_comercial_detalle" Type="Self.presupuesto_comercial_detalle" Multiplicity="1" />
-          <End Role="presupuesto_comercial_resumen" Type="Self.presupuesto_comercial_resumen" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto_comercial_detalle">
-              <PropertyRef Name="PK_Presupuesto_Comercial_Detalle_id" />
-            </Principal>
-            <Dependent Role="presupuesto_comercial_resumen">
-              <PropertyRef Name="Presupuesto_Comercial_Detalle" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ppto_Control_Orden_Trabajo">
-          <End Role="presupuesto_orden_trabajo" Type="Self.presupuesto_orden_trabajo" Multiplicity="1" />
-          <End Role="presupuesto_control_orden_trabajo" Type="Self.presupuesto_control_orden_trabajo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto_orden_trabajo">
-              <PropertyRef Name="PK_Presupuesto_Orden_Trabajo_id" />
-            </Principal>
-            <Dependent Role="presupuesto_control_orden_trabajo">
-              <PropertyRef Name="Presupuesto_Orden_Trabajo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ppto_Orden_Trabajo_Rep">
-          <End Role="presupuesto_orden_trabajo" Type="Self.presupuesto_orden_trabajo" Multiplicity="1" />
-          <End Role="presupuesto_orden_trabajo_repuesto_reparacion" Type="Self.presupuesto_orden_trabajo_repuesto_reparacion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto_orden_trabajo">
-              <PropertyRef Name="PK_Presupuesto_Orden_Trabajo_id" />
-            </Principal>
-            <Dependent Role="presupuesto_orden_trabajo_repuesto_reparacion">
-              <PropertyRef Name="Presupuesto_Orden_Trabajo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ppto_Repuesto_Desgloce_Presupesto_Repuesto">
-          <End Role="presupesto_repuesto" Type="Self.presupesto_repuesto" Multiplicity="1" />
-          <End Role="presupuesto_repuesto_desgloce" Type="Self.presupuesto_repuesto_desgloce" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupesto_repuesto">
-              <PropertyRef Name="PK_ppto_repuesto_id" />
-            </Principal>
-            <Dependent Role="presupuesto_repuesto_desgloce">
-              <PropertyRef Name="Presupuesto_Repuesto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ppto_Trabajo_Resumen_Comercial_Detalle">
-          <End Role="presupuesto_trabajo_resumen" Type="Self.presupuesto_trabajo_resumen" Multiplicity="1" />
-          <End Role="presupuesto_trabajo_resumen_comercial_detalle" Type="Self.presupuesto_trabajo_resumen_comercial_detalle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto_trabajo_resumen">
-              <PropertyRef Name="PK_Presupuesto_Trabajo_Resumen_id" />
-            </Principal>
-            <Dependent Role="presupuesto_trabajo_resumen_comercial_detalle">
-              <PropertyRef Name="Presupuesto_Trabajo_Resumen" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ppto_Trabajo_Resumen_Comision_Detalle">
-          <End Role="presupuesto_trabajo_resumen" Type="Self.presupuesto_trabajo_resumen" Multiplicity="1" />
-          <End Role="presupuesto_trabajo_resumen_comision_detalle" Type="Self.presupuesto_trabajo_resumen_comision_detalle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto_trabajo_resumen">
-              <PropertyRef Name="PK_Presupuesto_Trabajo_Resumen_id" />
-            </Principal>
-            <Dependent Role="presupuesto_trabajo_resumen_comision_detalle">
-              <PropertyRef Name="Presupuesto_Trabajo_Resumen" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ppto_Trabajo_Resumen_MO_Detalle">
-          <End Role="presupuesto_trabajo_resumen" Type="Self.presupuesto_trabajo_resumen" Multiplicity="1" />
-          <End Role="presupuesto_trabajo_resumen_mo_detalle" Type="Self.presupuesto_trabajo_resumen_mo_detalle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto_trabajo_resumen">
-              <PropertyRef Name="PK_Presupuesto_Trabajo_Resumen_id" />
-            </Principal>
-            <Dependent Role="presupuesto_trabajo_resumen_mo_detalle">
-              <PropertyRef Name="Presupuesto_Trabajo_Resumen" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ppto_Trabajo_Resumen_Presupuesto">
-          <End Role="presupuesto" Type="Self.presupuesto" Multiplicity="1" />
-          <End Role="presupuesto_trabajo_resumen" Type="Self.presupuesto_trabajo_resumen" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto">
-              <PropertyRef Name="PK_Presupuesto_id" />
-            </Principal>
-            <Dependent Role="presupuesto_trabajo_resumen">
-              <PropertyRef Name="Presupuesto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ppto_Trabajo_Terceros_Desgloce">
-          <End Role="presupuesto_trabajo_terceros" Type="Self.presupuesto_trabajo_terceros" Multiplicity="1" />
-          <End Role="presupuesto_trabajo_terceros_desgloce" Type="Self.presupuesto_trabajo_terceros_desgloce" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto_trabajo_terceros">
-              <PropertyRef Name="PK_ppto_trabajo_terceros_id" />
-            </Principal>
-            <Dependent Role="presupuesto_trabajo_terceros_desgloce">
-              <PropertyRef Name="Presupuesto_Trabajo_Tercero" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Pptto_Trabajo_Resumen_Comision_Desgloce">
-          <End Role="presupuesto_trabajo_resumen_comision_detalle" Type="Self.presupuesto_trabajo_resumen_comision_detalle" Multiplicity="1" />
-          <End Role="presupuesto_trabajo_resumen_comision_desgloce" Type="Self.presupuesto_trabajo_resumen_comision_desgloce" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto_trabajo_resumen_comision_detalle">
-              <PropertyRef Name="PK_ppto_trabajo_resumen_comision_detalle_id" />
-            </Principal>
-            <Dependent Role="presupuesto_trabajo_resumen_comision_desgloce">
-              <PropertyRef Name="Ppto_trabajo_resumen_comision_detalle" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Presupesto_Repuesto_Presupuesto">
-          <End Role="presupuesto" Type="Self.presupuesto" Multiplicity="1" />
-          <End Role="presupesto_repuesto" Type="Self.presupesto_repuesto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto">
-              <PropertyRef Name="PK_Presupuesto_id" />
-            </Principal>
-            <Dependent Role="presupesto_repuesto">
-              <PropertyRef Name="Presupuesto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Presupesto_Repuesto_Repuesto">
-          <End Role="repuesto" Type="Self.repuesto" Multiplicity="1" />
-          <End Role="presupesto_repuesto" Type="Self.presupesto_repuesto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="repuesto">
-              <PropertyRef Name="PK_repuesto_id" />
-            </Principal>
-            <Dependent Role="presupesto_repuesto">
-              <PropertyRef Name="Repuesto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Presupuesto_Comercial_Presupuesto">
-          <End Role="presupuesto" Type="Self.presupuesto" Multiplicity="1" />
-          <End Role="presupuesto_comercial" Type="Self.presupuesto_comercial" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto">
-              <PropertyRef Name="PK_Presupuesto_id" />
-            </Principal>
-            <Dependent Role="presupuesto_comercial">
-              <PropertyRef Name="Presupuesto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Presupuesto_Moneda">
-          <End Role="moneda" Type="Self.moneda" Multiplicity="1" />
-          <End Role="presupuesto" Type="Self.presupuesto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="moneda">
-              <PropertyRef Name="PK_valor_moneda_id" />
-            </Principal>
-            <Dependent Role="presupuesto">
-              <PropertyRef Name="Valor_moneda" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Presupuesto_Orden_Trabajo_Presupuesto">
-          <End Role="presupuesto" Type="Self.presupuesto" Multiplicity="1" />
-          <End Role="presupuesto_orden_trabajo" Type="Self.presupuesto_orden_trabajo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto">
-              <PropertyRef Name="PK_Presupuesto_id" />
-            </Principal>
-            <Dependent Role="presupuesto_orden_trabajo">
-              <PropertyRef Name="Presupuesto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Presupuesto_Trabajo_Terceros_Presupuesto">
-          <End Role="presupuesto" Type="Self.presupuesto" Multiplicity="1" />
-          <End Role="presupuesto_trabajo_terceros" Type="Self.presupuesto_trabajo_terceros" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto">
-              <PropertyRef Name="PK_Presupuesto_id" />
-            </Principal>
-            <Dependent Role="presupuesto_trabajo_terceros">
-              <PropertyRef Name="Presupuesto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Presupuesto_Valor_Esfuerzo">
-          <End Role="valor_esfuerzo" Type="Self.valor_esfuerzo" Multiplicity="1" />
-          <End Role="presupuesto" Type="Self.presupuesto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="valor_esfuerzo">
-              <PropertyRef Name="PK_Valor_esfuerzo_id" />
-            </Principal>
-            <Dependent Role="presupuesto">
-              <PropertyRef Name="Valor_HH" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Presupuesto_Valor_Esfuerzo_02">
-          <End Role="valor_esfuerzo" Type="Self.valor_esfuerzo" Multiplicity="1" />
-          <End Role="presupuesto" Type="Self.presupuesto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="valor_esfuerzo">
-              <PropertyRef Name="PK_Valor_esfuerzo_id" />
-            </Principal>
-            <Dependent Role="presupuesto">
-              <PropertyRef Name="Valor_Flete" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Usuario_Persona">
+        <Association Name="Relationship3">
           <End Role="persona" Type="Self.persona" Multiplicity="0..1" />
           <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="persona">
-              <PropertyRef Name="PK_Persona_id" />
+              <PropertyRef Name="PK_PersonaID" />
             </Principal>
             <Dependent Role="usuario">
-              <PropertyRef Name="Usuario_id" />
+              <PropertyRef Name="PK_PersonaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship4">
+          <End Role="cotizacion" Type="Self.cotizacion" Multiplicity="0..1" />
+          <End Role="contabilidad" Type="Self.contabilidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cotizacion">
+              <PropertyRef Name="PK_Cotizacion_ID" />
+            </Principal>
+            <Dependent Role="contabilidad">
+              <PropertyRef Name="PK_Cotizacion_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship5">
+          <End Role="contabilidad" Type="Self.contabilidad" Multiplicity="0..1" />
+          <End Role="contabilidadfacturacion" Type="Self.contabilidadfacturacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contabilidad">
+              <PropertyRef Name="PK_ContabilidadID" />
+            </Principal>
+            <Dependent Role="contabilidadfacturacion">
+              <PropertyRef Name="PK_ContabilidadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship6">
+          <End Role="contabilidad" Type="Self.contabilidad" Multiplicity="1" />
+          <End Role="contabilidaddescuentos" Type="Self.contabilidaddescuentos" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="contabilidad">
+              <PropertyRef Name="PK_ContabilidadID" />
+            </Principal>
+            <Dependent Role="contabilidaddescuentos">
+              <PropertyRef Name="PK_ContabilidadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship7">
+          <End Role="contabilidad" Type="Self.contabilidad" Multiplicity="1" />
+          <End Role="contabilidadformapago" Type="Self.contabilidadformapago" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="contabilidad">
+              <PropertyRef Name="PK_ContabilidadID" />
+            </Principal>
+            <Dependent Role="contabilidadformapago">
+              <PropertyRef Name="PK_ContabilidadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship8">
+          <End Role="contabilidad" Type="Self.contabilidad" Multiplicity="1" />
+          <End Role="contabilidadaprobacion" Type="Self.contabilidadaprobacion" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="contabilidad">
+              <PropertyRef Name="PK_ContabilidadID" />
+            </Principal>
+            <Dependent Role="contabilidadaprobacion">
+              <PropertyRef Name="PK_ContabilidadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship9">
+          <End Role="contabilidad" Type="Self.contabilidad" Multiplicity="0..1" />
+          <End Role="operaciones" Type="Self.operaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contabilidad">
+              <PropertyRef Name="PK_ContabilidadID" />
+            </Principal>
+            <Dependent Role="operaciones">
+              <PropertyRef Name="PK_ContabilidadID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="bd_santiagoModelStoreContainer">
-          <EntitySet Name="moneda" EntityType="Self.moneda" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="persona" EntityType="Self.persona" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="presupesto_repuesto" EntityType="Self.presupesto_repuesto" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="presupuesto" EntityType="Self.presupuesto" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="presupuesto_comercial" EntityType="Self.presupuesto_comercial" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="presupuesto_comercial_condicion_venta" EntityType="Self.presupuesto_comercial_condicion_venta" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="presupuesto_comercial_detalle" EntityType="Self.presupuesto_comercial_detalle" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="presupuesto_comercial_resumen" EntityType="Self.presupuesto_comercial_resumen" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="presupuesto_control_orden_trabajo" EntityType="Self.presupuesto_control_orden_trabajo" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="presupuesto_orden_trabajo" EntityType="Self.presupuesto_orden_trabajo" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="presupuesto_orden_trabajo_repuesto_reparacion" EntityType="Self.presupuesto_orden_trabajo_repuesto_reparacion" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="presupuesto_repuesto_desgloce" EntityType="Self.presupuesto_repuesto_desgloce" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="presupuesto_trabajo_resumen" EntityType="Self.presupuesto_trabajo_resumen" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="presupuesto_trabajo_resumen_comercial_detalle" EntityType="Self.presupuesto_trabajo_resumen_comercial_detalle" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="presupuesto_trabajo_resumen_comision_desgloce" EntityType="Self.presupuesto_trabajo_resumen_comision_desgloce" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="presupuesto_trabajo_resumen_comision_detalle" EntityType="Self.presupuesto_trabajo_resumen_comision_detalle" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="presupuesto_trabajo_resumen_mo_detalle" EntityType="Self.presupuesto_trabajo_resumen_mo_detalle" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="presupuesto_trabajo_terceros" EntityType="Self.presupuesto_trabajo_terceros" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="presupuesto_trabajo_terceros_desgloce" EntityType="Self.presupuesto_trabajo_terceros_desgloce" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="repuesto" EntityType="Self.repuesto" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="tipo_esfuerzo" EntityType="Self.tipo_esfuerzo" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="tipo_moneda" EntityType="Self.tipo_moneda" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="santiago" store:Type="Tables" />
-          <EntitySet Name="valor_esfuerzo" EntityType="Self.valor_esfuerzo" Schema="santiago" store:Type="Tables" />
-          <AssociationSet Name="FK_Moneda_Tipo_Moneda" Association="Self.FK_Moneda_Tipo_Moneda">
-            <End Role="tipo_moneda" EntitySet="tipo_moneda" />
-            <End Role="moneda" EntitySet="moneda" />
+          <EntitySet Name="contabilidad" EntityType="Self.contabilidad" Schema="bd_sertec" store:Type="Tables" />
+          <EntitySet Name="contabilidadaprobacion" EntityType="Self.contabilidadaprobacion" Schema="bd_sertec" store:Type="Tables" />
+          <EntitySet Name="contabilidaddescuentos" EntityType="Self.contabilidaddescuentos" Schema="bd_sertec" store:Type="Tables" />
+          <EntitySet Name="contabilidadfacturacion" EntityType="Self.contabilidadfacturacion" Schema="bd_sertec" store:Type="Tables" />
+          <EntitySet Name="contabilidadformapago" EntityType="Self.contabilidadformapago" Schema="bd_sertec" store:Type="Tables" />
+          <EntitySet Name="cotizacion" EntityType="Self.cotizacion" Schema="bd_sertec" store:Type="Tables" />
+          <EntitySet Name="cotizacionrepuesto" EntityType="Self.cotizacionrepuesto" Schema="bd_sertec" store:Type="Tables" />
+          <EntitySet Name="cotizaciontrabajoterceros" EntityType="Self.cotizaciontrabajoterceros" Schema="bd_sertec" store:Type="Tables" />
+          <EntitySet Name="operaciones" EntityType="Self.operaciones" Schema="bd_sertec" store:Type="Tables" />
+          <EntitySet Name="persona" EntityType="Self.persona" Schema="bd_sertec" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="bd_sertec" store:Type="Tables" />
+          <AssociationSet Name="Relationship1" Association="Self.Relationship1">
+            <End Role="cotizacion" EntitySet="cotizacion" />
+            <End Role="cotizacionrepuesto" EntitySet="cotizacionrepuesto" />
           </AssociationSet>
-          <AssociationSet Name="FK_Ppto_Comercial_Condicion_Venta" Association="Self.FK_Ppto_Comercial_Condicion_Venta">
-            <End Role="presupuesto_comercial_detalle" EntitySet="presupuesto_comercial_detalle" />
-            <End Role="presupuesto_comercial_condicion_venta" EntitySet="presupuesto_comercial_condicion_venta" />
+          <AssociationSet Name="Relationship2" Association="Self.Relationship2">
+            <End Role="cotizacion" EntitySet="cotizacion" />
+            <End Role="cotizaciontrabajoterceros" EntitySet="cotizaciontrabajoterceros" />
           </AssociationSet>
-          <AssociationSet Name="FK_Ppto_Comercial_Detalle" Association="Self.FK_Ppto_Comercial_Detalle">
-            <End Role="presupuesto_comercial" EntitySet="presupuesto_comercial" />
-            <End Role="presupuesto_comercial_detalle" EntitySet="presupuesto_comercial_detalle" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ppto_Comercial_Resumen" Association="Self.FK_Ppto_Comercial_Resumen">
-            <End Role="presupuesto_comercial_detalle" EntitySet="presupuesto_comercial_detalle" />
-            <End Role="presupuesto_comercial_resumen" EntitySet="presupuesto_comercial_resumen" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ppto_Control_Orden_Trabajo" Association="Self.FK_Ppto_Control_Orden_Trabajo">
-            <End Role="presupuesto_orden_trabajo" EntitySet="presupuesto_orden_trabajo" />
-            <End Role="presupuesto_control_orden_trabajo" EntitySet="presupuesto_control_orden_trabajo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ppto_Orden_Trabajo_Rep" Association="Self.FK_Ppto_Orden_Trabajo_Rep">
-            <End Role="presupuesto_orden_trabajo" EntitySet="presupuesto_orden_trabajo" />
-            <End Role="presupuesto_orden_trabajo_repuesto_reparacion" EntitySet="presupuesto_orden_trabajo_repuesto_reparacion" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ppto_Repuesto_Desgloce_Presupesto_Repuesto" Association="Self.FK_Ppto_Repuesto_Desgloce_Presupesto_Repuesto">
-            <End Role="presupesto_repuesto" EntitySet="presupesto_repuesto" />
-            <End Role="presupuesto_repuesto_desgloce" EntitySet="presupuesto_repuesto_desgloce" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ppto_Trabajo_Resumen_Comercial_Detalle" Association="Self.FK_Ppto_Trabajo_Resumen_Comercial_Detalle">
-            <End Role="presupuesto_trabajo_resumen" EntitySet="presupuesto_trabajo_resumen" />
-            <End Role="presupuesto_trabajo_resumen_comercial_detalle" EntitySet="presupuesto_trabajo_resumen_comercial_detalle" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ppto_Trabajo_Resumen_Comision_Detalle" Association="Self.FK_Ppto_Trabajo_Resumen_Comision_Detalle">
-            <End Role="presupuesto_trabajo_resumen" EntitySet="presupuesto_trabajo_resumen" />
-            <End Role="presupuesto_trabajo_resumen_comision_detalle" EntitySet="presupuesto_trabajo_resumen_comision_detalle" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ppto_Trabajo_Resumen_MO_Detalle" Association="Self.FK_Ppto_Trabajo_Resumen_MO_Detalle">
-            <End Role="presupuesto_trabajo_resumen" EntitySet="presupuesto_trabajo_resumen" />
-            <End Role="presupuesto_trabajo_resumen_mo_detalle" EntitySet="presupuesto_trabajo_resumen_mo_detalle" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ppto_Trabajo_Resumen_Presupuesto" Association="Self.FK_Ppto_Trabajo_Resumen_Presupuesto">
-            <End Role="presupuesto" EntitySet="presupuesto" />
-            <End Role="presupuesto_trabajo_resumen" EntitySet="presupuesto_trabajo_resumen" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ppto_Trabajo_Terceros_Desgloce" Association="Self.FK_Ppto_Trabajo_Terceros_Desgloce">
-            <End Role="presupuesto_trabajo_terceros" EntitySet="presupuesto_trabajo_terceros" />
-            <End Role="presupuesto_trabajo_terceros_desgloce" EntitySet="presupuesto_trabajo_terceros_desgloce" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Pptto_Trabajo_Resumen_Comision_Desgloce" Association="Self.FK_Pptto_Trabajo_Resumen_Comision_Desgloce">
-            <End Role="presupuesto_trabajo_resumen_comision_detalle" EntitySet="presupuesto_trabajo_resumen_comision_detalle" />
-            <End Role="presupuesto_trabajo_resumen_comision_desgloce" EntitySet="presupuesto_trabajo_resumen_comision_desgloce" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Presupesto_Repuesto_Presupuesto" Association="Self.FK_Presupesto_Repuesto_Presupuesto">
-            <End Role="presupuesto" EntitySet="presupuesto" />
-            <End Role="presupesto_repuesto" EntitySet="presupesto_repuesto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Presupesto_Repuesto_Repuesto" Association="Self.FK_Presupesto_Repuesto_Repuesto">
-            <End Role="repuesto" EntitySet="repuesto" />
-            <End Role="presupesto_repuesto" EntitySet="presupesto_repuesto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Presupuesto_Comercial_Presupuesto" Association="Self.FK_Presupuesto_Comercial_Presupuesto">
-            <End Role="presupuesto" EntitySet="presupuesto" />
-            <End Role="presupuesto_comercial" EntitySet="presupuesto_comercial" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Presupuesto_Moneda" Association="Self.FK_Presupuesto_Moneda">
-            <End Role="moneda" EntitySet="moneda" />
-            <End Role="presupuesto" EntitySet="presupuesto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Presupuesto_Orden_Trabajo_Presupuesto" Association="Self.FK_Presupuesto_Orden_Trabajo_Presupuesto">
-            <End Role="presupuesto" EntitySet="presupuesto" />
-            <End Role="presupuesto_orden_trabajo" EntitySet="presupuesto_orden_trabajo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Presupuesto_Trabajo_Terceros_Presupuesto" Association="Self.FK_Presupuesto_Trabajo_Terceros_Presupuesto">
-            <End Role="presupuesto" EntitySet="presupuesto" />
-            <End Role="presupuesto_trabajo_terceros" EntitySet="presupuesto_trabajo_terceros" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Presupuesto_Valor_Esfuerzo" Association="Self.FK_Presupuesto_Valor_Esfuerzo">
-            <End Role="valor_esfuerzo" EntitySet="valor_esfuerzo" />
-            <End Role="presupuesto" EntitySet="presupuesto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Presupuesto_Valor_Esfuerzo_02" Association="Self.FK_Presupuesto_Valor_Esfuerzo_02">
-            <End Role="valor_esfuerzo" EntitySet="valor_esfuerzo" />
-            <End Role="presupuesto" EntitySet="presupuesto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Usuario_Persona" Association="Self.FK_Usuario_Persona">
+          <AssociationSet Name="Relationship3" Association="Self.Relationship3">
             <End Role="persona" EntitySet="persona" />
             <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship4" Association="Self.Relationship4">
+            <End Role="cotizacion" EntitySet="cotizacion" />
+            <End Role="contabilidad" EntitySet="contabilidad" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship5" Association="Self.Relationship5">
+            <End Role="contabilidad" EntitySet="contabilidad" />
+            <End Role="contabilidadfacturacion" EntitySet="contabilidadfacturacion" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship6" Association="Self.Relationship6">
+            <End Role="contabilidad" EntitySet="contabilidad" />
+            <End Role="contabilidaddescuentos" EntitySet="contabilidaddescuentos" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship7" Association="Self.Relationship7">
+            <End Role="contabilidad" EntitySet="contabilidad" />
+            <End Role="contabilidadformapago" EntitySet="contabilidadformapago" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship8" Association="Self.Relationship8">
+            <End Role="contabilidad" EntitySet="contabilidad" />
+            <End Role="contabilidadaprobacion" EntitySet="contabilidadaprobacion" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship9" Association="Self.Relationship9">
+            <End Role="contabilidad" EntitySet="contabilidad" />
+            <End Role="operaciones" EntitySet="operaciones" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="bd_santiagoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="bd_santiagoEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="moneda" EntityType="bd_santiagoModel.moneda" />
-          <EntitySet Name="persona" EntityType="bd_santiagoModel.persona" />
-          <EntitySet Name="presupesto_repuesto" EntityType="bd_santiagoModel.presupesto_repuesto" />
-          <EntitySet Name="presupuesto" EntityType="bd_santiagoModel.presupuesto" />
-          <EntitySet Name="presupuesto_comercial" EntityType="bd_santiagoModel.presupuesto_comercial" />
-          <EntitySet Name="presupuesto_comercial_condicion_venta" EntityType="bd_santiagoModel.presupuesto_comercial_condicion_venta" />
-          <EntitySet Name="presupuesto_comercial_detalle" EntityType="bd_santiagoModel.presupuesto_comercial_detalle" />
-          <EntitySet Name="presupuesto_comercial_resumen" EntityType="bd_santiagoModel.presupuesto_comercial_resumen" />
-          <EntitySet Name="presupuesto_control_orden_trabajo" EntityType="bd_santiagoModel.presupuesto_control_orden_trabajo" />
-          <EntitySet Name="presupuesto_orden_trabajo" EntityType="bd_santiagoModel.presupuesto_orden_trabajo" />
-          <EntitySet Name="presupuesto_orden_trabajo_repuesto_reparacion" EntityType="bd_santiagoModel.presupuesto_orden_trabajo_repuesto_reparacion" />
-          <EntitySet Name="presupuesto_repuesto_desgloce" EntityType="bd_santiagoModel.presupuesto_repuesto_desgloce" />
-          <EntitySet Name="presupuesto_trabajo_resumen" EntityType="bd_santiagoModel.presupuesto_trabajo_resumen" />
-          <EntitySet Name="presupuesto_trabajo_resumen_comercial_detalle" EntityType="bd_santiagoModel.presupuesto_trabajo_resumen_comercial_detalle" />
-          <EntitySet Name="presupuesto_trabajo_resumen_comision_desgloce" EntityType="bd_santiagoModel.presupuesto_trabajo_resumen_comision_desgloce" />
-          <EntitySet Name="presupuesto_trabajo_resumen_comision_detalle" EntityType="bd_santiagoModel.presupuesto_trabajo_resumen_comision_detalle" />
-          <EntitySet Name="presupuesto_trabajo_resumen_mo_detalle" EntityType="bd_santiagoModel.presupuesto_trabajo_resumen_mo_detalle" />
-          <EntitySet Name="presupuesto_trabajo_terceros" EntityType="bd_santiagoModel.presupuesto_trabajo_terceros" />
-          <EntitySet Name="presupuesto_trabajo_terceros_desgloce" EntityType="bd_santiagoModel.presupuesto_trabajo_terceros_desgloce" />
-          <EntitySet Name="repuesto" EntityType="bd_santiagoModel.repuesto" />
-          <EntitySet Name="tipo_esfuerzo" EntityType="bd_santiagoModel.tipo_esfuerzo" />
-          <EntitySet Name="tipo_moneda" EntityType="bd_santiagoModel.tipo_moneda" />
-          <EntitySet Name="usuario" EntityType="bd_santiagoModel.usuario" />
-          <EntitySet Name="valor_esfuerzo" EntityType="bd_santiagoModel.valor_esfuerzo" />
-          <AssociationSet Name="FK_Moneda_Tipo_Moneda" Association="bd_santiagoModel.FK_Moneda_Tipo_Moneda">
-            <End Role="tipo_moneda" EntitySet="tipo_moneda" />
-            <End Role="moneda" EntitySet="moneda" />
+      <Schema Namespace="bd_sertecModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="bd_sertecEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="contabilidad" EntityType="bd_sertecModel.contabilidad" />
+          <EntitySet Name="contabilidadaprobacion" EntityType="bd_sertecModel.contabilidadaprobacion" />
+          <EntitySet Name="contabilidaddescuentos" EntityType="bd_sertecModel.contabilidaddescuentos" />
+          <EntitySet Name="contabilidadfacturacion" EntityType="bd_sertecModel.contabilidadfacturacion" />
+          <EntitySet Name="contabilidadformapago" EntityType="bd_sertecModel.contabilidadformapago" />
+          <EntitySet Name="cotizacion" EntityType="bd_sertecModel.cotizacion" />
+          <EntitySet Name="cotizacionrepuesto" EntityType="bd_sertecModel.cotizacionrepuesto" />
+          <EntitySet Name="cotizaciontrabajoterceros" EntityType="bd_sertecModel.cotizaciontrabajoterceros" />
+          <EntitySet Name="operaciones" EntityType="bd_sertecModel.operaciones" />
+          <EntitySet Name="persona" EntityType="bd_sertecModel.persona" />
+          <EntitySet Name="usuario" EntityType="bd_sertecModel.usuario" />
+          <AssociationSet Name="Relationship4" Association="bd_sertecModel.Relationship4">
+            <End Role="cotizacion" EntitySet="cotizacion" />
+            <End Role="contabilidad" EntitySet="contabilidad" />
           </AssociationSet>
-          <AssociationSet Name="FK_Presupuesto_Moneda" Association="bd_santiagoModel.FK_Presupuesto_Moneda">
-            <End Role="moneda" EntitySet="moneda" />
-            <End Role="presupuesto" EntitySet="presupuesto" />
+          <AssociationSet Name="Relationship5" Association="bd_sertecModel.Relationship5">
+            <End Role="contabilidad" EntitySet="contabilidad" />
+            <End Role="contabilidadfacturacion" EntitySet="contabilidadfacturacion" />
           </AssociationSet>
-          <AssociationSet Name="FK_Usuario_Persona" Association="bd_santiagoModel.FK_Usuario_Persona">
+          <AssociationSet Name="Relationship6" Association="bd_sertecModel.Relationship6">
+            <End Role="contabilidad" EntitySet="contabilidad" />
+            <End Role="contabilidaddescuentos" EntitySet="contabilidaddescuentos" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship7" Association="bd_sertecModel.Relationship7">
+            <End Role="contabilidad" EntitySet="contabilidad" />
+            <End Role="contabilidadformapago" EntitySet="contabilidadformapago" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship8" Association="bd_sertecModel.Relationship8">
+            <End Role="contabilidad" EntitySet="contabilidad" />
+            <End Role="contabilidadaprobacion" EntitySet="contabilidadaprobacion" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship9" Association="bd_sertecModel.Relationship9">
+            <End Role="contabilidad" EntitySet="contabilidad" />
+            <End Role="operaciones" EntitySet="operaciones" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship1" Association="bd_sertecModel.Relationship1">
+            <End Role="cotizacion" EntitySet="cotizacion" />
+            <End Role="cotizacionrepuesto" EntitySet="cotizacionrepuesto" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship2" Association="bd_sertecModel.Relationship2">
+            <End Role="cotizacion" EntitySet="cotizacion" />
+            <End Role="cotizaciontrabajoterceros" EntitySet="cotizaciontrabajoterceros" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship3" Association="bd_sertecModel.Relationship3">
             <End Role="persona" EntitySet="persona" />
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
-          <AssociationSet Name="FK_Ppto_Repuesto_Desgloce_Presupesto_Repuesto" Association="bd_santiagoModel.FK_Ppto_Repuesto_Desgloce_Presupesto_Repuesto">
-            <End Role="presupesto_repuesto" EntitySet="presupesto_repuesto" />
-            <End Role="presupuesto_repuesto_desgloce" EntitySet="presupuesto_repuesto_desgloce" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Presupesto_Repuesto_Presupuesto" Association="bd_santiagoModel.FK_Presupesto_Repuesto_Presupuesto">
-            <End Role="presupuesto" EntitySet="presupuesto" />
-            <End Role="presupesto_repuesto" EntitySet="presupesto_repuesto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Presupesto_Repuesto_Repuesto" Association="bd_santiagoModel.FK_Presupesto_Repuesto_Repuesto">
-            <End Role="repuesto" EntitySet="repuesto" />
-            <End Role="presupesto_repuesto" EntitySet="presupesto_repuesto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ppto_Trabajo_Resumen_Presupuesto" Association="bd_santiagoModel.FK_Ppto_Trabajo_Resumen_Presupuesto">
-            <End Role="presupuesto" EntitySet="presupuesto" />
-            <End Role="presupuesto_trabajo_resumen" EntitySet="presupuesto_trabajo_resumen" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Presupuesto_Comercial_Presupuesto" Association="bd_santiagoModel.FK_Presupuesto_Comercial_Presupuesto">
-            <End Role="presupuesto" EntitySet="presupuesto" />
-            <End Role="presupuesto_comercial" EntitySet="presupuesto_comercial" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Presupuesto_Orden_Trabajo_Presupuesto" Association="bd_santiagoModel.FK_Presupuesto_Orden_Trabajo_Presupuesto">
-            <End Role="presupuesto" EntitySet="presupuesto" />
-            <End Role="presupuesto_orden_trabajo" EntitySet="presupuesto_orden_trabajo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Presupuesto_Trabajo_Terceros_Presupuesto" Association="bd_santiagoModel.FK_Presupuesto_Trabajo_Terceros_Presupuesto">
-            <End Role="presupuesto" EntitySet="presupuesto" />
-            <End Role="presupuesto_trabajo_terceros" EntitySet="presupuesto_trabajo_terceros" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Presupuesto_Valor_Esfuerzo" Association="bd_santiagoModel.FK_Presupuesto_Valor_Esfuerzo">
-            <End Role="valor_esfuerzo" EntitySet="valor_esfuerzo" />
-            <End Role="presupuesto" EntitySet="presupuesto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Presupuesto_Valor_Esfuerzo_02" Association="bd_santiagoModel.FK_Presupuesto_Valor_Esfuerzo_02">
-            <End Role="valor_esfuerzo" EntitySet="valor_esfuerzo" />
-            <End Role="presupuesto" EntitySet="presupuesto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ppto_Comercial_Detalle" Association="bd_santiagoModel.FK_Ppto_Comercial_Detalle">
-            <End Role="presupuesto_comercial" EntitySet="presupuesto_comercial" />
-            <End Role="presupuesto_comercial_detalle" EntitySet="presupuesto_comercial_detalle" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ppto_Comercial_Condicion_Venta" Association="bd_santiagoModel.FK_Ppto_Comercial_Condicion_Venta">
-            <End Role="presupuesto_comercial_detalle" EntitySet="presupuesto_comercial_detalle" />
-            <End Role="presupuesto_comercial_condicion_venta" EntitySet="presupuesto_comercial_condicion_venta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ppto_Comercial_Resumen" Association="bd_santiagoModel.FK_Ppto_Comercial_Resumen">
-            <End Role="presupuesto_comercial_detalle" EntitySet="presupuesto_comercial_detalle" />
-            <End Role="presupuesto_comercial_resumen" EntitySet="presupuesto_comercial_resumen" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ppto_Control_Orden_Trabajo" Association="bd_santiagoModel.FK_Ppto_Control_Orden_Trabajo">
-            <End Role="presupuesto_orden_trabajo" EntitySet="presupuesto_orden_trabajo" />
-            <End Role="presupuesto_control_orden_trabajo" EntitySet="presupuesto_control_orden_trabajo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ppto_Orden_Trabajo_Rep" Association="bd_santiagoModel.FK_Ppto_Orden_Trabajo_Rep">
-            <End Role="presupuesto_orden_trabajo" EntitySet="presupuesto_orden_trabajo" />
-            <End Role="presupuesto_orden_trabajo_repuesto_reparacion" EntitySet="presupuesto_orden_trabajo_repuesto_reparacion" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ppto_Trabajo_Resumen_Comercial_Detalle" Association="bd_santiagoModel.FK_Ppto_Trabajo_Resumen_Comercial_Detalle">
-            <End Role="presupuesto_trabajo_resumen" EntitySet="presupuesto_trabajo_resumen" />
-            <End Role="presupuesto_trabajo_resumen_comercial_detalle" EntitySet="presupuesto_trabajo_resumen_comercial_detalle" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ppto_Trabajo_Resumen_Comision_Detalle" Association="bd_santiagoModel.FK_Ppto_Trabajo_Resumen_Comision_Detalle">
-            <End Role="presupuesto_trabajo_resumen" EntitySet="presupuesto_trabajo_resumen" />
-            <End Role="presupuesto_trabajo_resumen_comision_detalle" EntitySet="presupuesto_trabajo_resumen_comision_detalle" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ppto_Trabajo_Resumen_MO_Detalle" Association="bd_santiagoModel.FK_Ppto_Trabajo_Resumen_MO_Detalle">
-            <End Role="presupuesto_trabajo_resumen" EntitySet="presupuesto_trabajo_resumen" />
-            <End Role="presupuesto_trabajo_resumen_mo_detalle" EntitySet="presupuesto_trabajo_resumen_mo_detalle" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Pptto_Trabajo_Resumen_Comision_Desgloce" Association="bd_santiagoModel.FK_Pptto_Trabajo_Resumen_Comision_Desgloce">
-            <End Role="presupuesto_trabajo_resumen_comision_detalle" EntitySet="presupuesto_trabajo_resumen_comision_detalle" />
-            <End Role="presupuesto_trabajo_resumen_comision_desgloce" EntitySet="presupuesto_trabajo_resumen_comision_desgloce" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ppto_Trabajo_Terceros_Desgloce" Association="bd_santiagoModel.FK_Ppto_Trabajo_Terceros_Desgloce">
-            <End Role="presupuesto_trabajo_terceros" EntitySet="presupuesto_trabajo_terceros" />
-            <End Role="presupuesto_trabajo_terceros_desgloce" EntitySet="presupuesto_trabajo_terceros_desgloce" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="moneda">
+        <EntityType Name="contabilidad">
           <Key>
-            <PropertyRef Name="PK_valor_moneda_id" />
+            <PropertyRef Name="PK_ContabilidadID" />
           </Key>
-          <Property Name="PK_valor_moneda_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Valor_moneda" Type="Decimal" Nullable="false" />
-          <Property Name="Estado" Type="Boolean" Nullable="false" />
-          <Property Name="Tipo_moneda" Type="SByte" Nullable="false" />
-          <NavigationProperty Name="tipo_moneda1" Relationship="bd_santiagoModel.FK_Moneda_Tipo_Moneda" FromRole="moneda" ToRole="tipo_moneda" />
-          <NavigationProperty Name="presupuesto" Relationship="bd_santiagoModel.FK_Presupuesto_Moneda" FromRole="moneda" ToRole="presupuesto" />
+          <Property Name="PK_ContabilidadID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PersonaAprobacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TelefonoContacto" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PK_Cotizacion_ID" Type="Int32" />
+          <Property Name="Vendedor" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FechaEjecucion" Type="DateTime" />
+          <Property Name="FechaInicio" Type="DateTime" />
+          <Property Name="FechaTermino" Type="DateTime" />
+          <Property Name="GuiaDespacho" Type="Int32" Nullable="false" />
+          <Property Name="Factura" Type="Int32" />
+          <Property Name="MesFacturacion" Type="Int32" />
+          <Property Name="ComisionVendedor" Type="Int32" />
+          <Property Name="ComisionOtros" Type="Int32" />
+          <NavigationProperty Name="cotizacion" Relationship="bd_sertecModel.Relationship4" FromRole="contabilidad" ToRole="cotizacion" />
+          <NavigationProperty Name="contabilidadfacturacion" Relationship="bd_sertecModel.Relationship5" FromRole="contabilidad" ToRole="contabilidadfacturacion" />
+          <NavigationProperty Name="contabilidaddescuentos" Relationship="bd_sertecModel.Relationship6" FromRole="contabilidad" ToRole="contabilidaddescuentos" />
+          <NavigationProperty Name="contabilidadformapago" Relationship="bd_sertecModel.Relationship7" FromRole="contabilidad" ToRole="contabilidadformapago" />
+          <NavigationProperty Name="contabilidadaprobacion" Relationship="bd_sertecModel.Relationship8" FromRole="contabilidad" ToRole="contabilidadaprobacion" />
+          <NavigationProperty Name="operaciones" Relationship="bd_sertecModel.Relationship9" FromRole="contabilidad" ToRole="operaciones" />
+        </EntityType>
+        <EntityType Name="contabilidadaprobacion">
+          <Key>
+            <PropertyRef Name="PK_ContabilidadID" />
+          </Key>
+          <Property Name="PresupuestoFirmado" Type="Boolean" />
+          <Property Name="OrdenCompra" Type="Boolean" />
+          <Property Name="Otro" Type="Boolean" />
+          <Property Name="DescripcionOtro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PK_ContabilidadID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="contabilidad" Relationship="bd_sertecModel.Relationship8" FromRole="contabilidadaprobacion" ToRole="contabilidad" />
+        </EntityType>
+        <EntityType Name="contabilidaddescuentos">
+          <Key>
+            <PropertyRef Name="PK_ContabilidadID" />
+          </Key>
+          <Property Name="Cinco" Type="Boolean" />
+          <Property Name="Quince" Type="Boolean" />
+          <Property Name="Otro" Type="Boolean" />
+          <Property Name="ValorOtro" Type="Int32" />
+          <Property Name="PK_ContabilidadID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="contabilidad" Relationship="bd_sertecModel.Relationship6" FromRole="contabilidaddescuentos" ToRole="contabilidad" />
+        </EntityType>
+        <EntityType Name="contabilidadfacturacion">
+          <Key>
+            <PropertyRef Name="PK_FacturacionID" />
+          </Key>
+          <Property Name="PK_FacturacionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumeroCuota" Type="Int32" />
+          <Property Name="NumeroFactura" Type="Int32" />
+          <Property Name="Valor" Type="Decimal" />
+          <Property Name="Mes" Type="Int32" />
+          <Property Name="PK_ContabilidadID" Type="Int32" />
+          <NavigationProperty Name="contabilidad" Relationship="bd_sertecModel.Relationship5" FromRole="contabilidadfacturacion" ToRole="contabilidad" />
+        </EntityType>
+        <EntityType Name="contabilidadformapago">
+          <Key>
+            <PropertyRef Name="PK_ContabilidadID" />
+          </Key>
+          <Property Name="Cien" Type="Boolean" />
+          <Property Name="Cincuenta" Type="Boolean" />
+          <Property Name="Cuotas" Type="Boolean" />
+          <Property Name="CantidadCuotas" Type="Int32" />
+          <Property Name="Otro" Type="Boolean" />
+          <Property Name="DescripcionOtro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PK_ContabilidadID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="contabilidad" Relationship="bd_sertecModel.Relationship7" FromRole="contabilidadformapago" ToRole="contabilidad" />
+        </EntityType>
+        <EntityType Name="cotizacion">
+          <Key>
+            <PropertyRef Name="PK_Cotizacion_ID" />
+          </Key>
+          <Property Name="PK_Cotizacion_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaEmision" Type="DateTime" Nullable="false" />
+          <Property Name="Obra" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Ascensor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TecnicoEmisor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Supervisor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PresupuestoNumero" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ValorUf" Type="Decimal" Nullable="false" />
+          <Property Name="ValorHP" Type="Decimal" Nullable="false" />
+          <Property Name="ValorFlete" Type="Decimal" />
+          <Property Name="FechaCalculo" Type="DateTime" />
+          <Property Name="DescripcionDetalle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTrabajo" Type="Int32" />
+          <Property Name="ValorMoneda" Type="Decimal" />
+          <Property Name="ValorHH" Type="Decimal" />
+          <Property Name="HorasParejas" Type="Decimal" />
+          <Property Name="SubTotalManoObra" Type="Decimal" />
+          <Property Name="RecargoHHEE" Type="Decimal" />
+          <Property Name="Total" Type="Decimal" />
+          <Property Name="ValorVenta" Type="Decimal" />
+          <Property Name="ValorMargenVenta" Type="Decimal" />
+          <Property Name="CantidadFletes" Type="Int32" />
+          <Property Name="TotalFletes" Type="Decimal" />
+          <Property Name="ValorManoObra" Type="Int32" />
+          <Property Name="ValorRepuestos" Type="Int32" />
+          <Property Name="ValorTerceros" Type="Int32" />
+          <Property Name="ValorTerceras" Type="Int32" />
+          <Property Name="ValorFletes" Type="Int32" />
+          <Property Name="SubTotal" Type="Decimal" />
+          <Property Name="TotalNetoComisiones" Type="Decimal" />
+          <NavigationProperty Name="contabilidad" Relationship="bd_sertecModel.Relationship4" FromRole="cotizacion" ToRole="contabilidad" />
+          <NavigationProperty Name="cotizacionrepuesto" Relationship="bd_sertecModel.Relationship1" FromRole="cotizacion" ToRole="cotizacionrepuesto" />
+          <NavigationProperty Name="cotizaciontrabajoterceros" Relationship="bd_sertecModel.Relationship2" FromRole="cotizacion" ToRole="cotizaciontrabajoterceros" />
+        </EntityType>
+        <EntityType Name="cotizacionrepuesto">
+          <Key>
+            <PropertyRef Name="CotizacionRepuestoID" />
+          </Key>
+          <Property Name="CotizacionRepuestoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Repuesto" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="Int32" />
+          <Property Name="ValorUnitario" Type="Decimal" />
+          <Property Name="SubTotal" Type="Decimal" Nullable="false" />
+          <Property Name="HoraParHombre" Type="Decimal" />
+          <Property Name="PK_Cotizacion_ID" Type="Int32" />
+          <NavigationProperty Name="cotizacion" Relationship="bd_sertecModel.Relationship1" FromRole="cotizacionrepuesto" ToRole="cotizacion" />
+        </EntityType>
+        <EntityType Name="cotizaciontrabajoterceros">
+          <Key>
+            <PropertyRef Name="CotizacionTercerosID" />
+          </Key>
+          <Property Name="CotizacionTercerosID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Terceros" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ValorTerceros" Type="Decimal" />
+          <Property Name="PK_Cotizacion_ID" Type="Int32" />
+          <NavigationProperty Name="cotizacion" Relationship="bd_sertecModel.Relationship2" FromRole="cotizaciontrabajoterceros" ToRole="cotizacion" />
+        </EntityType>
+        <EntityType Name="operaciones">
+          <Key>
+            <PropertyRef Name="PK_Operaciones_ID" />
+          </Key>
+          <Property Name="PK_Operaciones_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaTecnico" Type="DateTime" />
+          <Property Name="NumeroGuia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Tecnico" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Supervisor" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FechaSupervisor" Type="DateTime" />
+          <Property Name="Ventas" Type="Int32" />
+          <Property Name="FechaVentas" Type="DateTime" />
+          <Property Name="PK_ContabilidadID" Type="Int32" />
+          <NavigationProperty Name="contabilidad" Relationship="bd_sertecModel.Relationship9" FromRole="operaciones" ToRole="contabilidad" />
         </EntityType>
         <EntityType Name="persona">
           <Key>
-            <PropertyRef Name="PK_Persona_id" />
+            <PropertyRef Name="PK_PersonaID" />
           </Key>
-          <Property Name="PK_Persona_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PK_PersonaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="Apellido" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Cargo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Fecha_Ingreso" Type="DateTime" />
-          <NavigationProperty Name="usuario" Relationship="bd_santiagoModel.FK_Usuario_Persona" FromRole="persona" ToRole="usuario" />
-        </EntityType>
-        <EntityType Name="presupesto_repuesto">
-          <Key>
-            <PropertyRef Name="PK_ppto_repuesto_id" />
-          </Key>
-          <Property Name="PK_ppto_repuesto_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Presupuesto" Type="Int32" Nullable="false" />
-          <Property Name="Repuesto" Type="Int32" Nullable="false" />
-          <Property Name="Cantidad" Type="Int32" Nullable="false" />
-          <Property Name="Codigo" Type="Int32" Nullable="false" />
-          <Property Name="Valor_Unitario" Type="Int32" Nullable="false" />
-          <Property Name="Sub_Total" Type="Int32" Nullable="false" />
-          <Property Name="Hora_Par_Hombre" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="presupuesto_repuesto_desgloce" Relationship="bd_santiagoModel.FK_Ppto_Repuesto_Desgloce_Presupesto_Repuesto" FromRole="presupesto_repuesto" ToRole="presupuesto_repuesto_desgloce" />
-          <NavigationProperty Name="presupuesto1" Relationship="bd_santiagoModel.FK_Presupesto_Repuesto_Presupuesto" FromRole="presupesto_repuesto" ToRole="presupuesto" />
-          <NavigationProperty Name="repuesto1" Relationship="bd_santiagoModel.FK_Presupesto_Repuesto_Repuesto" FromRole="presupesto_repuesto" ToRole="repuesto" />
-        </EntityType>
-        <EntityType Name="presupuesto">
-          <Key>
-            <PropertyRef Name="PK_Presupuesto_id" />
-          </Key>
-          <Property Name="PK_Presupuesto_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Presupuesto_descripcion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Valor_moneda" Type="Int32" Nullable="false" />
-          <Property Name="Valor_HH" Type="SByte" Nullable="false" />
-          <Property Name="Valor_Flete" Type="SByte" Nullable="false" />
-          <Property Name="Fecha_Emision" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="moneda" Relationship="bd_santiagoModel.FK_Presupuesto_Moneda" FromRole="presupuesto" ToRole="moneda" />
-          <NavigationProperty Name="presupesto_repuesto" Relationship="bd_santiagoModel.FK_Presupesto_Repuesto_Presupuesto" FromRole="presupuesto" ToRole="presupesto_repuesto" />
-          <NavigationProperty Name="presupuesto_trabajo_resumen" Relationship="bd_santiagoModel.FK_Ppto_Trabajo_Resumen_Presupuesto" FromRole="presupuesto" ToRole="presupuesto_trabajo_resumen" />
-          <NavigationProperty Name="presupuesto_comercial" Relationship="bd_santiagoModel.FK_Presupuesto_Comercial_Presupuesto" FromRole="presupuesto" ToRole="presupuesto_comercial" />
-          <NavigationProperty Name="presupuesto_orden_trabajo" Relationship="bd_santiagoModel.FK_Presupuesto_Orden_Trabajo_Presupuesto" FromRole="presupuesto" ToRole="presupuesto_orden_trabajo" />
-          <NavigationProperty Name="presupuesto_trabajo_terceros" Relationship="bd_santiagoModel.FK_Presupuesto_Trabajo_Terceros_Presupuesto" FromRole="presupuesto" ToRole="presupuesto_trabajo_terceros" />
-          <NavigationProperty Name="valor_esfuerzo" Relationship="bd_santiagoModel.FK_Presupuesto_Valor_Esfuerzo" FromRole="presupuesto" ToRole="valor_esfuerzo" />
-          <NavigationProperty Name="valor_esfuerzo1" Relationship="bd_santiagoModel.FK_Presupuesto_Valor_Esfuerzo_02" FromRole="presupuesto" ToRole="valor_esfuerzo" />
-        </EntityType>
-        <EntityType Name="presupuesto_comercial">
-          <Key>
-            <PropertyRef Name="Presupuesto_Comercial_id" />
-          </Key>
-          <Property Name="Presupuesto_Comercial_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Presupuesto" Type="Int32" Nullable="false" />
-          <Property Name="Obra" Type="Int32" />
-          <Property Name="Fecha_Aprobacion" Type="DateTime" />
-          <Property Name="Numero_Ascensor" Type="Int32" />
-          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Nombre_Aprobador" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Telefono_Contacto" Type="Int32" />
-          <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="presupuesto1" Relationship="bd_santiagoModel.FK_Presupuesto_Comercial_Presupuesto" FromRole="presupuesto_comercial" ToRole="presupuesto" />
-          <NavigationProperty Name="presupuesto_comercial_detalle" Relationship="bd_santiagoModel.FK_Ppto_Comercial_Detalle" FromRole="presupuesto_comercial" ToRole="presupuesto_comercial_detalle" />
-        </EntityType>
-        <EntityType Name="presupuesto_comercial_condicion_venta">
-          <Key>
-            <PropertyRef Name="PK_ppto_comercial_condicion_venta_id" />
-          </Key>
-          <Property Name="PK_ppto_comercial_condicion_venta_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Presupuesto_Comercial" Type="Int32" Nullable="false" />
-          <Property Name="Porcentaje_Cinco" Type="Boolean" />
-          <Property Name="Porcentaje_Quince" Type="Boolean" />
-          <Property Name="Porcentaje_Otro" Type="Boolean" />
-          <Property Name="Valor_Porcentaje_Otro" Type="Int32" />
-          <Property Name="Pago_Completo_Termino_Trabajo" Type="Boolean" />
-          <Property Name="Pago_Incompleto_Termino_Trabajo" Type="Boolean" />
-          <Property Name="Cuotas" Type="Boolean" />
-          <Property Name="Numero_Cuotas" Type="Int32" />
-          <Property Name="Otro_Descuento" Type="Boolean" />
-          <Property Name="Copia_Presupuesto_Firmado" Type="Boolean" />
-          <Property Name="Orden_Compra" Type="Boolean" />
-          <Property Name="Otro_Medio" Type="Boolean" />
-          <Property Name="Descripcion_Otro_Medio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="presupuesto_comercial_detalle" Relationship="bd_santiagoModel.FK_Ppto_Comercial_Condicion_Venta" FromRole="presupuesto_comercial_condicion_venta" ToRole="presupuesto_comercial_detalle" />
-        </EntityType>
-        <EntityType Name="presupuesto_comercial_detalle">
-          <Key>
-            <PropertyRef Name="PK_Presupuesto_Comercial_Detalle_id" />
-          </Key>
-          <Property Name="PK_Presupuesto_Comercial_Detalle_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Presupuesto_Comercial" Type="Int32" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Horas_Pareja" Type="Int32" />
-          <Property Name="Fletes" Type="Int32" />
-          <Property Name="Dias_Trabajos" Type="Int32" />
-          <Property Name="Fecha_Ejecucion" Type="DateTime" />
-          <Property Name="Tecnico_Asignado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Fecha_Inicio" Type="DateTime" />
-          <Property Name="Fecha_Termino" Type="DateTime" />
-          <Property Name="Guia_Despacho" Type="Int32" />
-          <Property Name="Numero_Factura" Type="Int32" />
-          <Property Name="Mes_Facturacion" Type="Int32" />
-          <NavigationProperty Name="presupuesto_comercial1" Relationship="bd_santiagoModel.FK_Ppto_Comercial_Detalle" FromRole="presupuesto_comercial_detalle" ToRole="presupuesto_comercial" />
-          <NavigationProperty Name="presupuesto_comercial_condicion_venta" Relationship="bd_santiagoModel.FK_Ppto_Comercial_Condicion_Venta" FromRole="presupuesto_comercial_detalle" ToRole="presupuesto_comercial_condicion_venta" />
-          <NavigationProperty Name="presupuesto_comercial_resumen" Relationship="bd_santiagoModel.FK_Ppto_Comercial_Resumen" FromRole="presupuesto_comercial_detalle" ToRole="presupuesto_comercial_resumen" />
-        </EntityType>
-        <EntityType Name="presupuesto_comercial_resumen">
-          <Key>
-            <PropertyRef Name="PK_Presupuesto_Comercial_Resumen_id" />
-          </Key>
-          <Property Name="PK_Presupuesto_Comercial_Resumen_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Presupuesto_Comercial_Detalle" Type="Int32" Nullable="false" />
-          <Property Name="Valor_Mano_Obra" Type="Decimal" />
-          <Property Name="Valor_Repuesto" Type="Decimal" />
-          <Property Name="Valor_Terceros" Type="Decimal" />
-          <Property Name="Valor_Fletes" Type="Decimal" />
-          <Property Name="Subtotal" Type="Decimal" />
-          <NavigationProperty Name="presupuesto_comercial_detalle1" Relationship="bd_santiagoModel.FK_Ppto_Comercial_Resumen" FromRole="presupuesto_comercial_resumen" ToRole="presupuesto_comercial_detalle" />
-        </EntityType>
-        <EntityType Name="presupuesto_control_orden_trabajo">
-          <Key>
-            <PropertyRef Name="PK_Presupuesto_Control_OC_id" />
-          </Key>
-          <Property Name="PK_Presupuesto_Control_OC_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Presupuesto_Orden_Trabajo" Type="Int32" Nullable="false" />
-          <Property Name="Fecha_Termino_Tecnico" Type="DateTime" />
-          <Property Name="Numero_Guia" Type="Int32" />
-          <Property Name="Tecnico" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Fecha_Termino_Supervisor" Type="DateTime" />
-          <Property Name="Supervisor" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Numero_Ventas" Type="Int32" />
-          <Property Name="Fecha_Termino_Venta" Type="DateTime" />
-          <NavigationProperty Name="presupuesto_orden_trabajo1" Relationship="bd_santiagoModel.FK_Ppto_Control_Orden_Trabajo" FromRole="presupuesto_control_orden_trabajo" ToRole="presupuesto_orden_trabajo" />
-        </EntityType>
-        <EntityType Name="presupuesto_orden_trabajo">
-          <Key>
-            <PropertyRef Name="PK_Presupuesto_Orden_Trabajo_id" />
-          </Key>
-          <Property Name="PK_Presupuesto_Orden_Trabajo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Presupuesto" Type="Int32" Nullable="false" />
-          <Property Name="Fecha" Type="DateTime" />
-          <Property Name="Obra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Fecha_Aprobacion" Type="DateTime" />
-          <Property Name="Ascensor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Tecnico_Emisor" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Supervisor" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Aprobacion" Type="DateTime" />
-          <Property Name="Telefono_Contacto" Type="Int32" />
-          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Descripcion_Terceros" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="presupuesto1" Relationship="bd_santiagoModel.FK_Presupuesto_Orden_Trabajo_Presupuesto" FromRole="presupuesto_orden_trabajo" ToRole="presupuesto" />
-          <NavigationProperty Name="presupuesto_control_orden_trabajo" Relationship="bd_santiagoModel.FK_Ppto_Control_Orden_Trabajo" FromRole="presupuesto_orden_trabajo" ToRole="presupuesto_control_orden_trabajo" />
-          <NavigationProperty Name="presupuesto_orden_trabajo_repuesto_reparacion" Relationship="bd_santiagoModel.FK_Ppto_Orden_Trabajo_Rep" FromRole="presupuesto_orden_trabajo" ToRole="presupuesto_orden_trabajo_repuesto_reparacion" />
-        </EntityType>
-        <EntityType Name="presupuesto_orden_trabajo_repuesto_reparacion">
-          <Key>
-            <PropertyRef Name="PK_Presupuesto_OC_Rep_id" />
-          </Key>
-          <Property Name="PK_Presupuesto_OC_Rep_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Presupuesto_Orden_Trabajo" Type="Int32" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Cantidad" Type="Int32" />
-          <Property Name="Codigo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="presupuesto_orden_trabajo1" Relationship="bd_santiagoModel.FK_Ppto_Orden_Trabajo_Rep" FromRole="presupuesto_orden_trabajo_repuesto_reparacion" ToRole="presupuesto_orden_trabajo" />
-        </EntityType>
-        <EntityType Name="presupuesto_repuesto_desgloce">
-          <Key>
-            <PropertyRef Name="PK_ppto_repuesto_desgloce_id" />
-          </Key>
-          <Property Name="PK_ppto_repuesto_desgloce_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Presupuesto_Repuesto" Type="Int32" Nullable="false" />
-          <Property Name="Valor_Repuesto" Type="Decimal" Nullable="false" />
-          <Property Name="Valor_Mano_Obra" Type="Decimal" Nullable="false" />
-          <Property Name="Valor_Comision_1" Type="Decimal" Nullable="false" />
-          <Property Name="Valor_Comision_2" Type="Decimal" Nullable="false" />
-          <NavigationProperty Name="presupesto_repuesto" Relationship="bd_santiagoModel.FK_Ppto_Repuesto_Desgloce_Presupesto_Repuesto" FromRole="presupuesto_repuesto_desgloce" ToRole="presupesto_repuesto" />
-        </EntityType>
-        <EntityType Name="presupuesto_trabajo_resumen">
-          <Key>
-            <PropertyRef Name="PK_Presupuesto_Trabajo_Resumen_id" />
-          </Key>
-          <Property Name="PK_Presupuesto_Trabajo_Resumen_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Presupuesto" Type="Int32" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="SubTotal" Type="Decimal" />
-          <Property Name="Total_Neto_Comsiones" Type="Decimal" />
-          <NavigationProperty Name="presupuesto1" Relationship="bd_santiagoModel.FK_Ppto_Trabajo_Resumen_Presupuesto" FromRole="presupuesto_trabajo_resumen" ToRole="presupuesto" />
-          <NavigationProperty Name="presupuesto_trabajo_resumen_comercial_detalle" Relationship="bd_santiagoModel.FK_Ppto_Trabajo_Resumen_Comercial_Detalle" FromRole="presupuesto_trabajo_resumen" ToRole="presupuesto_trabajo_resumen_comercial_detalle" />
-          <NavigationProperty Name="presupuesto_trabajo_resumen_comision_detalle" Relationship="bd_santiagoModel.FK_Ppto_Trabajo_Resumen_Comision_Detalle" FromRole="presupuesto_trabajo_resumen" ToRole="presupuesto_trabajo_resumen_comision_detalle" />
-          <NavigationProperty Name="presupuesto_trabajo_resumen_mo_detalle" Relationship="bd_santiagoModel.FK_Ppto_Trabajo_Resumen_MO_Detalle" FromRole="presupuesto_trabajo_resumen" ToRole="presupuesto_trabajo_resumen_mo_detalle" />
-        </EntityType>
-        <EntityType Name="presupuesto_trabajo_resumen_comercial_detalle">
-          <Key>
-            <PropertyRef Name="PK_ppto_trabajo_resumen_comercial_detalle_id" />
-          </Key>
-          <Property Name="PK_ppto_trabajo_resumen_comercial_detalle_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Presupuesto_Trabajo_Resumen" Type="Int32" Nullable="false" />
-          <Property Name="Valor_Mano_Obra" Type="Decimal" />
-          <Property Name="Valor_Repuestos" Type="Decimal" />
-          <Property Name="Valor_Terceros" Type="Decimal" />
-          <Property Name="Valor_Fletes" Type="Decimal" />
-          <Property Name="SubTotal" Type="Decimal" />
-          <Property Name="Porcentaje_Comision_Vendedor" Type="Int32" />
-          <Property Name="Valor_Comision_Vendedor" Type="Decimal" />
-          <Property Name="Porcentaje_Comision_Otro_Vendedor" Type="Int32" />
-          <Property Name="Valor_Comision_Otro_Vendedor" Type="Decimal" />
-          <NavigationProperty Name="presupuesto_trabajo_resumen1" Relationship="bd_santiagoModel.FK_Ppto_Trabajo_Resumen_Comercial_Detalle" FromRole="presupuesto_trabajo_resumen_comercial_detalle" ToRole="presupuesto_trabajo_resumen" />
-        </EntityType>
-        <EntityType Name="presupuesto_trabajo_resumen_comision_desgloce">
-          <Key>
-            <PropertyRef Name="PK_ppto_trabajo_resumen_comision_desgloce_id" />
-          </Key>
-          <Property Name="PK_ppto_trabajo_resumen_comision_desgloce_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ppto_trabajo_resumen_comision_detalle" Type="Int32" Nullable="false" />
-          <Property Name="Valor_Flete" Type="Decimal" />
-          <Property Name="Valor_Mano_Obra" Type="Decimal" />
-          <Property Name="Valor_Comision_1" Type="Decimal" />
-          <Property Name="Valor_Comision_2" Type="Decimal" />
-          <Property Name="Total" Type="Decimal" />
-          <NavigationProperty Name="presupuesto_trabajo_resumen_comision_detalle" Relationship="bd_santiagoModel.FK_Pptto_Trabajo_Resumen_Comision_Desgloce" FromRole="presupuesto_trabajo_resumen_comision_desgloce" ToRole="presupuesto_trabajo_resumen_comision_detalle" />
-        </EntityType>
-        <EntityType Name="presupuesto_trabajo_resumen_comision_detalle">
-          <Key>
-            <PropertyRef Name="PK_ppto_trabajo_resumen_comision_detalle_id" />
-          </Key>
-          <Property Name="PK_ppto_trabajo_resumen_comision_detalle_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Presupuesto_Trabajo_Resumen" Type="Int32" Nullable="false" />
-          <Property Name="Valor_Venta" Type="Decimal" />
-          <Property Name="Valor_Margen_Venta" Type="Decimal" />
-          <Property Name="Cantidad_Fletes" Type="Int32" />
-          <Property Name="Total_Fletes" Type="Decimal" />
-          <NavigationProperty Name="presupuesto_trabajo_resumen1" Relationship="bd_santiagoModel.FK_Ppto_Trabajo_Resumen_Comision_Detalle" FromRole="presupuesto_trabajo_resumen_comision_detalle" ToRole="presupuesto_trabajo_resumen" />
-          <NavigationProperty Name="presupuesto_trabajo_resumen_comision_desgloce" Relationship="bd_santiagoModel.FK_Pptto_Trabajo_Resumen_Comision_Desgloce" FromRole="presupuesto_trabajo_resumen_comision_detalle" ToRole="presupuesto_trabajo_resumen_comision_desgloce" />
-        </EntityType>
-        <EntityType Name="presupuesto_trabajo_resumen_mo_detalle">
-          <Key>
-            <PropertyRef Name="PK_ppto_trabajo_resumen_mo_detalle_id" />
-          </Key>
-          <Property Name="PK_ppto_trabajo_resumen_mo_detalle_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Presupuesto_Trabajo_Resumen" Type="Int32" Nullable="false" />
-          <Property Name="Horas_Parejas" Type="Decimal" />
-          <Property Name="SubTotal" Type="Decimal" />
-          <Property Name="Recargo_HH_EE" Type="Decimal" />
-          <Property Name="Total" Type="Decimal" />
-          <NavigationProperty Name="presupuesto_trabajo_resumen1" Relationship="bd_santiagoModel.FK_Ppto_Trabajo_Resumen_MO_Detalle" FromRole="presupuesto_trabajo_resumen_mo_detalle" ToRole="presupuesto_trabajo_resumen" />
-        </EntityType>
-        <EntityType Name="presupuesto_trabajo_terceros">
-          <Key>
-            <PropertyRef Name="PK_ppto_trabajo_terceros_id" />
-          </Key>
-          <Property Name="PK_ppto_trabajo_terceros_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Presupuesto" Type="Int32" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Valor" Type="Decimal" />
-          <NavigationProperty Name="presupuesto1" Relationship="bd_santiagoModel.FK_Presupuesto_Trabajo_Terceros_Presupuesto" FromRole="presupuesto_trabajo_terceros" ToRole="presupuesto" />
-          <NavigationProperty Name="presupuesto_trabajo_terceros_desgloce" Relationship="bd_santiagoModel.FK_Ppto_Trabajo_Terceros_Desgloce" FromRole="presupuesto_trabajo_terceros" ToRole="presupuesto_trabajo_terceros_desgloce" />
-        </EntityType>
-        <EntityType Name="presupuesto_trabajo_terceros_desgloce">
-          <Key>
-            <PropertyRef Name="PK_ppto_trabajo_terceros_desgloce_id" />
-          </Key>
-          <Property Name="PK_ppto_trabajo_terceros_desgloce_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Presupuesto_Trabajo_Tercero" Type="Int32" Nullable="false" />
-          <Property Name="Valor_Trabajo_Taller" Type="Decimal" />
-          <Property Name="Valor_Mano_Obra" Type="Decimal" />
-          <Property Name="Valor_Comision_1" Type="Decimal" />
-          <Property Name="Valor_Comision_2" Type="Decimal" />
-          <Property Name="Total" Type="Decimal" />
-          <NavigationProperty Name="presupuesto_trabajo_terceros" Relationship="bd_santiagoModel.FK_Ppto_Trabajo_Terceros_Desgloce" FromRole="presupuesto_trabajo_terceros_desgloce" ToRole="presupuesto_trabajo_terceros" />
-        </EntityType>
-        <EntityType Name="repuesto">
-          <Key>
-            <PropertyRef Name="PK_repuesto_id" />
-          </Key>
-          <Property Name="PK_repuesto_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Codigo_repuesto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Nombre_Articulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Marca_Articulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Unidad" Type="Int32" Nullable="false" />
-          <Property Name="Precio_Compra" Type="Int32" Nullable="false" />
-          <Property Name="Precio_Venta" Type="Int32" />
-          <NavigationProperty Name="presupesto_repuesto" Relationship="bd_santiagoModel.FK_Presupesto_Repuesto_Repuesto" FromRole="repuesto" ToRole="presupesto_repuesto" />
-        </EntityType>
-        <EntityType Name="tipo_esfuerzo">
-          <Key>
-            <PropertyRef Name="PK_Tipo_esfuerzo_id" />
-          </Key>
-          <Property Name="PK_Tipo_esfuerzo_id" Type="SByte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Descripcion_esfuerzo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Estado" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="tipo_moneda">
-          <Key>
-            <PropertyRef Name="PK_Tipo_moneda_id" />
-          </Key>
-          <Property Name="PK_Tipo_moneda_id" Type="SByte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Estado" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="moneda" Relationship="bd_santiagoModel.FK_Moneda_Tipo_Moneda" FromRole="tipo_moneda" ToRole="moneda" />
+          <Property Name="Cargo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaIngreso" Type="DateTime" />
+          <NavigationProperty Name="usuario" Relationship="bd_sertecModel.Relationship3" FromRole="persona" ToRole="usuario" />
         </EntityType>
         <EntityType Name="usuario">
           <Key>
-            <PropertyRef Name="PK_Usuario_id" />
+            <PropertyRef Name="PK_UsuarioID" />
           </Key>
-          <Property Name="PK_Usuario_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Login" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Usuario_id" Type="Int32" />
+          <Property Name="PK_UsuarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="Boolean" />
-          <NavigationProperty Name="persona" Relationship="bd_santiagoModel.FK_Usuario_Persona" FromRole="usuario" ToRole="persona" />
+          <Property Name="PK_PersonaID" Type="Int32" />
+          <NavigationProperty Name="persona" Relationship="bd_sertecModel.Relationship3" FromRole="usuario" ToRole="persona" />
         </EntityType>
-        <EntityType Name="valor_esfuerzo">
-          <Key>
-            <PropertyRef Name="PK_Valor_esfuerzo_id" />
-          </Key>
-          <Property Name="PK_Valor_esfuerzo_id" Type="SByte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Descripcion_Esfuerzo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Valor_Esfuerzo1" Type="Decimal" />
-          <Property Name="Estado" Type="Boolean" />
-          <NavigationProperty Name="presupuesto" Relationship="bd_santiagoModel.FK_Presupuesto_Valor_Esfuerzo" FromRole="valor_esfuerzo" ToRole="presupuesto" />
-          <NavigationProperty Name="presupuesto1" Relationship="bd_santiagoModel.FK_Presupuesto_Valor_Esfuerzo_02" FromRole="valor_esfuerzo" ToRole="presupuesto" />
-        </EntityType>
-        <Association Name="FK_Moneda_Tipo_Moneda">
-          <End Type="bd_santiagoModel.tipo_moneda" Role="tipo_moneda" Multiplicity="1" />
-          <End Type="bd_santiagoModel.moneda" Role="moneda" Multiplicity="*" />
+        <Association Name="Relationship4">
+          <End Type="bd_sertecModel.cotizacion" Role="cotizacion" Multiplicity="0..1" />
+          <End Type="bd_sertecModel.contabilidad" Role="contabilidad" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tipo_moneda">
-              <PropertyRef Name="PK_Tipo_moneda_id" />
+            <Principal Role="cotizacion">
+              <PropertyRef Name="PK_Cotizacion_ID" />
             </Principal>
-            <Dependent Role="moneda">
-              <PropertyRef Name="Tipo_moneda" />
+            <Dependent Role="contabilidad">
+              <PropertyRef Name="PK_Cotizacion_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Presupuesto_Moneda">
-          <End Type="bd_santiagoModel.moneda" Role="moneda" Multiplicity="1" />
-          <End Type="bd_santiagoModel.presupuesto" Role="presupuesto" Multiplicity="*" />
+        <Association Name="Relationship5">
+          <End Type="bd_sertecModel.contabilidad" Role="contabilidad" Multiplicity="0..1" />
+          <End Type="bd_sertecModel.contabilidadfacturacion" Role="contabilidadfacturacion" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="moneda">
-              <PropertyRef Name="PK_valor_moneda_id" />
+            <Principal Role="contabilidad">
+              <PropertyRef Name="PK_ContabilidadID" />
             </Principal>
-            <Dependent Role="presupuesto">
-              <PropertyRef Name="Valor_moneda" />
+            <Dependent Role="contabilidadfacturacion">
+              <PropertyRef Name="PK_ContabilidadID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Usuario_Persona">
-          <End Type="bd_santiagoModel.persona" Role="persona" Multiplicity="0..1" />
-          <End Type="bd_santiagoModel.usuario" Role="usuario" Multiplicity="*" />
+        <Association Name="Relationship6">
+          <End Type="bd_sertecModel.contabilidad" Role="contabilidad" Multiplicity="1" />
+          <End Type="bd_sertecModel.contabilidaddescuentos" Role="contabilidaddescuentos" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="contabilidad">
+              <PropertyRef Name="PK_ContabilidadID" />
+            </Principal>
+            <Dependent Role="contabilidaddescuentos">
+              <PropertyRef Name="PK_ContabilidadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship7">
+          <End Type="bd_sertecModel.contabilidad" Role="contabilidad" Multiplicity="1" />
+          <End Type="bd_sertecModel.contabilidadformapago" Role="contabilidadformapago" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="contabilidad">
+              <PropertyRef Name="PK_ContabilidadID" />
+            </Principal>
+            <Dependent Role="contabilidadformapago">
+              <PropertyRef Name="PK_ContabilidadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship8">
+          <End Type="bd_sertecModel.contabilidad" Role="contabilidad" Multiplicity="1" />
+          <End Type="bd_sertecModel.contabilidadaprobacion" Role="contabilidadaprobacion" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="contabilidad">
+              <PropertyRef Name="PK_ContabilidadID" />
+            </Principal>
+            <Dependent Role="contabilidadaprobacion">
+              <PropertyRef Name="PK_ContabilidadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship9">
+          <End Type="bd_sertecModel.contabilidad" Role="contabilidad" Multiplicity="0..1" />
+          <End Type="bd_sertecModel.operaciones" Role="operaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contabilidad">
+              <PropertyRef Name="PK_ContabilidadID" />
+            </Principal>
+            <Dependent Role="operaciones">
+              <PropertyRef Name="PK_ContabilidadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship1">
+          <End Type="bd_sertecModel.cotizacion" Role="cotizacion" Multiplicity="0..1" />
+          <End Type="bd_sertecModel.cotizacionrepuesto" Role="cotizacionrepuesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cotizacion">
+              <PropertyRef Name="PK_Cotizacion_ID" />
+            </Principal>
+            <Dependent Role="cotizacionrepuesto">
+              <PropertyRef Name="PK_Cotizacion_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship2">
+          <End Type="bd_sertecModel.cotizacion" Role="cotizacion" Multiplicity="0..1" />
+          <End Type="bd_sertecModel.cotizaciontrabajoterceros" Role="cotizaciontrabajoterceros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cotizacion">
+              <PropertyRef Name="PK_Cotizacion_ID" />
+            </Principal>
+            <Dependent Role="cotizaciontrabajoterceros">
+              <PropertyRef Name="PK_Cotizacion_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship3">
+          <End Type="bd_sertecModel.persona" Role="persona" Multiplicity="0..1" />
+          <End Type="bd_sertecModel.usuario" Role="usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="persona">
-              <PropertyRef Name="PK_Persona_id" />
+              <PropertyRef Name="PK_PersonaID" />
             </Principal>
             <Dependent Role="usuario">
-              <PropertyRef Name="Usuario_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ppto_Repuesto_Desgloce_Presupesto_Repuesto">
-          <End Type="bd_santiagoModel.presupesto_repuesto" Role="presupesto_repuesto" Multiplicity="1" />
-          <End Type="bd_santiagoModel.presupuesto_repuesto_desgloce" Role="presupuesto_repuesto_desgloce" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupesto_repuesto">
-              <PropertyRef Name="PK_ppto_repuesto_id" />
-            </Principal>
-            <Dependent Role="presupuesto_repuesto_desgloce">
-              <PropertyRef Name="Presupuesto_Repuesto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Presupesto_Repuesto_Presupuesto">
-          <End Type="bd_santiagoModel.presupuesto" Role="presupuesto" Multiplicity="1" />
-          <End Type="bd_santiagoModel.presupesto_repuesto" Role="presupesto_repuesto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto">
-              <PropertyRef Name="PK_Presupuesto_id" />
-            </Principal>
-            <Dependent Role="presupesto_repuesto">
-              <PropertyRef Name="Presupuesto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Presupesto_Repuesto_Repuesto">
-          <End Type="bd_santiagoModel.repuesto" Role="repuesto" Multiplicity="1" />
-          <End Type="bd_santiagoModel.presupesto_repuesto" Role="presupesto_repuesto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="repuesto">
-              <PropertyRef Name="PK_repuesto_id" />
-            </Principal>
-            <Dependent Role="presupesto_repuesto">
-              <PropertyRef Name="Repuesto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ppto_Trabajo_Resumen_Presupuesto">
-          <End Type="bd_santiagoModel.presupuesto" Role="presupuesto" Multiplicity="1" />
-          <End Type="bd_santiagoModel.presupuesto_trabajo_resumen" Role="presupuesto_trabajo_resumen" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto">
-              <PropertyRef Name="PK_Presupuesto_id" />
-            </Principal>
-            <Dependent Role="presupuesto_trabajo_resumen">
-              <PropertyRef Name="Presupuesto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Presupuesto_Comercial_Presupuesto">
-          <End Type="bd_santiagoModel.presupuesto" Role="presupuesto" Multiplicity="1" />
-          <End Type="bd_santiagoModel.presupuesto_comercial" Role="presupuesto_comercial" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto">
-              <PropertyRef Name="PK_Presupuesto_id" />
-            </Principal>
-            <Dependent Role="presupuesto_comercial">
-              <PropertyRef Name="Presupuesto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Presupuesto_Orden_Trabajo_Presupuesto">
-          <End Type="bd_santiagoModel.presupuesto" Role="presupuesto" Multiplicity="1" />
-          <End Type="bd_santiagoModel.presupuesto_orden_trabajo" Role="presupuesto_orden_trabajo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto">
-              <PropertyRef Name="PK_Presupuesto_id" />
-            </Principal>
-            <Dependent Role="presupuesto_orden_trabajo">
-              <PropertyRef Name="Presupuesto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Presupuesto_Trabajo_Terceros_Presupuesto">
-          <End Type="bd_santiagoModel.presupuesto" Role="presupuesto" Multiplicity="1" />
-          <End Type="bd_santiagoModel.presupuesto_trabajo_terceros" Role="presupuesto_trabajo_terceros" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto">
-              <PropertyRef Name="PK_Presupuesto_id" />
-            </Principal>
-            <Dependent Role="presupuesto_trabajo_terceros">
-              <PropertyRef Name="Presupuesto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Presupuesto_Valor_Esfuerzo">
-          <End Type="bd_santiagoModel.valor_esfuerzo" Role="valor_esfuerzo" Multiplicity="1" />
-          <End Type="bd_santiagoModel.presupuesto" Role="presupuesto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="valor_esfuerzo">
-              <PropertyRef Name="PK_Valor_esfuerzo_id" />
-            </Principal>
-            <Dependent Role="presupuesto">
-              <PropertyRef Name="Valor_HH" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Presupuesto_Valor_Esfuerzo_02">
-          <End Type="bd_santiagoModel.valor_esfuerzo" Role="valor_esfuerzo" Multiplicity="1" />
-          <End Type="bd_santiagoModel.presupuesto" Role="presupuesto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="valor_esfuerzo">
-              <PropertyRef Name="PK_Valor_esfuerzo_id" />
-            </Principal>
-            <Dependent Role="presupuesto">
-              <PropertyRef Name="Valor_Flete" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ppto_Comercial_Detalle">
-          <End Type="bd_santiagoModel.presupuesto_comercial" Role="presupuesto_comercial" Multiplicity="1" />
-          <End Type="bd_santiagoModel.presupuesto_comercial_detalle" Role="presupuesto_comercial_detalle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto_comercial">
-              <PropertyRef Name="Presupuesto_Comercial_id" />
-            </Principal>
-            <Dependent Role="presupuesto_comercial_detalle">
-              <PropertyRef Name="Presupuesto_Comercial" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ppto_Comercial_Condicion_Venta">
-          <End Type="bd_santiagoModel.presupuesto_comercial_detalle" Role="presupuesto_comercial_detalle" Multiplicity="1" />
-          <End Type="bd_santiagoModel.presupuesto_comercial_condicion_venta" Role="presupuesto_comercial_condicion_venta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto_comercial_detalle">
-              <PropertyRef Name="PK_Presupuesto_Comercial_Detalle_id" />
-            </Principal>
-            <Dependent Role="presupuesto_comercial_condicion_venta">
-              <PropertyRef Name="Presupuesto_Comercial" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ppto_Comercial_Resumen">
-          <End Type="bd_santiagoModel.presupuesto_comercial_detalle" Role="presupuesto_comercial_detalle" Multiplicity="1" />
-          <End Type="bd_santiagoModel.presupuesto_comercial_resumen" Role="presupuesto_comercial_resumen" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto_comercial_detalle">
-              <PropertyRef Name="PK_Presupuesto_Comercial_Detalle_id" />
-            </Principal>
-            <Dependent Role="presupuesto_comercial_resumen">
-              <PropertyRef Name="Presupuesto_Comercial_Detalle" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ppto_Control_Orden_Trabajo">
-          <End Type="bd_santiagoModel.presupuesto_orden_trabajo" Role="presupuesto_orden_trabajo" Multiplicity="1" />
-          <End Type="bd_santiagoModel.presupuesto_control_orden_trabajo" Role="presupuesto_control_orden_trabajo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto_orden_trabajo">
-              <PropertyRef Name="PK_Presupuesto_Orden_Trabajo_id" />
-            </Principal>
-            <Dependent Role="presupuesto_control_orden_trabajo">
-              <PropertyRef Name="Presupuesto_Orden_Trabajo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ppto_Orden_Trabajo_Rep">
-          <End Type="bd_santiagoModel.presupuesto_orden_trabajo" Role="presupuesto_orden_trabajo" Multiplicity="1" />
-          <End Type="bd_santiagoModel.presupuesto_orden_trabajo_repuesto_reparacion" Role="presupuesto_orden_trabajo_repuesto_reparacion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto_orden_trabajo">
-              <PropertyRef Name="PK_Presupuesto_Orden_Trabajo_id" />
-            </Principal>
-            <Dependent Role="presupuesto_orden_trabajo_repuesto_reparacion">
-              <PropertyRef Name="Presupuesto_Orden_Trabajo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ppto_Trabajo_Resumen_Comercial_Detalle">
-          <End Type="bd_santiagoModel.presupuesto_trabajo_resumen" Role="presupuesto_trabajo_resumen" Multiplicity="1" />
-          <End Type="bd_santiagoModel.presupuesto_trabajo_resumen_comercial_detalle" Role="presupuesto_trabajo_resumen_comercial_detalle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto_trabajo_resumen">
-              <PropertyRef Name="PK_Presupuesto_Trabajo_Resumen_id" />
-            </Principal>
-            <Dependent Role="presupuesto_trabajo_resumen_comercial_detalle">
-              <PropertyRef Name="Presupuesto_Trabajo_Resumen" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ppto_Trabajo_Resumen_Comision_Detalle">
-          <End Type="bd_santiagoModel.presupuesto_trabajo_resumen" Role="presupuesto_trabajo_resumen" Multiplicity="1" />
-          <End Type="bd_santiagoModel.presupuesto_trabajo_resumen_comision_detalle" Role="presupuesto_trabajo_resumen_comision_detalle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto_trabajo_resumen">
-              <PropertyRef Name="PK_Presupuesto_Trabajo_Resumen_id" />
-            </Principal>
-            <Dependent Role="presupuesto_trabajo_resumen_comision_detalle">
-              <PropertyRef Name="Presupuesto_Trabajo_Resumen" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ppto_Trabajo_Resumen_MO_Detalle">
-          <End Type="bd_santiagoModel.presupuesto_trabajo_resumen" Role="presupuesto_trabajo_resumen" Multiplicity="1" />
-          <End Type="bd_santiagoModel.presupuesto_trabajo_resumen_mo_detalle" Role="presupuesto_trabajo_resumen_mo_detalle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto_trabajo_resumen">
-              <PropertyRef Name="PK_Presupuesto_Trabajo_Resumen_id" />
-            </Principal>
-            <Dependent Role="presupuesto_trabajo_resumen_mo_detalle">
-              <PropertyRef Name="Presupuesto_Trabajo_Resumen" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Pptto_Trabajo_Resumen_Comision_Desgloce">
-          <End Type="bd_santiagoModel.presupuesto_trabajo_resumen_comision_detalle" Role="presupuesto_trabajo_resumen_comision_detalle" Multiplicity="1" />
-          <End Type="bd_santiagoModel.presupuesto_trabajo_resumen_comision_desgloce" Role="presupuesto_trabajo_resumen_comision_desgloce" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto_trabajo_resumen_comision_detalle">
-              <PropertyRef Name="PK_ppto_trabajo_resumen_comision_detalle_id" />
-            </Principal>
-            <Dependent Role="presupuesto_trabajo_resumen_comision_desgloce">
-              <PropertyRef Name="Ppto_trabajo_resumen_comision_detalle" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ppto_Trabajo_Terceros_Desgloce">
-          <End Type="bd_santiagoModel.presupuesto_trabajo_terceros" Role="presupuesto_trabajo_terceros" Multiplicity="1" />
-          <End Type="bd_santiagoModel.presupuesto_trabajo_terceros_desgloce" Role="presupuesto_trabajo_terceros_desgloce" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="presupuesto_trabajo_terceros">
-              <PropertyRef Name="PK_ppto_trabajo_terceros_id" />
-            </Principal>
-            <Dependent Role="presupuesto_trabajo_terceros_desgloce">
-              <PropertyRef Name="Presupuesto_Trabajo_Tercero" />
+              <PropertyRef Name="PK_PersonaID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1392,317 +654,169 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="bd_santiagoModelStoreContainer" CdmEntityContainer="bd_santiagoEntities">
-          <EntitySetMapping Name="moneda">
-            <EntityTypeMapping TypeName="bd_santiagoModel.moneda">
-              <MappingFragment StoreEntitySet="moneda">
-                <ScalarProperty Name="Tipo_moneda" ColumnName="Tipo_moneda" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Valor_moneda" ColumnName="Valor_moneda" />
-                <ScalarProperty Name="PK_valor_moneda_id" ColumnName="PK_valor_moneda_id" />
+        <EntityContainerMapping StorageEntityContainer="bd_santiagoModelStoreContainer" CdmEntityContainer="bd_sertecEntities">
+          <EntitySetMapping Name="contabilidad">
+            <EntityTypeMapping TypeName="bd_sertecModel.contabilidad">
+              <MappingFragment StoreEntitySet="contabilidad">
+                <ScalarProperty Name="ComisionOtros" ColumnName="ComisionOtros" />
+                <ScalarProperty Name="ComisionVendedor" ColumnName="ComisionVendedor" />
+                <ScalarProperty Name="MesFacturacion" ColumnName="MesFacturacion" />
+                <ScalarProperty Name="Factura" ColumnName="Factura" />
+                <ScalarProperty Name="GuiaDespacho" ColumnName="GuiaDespacho" />
+                <ScalarProperty Name="FechaTermino" ColumnName="FechaTermino" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaEjecucion" ColumnName="FechaEjecucion" />
+                <ScalarProperty Name="Vendedor" ColumnName="Vendedor" />
+                <ScalarProperty Name="PK_Cotizacion_ID" ColumnName="PK_Cotizacion_ID" />
+                <ScalarProperty Name="TelefonoContacto" ColumnName="TelefonoContacto" />
+                <ScalarProperty Name="PersonaAprobacion" ColumnName="PersonaAprobacion" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="PK_ContabilidadID" ColumnName="PK_ContabilidadID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contabilidadaprobacion">
+            <EntityTypeMapping TypeName="bd_sertecModel.contabilidadaprobacion">
+              <MappingFragment StoreEntitySet="contabilidadaprobacion">
+                <ScalarProperty Name="PK_ContabilidadID" ColumnName="PK_ContabilidadID" />
+                <ScalarProperty Name="DescripcionOtro" ColumnName="DescripcionOtro" />
+                <ScalarProperty Name="Otro" ColumnName="Otro" />
+                <ScalarProperty Name="OrdenCompra" ColumnName="OrdenCompra" />
+                <ScalarProperty Name="PresupuestoFirmado" ColumnName="PresupuestoFirmado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contabilidaddescuentos">
+            <EntityTypeMapping TypeName="bd_sertecModel.contabilidaddescuentos">
+              <MappingFragment StoreEntitySet="contabilidaddescuentos">
+                <ScalarProperty Name="PK_ContabilidadID" ColumnName="PK_ContabilidadID" />
+                <ScalarProperty Name="ValorOtro" ColumnName="ValorOtro" />
+                <ScalarProperty Name="Otro" ColumnName="Otro" />
+                <ScalarProperty Name="Quince" ColumnName="Quince" />
+                <ScalarProperty Name="Cinco" ColumnName="Cinco" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contabilidadfacturacion">
+            <EntityTypeMapping TypeName="bd_sertecModel.contabilidadfacturacion">
+              <MappingFragment StoreEntitySet="contabilidadfacturacion">
+                <ScalarProperty Name="PK_ContabilidadID" ColumnName="PK_ContabilidadID" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="NumeroFactura" ColumnName="NumeroFactura" />
+                <ScalarProperty Name="NumeroCuota" ColumnName="NumeroCuota" />
+                <ScalarProperty Name="PK_FacturacionID" ColumnName="PK_FacturacionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contabilidadformapago">
+            <EntityTypeMapping TypeName="bd_sertecModel.contabilidadformapago">
+              <MappingFragment StoreEntitySet="contabilidadformapago">
+                <ScalarProperty Name="PK_ContabilidadID" ColumnName="PK_ContabilidadID" />
+                <ScalarProperty Name="DescripcionOtro" ColumnName="DescripcionOtro" />
+                <ScalarProperty Name="Otro" ColumnName="Otro" />
+                <ScalarProperty Name="CantidadCuotas" ColumnName="CantidadCuotas" />
+                <ScalarProperty Name="Cuotas" ColumnName="Cuotas" />
+                <ScalarProperty Name="Cincuenta" ColumnName="Cincuenta" />
+                <ScalarProperty Name="Cien" ColumnName="Cien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cotizacion">
+            <EntityTypeMapping TypeName="bd_sertecModel.cotizacion">
+              <MappingFragment StoreEntitySet="cotizacion">
+                <ScalarProperty Name="TotalNetoComisiones" ColumnName="TotalNetoComisiones" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="ValorFletes" ColumnName="ValorFletes" />
+                <ScalarProperty Name="ValorTerceras" ColumnName="ValorTerceras" />
+                <ScalarProperty Name="ValorTerceros" ColumnName="ValorTerceros" />
+                <ScalarProperty Name="ValorRepuestos" ColumnName="ValorRepuestos" />
+                <ScalarProperty Name="ValorManoObra" ColumnName="ValorManoObra" />
+                <ScalarProperty Name="TotalFletes" ColumnName="TotalFletes" />
+                <ScalarProperty Name="CantidadFletes" ColumnName="CantidadFletes" />
+                <ScalarProperty Name="ValorMargenVenta" ColumnName="ValorMargenVenta" />
+                <ScalarProperty Name="ValorVenta" ColumnName="ValorVenta" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="RecargoHHEE" ColumnName="RecargoHHEE" />
+                <ScalarProperty Name="SubTotalManoObra" ColumnName="SubTotalManoObra" />
+                <ScalarProperty Name="HorasParejas" ColumnName="HorasParejas" />
+                <ScalarProperty Name="ValorHH" ColumnName="ValorHH" />
+                <ScalarProperty Name="ValorMoneda" ColumnName="ValorMoneda" />
+                <ScalarProperty Name="DuracionTrabajo" ColumnName="DuracionTrabajo" />
+                <ScalarProperty Name="DescripcionDetalle" ColumnName="DescripcionDetalle" />
+                <ScalarProperty Name="FechaCalculo" ColumnName="FechaCalculo" />
+                <ScalarProperty Name="ValorFlete" ColumnName="ValorFlete" />
+                <ScalarProperty Name="ValorHP" ColumnName="ValorHP" />
+                <ScalarProperty Name="ValorUf" ColumnName="ValorUf" />
+                <ScalarProperty Name="PresupuestoNumero" ColumnName="PresupuestoNumero" />
+                <ScalarProperty Name="Supervisor" ColumnName="Supervisor" />
+                <ScalarProperty Name="TecnicoEmisor" ColumnName="TecnicoEmisor" />
+                <ScalarProperty Name="Ascensor" ColumnName="Ascensor" />
+                <ScalarProperty Name="Obra" ColumnName="Obra" />
+                <ScalarProperty Name="FechaEmision" ColumnName="FechaEmision" />
+                <ScalarProperty Name="PK_Cotizacion_ID" ColumnName="PK_Cotizacion_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cotizacionrepuesto">
+            <EntityTypeMapping TypeName="bd_sertecModel.cotizacionrepuesto">
+              <MappingFragment StoreEntitySet="cotizacionrepuesto">
+                <ScalarProperty Name="PK_Cotizacion_ID" ColumnName="PK_Cotizacion_ID" />
+                <ScalarProperty Name="HoraParHombre" ColumnName="HoraParHombre" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="ValorUnitario" ColumnName="ValorUnitario" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Repuesto" ColumnName="Repuesto" />
+                <ScalarProperty Name="CotizacionRepuestoID" ColumnName="CotizacionRepuestoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cotizaciontrabajoterceros">
+            <EntityTypeMapping TypeName="bd_sertecModel.cotizaciontrabajoterceros">
+              <MappingFragment StoreEntitySet="cotizaciontrabajoterceros">
+                <ScalarProperty Name="PK_Cotizacion_ID" ColumnName="PK_Cotizacion_ID" />
+                <ScalarProperty Name="ValorTerceros" ColumnName="ValorTerceros" />
+                <ScalarProperty Name="Terceros" ColumnName="Terceros" />
+                <ScalarProperty Name="CotizacionTercerosID" ColumnName="CotizacionTercerosID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="operaciones">
+            <EntityTypeMapping TypeName="bd_sertecModel.operaciones">
+              <MappingFragment StoreEntitySet="operaciones">
+                <ScalarProperty Name="PK_ContabilidadID" ColumnName="PK_ContabilidadID" />
+                <ScalarProperty Name="FechaVentas" ColumnName="FechaVentas" />
+                <ScalarProperty Name="Ventas" ColumnName="Ventas" />
+                <ScalarProperty Name="FechaSupervisor" ColumnName="FechaSupervisor" />
+                <ScalarProperty Name="Supervisor" ColumnName="Supervisor" />
+                <ScalarProperty Name="Tecnico" ColumnName="Tecnico" />
+                <ScalarProperty Name="NumeroGuia" ColumnName="NumeroGuia" />
+                <ScalarProperty Name="FechaTecnico" ColumnName="FechaTecnico" />
+                <ScalarProperty Name="PK_Operaciones_ID" ColumnName="PK_Operaciones_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="persona">
-            <EntityTypeMapping TypeName="bd_santiagoModel.persona">
+            <EntityTypeMapping TypeName="bd_sertecModel.persona">
               <MappingFragment StoreEntitySet="persona">
-                <ScalarProperty Name="Fecha_Ingreso" ColumnName="Fecha Ingreso" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
                 <ScalarProperty Name="Cargo" ColumnName="Cargo" />
                 <ScalarProperty Name="Apellido" ColumnName="Apellido" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="PK_Persona_id" ColumnName="PK_Persona_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="presupesto_repuesto">
-            <EntityTypeMapping TypeName="bd_santiagoModel.presupesto_repuesto">
-              <MappingFragment StoreEntitySet="presupesto_repuesto">
-                <ScalarProperty Name="Hora_Par_Hombre" ColumnName="Hora_Par_Hombre" />
-                <ScalarProperty Name="Sub_Total" ColumnName="Sub_Total" />
-                <ScalarProperty Name="Valor_Unitario" ColumnName="Valor_Unitario" />
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="Repuesto" ColumnName="Repuesto" />
-                <ScalarProperty Name="Presupuesto" ColumnName="Presupuesto" />
-                <ScalarProperty Name="PK_ppto_repuesto_id" ColumnName="PK_ppto_repuesto_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="presupuesto">
-            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto">
-              <MappingFragment StoreEntitySet="presupuesto">
-                <ScalarProperty Name="Fecha_Emision" ColumnName="Fecha_Emision" />
-                <ScalarProperty Name="Valor_Flete" ColumnName="Valor_Flete" />
-                <ScalarProperty Name="Valor_HH" ColumnName="Valor_HH" />
-                <ScalarProperty Name="Valor_moneda" ColumnName="Valor_moneda" />
-                <ScalarProperty Name="Presupuesto_descripcion" ColumnName="Presupuesto_descripcion" />
-                <ScalarProperty Name="PK_Presupuesto_id" ColumnName="PK_Presupuesto_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="presupuesto_comercial">
-            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_comercial">
-              <MappingFragment StoreEntitySet="presupuesto_comercial">
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Telefono_Contacto" ColumnName="Telefono_Contacto" />
-                <ScalarProperty Name="Nombre_Aprobador" ColumnName="Nombre_Aprobador" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Numero_Ascensor" ColumnName="Numero_Ascensor" />
-                <ScalarProperty Name="Fecha_Aprobacion" ColumnName="Fecha_Aprobacion" />
-                <ScalarProperty Name="Obra" ColumnName="Obra" />
-                <ScalarProperty Name="Presupuesto" ColumnName="Presupuesto" />
-                <ScalarProperty Name="Presupuesto_Comercial_id" ColumnName="Presupuesto_Comercial_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="presupuesto_comercial_condicion_venta">
-            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_comercial_condicion_venta">
-              <MappingFragment StoreEntitySet="presupuesto_comercial_condicion_venta">
-                <ScalarProperty Name="Descripcion_Otro_Medio" ColumnName="Descripcion_Otro_Medio" />
-                <ScalarProperty Name="Otro_Medio" ColumnName="Otro_Medio" />
-                <ScalarProperty Name="Orden_Compra" ColumnName="Orden_Compra" />
-                <ScalarProperty Name="Copia_Presupuesto_Firmado" ColumnName="Copia_Presupuesto_Firmado" />
-                <ScalarProperty Name="Otro_Descuento" ColumnName="Otro_Descuento" />
-                <ScalarProperty Name="Numero_Cuotas" ColumnName="Numero_Cuotas" />
-                <ScalarProperty Name="Cuotas" ColumnName="Cuotas" />
-                <ScalarProperty Name="Pago_Incompleto_Termino_Trabajo" ColumnName="Pago_Incompleto_Termino_Trabajo" />
-                <ScalarProperty Name="Pago_Completo_Termino_Trabajo" ColumnName="Pago_Completo_Termino_Trabajo" />
-                <ScalarProperty Name="Valor_Porcentaje_Otro" ColumnName="Valor_Porcentaje_Otro" />
-                <ScalarProperty Name="Porcentaje_Otro" ColumnName="Porcentaje_Otro" />
-                <ScalarProperty Name="Porcentaje_Quince" ColumnName="Porcentaje_Quince" />
-                <ScalarProperty Name="Porcentaje_Cinco" ColumnName="Porcentaje_Cinco" />
-                <ScalarProperty Name="Presupuesto_Comercial" ColumnName="Presupuesto_Comercial" />
-                <ScalarProperty Name="PK_ppto_comercial_condicion_venta_id" ColumnName="PK_ppto_comercial_condicion_venta_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="presupuesto_comercial_detalle">
-            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_comercial_detalle">
-              <MappingFragment StoreEntitySet="presupuesto_comercial_detalle">
-                <ScalarProperty Name="Mes_Facturacion" ColumnName="Mes_Facturacion" />
-                <ScalarProperty Name="Numero_Factura" ColumnName="Numero_Factura" />
-                <ScalarProperty Name="Guia_Despacho" ColumnName="Guia_Despacho" />
-                <ScalarProperty Name="Fecha_Termino" ColumnName="Fecha_Termino" />
-                <ScalarProperty Name="Fecha_Inicio" ColumnName="Fecha_Inicio" />
-                <ScalarProperty Name="Tecnico_Asignado" ColumnName="Tecnico_Asignado" />
-                <ScalarProperty Name="Fecha_Ejecucion" ColumnName="Fecha_Ejecucion" />
-                <ScalarProperty Name="Dias_Trabajos" ColumnName="Dias_Trabajos" />
-                <ScalarProperty Name="Fletes" ColumnName="Fletes" />
-                <ScalarProperty Name="Horas_Pareja" ColumnName="Horas_Pareja" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Presupuesto_Comercial" ColumnName="Presupuesto_Comercial" />
-                <ScalarProperty Name="PK_Presupuesto_Comercial_Detalle_id" ColumnName="PK_Presupuesto_Comercial_Detalle_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="presupuesto_comercial_resumen">
-            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_comercial_resumen">
-              <MappingFragment StoreEntitySet="presupuesto_comercial_resumen">
-                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
-                <ScalarProperty Name="Valor_Fletes" ColumnName="Valor_Fletes" />
-                <ScalarProperty Name="Valor_Terceros" ColumnName="Valor_Terceros" />
-                <ScalarProperty Name="Valor_Repuesto" ColumnName="Valor_Repuesto" />
-                <ScalarProperty Name="Valor_Mano_Obra" ColumnName="Valor_Mano_Obra" />
-                <ScalarProperty Name="Presupuesto_Comercial_Detalle" ColumnName="Presupuesto_Comercial_Detalle" />
-                <ScalarProperty Name="PK_Presupuesto_Comercial_Resumen_id" ColumnName="PK_Presupuesto_Comercial_Resumen_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="presupuesto_control_orden_trabajo">
-            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_control_orden_trabajo">
-              <MappingFragment StoreEntitySet="presupuesto_control_orden_trabajo">
-                <ScalarProperty Name="Fecha_Termino_Venta" ColumnName="Fecha_Termino_Venta" />
-                <ScalarProperty Name="Numero_Ventas" ColumnName="Numero_Ventas" />
-                <ScalarProperty Name="Supervisor" ColumnName="Supervisor" />
-                <ScalarProperty Name="Fecha_Termino_Supervisor" ColumnName="Fecha_Termino_Supervisor" />
-                <ScalarProperty Name="Tecnico" ColumnName="Tecnico" />
-                <ScalarProperty Name="Numero_Guia" ColumnName="Numero_Guia" />
-                <ScalarProperty Name="Fecha_Termino_Tecnico" ColumnName="Fecha_Termino_Tecnico" />
-                <ScalarProperty Name="Presupuesto_Orden_Trabajo" ColumnName="Presupuesto_Orden_Trabajo" />
-                <ScalarProperty Name="PK_Presupuesto_Control_OC_id" ColumnName="PK_Presupuesto_Control_OC_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="presupuesto_orden_trabajo">
-            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_orden_trabajo">
-              <MappingFragment StoreEntitySet="presupuesto_orden_trabajo">
-                <ScalarProperty Name="Descripcion_Terceros" ColumnName="Descripcion_Terceros" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Telefono_Contacto" ColumnName="Telefono_Contacto" />
-                <ScalarProperty Name="Aprobacion" ColumnName="Aprobacion" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Supervisor" ColumnName="Supervisor" />
-                <ScalarProperty Name="Tecnico_Emisor" ColumnName="Tecnico_Emisor" />
-                <ScalarProperty Name="Ascensor" ColumnName="Ascensor" />
-                <ScalarProperty Name="Fecha_Aprobacion" ColumnName="Fecha_Aprobacion" />
-                <ScalarProperty Name="Obra" ColumnName="Obra" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Presupuesto" ColumnName="Presupuesto" />
-                <ScalarProperty Name="PK_Presupuesto_Orden_Trabajo_id" ColumnName="PK_Presupuesto_Orden_Trabajo_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="presupuesto_orden_trabajo_repuesto_reparacion">
-            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_orden_trabajo_repuesto_reparacion">
-              <MappingFragment StoreEntitySet="presupuesto_orden_trabajo_repuesto_reparacion">
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Presupuesto_Orden_Trabajo" ColumnName="Presupuesto_Orden_Trabajo" />
-                <ScalarProperty Name="PK_Presupuesto_OC_Rep_id" ColumnName="PK_Presupuesto_OC_Rep_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="presupuesto_repuesto_desgloce">
-            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_repuesto_desgloce">
-              <MappingFragment StoreEntitySet="presupuesto_repuesto_desgloce">
-                <ScalarProperty Name="Valor_Comision_2" ColumnName="Valor_Comision_2" />
-                <ScalarProperty Name="Valor_Comision_1" ColumnName="Valor_Comision_1" />
-                <ScalarProperty Name="Valor_Mano_Obra" ColumnName="Valor_Mano_Obra" />
-                <ScalarProperty Name="Valor_Repuesto" ColumnName="Valor_Repuesto" />
-                <ScalarProperty Name="Presupuesto_Repuesto" ColumnName="Presupuesto_Repuesto" />
-                <ScalarProperty Name="PK_ppto_repuesto_desgloce_id" ColumnName="PK_ppto_repuesto_desgloce_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="presupuesto_trabajo_resumen">
-            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_trabajo_resumen">
-              <MappingFragment StoreEntitySet="presupuesto_trabajo_resumen">
-                <ScalarProperty Name="Total_Neto_Comsiones" ColumnName="Total_Neto_Comsiones" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Presupuesto" ColumnName="Presupuesto" />
-                <ScalarProperty Name="PK_Presupuesto_Trabajo_Resumen_id" ColumnName="PK_Presupuesto_Trabajo_Resumen_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="presupuesto_trabajo_resumen_comercial_detalle">
-            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_trabajo_resumen_comercial_detalle">
-              <MappingFragment StoreEntitySet="presupuesto_trabajo_resumen_comercial_detalle">
-                <ScalarProperty Name="Valor_Comision_Otro_Vendedor" ColumnName="Valor_Comision_Otro_Vendedor" />
-                <ScalarProperty Name="Porcentaje_Comision_Otro_Vendedor" ColumnName="Porcentaje_Comision_Otro_Vendedor" />
-                <ScalarProperty Name="Valor_Comision_Vendedor" ColumnName="Valor_Comision_Vendedor" />
-                <ScalarProperty Name="Porcentaje_Comision_Vendedor" ColumnName="Porcentaje_Comision_Vendedor" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-                <ScalarProperty Name="Valor_Fletes" ColumnName="Valor_Fletes" />
-                <ScalarProperty Name="Valor_Terceros" ColumnName="Valor_Terceros" />
-                <ScalarProperty Name="Valor_Repuestos" ColumnName="Valor_Repuestos" />
-                <ScalarProperty Name="Valor_Mano_Obra" ColumnName="Valor_Mano_Obra" />
-                <ScalarProperty Name="Presupuesto_Trabajo_Resumen" ColumnName="Presupuesto_Trabajo_Resumen" />
-                <ScalarProperty Name="PK_ppto_trabajo_resumen_comercial_detalle_id" ColumnName="PK_ppto_trabajo_resumen_comercial_detalle_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="presupuesto_trabajo_resumen_comision_desgloce">
-            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_trabajo_resumen_comision_desgloce">
-              <MappingFragment StoreEntitySet="presupuesto_trabajo_resumen_comision_desgloce">
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Valor_Comision_2" ColumnName="Valor_Comision_2" />
-                <ScalarProperty Name="Valor_Comision_1" ColumnName="Valor_Comision_1" />
-                <ScalarProperty Name="Valor_Mano_Obra" ColumnName="Valor_Mano_Obra" />
-                <ScalarProperty Name="Valor_Flete" ColumnName="Valor_Flete" />
-                <ScalarProperty Name="Ppto_trabajo_resumen_comision_detalle" ColumnName="Ppto_trabajo_resumen_comision_detalle" />
-                <ScalarProperty Name="PK_ppto_trabajo_resumen_comision_desgloce_id" ColumnName="PK_ppto_trabajo_resumen_comision_desgloce_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="presupuesto_trabajo_resumen_comision_detalle">
-            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_trabajo_resumen_comision_detalle">
-              <MappingFragment StoreEntitySet="presupuesto_trabajo_resumen_comision_detalle">
-                <ScalarProperty Name="Total_Fletes" ColumnName="Total_Fletes" />
-                <ScalarProperty Name="Cantidad_Fletes" ColumnName="Cantidad_Fletes" />
-                <ScalarProperty Name="Valor_Margen_Venta" ColumnName="Valor_Margen_Venta" />
-                <ScalarProperty Name="Valor_Venta" ColumnName="Valor_Venta" />
-                <ScalarProperty Name="Presupuesto_Trabajo_Resumen" ColumnName="Presupuesto_Trabajo_Resumen" />
-                <ScalarProperty Name="PK_ppto_trabajo_resumen_comision_detalle_id" ColumnName="PK_ppto_trabajo_resumen_comision_detalle_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="presupuesto_trabajo_resumen_mo_detalle">
-            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_trabajo_resumen_mo_detalle">
-              <MappingFragment StoreEntitySet="presupuesto_trabajo_resumen_mo_detalle">
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Recargo_HH_EE" ColumnName="Recargo_HH_EE" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-                <ScalarProperty Name="Horas_Parejas" ColumnName="Horas_Parejas" />
-                <ScalarProperty Name="Presupuesto_Trabajo_Resumen" ColumnName="Presupuesto_Trabajo_Resumen" />
-                <ScalarProperty Name="PK_ppto_trabajo_resumen_mo_detalle_id" ColumnName="PK_ppto_trabajo_resumen_mo_detalle_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="presupuesto_trabajo_terceros">
-            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_trabajo_terceros">
-              <MappingFragment StoreEntitySet="presupuesto_trabajo_terceros">
-                <ScalarProperty Name="Valor" ColumnName="Valor" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Presupuesto" ColumnName="Presupuesto" />
-                <ScalarProperty Name="PK_ppto_trabajo_terceros_id" ColumnName="PK_ppto_trabajo_terceros_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="presupuesto_trabajo_terceros_desgloce">
-            <EntityTypeMapping TypeName="bd_santiagoModel.presupuesto_trabajo_terceros_desgloce">
-              <MappingFragment StoreEntitySet="presupuesto_trabajo_terceros_desgloce">
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Valor_Comision_2" ColumnName="Valor_Comision_2" />
-                <ScalarProperty Name="Valor_Comision_1" ColumnName="Valor_Comision_1" />
-                <ScalarProperty Name="Valor_Mano_Obra" ColumnName="Valor_Mano_Obra" />
-                <ScalarProperty Name="Valor_Trabajo_Taller" ColumnName="Valor_Trabajo_Taller" />
-                <ScalarProperty Name="Presupuesto_Trabajo_Tercero" ColumnName="Presupuesto_Trabajo_Tercero" />
-                <ScalarProperty Name="PK_ppto_trabajo_terceros_desgloce_id" ColumnName="PK_ppto_trabajo_terceros_desgloce_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="repuesto">
-            <EntityTypeMapping TypeName="bd_santiagoModel.repuesto">
-              <MappingFragment StoreEntitySet="repuesto">
-                <ScalarProperty Name="Precio_Venta" ColumnName="Precio_Venta" />
-                <ScalarProperty Name="Precio_Compra" ColumnName="Precio_Compra" />
-                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
-                <ScalarProperty Name="Marca_Articulo" ColumnName="Marca_Articulo" />
-                <ScalarProperty Name="Nombre_Articulo" ColumnName="Nombre_Articulo" />
-                <ScalarProperty Name="Codigo_repuesto" ColumnName="Codigo_repuesto" />
-                <ScalarProperty Name="PK_repuesto_id" ColumnName="PK_repuesto_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tipo_esfuerzo">
-            <EntityTypeMapping TypeName="bd_santiagoModel.tipo_esfuerzo">
-              <MappingFragment StoreEntitySet="tipo_esfuerzo">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Descripcion_esfuerzo" ColumnName="Descripcion_esfuerzo" />
-                <ScalarProperty Name="PK_Tipo_esfuerzo_id" ColumnName="PK_Tipo_esfuerzo_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tipo_moneda">
-            <EntityTypeMapping TypeName="bd_santiagoModel.tipo_moneda">
-              <MappingFragment StoreEntitySet="tipo_moneda">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="PK_Tipo_moneda_id" ColumnName="PK_Tipo_moneda_id" />
+                <ScalarProperty Name="PK_PersonaID" ColumnName="PK_PersonaID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="usuario">
-            <EntityTypeMapping TypeName="bd_santiagoModel.usuario">
+            <EntityTypeMapping TypeName="bd_sertecModel.usuario">
               <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="PK_PersonaID" ColumnName="PK_PersonaID" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Usuario_id" ColumnName="Usuario_id" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="PK_Usuario_id" ColumnName="PK_Usuario_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="valor_esfuerzo">
-            <EntityTypeMapping TypeName="bd_santiagoModel.valor_esfuerzo">
-              <MappingFragment StoreEntitySet="valor_esfuerzo">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Valor_Esfuerzo1" ColumnName="Valor_Esfuerzo" />
-                <ScalarProperty Name="Descripcion_Esfuerzo" ColumnName="Descripcion_Esfuerzo" />
-                <ScalarProperty Name="PK_Valor_esfuerzo_id" ColumnName="PK_Valor_esfuerzo_id" />
+                <ScalarProperty Name="PK_UsuarioID" ColumnName="PK_UsuarioID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

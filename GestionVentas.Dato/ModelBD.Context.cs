@@ -13,10 +13,10 @@ namespace GestionVentas.Dato
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class bd_santiagoEntities : DbContext
+    public partial class bd_sertecEntities : DbContext
     {
-        public bd_santiagoEntities()
-            : base("name=bd_santiagoEntities")
+        public bd_sertecEntities()
+            : base("name=bd_sertecEntities")
         {
         }
     
@@ -25,29 +25,16 @@ namespace GestionVentas.Dato
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<moneda> moneda { get; set; }
+        public DbSet<contabilidad> contabilidad { get; set; }
+        public DbSet<contabilidadaprobacion> contabilidadaprobacion { get; set; }
+        public DbSet<contabilidaddescuentos> contabilidaddescuentos { get; set; }
+        public DbSet<contabilidadfacturacion> contabilidadfacturacion { get; set; }
+        public DbSet<contabilidadformapago> contabilidadformapago { get; set; }
+        public DbSet<cotizacion> cotizacion { get; set; }
+        public DbSet<cotizacionrepuesto> cotizacionrepuesto { get; set; }
+        public DbSet<cotizaciontrabajoterceros> cotizaciontrabajoterceros { get; set; }
+        public DbSet<operaciones> operaciones { get; set; }
         public DbSet<persona> persona { get; set; }
-        public DbSet<presupesto_repuesto> presupesto_repuesto { get; set; }
-        public DbSet<presupuesto> presupuesto { get; set; }
-        public DbSet<presupuesto_comercial> presupuesto_comercial { get; set; }
-        public DbSet<presupuesto_comercial_condicion_venta> presupuesto_comercial_condicion_venta { get; set; }
-        public DbSet<presupuesto_comercial_detalle> presupuesto_comercial_detalle { get; set; }
-        public DbSet<presupuesto_comercial_resumen> presupuesto_comercial_resumen { get; set; }
-        public DbSet<presupuesto_control_orden_trabajo> presupuesto_control_orden_trabajo { get; set; }
-        public DbSet<presupuesto_orden_trabajo> presupuesto_orden_trabajo { get; set; }
-        public DbSet<presupuesto_orden_trabajo_repuesto_reparacion> presupuesto_orden_trabajo_repuesto_reparacion { get; set; }
-        public DbSet<presupuesto_repuesto_desgloce> presupuesto_repuesto_desgloce { get; set; }
-        public DbSet<presupuesto_trabajo_resumen> presupuesto_trabajo_resumen { get; set; }
-        public DbSet<presupuesto_trabajo_resumen_comercial_detalle> presupuesto_trabajo_resumen_comercial_detalle { get; set; }
-        public DbSet<presupuesto_trabajo_resumen_comision_desgloce> presupuesto_trabajo_resumen_comision_desgloce { get; set; }
-        public DbSet<presupuesto_trabajo_resumen_comision_detalle> presupuesto_trabajo_resumen_comision_detalle { get; set; }
-        public DbSet<presupuesto_trabajo_resumen_mo_detalle> presupuesto_trabajo_resumen_mo_detalle { get; set; }
-        public DbSet<presupuesto_trabajo_terceros> presupuesto_trabajo_terceros { get; set; }
-        public DbSet<presupuesto_trabajo_terceros_desgloce> presupuesto_trabajo_terceros_desgloce { get; set; }
-        public DbSet<repuesto> repuesto { get; set; }
-        public DbSet<tipo_esfuerzo> tipo_esfuerzo { get; set; }
-        public DbSet<tipo_moneda> tipo_moneda { get; set; }
         public DbSet<usuario> usuario { get; set; }
-        public DbSet<valor_esfuerzo> valor_esfuerzo { get; set; }
     }
 }

@@ -12,18 +12,18 @@ namespace GestionVentas.Dato
     using System;
     using System.Collections.Generic;
     
-    public partial class presupuesto_control_orden_trabajo
+    public partial class operaciones
     {
-        public int PK_Presupuesto_Control_OC_id { get; set; }
-        public int Presupuesto_Orden_Trabajo { get; set; }
-        public Nullable<System.DateTime> Fecha_Termino_Tecnico { get; set; }
-        public Nullable<int> Numero_Guia { get; set; }
+        public int PK_Operaciones_ID { get; set; }
+        public Nullable<System.DateTime> FechaTecnico { get; set; }
+        public string NumeroGuia { get; set; }
         public string Tecnico { get; set; }
-        public Nullable<System.DateTime> Fecha_Termino_Supervisor { get; set; }
         public string Supervisor { get; set; }
-        public Nullable<int> Numero_Ventas { get; set; }
-        public Nullable<System.DateTime> Fecha_Termino_Venta { get; set; }
+        public Nullable<System.DateTime> FechaSupervisor { get; set; }
+        public Nullable<int> Ventas { get; set; }
+        public Nullable<System.DateTime> FechaVentas { get; set; }
+        public Nullable<int> PK_ContabilidadID { get; set; }
     
-        public virtual presupuesto_orden_trabajo presupuesto_orden_trabajo1 { get; set; }
+        public virtual contabilidad contabilidad { get; set; }
     }
 }
