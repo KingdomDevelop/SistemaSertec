@@ -113,6 +113,10 @@
     <Compile Include="cotizaciontrabajoterceros.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\ContabilidadEntity.cs" />
+    <Compile Include="Entidades\FacturacionEntity.cs" />
+    <Compile Include="Entidades\FormaPagoEntity.cs" />
+    <Compile Include="Entidades\ListadoCotizacionEntity.cs" />
     <Compile Include="Entidades\PresupuestoComercialEntity.cs" />
     <Compile Include="Entidades\PresupuestoControlOtEntity.cs" />
     <Compile Include="Entidades\PresupuestoEntity.cs" />

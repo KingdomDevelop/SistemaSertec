@@ -277,5 +277,24 @@ namespace GestionVentas.Negocio.Mappers
                 UsuarioId = entidad.UsuarioId
             };
         }
+
+        public static ListadoCotizacionDto ListadoCotToDto(ListadoCotizacionEntity entidad)
+        {
+            return new ListadoCotizacionDto
+            {
+                CotizacionId = entidad.CotizacionId,
+                Ascensor = entidad.Ascensor,
+                EstadoFinalizado = entidad.EstadoFinalizado,
+                NumeroPresupuesto = entidad.NumeroPresupuesto,
+                TotalNeto = entidad.TotalNeto  
+            };
+        }
+
+        public static IList<ListadoCotizacionDto> ListadoCotToDto(IList<ListadoCotizacionEntity> lstEntidad)
+        {
+            var lstCotizacion = lstEntidad.Select(ListadoCotToDto).ToList();
+
+            return lstCotizacion;
+        }
     }
 }

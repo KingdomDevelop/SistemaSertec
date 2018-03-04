@@ -13,30 +13,59 @@ namespace GestionVentas.Dato.DAO
     public class PresupuestoDao : IPresupuestoDao
     {
 
-        public IList<PresupuestoEntity> obtenerPresupuesto()
+        public PresupuestoEntity obtenerPresupuesto(int cotizacionID)
         {
-            var lstPresupuesto = new List<PresupuestoEntity>();
+            var lstPresupuesto = new PresupuestoEntity();
 
             using (var context = new ContextoBdSantiago())
             {
-
-
                 var datos = context.Cotizacion;
 
                 if (datos.Any())
                 {
-                    lstPresupuesto = datos.Select(c => new PresupuestoEntity
+                    lstPresupuesto = datos.Where(c => c.PK_Cotizacion_ID == cotizacionID).Select(c => new PresupuestoEntity
                     {
 
-                    }).ToList();
+                    }).FirstOrDefault();
                 }
-
                 //solo para asegurarnos que cierre la conexion
                 context.Dispose();
             }
 
             return lstPresupuesto;
         }
+
+        public IList<ListadoCotizacionEntity> ObtenerListadoCotizacion()
+        {
+            var lstCotizacion = new List<ListadoCotizacionEntity>();
+
+            using (var context = new ContextoBdSantiago())
+            {
+                var cotizacion = context.Cotizacion;
+                var contabilidad = context.Contabilidad;
+
+                if (cotizacion.Any())
+                {
+                    lstCotizacion = (from cot in cotizacion
+                                     join conta in contabilidad on cot.PK_Cotizacion_ID equals conta.PK_Cotizacion_ID into Relacion
+                                     from rel in Relacion.DefaultIfEmpty()
+                                     select new ListadoCotizacionEntity
+                                     {
+                                         Ascensor = cot.Ascensor,
+                                         CotizacionId = cot.PK_Cotizacion_ID,
+                                         NumeroPresupuesto = cot.PresupuestoNumero,
+                                         TotalNeto = (decimal)cot.TotalNetoComisiones,
+                                         EstadoFinalizado = (rel == null) ? false : true
+                                     }).ToList();
+                }
+
+                //solo para asegurarnos que cierre la conexion
+                context.Dispose();
+            }
+            return lstCotizacion;
+        }
+
+
 
         public int guardarPresupuesto(PresupuestoEntity entidad)
         {
@@ -83,65 +112,6 @@ namespace GestionVentas.Dato.DAO
 
                 //retornamos el id del objeto, validar que entregue el identity
                 idResultado = cot.PK_Cotizacion_ID;
-            }
-
-            return idResultado;
-        }
-
-        public IList<PresupuestoComercialEntity> ObtenerPresupuestoComercial()
-        {
-            var lstPptoComercial = new List<PresupuestoComercialEntity>();
-
-            using (var context = new ContextoBdSantiago())
-            {
-                //var datos = context.PresupuestoComercial;
-
-                //if (datos.Any())
-                //{
-                //    lstPptoComercial = datos.Select(c => new PresupuestoComercialEntity
-                //    {
-                //        PresupuestoId = c.Presupuesto,
-                //        PresupuestoComercialId = c.Presupuesto_Comercial_id,
-                //        Obra = (int)c.Obra,
-                //        FechaAprobacion = (DateTime)c.Fecha_Aprobacion,
-                //        NumeroAscensor = (int)c.Numero_Ascensor,
-                //        Descripcion = c.Descripcion,
-                //        NombreAprobador = c.Nombre_Aprobador,
-                //        TelefonoContacto = (int)c.Telefono_Contacto,
-                //        Direccion = c.Direccion
-                //    }).ToList();
-                //}
-            }
-            return lstPptoComercial;
-
-        }
-
-        public int guardarPresupuestoOrdenTrabajo(PresupuestoOrdenTrabajoEntity entidad)
-        {
-            int idResultado = 0;
-
-            using (var contexto = new ContextoBdSantiago())
-            {
-                //var ppto = new presupuesto_orden_trabajo
-                //{
-                //    Presupuesto = entidad.PresupuestoId,
-                //    Fecha = entidad.Fecha,
-                //    Obra = entidad.Obra,
-                //    Fecha_Aprobacion = entidad.FechaAprobacion,
-                //    Ascensor = entidad.Ascensor,
-                //    Tecnico_Emisor = entidad.TecnicoEmisor,
-                //    Supervisor = entidad.Supervisor,
-                //    Direccion = entidad.Direccion,
-                //    Aprobacion = entidad.Aprobacion,
-                //    Telefono_Contacto = entidad.TelefonoContacto,
-                //    Descripcion = entidad.Descripcion,
-                //    Descripcion_Terceros = entidad.DescripcionTerceros
-                //};
-
-                //contexto.PresupuestoOrdenTrabajo.Add(ppto);
-                //contexto.SaveChanges();
-
-                //idResultado = ppto.PK_Presupuesto_Orden_Trabajo_id;
             }
 
             return idResultado;
@@ -195,149 +165,202 @@ namespace GestionVentas.Dato.DAO
             return idResultado;
         }
 
-        public void guardarPresupuestoRepuestoDetalle(PresupuestoRepuestoDetalleEntity entidad)
+        public void guardarFacturacion(FacturacionEntity entidad)
         {
             using (var contexto = new ContextoBdSantiago())
             {
-                //var ppto = new presupuesto_repuesto_desgloce
-                //{
-                //    Presupuesto_Repuesto = entidad.PresupuestoTrabajoTerceros,
-                //    Valor_Comision_1 = entidad.ValorComision1,
-                //    Valor_Comision_2 = entidad.ValorComision2,
-                //    Valor_Mano_Obra = entidad.ValorManoObra,
-                //    Valor_Repuesto = entidad.ValorTrabajoTaller
-                //};
+                var fact = new contabilidadfacturacion
+                {
+                    Mes = entidad.Mes,
+                    NumeroCuota = entidad.NumeroCuota,
+                    NumeroFactura = entidad.NumeroGuia,
+                    Valor = entidad.ValorCuota,
+                    PK_ContabilidadID = entidad.NumeroContabilidad
+                };
 
-                //contexto.PresupuestoRepuestoDetalle.Add(ppto);
-                //contexto.SaveChanges();
-
+                contexto.ContabilidadFacturacion.Add(fact);
+                contexto.SaveChanges();
             }
         }
 
-        public void guardarPresupuestoResumenMoDetalle(PresupuestoResumenMoDetalleEntity entidad)
+        public IList<FacturacionEntity> obtenerFacturacion(int contabilidadID)
+        {
+            var lstFacturacion = new List<FacturacionEntity>();
+
+            using (var context = new ContextoBdSantiago())
+            {
+                var datos = context.ContabilidadFacturacion;
+
+                if (datos.Any())
+                {
+                    lstFacturacion = datos.Where(x => x.PK_ContabilidadID == contabilidadID).Select(c => new FacturacionEntity
+                    {
+                        NumeroContabilidad = (int)c.PK_ContabilidadID,
+                        Mes = (int)c.Mes,
+                        NumeroCuota = (int)c.NumeroCuota,
+                        NumeroGuia = (int)c.NumeroFactura,
+                        ValorCuota = (decimal)c.Valor
+
+                    }).ToList();
+                }
+                //solo para asegurarnos que cierre la conexion
+                context.Dispose();
+            }
+
+            return lstFacturacion;
+        }
+
+        public void guardarFormaPago(FormaPagoEntity entidad)
         {
             using (var contexto = new ContextoBdSantiago())
             {
-                //var ppto = new presupuesto_trabajo_resumen_mo_detalle
-                //{
-                //    Horas_Parejas = entidad.HorasParejas,
-                //    Recargo_HH_EE = entidad.RecargoHHEE,
-                //    SubTotal = entidad.Subtotal,
-                //    Total = entidad.Total,
-                //    Presupuesto_Trabajo_Resumen = entidad.PresupuestoTrabajoResumen
-                //};
+                var fact = new contabilidadformapago
+                {
+                    CantidadCuotas = Convert.ToInt32(entidad.NumeroCuotas),
+                    Cien = entidad.PagoCien,
+                    Cincuenta = entidad.PagoCincuenta,
+                    Cuotas = entidad.PagoCuotas,
+                    PK_ContabilidadID = entidad.NumeroContabilidad
+                };
 
-                //contexto.PresupuestoResumenMoDetalle.Add(ppto);
-                //contexto.SaveChanges();
+                var descuentos = new contabilidaddescuentos
+                {
+                    PK_ContabilidadID = entidad.NumeroContabilidad,
+                    Cinco = entidad.DescuentoCinco,
+                    Otro = entidad.OtroDescuentos,
+                    ValorOtro = Convert.ToInt32(entidad.OtroDescuentoDescripcion),
+                    Quince = entidad.DescuentoQuince
+                };
 
+                var aprobacion = new contabilidadaprobacion
+                {
+                    PK_ContabilidadID = entidad.NumeroContabilidad,
+                    DescripcionOtro = entidad.OtraAprobacionDescripcion,
+                    Otro = entidad.OtraAprobacion,
+                    OrdenCompra = entidad.OrdenCompra,
+                    PresupuestoFirmado = entidad.PresupuestoFirmado
+                };
+
+                contexto.ContabilidadFormaPago.Add(fact);
+                contexto.ContabilidadDescuentos.Add(descuentos);
+                contexto.ContabilidadAprobacion.Add(aprobacion);
+                contexto.SaveChanges();
             }
         }
 
-        public int guardarPresupuestoComisionDetalle(PresupuestoTRComisionDetalleEntity entidad)
+        public IList<FormaPagoEntity> obtenerFormaPago(int contabilidadID)
         {
-            int idResultado = 0;
+            var lsfFormaPago = new List<FormaPagoEntity>();
 
-            using (var contexto = new ContextoBdSantiago())
+            using (var context = new ContextoBdSantiago())
             {
-                //var ppto = new presupuesto_trabajo_resumen_comision_detalle
-                //{
-                //    Cantidad_Fletes = entidad.CantidadFletes,
-                //    Presupuesto_Trabajo_Resumen = entidad.PresupuestoTrabajoResumen,
-                //    Total_Fletes = entidad.TotalFletes,
-                //    Valor_Margen_Venta = entidad.ValorMargenVenta,
-                //    Valor_Venta = entidad.ValorVenta
-                //};
 
-                //contexto.PresupuestoResumenComisionDetalle.Add(ppto);
-                //contexto.SaveChanges();
+                var contabilidad = context.Contabilidad;
+                var aprobacion = context.ContabilidadAprobacion;
+                var formaPago = context.ContabilidadFormaPago;
+                var descuentos = context.ContabilidadDescuentos;
 
-                //idResultado = ppto.PK_ppto_trabajo_resumen_comision_detalle_id;
+
+                if (contabilidad.Any())
+                {
+                    lsfFormaPago = (from conta in contabilidad
+                                    join aproba in aprobacion on conta.PK_ContabilidadID equals aproba.PK_ContabilidadID into ContaAprobacion
+                                    from apro in ContaAprobacion.DefaultIfEmpty()
+                                    join formaPag in formaPago on conta.PK_ContabilidadID equals formaPag.PK_ContabilidadID into ContaPago
+                                    from pago in ContaPago.DefaultIfEmpty()
+                                    join descuen in descuentos on conta.PK_ContabilidadID equals descuen.PK_ContabilidadID into ContaDesc
+                                    from desc in ContaDesc.DefaultIfEmpty()
+                                    select new FormaPagoEntity
+                                    {
+                                        DescuentoCinco = (bool)desc.Cinco,
+                                        DescuentoQuince = (bool)desc.Quince,
+                                        NumeroContabilidad = conta.PK_ContabilidadID,
+                                        NumeroCuotas = pago.CantidadCuotas.ToString(),
+                                        OrdenCompra = (bool)apro.OrdenCompra,
+                                        OtraAprobacion = (bool)apro.Otro,
+                                        OtraAprobacionDescripcion = apro.DescripcionOtro,
+                                        OtroDescuentos = (bool)desc.Otro,
+                                        OtroDescuentoDescripcion = desc.ValorOtro.ToString(),
+                                        OtroPago = (bool)pago.Otro,
+                                        OtroPagoDescripcion = pago.DescripcionOtro,
+                                        PagoCien = (bool)pago.Cien,
+                                        PagoCincuenta = (bool)pago.Cincuenta,
+                                        PagoCuotas = (bool)pago.Cuotas,
+                                        PresupuestoFirmado = (bool)apro.PresupuestoFirmado
+
+                                    }).ToList();
+
+                }
+                //solo para asegurarnos que cierre la conexion
+                context.Dispose();
             }
-            return idResultado;
+
+            return lsfFormaPago;
         }
 
-        public void guardarPresupuestoComisionDesgloce(PresupuestoTRComisionDesgloceEntity entidad)
+        public int guardarContabilidad(ContabilidadEntity entidad)
         {
+            int contabilidad = 0;
+
             using (var contexto = new ContextoBdSantiago())
             {
-                //var ppto = new presupuesto_trabajo_resumen_comision_desgloce
-                //{
-                //    Total = entidad.Total,
-                //    Valor_Comision_1 = entidad.ValorComision1,
-                //    Valor_Comision_2 = entidad.ValorComision2,
-                //    Ppto_trabajo_resumen_comision_detalle = entidad.PresupuestoTrComisionDetalle,
-                //    Valor_Flete = entidad.ValorFlete,
-                //    Valor_Mano_Obra = entidad.ValorManoObra
-                //};
+                var conta = new contabilidad
+                {
+                    ComisionOtros = entidad.ComisionOtros,
+                    ComisionVendedor = entidad.ComisionVendedor,
+                    PK_Cotizacion_ID = entidad.Cotizacion,
+                    TelefonoContacto = entidad.TelefonoContacto,
+                    Vendedor = entidad.Vendedor,
+                    PersonaAprobacion = entidad.PersonaAprobacion,
+                    Direccion = entidad.Direccion,
+                    Factura = entidad.Factura,
+                    FechaEjecucion = entidad.FechaEjecucion,
+                    FechaInicio = entidad.FechaInicio,
+                    FechaTermino = entidad.FechaTermino,
+                    GuiaDespacho = entidad.GuiaDespacho,
+                    MesFacturacion = entidad.MesFacturacion
+                };
 
-                //contexto.PresupuestoResumenComisionDesgloce.Add(ppto);
-                //contexto.SaveChanges();
+                contexto.Contabilidad.Add(conta);
+                contexto.SaveChanges();
+
+                contabilidad = conta.PK_ContabilidadID;
             }
+
+            return contabilidad;
         }
 
-        public int guardarPresupuestoResumen(PresupuestoTrabajoResumenEntity entidad)
+        public ContabilidadEntity obtenerContabilidad(int cotizacionID)
         {
-            int idResultado = 0;
+            var conta = new ContabilidadEntity();
 
-            using (var contexto = new ContextoBdSantiago())
+            using (var context = new ContextoBdSantiago())
             {
-                //var ppto = new presupuesto_trabajo_resumen
-                //{
-                //    Presupuesto = entidad.Presupuesto,
-                //    Descripcion = entidad.Descripcion,
-                //    SubTotal = entidad.Subtotal,
-                //    Total_Neto_Comsiones = entidad.TotalnetoComisiones
-                //};
+                var datos = context.Contabilidad;
 
-                //contexto.PresupuestoTrabajoResumen.Add(ppto);
-                //contexto.SaveChanges();
-
-                //idResultado = ppto.PK_Presupuesto_Trabajo_Resumen_id;
+                if (datos.Any())
+                {
+                    conta = datos.Where(x => x.PK_Cotizacion_ID == cotizacionID).Select(c => new ContabilidadEntity
+                    {
+                        ComisionOtros = (int)c.ComisionOtros,
+                        MesFacturacion = (int)c.MesFacturacion,
+                        ComisionVendedor = (int)c.ComisionVendedor,
+                        Direccion = c.Direccion,
+                        Factura = (int)c.Factura,
+                        FechaEjecucion = c.FechaEjecucion,
+                        FechaInicio = c.FechaInicio,
+                        FechaTermino = c.FechaTermino,
+                        GuiaDespacho = c.GuiaDespacho,
+                        PersonaAprobacion = c.PersonaAprobacion,
+                        TelefonoContacto = c.TelefonoContacto,
+                        Vendedor = c.Vendedor
+                    }).FirstOrDefault();
+                }
+                //solo para asegurarnos que cierre la conexion
+                context.Dispose();
             }
-            return idResultado;
-        }
 
-        public void guardarPresupuestoControlOt(PresupuestoControlOtEntity entidad)
-        {
-            using (var contexto = new ContextoBdSantiago())
-            {
-                //var ppto = new presupuesto_control_orden_trabajo
-                //{
-                //    Presupuesto_Orden_Trabajo = entidad.PresupuestoOrdenTrabajo,
-                //    Fecha_Termino_Supervisor = entidad.FechaTerminoSupervisor,
-                //    Fecha_Termino_Tecnico = entidad.FechaTerminoTecnico,
-                //    Fecha_Termino_Venta = entidad.FechaTerminoVenta,
-                //    Numero_Guia = entidad.NumeroGuia,
-                //    Numero_Ventas = entidad.NumeroVentas,
-                //    Supervisor = entidad.Supervisor,
-                //    Tecnico = entidad.Tecnico
-                //};
-
-                //contexto.PresupuestoControlOt.Add(ppto);
-                //contexto.SaveChanges();
-            }
-        }
-
-        public void guardarPresupuestoOtRep(PresupuestoOtRepEntity entidad)
-        {
-            using (var contexto = new ContextoBdSantiago())
-            {
-                //var ppto = new cotizacionrepuesto
-                //{
-                //    Cantidad = entidad.Cantidad,
-                //    Codigo = Convert.ToInt32(entidad.Codigo),
-                //    CotizacionRepuestoID = entidad.PresupuestoOtRepId,
-                //    HoraParHombre = entidad.HoraParHombre,
-                //    Repuesto = entidad.Descripcion,
-                //    ValorUnitario = entidad.ValorUnitario,
-                //    SubTotal = entidad.SubTotal
-
-                //};
-
-                //contexto.CotizacionRepuesto.Add(ppto);
-                //contexto.SaveChanges();
-
-            }
+            return conta;
         }
 
     }

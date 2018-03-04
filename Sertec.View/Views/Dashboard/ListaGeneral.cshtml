@@ -86,7 +86,6 @@
                                     <tr>
                                         <th>#</th>
                                         <th>CLIENTE</th>
-                                        <th>RUT</th>
                                         <th>N° PPTO</th>
                                         <th>MONTO</th>
                                         <th>ESTADO</th>
@@ -96,12 +95,11 @@
                                 @foreach (var name in ViewBag.ListGeneral)
                                 {
                                     <tr>
-                                        <td>@name.idLista</td>
-                                        <td>@name.RutCliente</td>
-                                        <td>@name.NombreCliente</td>
-                                        <td>@name.Nppto</td>
-                                        <td>@name.Monto</td>
-                                        <td>@name.Estado</td>
+                                        <td>@name.CotizacionId</td>
+                                        <td>@name.Ascensor</td>
+                                        <td>@name.NumeroPresupuesto</td>
+                                        <td>@name.TotalNeto</td>
+                                        <td>@name.EstadoFinalizado</td>
                                     </tr>
                                 }
                                 </tbody>

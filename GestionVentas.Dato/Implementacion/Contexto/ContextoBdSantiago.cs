@@ -27,21 +27,11 @@ namespace GestionVentas.Dato.Contexto
         public DbSet<cotizacion> Cotizacion { get; set; }
         public DbSet<cotizacionrepuesto> CotizacionRepuesto { get; set; }
         public DbSet<cotizaciontrabajoterceros> CotizacionTerceros { get; set; }
-
-        //public DbSet<presupuesto> Presupuesto { get; set; }
-        //public DbSet<presupuesto_comercial> PresupuestoComercial { get; set; }
-        //public DbSet<presupuesto_orden_trabajo> PresupuestoOrdenTrabajo { get; set; }
-        //public DbSet<presupesto_repuesto> PresupuestoRepuesto { get; set; } //presupesto_repuesto
-        //public DbSet<presupuesto_repuesto_desgloce> PresupuestoRepuestoDetalle { get; set; }
-        //public DbSet<presupuesto_trabajo_terceros> PresupuestoTerceros { get; set; }
-        //public DbSet<repuesto> Repuesto { get; set; }
-        //public DbSet<presupuesto_trabajo_resumen> PresupuestoTrabajoResumen { get; set; }
-        //public DbSet<presupuesto_trabajo_resumen_comercial_detalle> PresupuestoResumenComercialDetalle { get; set; }
-        //public DbSet<presupuesto_trabajo_resumen_comision_desgloce> PresupuestoResumenComisionDesgloce { get; set; }
-        //public DbSet<presupuesto_trabajo_resumen_comision_detalle> PresupuestoResumenComisionDetalle { get; set; }
-        //public DbSet<presupuesto_trabajo_resumen_mo_detalle> PresupuestoResumenMoDetalle { get; set; }
-        //public DbSet<presupuesto_control_orden_trabajo> PresupuestoControlOt { get; set; }
-        //public DbSet<presupuesto_orden_trabajo_repuesto_reparacion> PrespuestoOtRespuestoReparacion { get; set; }
+        public DbSet<contabilidad> Contabilidad { get; set; }
+        public DbSet<contabilidadfacturacion> ContabilidadFacturacion { get; set; }
+        public DbSet<contabilidadformapago> ContabilidadFormaPago { get; set; }
+        public DbSet<contabilidaddescuentos> ContabilidadDescuentos { get; set; }
+        public DbSet<contabilidadaprobacion> ContabilidadAprobacion { get; set; }
         public DbSet<usuario> Usuario { get; set; }
         public DbSet<persona> Persona { get; set; }
     }

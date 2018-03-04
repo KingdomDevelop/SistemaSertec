@@ -21,5 +21,7 @@ namespace GestionVentas.Negocio.Interfaz
         int guardarPresupuestoTerceros(PresupuestoTercerosDto presupuestoTercero);
 
         int guardarPresupuestoResumen(PresupuestoTrabajoResumenDto presupuestoResumen);
+
+        IList<ListadoCotizacionDto> obtenerListadoCotizaciones();
     }
 }

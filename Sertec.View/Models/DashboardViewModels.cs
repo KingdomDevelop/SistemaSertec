@@ -83,26 +83,11 @@ namespace Sertec.View.Models
     public class ListaGeneralViewModel
     {
         //ListaGeneral
-        public int idLista { get; set; }
-        public string NombreCliente { get; set; }
-        public string RutCliente { get; set; }
-        public int Nppto { get; set; }
-        public int Monto { get; set; }
-        public string Estado { get; set; }
-
-        //ListaContabilidad
-        public string Obra { get; set; }
+        public int CotizacionId { get; set; }
         public string Ascensor { get; set; }
-        public string TecEmisor { get; set; }
-        public string Supervisor { get; set; }
-        public string Empresa { get; set; }
-        public string Rut { get; set; }
-        public DateTime FechaAprobacion { get; set; }
-        public string  AprobadoPor { get; set; }
-        public int NumTelefono { get; set; }
-        public string Descripcion { get; set; }
-
-
+        public string NumeroPresupuesto { get; set; }
+        public decimal TotalNeto { get; set; }
+        public string EstadoFinalizado { get; set; }
 
     }
 }

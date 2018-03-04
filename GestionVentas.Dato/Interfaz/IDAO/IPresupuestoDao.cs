@@ -9,20 +9,12 @@ namespace GestionVentas.Dato.Interfaz.IDAO
 {
     public interface IPresupuestoDao
     {
-        IList<PresupuestoEntity> obtenerPresupuesto();
+        PresupuestoEntity obtenerPresupuesto(int cotizacionID);
         int guardarPresupuesto(PresupuestoEntity entidad);
 
-        IList<PresupuestoComercialEntity> ObtenerPresupuestoComercial();
-
-        int guardarPresupuestoOrdenTrabajo(PresupuestoOrdenTrabajoEntity entidad);
-
         int guardarPresupuestoRepuesto(PresupuestoRepuestoEntity entidad);
-        void guardarPresupuestoRepuestoDetalle(PresupuestoRepuestoDetalleEntity entidad);
         int guardarPresupuestoTerceros(PresupuestoTercerosEntity entidad);
-        void guardarPresupuestoResumenMoDetalle(PresupuestoResumenMoDetalleEntity entidad);
-        int guardarPresupuestoResumen(PresupuestoTrabajoResumenEntity entidad);
-        void guardarPresupuestoControlOt(PresupuestoControlOtEntity entidad);
-        void guardarPresupuestoOtRep(PresupuestoOtRepEntity entidad);
-        int guardarPresupuestoComisionDetalle(PresupuestoTRComisionDetalleEntity entidad);
+
+        IList<ListadoCotizacionEntity> ObtenerListadoCotizacion();
     }
 }

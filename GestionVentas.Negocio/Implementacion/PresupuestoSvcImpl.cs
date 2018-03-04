@@ -33,12 +33,12 @@ namespace GestionVentas.Negocio.Implementacion
 
         public IList<PresupuestoComercialDto> obtenerPresupuestoComercial()
         {
-            return NegocioMapper.PresupuestoComercialDto(presupuestoDao.ObtenerPresupuestoComercial());
+            return NegocioMapper.PresupuestoComercialDto(null);
         }
 
         public int guardarPresupuestoOrdenTrabajo(PresupuestoOrdenTrabajoDto ordenTrabajo)
         {
-            return presupuestoDao.guardarPresupuestoOrdenTrabajo(NegocioMapper.PresupuestoOrdenTrabajoEntity(ordenTrabajo));
+            return 1;
         }
 
         public int guardarPresupuestoRepuesto(PresupuestoRepuestoDto presupuestoRepuesto)
@@ -53,7 +53,7 @@ namespace GestionVentas.Negocio.Implementacion
 
         public void guardarPresupuestoRepuestoDetalle(PresupuestoRepuestoDetalleDto presupuestoRespuestoDetalle)
         {
-            presupuestoDao.guardarPresupuestoRepuestoDetalle(NegocioMapper.PresupuestoRepuestoDetalleEntity(presupuestoRespuestoDetalle));
+
         }
 
         public int guardarPresupuestoTrabajoComercialDetalle(PresupuestoTRComercialDetalleDto pptoTRcomercialDetalle)
@@ -70,27 +70,32 @@ namespace GestionVentas.Negocio.Implementacion
 
         public void guardarPresupuestoControlOt(PresupuestoControlOtDto pptoControlOt)
         {
-            presupuestoDao.guardarPresupuestoControlOt(NegocioMapper.PresupuestoControlOtEntity(pptoControlOt));
+
         }
 
         public void guardarPresupuestoOtRep(PresupuestoOtRepDto pptoOtRepuesto)
         {
-            presupuestoDao.guardarPresupuestoOtRep(NegocioMapper.PresupuestoOtRepuestoEntity(pptoOtRepuesto));
+
         }
 
         public void guardarPresupuestoTrabajoComisionDetalle(PresupuestoTRComisionDetalleDto ptoComsionDetalle)
         {
-            presupuestoDao.guardarPresupuestoComisionDetalle(NegocioMapper.PresupuestoTrComisionDetalleEntity(ptoComsionDetalle));
+
         }
 
         public int guardarPresupuestoResumen(PresupuestoTrabajoResumenDto presupuestoResumen)
         {
-            return presupuestoDao.guardarPresupuestoResumen(NegocioMapper.PresupuestoTrabajoResumenEntity(presupuestoResumen));
+            return 1;
+
         }
 
         public void guardarPresupuestoResumenMoDetalle(PresupuestoResumenMoDetalleDto pptoResumenMoDetalle)
         {
-            presupuestoDao.guardarPresupuestoResumenMoDetalle(NegocioMapper.PresupuestoResumenMoDetEntity(pptoResumenMoDetalle));
+        }
+
+        public IList<ListadoCotizacionDto> obtenerListadoCotizaciones()
+        {
+            return NegocioMapper.ListadoCotToDto(presupuestoDao.ObtenerListadoCotizacion());
         }
     }
 }
