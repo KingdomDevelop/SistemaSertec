@@ -566,6 +566,268 @@
             </div>
             <div role="tabpanel" class="tab-pane" id="Operations">
                 <hr />
+                <div class="col-sm-12">
+
+                    <!-- column 2 -->
+                    <div class="row">
+                        <!-- center left-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4>DETALLE:</h4>
+                            </div>
+                            <div class="panel-body">
+                                <!--      Primera Tabla --->
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+
+                                        <tbody>
+                                            <tr>
+                                                <td>Obra</td>
+                                                <td> TxtObra</td>
+                                                <td>Empresa</td>
+                                                <td>Rut</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Fecha Aprobación</td>
+                                                <td>
+                                                    <input id="CalendarFechaApro" type="datetime-local" style="height:25px" />
+                                                </td>
+                                                <td> TxtEmpresa</td>
+                                                <td> TxtRut</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ascensor</td>
+                                                <td>TxtAscen</td>
+                                                <td>Dirección</td>
+                                                <td>..</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tecnico Emisor</td>
+                                                <td> TxtTecEm</td>
+                                                <td> TxtDireccion</td>
+                                                <td>..</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Supervisor</td>
+                                                <td>TxtSupervisor</td>
+                                                <td>..</td>
+                                                <td>..</td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                            <!--/panel-body-->
+                        </div>
+                        <!--/panel-->
+
+                        <hr />
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4>New Requests</h4>
+                            </div>
+                            <div class="panel-body">
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item active">INFORMO A UD. QUE CON ESTA FECHA SE HA APROBADO LO SIGUIENTE:</a>
+                                    <table class="table table-striped">
+
+                                        <tbody>
+                                            <tr>
+                                                <td style="width:10%"></td>
+                                                <td style="width:10%"></td>
+                                                <td style="width:10%"></td>
+                                                <td style="width:10%"></td>
+                                                <td style="width:30%">PRESUPUESTO REP N°</td>
+                                                <td style="width:30%"></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:10%"></td>
+                                                <td style="width:10%"></td>
+                                                <td style="width:10%"></td>
+                                                <td style="width:10%"></td>
+                                                <td style="width:20%"></td>
+                                                <td style="width:40%"> DropDownListPresupuestos Seleccionados</td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                    <table class="table table-striped">
+
+                                        <tbody>
+                                            <tr>
+                                                <td style="width:20%">APROBADO POR</td>
+                                                <td style="width:50%"> Txt_APROBPOR</td>
+                                                <td style="width:30%"> VENDEDOR</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:20%">TELEFONO CONTACTO</td>
+                                                <td style="width:50%">Txt_TELCONTA</td>
+                                                <td style="width:30%">Txt_VENDEDOR </td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                    <a href="#" class="list-group-item">BREVE DESCRIPCION DE LA REPARACIÓN A EFECTUAR</a>
+
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <td>
+                                                <textarea id="tf_detalleArea" rows="4" cols="50" style="width: 100%" runat="server"></textarea>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--/col-->
+
+
+                        <div class="panel panel-default">
+                            <div class="table-responsive">
+                                <div class="panel-body">
+                                    <%--   <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:60%">REPUESTOS Y/O REPARACIÓN</th>
+                                                <th style="width:20%">CANT.</th>
+                                                <th style="width:20%">CODIGO</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>...</td>
+                                                <td>0</td>
+                                                <td>...</td>
+                                            </tr>
+                                            <tr>
+                                                <td>...</td>
+                                                <td>0</td>
+                                                <td>...</td>
+                                            </tr>
+                                            <tr>
+                                                <td>...</td>
+                                                <td>0</td>
+                                                <td>...</td>
+                                            </tr>
+                                            <tr>
+                                                <td>...</td>
+                                                <td>0</td>
+                                                <td>...</td>
+                                            </tr>
+                                            <tr>
+                                                <td>...</td>
+                                                <td>0</td>
+                                                <td>...</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>--%>
+
+                                    <asp:GridView ID="GridView_RepuestosReparacion"  Width="100%" class="table table-striped" onrowediting="GridView_RepuestosReparacion_RowEditing" onrowupdating="GridView_RepuestosReparacion_RowUpdating" onrowcancelingedit="GridView_RepuestosReparacion_RowCancelingEdit" style="height: 28px">
+                                        <Columns>
+                                            <asp:CommandField ShowEditButton="True" CancelImageUrl="~/content/Imagenes/cancelGrid.png" HeaderText="Edición" SelectImageUrl="~/content/Imagenes/SeleccionGrid.png" ButtonType="Image" EditImageUrl="~/content/Imagenes/editGrid.png" InsertImageUrl="~/content/Imagenes/warningGrid.png" UpdateImageUrl="~/content/Imagenes/okGrid.png" />
+                                            <asp:BoundField HeaderText="Repuestos Y/O Reparación" />
+                                            <asp:BoundField HeaderText="CANT." />
+                                            <asp:BoundField HeaderText="CODIGO" />
+                                        </Columns>
+                                    </asp:GridView>
+
+                                </div>
+                            </div>
+                            <hr />
+                            <hr />
+                            <div class="table-responsive">
+                                <div class="panel-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:10%"></th>
+                                                <th style="width:80%">TRABAJOS TERCEROS</th>
+                                                <th style="width:10%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <textarea id="Textarea_trabTerc" rows="4" cols="50" style="width: 100%" runat="server"></textarea>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>..</td>
+                                                <td>..</td>
+                                                <td>..</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/panel-->
+                        <!--/col-span-6-->
+                        <!-- COLUMNA DERECHA-->
+
+                        <div class="panel-body">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4>CONTROL DE TERMINO DE TRABAJOS</h4>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td>FECHA</td>
+                                                <td>...</td>
+                                                <td>GUIA N°</td>
+                                                <td>TxtBoxGuia </td>
+                                                <td>TECNICO</td>
+                                                <td>TxtBoxTec</td>
+                                            </tr>
+                                            <tr>
+                                                <td>SUPERVISOR</td>
+                                                <td>TxtBoxSup </td>
+                                                <td>FECHA</td>
+                                                <td>...</td>
+                                                <td>FIRMA</td>
+                                                <td>...</td>
+                                            </tr>
+                                            <tr>
+                                                <td>VENTAS</td>
+                                                <td>TxtBoxNumVen </td>
+                                                <td>FECHA</td>
+                                                <td>02-OCT</td>
+                                                <td>FIRMA</td>
+                                                <td>...</td>
+                                            </tr>
+                                            <tr>
+                                                <td>...</td>
+                                                <td>...</td>
+                                                <td>...</td>
+                                                <td>...</td>
+                                                <td>...</td>
+                                                <td>...</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--/panel-->
+
+                    </div>
+                    <!--/row-->
+                    <hr />
+                    <div class="table-responsive">
+                      @*  <asp:Button ID="Btn_Guardar" runat="server" class="btn btn-primary btn-block" Text="GUARDAR" OnClick="BtnGuardar_Click" />*@
+                    </div>
+                    <hr />
+
+                </div>
+                <!--/col-span-9-->
             </div>
         </div>
     </div>
