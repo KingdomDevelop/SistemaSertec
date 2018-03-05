@@ -286,7 +286,7 @@ namespace GestionVentas.Negocio.Mappers
                 Ascensor = entidad.Ascensor,
                 EstadoFinalizado = entidad.EstadoFinalizado,
                 NumeroPresupuesto = entidad.NumeroPresupuesto,
-                TotalNeto = entidad.TotalNeto  
+                TotalNeto = entidad.TotalNeto
             };
         }
 
@@ -295,6 +295,25 @@ namespace GestionVentas.Negocio.Mappers
             var lstCotizacion = lstEntidad.Select(ListadoCotToDto).ToList();
 
             return lstCotizacion;
+        }
+
+        public static FacturacionDto FacturacionToDto(FacturacionEntity entidad)
+        {
+            return new FacturacionDto
+            {
+                Mes = entidad.Mes,
+                NumeroContabilidad = entidad.NumeroContabilidad,
+                NumeroCuota = entidad.NumeroCuota,
+                NumeroGuia = entidad.NumeroGuia,
+                ValorCuota = entidad.ValorCuota
+            };
+        }
+
+        public static IList<FacturacionDto> FacturacionToDto(IList<FacturacionEntity> lstEntidad)
+        {
+            var lstFacturacion = lstEntidad.Select(FacturacionToDto).ToList();
+
+            return lstFacturacion;
         }
     }
 }
