@@ -130,7 +130,7 @@ namespace GestionVenta.View.Layout
 
         public void rellenardatos() {
             var obtLista = new PresupuestoSvcImpl();
-            obtLista.obtenerPresupuestos();
+            obtLista.obtenerPresupuestos(1);
 
         }
 

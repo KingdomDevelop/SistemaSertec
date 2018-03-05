@@ -26,9 +26,9 @@ namespace GestionVentas.Negocio.Implementacion
             return presupuestoDao.guardarPresupuesto(NegocioMapper.PresupuestoToEntity(presupuesto));
         }
 
-        public IList<PresupuestoDto> obtenerPresupuestos()
+        public PresupuestoDto obtenerPresupuestos(int cotizacionId)
         {
-            return NegocioMapper.PresupuestoToDto(presupuestoDao.obtenerPresupuesto());
+            return NegocioMapper.PresupuestoToDto(presupuestoDao.obtenerPresupuesto(cotizacionId));
         }
 
         public IList<PresupuestoComercialDto> obtenerPresupuestoComercial()

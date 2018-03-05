@@ -14,7 +14,8 @@ namespace GestionVenta.View.Layout
         //        IPresupuestoSvc presupuesto = new PrespuestoSvcImpl();
 
 
-        public void LlenoTabla() {
+        public void LlenoTabla()
+        {
 
             var obtLista = new PresupuestoSvcImpl();
             //obtLista.obtenerPresupuestos();
@@ -25,7 +26,7 @@ namespace GestionVenta.View.Layout
 
             //  obtLista.guardarPresupuesto(new PresupuestoDto { });
 
-            obtLista.obtenerPresupuestos();
+            obtLista.obtenerPresupuestos(1);
 
             //var consulta = (from p in obtLista.obtenerPresupuestos() select new { p.Descripcion, p.FechaEmision }).ToList();
 

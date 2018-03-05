@@ -10,7 +10,7 @@ namespace GestionVentas.Negocio.Interfaz
     public interface IPresupuestoSvc
     {
         int guardarPresupuesto(PresupuestoDto presupuesto);
-        IList<PresupuestoDto> obtenerPresupuestos();
+        PresupuestoDto obtenerPresupuestos(int cotizacionID);
 
         IList<PresupuestoComercialDto> obtenerPresupuestoComercial();
 
