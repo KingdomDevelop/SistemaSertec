@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\ContabilidadDto.cs" />
     <Compile Include="Dto\FacturacionDto.cs" />
     <Compile Include="Dto\FormaPagoDto.cs" />
     <Compile Include="Dto\ListadoCotizacionDto.cs" />

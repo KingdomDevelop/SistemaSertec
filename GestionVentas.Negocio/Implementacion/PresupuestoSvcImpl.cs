@@ -97,5 +97,36 @@ namespace GestionVentas.Negocio.Implementacion
         {
             return NegocioMapper.ListadoCotToDto(presupuestoDao.ObtenerListadoCotizacion());
         }
+
+        public ContabilidadDto obtenerContabilidadInfo(int idCotizacion)
+        {
+            return NegocioMapper.ContabilidadToDto(presupuestoDao.obtenerContabilidad(idCotizacion));
+
+        }
+
+        public int guardarContabilidadInfo(ContabilidadDto contabilidad)
+        {
+            return presupuestoDao.guardarContabilidad(NegocioMapper.ContabilidadToEntity(contabilidad));
+        }
+
+        public FormaPagoDto obtenerFormaPago(int idContabilidad)
+        {
+            return NegocioMapper.FormaPagoToDto(presupuestoDao.obtenerFormaPago(idContabilidad));
+        }
+
+        public void guardarFormaPago(FormaPagoDto formaPago)
+        {
+            presupuestoDao.guardarFormaPago(NegocioMapper.FormaPagoToEntity(formaPago));
+        }
+
+        public IList<FacturacionDto> obtenerFacturacion(int idContabilidad)
+        {
+            return NegocioMapper.FacturacionToDto(presupuestoDao.obtenerFacturacion(idContabilidad));
+        }
+
+        public void guardarFacturacion(FacturacionDto facturacion)
+        {
+            presupuestoDao.guardarFacturacion(NegocioMapper.FacturacionToEntity(facturacion));
+        }
     }
 }

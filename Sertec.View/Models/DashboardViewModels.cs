@@ -61,17 +61,17 @@ namespace Sertec.View.Models
     }
     public class PresupuestoTrabajoTercerosViewModel
     {
-     
+
         public int TercerosId { get; set; }
-        public string Terceros { get; set; } 
+        public string Terceros { get; set; }
         public int ValTer { get; set; }
-  
+
     }
 
     public class TecnicoViewModel
     {
         public string Id { get; set; }
-        public string Nombre {get;set;}
+        public string Nombre { get; set; }
     }
 
     public class SupervisorViewModel
@@ -89,5 +89,43 @@ namespace Sertec.View.Models
         public decimal TotalNeto { get; set; }
         public string EstadoFinalizado { get; set; }
 
+    }
+
+    public class ContabilidadViewModel
+    {
+        public bool ExisteDatos { get; set; }
+        public int Cotizacion { get; set; }
+        public string Direccion { get; set; }
+        public string PersonaAprobacion { get; set; }
+        public string TelefonoContacto { get; set; }
+        public string Vendedor { get; set; }
+        public DateTime? FechaEjecucion { get; set; }
+        public DateTime? FechaInicio { get; set; }
+        public DateTime? FechaTermino { get; set; }
+        public int GuiaDespacho { get; set; }
+        public int Factura { get; set; }
+        public int MesFacturacion { get; set; }
+        public int ComisionVendedor { get; set; }
+        public int ComisionOtros { get; set; }
+    }
+
+    public class CotizacionContabilidadViewModel
+    {
+        public decimal HorasParejas { get; set; }
+        public int CantidadFletes { get; set; }
+        public DateTime FechaCalculo { get; set; }
+        public string TecEmisor { get; set; }
+        public DateTime FechaInicio { get; set; }
+        public DateTime FechaFin { get; set; }
+        public int Guia { get; set; }
+        public int Factura { get; set; }
+        public string MesFacturacion { get; set; }
+        public int ValorManoObra { get; set; }
+        public int ValorRepuestos { get; set; }
+        public int ValorTerceros { get; set; }
+        public int ValorFletes { get; set; }
+
+        public decimal Subtotal { get; set; }
+        public decimal TotalnetoComisiones { get; set; }
     }
 }

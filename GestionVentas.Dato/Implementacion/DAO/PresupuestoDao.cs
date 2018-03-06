@@ -25,7 +25,42 @@ namespace GestionVentas.Dato.DAO
                 {
                     lstPresupuesto = datos.Where(c => c.PK_Cotizacion_ID == cotizacionID).Select(c => new PresupuestoEntity
                     {
+                        Obra = c.Obra,
+                        Ascensor = c.Ascensor,
+                        Supervisor = c.Supervisor,
+                        TecEmisor = c.TecnicoEmisor,
+                        PresupuestoNumero = c.PresupuestoNumero,
+                        DetalleDescrip = c.DescripcionDetalle,
+                        DuracionTrabajo = (int)c.DuracionTrabajo,
+                        FechaCalculo = c.FechaCalculo,
+                        ValorRepuestos = (int)c.ValorRepuestos,
+                        ValorTerceros = (int)c.ValorTerceros,
+                        ValorManoObra = (int)c.ValorManoObra,
+                        CantidadFletes = (int)c.CantidadFletes,
 
+                      
+                        //FechaEmision = c.FechaEmision,
+                        //HorasParejas = (decimal)c.HorasParejas,
+
+                        //PresupuestoId = c.PK_Cotizacion_ID,
+                       
+                        //RecargoHHEE = (decimal)c.RecargoHHEE,
+                        //Subtotal = (decimal)c.SubTotal,
+                        //SubtotalManoObra = (decimal)c.SubTotalManoObra,
+                        
+                        //Total = (decimal)c.Total,
+                        //TotalFletes = (decimal)c.TotalFletes,
+                        //TotalnetoComisiones = (decimal)c.TotalNetoComisiones,
+                        //ValorFlete = Convert.ToInt32(c.ValorFlete),
+                        //ValorFletes = Convert.ToInt32(c.ValorFletes),
+                        //ValorHH = Convert.ToInt32(c.ValorHH),
+                        //ValorHP = c.ValorHP,
+
+                        //ValorMargenVenta = (decimal)c.ValorMargenVenta,
+                        //ValorMoneda = Convert.ToInt32(c.ValorMoneda),
+
+                        //ValorUf = c.ValorUf,
+                        //ValorVenta = (decimal)c.ValorVenta
                     }).FirstOrDefault();
                 }
                 //solo para asegurarnos que cierre la conexion
@@ -38,6 +73,13 @@ namespace GestionVentas.Dato.DAO
         public IList<ListadoCotizacionEntity> ObtenerListadoCotizacion()
         {
             var lstCotizacion = new List<ListadoCotizacionEntity>();
+
+
+            //var dato = new ListadoCotizacionEntity { Ascensor = "prueba", CotizacionId = 1, NumeroPresupuesto = "12587", EstadoFinalizado = true, TotalNeto = 100 };
+            //var dato2 = new ListadoCotizacionEntity { Ascensor = "efectivo", CotizacionId = 2, NumeroPresupuesto = "9688", EstadoFinalizado = false, TotalNeto = 650 };
+
+            //lstCotizacion.Add(dato);
+            //lstCotizacion.Add(dato2);
 
             using (var context = new ContextoBdSantiago())
             {
@@ -248,9 +290,9 @@ namespace GestionVentas.Dato.DAO
             }
         }
 
-        public IList<FormaPagoEntity> obtenerFormaPago(int contabilidadID)
+        public FormaPagoEntity obtenerFormaPago(int contabilidadID)
         {
-            var lsfFormaPago = new List<FormaPagoEntity>();
+            var FormaPago = new FormaPagoEntity();
 
             using (var context = new ContextoBdSantiago())
             {
@@ -263,39 +305,39 @@ namespace GestionVentas.Dato.DAO
 
                 if (contabilidad.Any())
                 {
-                    lsfFormaPago = (from conta in contabilidad
-                                    join aproba in aprobacion on conta.PK_ContabilidadID equals aproba.PK_ContabilidadID into ContaAprobacion
-                                    from apro in ContaAprobacion.DefaultIfEmpty()
-                                    join formaPag in formaPago on conta.PK_ContabilidadID equals formaPag.PK_ContabilidadID into ContaPago
-                                    from pago in ContaPago.DefaultIfEmpty()
-                                    join descuen in descuentos on conta.PK_ContabilidadID equals descuen.PK_ContabilidadID into ContaDesc
-                                    from desc in ContaDesc.DefaultIfEmpty()
-                                    select new FormaPagoEntity
-                                    {
-                                        DescuentoCinco = (bool)desc.Cinco,
-                                        DescuentoQuince = (bool)desc.Quince,
-                                        NumeroContabilidad = conta.PK_ContabilidadID,
-                                        NumeroCuotas = pago.CantidadCuotas.ToString(),
-                                        OrdenCompra = (bool)apro.OrdenCompra,
-                                        OtraAprobacion = (bool)apro.Otro,
-                                        OtraAprobacionDescripcion = apro.DescripcionOtro,
-                                        OtroDescuentos = (bool)desc.Otro,
-                                        OtroDescuentoDescripcion = desc.ValorOtro.ToString(),
-                                        OtroPago = (bool)pago.Otro,
-                                        OtroPagoDescripcion = pago.DescripcionOtro,
-                                        PagoCien = (bool)pago.Cien,
-                                        PagoCincuenta = (bool)pago.Cincuenta,
-                                        PagoCuotas = (bool)pago.Cuotas,
-                                        PresupuestoFirmado = (bool)apro.PresupuestoFirmado
+                    FormaPago = (from conta in contabilidad
+                                 join aproba in aprobacion on conta.PK_ContabilidadID equals aproba.PK_ContabilidadID into ContaAprobacion
+                                 from apro in ContaAprobacion.DefaultIfEmpty()
+                                 join formaPag in formaPago on conta.PK_ContabilidadID equals formaPag.PK_ContabilidadID into ContaPago
+                                 from pago in ContaPago.DefaultIfEmpty()
+                                 join descuen in descuentos on conta.PK_ContabilidadID equals descuen.PK_ContabilidadID into ContaDesc
+                                 from desc in ContaDesc.DefaultIfEmpty()
+                                 select new FormaPagoEntity
+                                 {
+                                     DescuentoCinco = (bool)desc.Cinco,
+                                     DescuentoQuince = (bool)desc.Quince,
+                                     NumeroContabilidad = conta.PK_ContabilidadID,
+                                     NumeroCuotas = pago.CantidadCuotas.ToString(),
+                                     OrdenCompra = (bool)apro.OrdenCompra,
+                                     OtraAprobacion = (bool)apro.Otro,
+                                     OtraAprobacionDescripcion = apro.DescripcionOtro,
+                                     OtroDescuentos = (bool)desc.Otro,
+                                     OtroDescuentoDescripcion = desc.ValorOtro.ToString(),
+                                     OtroPago = (bool)pago.Otro,
+                                     OtroPagoDescripcion = pago.DescripcionOtro,
+                                     PagoCien = (bool)pago.Cien,
+                                     PagoCincuenta = (bool)pago.Cincuenta,
+                                     PagoCuotas = (bool)pago.Cuotas,
+                                     PresupuestoFirmado = (bool)apro.PresupuestoFirmado
 
-                                    }).ToList();
+                                 }).FirstOrDefault();
 
                 }
                 //solo para asegurarnos que cierre la conexion
                 context.Dispose();
             }
 
-            return lsfFormaPago;
+            return FormaPago;
         }
 
         public int guardarContabilidad(ContabilidadEntity entidad)

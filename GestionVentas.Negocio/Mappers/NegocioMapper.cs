@@ -61,7 +61,7 @@ namespace GestionVentas.Negocio.Mappers
                 Ascensor = entidad.Ascensor,
                 CantidadFletes = entidad.CantidadFletes,
                 DuracionTrabajo = entidad.DuracionTrabajo,
-                FechaCalculo = entidad.FechaCalculo,
+                FechaCalculo = (DateTime)entidad.FechaCalculo,
                 HorasParejas = entidad.HorasParejas,
                 Obra = entidad.Obra,
                 PresupuestoNumero = entidad.PresupuestoNumero,
@@ -292,8 +292,12 @@ namespace GestionVentas.Negocio.Mappers
 
         public static IList<ListadoCotizacionDto> ListadoCotToDto(IList<ListadoCotizacionEntity> lstEntidad)
         {
-            var lstCotizacion = lstEntidad.Select(ListadoCotToDto).ToList();
+            IList<ListadoCotizacionDto> lstCotizacion = new List<ListadoCotizacionDto>();
 
+            if (lstEntidad != null)
+            {
+                lstCotizacion = lstEntidad.Select(ListadoCotToDto).ToList();
+            }
             return lstCotizacion;
         }
 
@@ -314,6 +318,111 @@ namespace GestionVentas.Negocio.Mappers
             var lstFacturacion = lstEntidad.Select(FacturacionToDto).ToList();
 
             return lstFacturacion;
+        }
+
+
+        public static FacturacionEntity FacturacionToEntity(FacturacionDto dto)
+        {
+            return new FacturacionEntity
+            {
+                Mes = dto.Mes,
+                NumeroContabilidad = dto.NumeroContabilidad,
+                NumeroCuota = dto.NumeroCuota,
+                NumeroGuia = dto.NumeroGuia,
+                ValorCuota = dto.ValorCuota
+            };
+        }
+
+        public IList<FacturacionEntity> FacturacionToEntity(IList<FacturacionDto> lstDto)
+        {
+            var lstFacturacion = lstDto.Select(FacturacionToEntity).ToList();
+
+            return lstFacturacion;
+        }
+
+
+        public static FormaPagoDto FormaPagoToDto(FormaPagoEntity entidad)
+        {
+            return new FormaPagoDto
+            {
+                DescuentoCinco = entidad.DescuentoCinco,
+                DescuentoQuince = entidad.DescuentoQuince,
+                NumeroContabilidad = entidad.NumeroContabilidad,
+                NumeroCuotas = entidad.NumeroCuotas,
+                OrdenCompra = entidad.OrdenCompra,
+                OtraAprobacion = entidad.OtraAprobacion,
+                OtraAprobacionDescripcion = entidad.OtraAprobacionDescripcion,
+                OtroDescuentoDescripcion = entidad.OtroDescuentoDescripcion,
+                OtroDescuentos = entidad.OtroDescuentos,
+                OtroPago = entidad.OtroPago,
+                OtroPagoDescripcion = entidad.OtroPagoDescripcion,
+                PagoCien = entidad.PagoCien,
+                PagoCincuenta = entidad.PagoCincuenta,
+                PagoCuotas = entidad.PagoCuotas,
+                PresupuestoFirmado = entidad.PresupuestoFirmado
+            };
+        }
+
+        public static FormaPagoEntity FormaPagoToEntity(FormaPagoDto dto)
+        {
+            return new FormaPagoEntity
+            {
+                PresupuestoFirmado = dto.PresupuestoFirmado,
+                DescuentoCinco = dto.DescuentoCinco,
+                DescuentoQuince = dto.DescuentoQuince,
+                NumeroContabilidad = dto.NumeroContabilidad,
+                NumeroCuotas = dto.NumeroCuotas,
+                OrdenCompra = dto.OrdenCompra,
+                OtraAprobacion = dto.OtraAprobacion,
+                OtraAprobacionDescripcion = dto.OtraAprobacionDescripcion,
+                OtroDescuentoDescripcion = dto.OtroDescuentoDescripcion,
+                OtroDescuentos = dto.OtroDescuentos,
+                OtroPago = dto.OtroPago,
+                OtroPagoDescripcion = dto.OtroPagoDescripcion,
+                PagoCien = dto.PagoCien,
+                PagoCincuenta = dto.PagoCincuenta,
+                PagoCuotas = dto.PagoCuotas
+            };
+        }
+
+        public static ContabilidadDto ContabilidadToDto(ContabilidadEntity entidad)
+        {
+            return new ContabilidadDto
+            {
+                ComisionOtros = entidad.ComisionOtros,
+                ComisionVendedor = entidad.ComisionVendedor,
+                Cotizacion = entidad.Cotizacion,
+                Direccion = entidad.Direccion,
+                Factura = entidad.Factura,
+                FechaEjecucion = entidad.FechaEjecucion,
+                FechaInicio = entidad.FechaInicio,
+                FechaTermino = entidad.FechaTermino,
+                GuiaDespacho = entidad.GuiaDespacho,
+                MesFacturacion = entidad.MesFacturacion,
+                PersonaAprobacion = entidad.PersonaAprobacion,
+                TelefonoContacto = entidad.TelefonoContacto,
+                Vendedor = entidad.Vendedor
+            };
+        }
+
+        public static ContabilidadEntity ContabilidadToEntity(ContabilidadDto dto)
+        {
+            return new ContabilidadEntity
+            {
+                ComisionOtros = dto.ComisionOtros,
+                Vendedor = dto.Vendedor,
+                ComisionVendedor = dto.ComisionVendedor,
+                Cotizacion = dto.Cotizacion,
+                Direccion = dto.Direccion,
+                Factura = dto.Factura,
+                FechaEjecucion = dto.FechaEjecucion,
+                FechaInicio = dto.FechaInicio,
+                FechaTermino = dto.FechaTermino,
+                GuiaDespacho = dto.GuiaDespacho,
+                MesFacturacion = dto.MesFacturacion,
+                PersonaAprobacion = dto.PersonaAprobacion,
+                TelefonoContacto = dto.TelefonoContacto
+            };
         }
     }
 }

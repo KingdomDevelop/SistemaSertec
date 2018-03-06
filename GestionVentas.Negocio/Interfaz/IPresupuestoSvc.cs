@@ -23,5 +23,11 @@ namespace GestionVentas.Negocio.Interfaz
         int guardarPresupuestoResumen(PresupuestoTrabajoResumenDto presupuestoResumen);
 
         IList<ListadoCotizacionDto> obtenerListadoCotizaciones();
+        ContabilidadDto obtenerContabilidadInfo(int idCotizacion);
+        int guardarContabilidadInfo(ContabilidadDto contabilidad);
+        FormaPagoDto obtenerFormaPago(int idContabilidad);
+        void guardarFormaPago(FormaPagoDto formaPago);
+        IList<FacturacionDto> obtenerFacturacion(int idContabilidad);
+        void guardarFacturacion(FacturacionDto facturacion);
     }
 }

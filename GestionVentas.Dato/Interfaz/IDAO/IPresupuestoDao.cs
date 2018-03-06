@@ -19,7 +19,7 @@ namespace GestionVentas.Dato.Interfaz.IDAO
         void guardarFacturacion(FacturacionEntity entidad);
         IList<FacturacionEntity> obtenerFacturacion(int contabilidadID);
         void guardarFormaPago(FormaPagoEntity entidad);
-        IList<FormaPagoEntity> obtenerFormaPago(int contabilidadID);
+        FormaPagoEntity obtenerFormaPago(int contabilidadID);
         int guardarContabilidad(ContabilidadEntity entidad);
         ContabilidadEntity obtenerContabilidad(int cotizacionID);
 

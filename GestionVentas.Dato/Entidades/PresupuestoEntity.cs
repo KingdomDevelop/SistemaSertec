@@ -20,7 +20,7 @@ namespace GestionVentas.Dato.Entidades
         public decimal ValorUf { get; set; }
         public decimal ValorHP { get; set; }
         public int ValorFlete { get; set; }
-        public DateTime FechaCalculo { get; set; }
+        public DateTime? FechaCalculo { get; set; }
         public string DetalleDescrip { get; set; }    
         public int DuracionTrabajo { get; set; }
         public int ValorMoneda { get; set; }

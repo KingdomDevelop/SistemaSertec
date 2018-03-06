@@ -272,5 +272,32 @@ namespace Sertec.View.Controllers
         {
             return View();
         }
+
+        public PartialViewResult Contabilidad(int id)
+        {
+            ContabilidadViewModel conta = new ContabilidadViewModel() { ExisteDatos = false };
+            CotizacionContabilidadViewModel coti = new CotizacionContabilidadViewModel();
+
+            var infoCoti = _presupuestoSvc.obtenerPresupuestos(id);
+            var infoConta = _presupuestoSvc.obtenerContabilidadInfo(id);
+
+
+            coti.CantidadFletes = infoCoti.CantidadFletes;
+            //coti.Factura = infoCoti.
+            //coti.Guia =
+
+
+
+            //triple validacion, si tiene datos de contabilidad
+            //facturacion (partial aparte)
+            //condiciones de pago (partial aparte)
+            if (infoConta.Cotizacion == 0)
+            {
+                conta.ExisteDatos = true;
+                conta.ComisionOtros = infoConta.ComisionOtros;
+
+            }
+            return PartialView("Contabilidad", coti);
+        }
     }
 }
