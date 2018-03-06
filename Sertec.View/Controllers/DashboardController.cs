@@ -283,10 +283,11 @@ namespace Sertec.View.Controllers
 
 
             coti.CantidadFletes = infoCoti.CantidadFletes;
-            //coti.Factura = infoCoti.
-            //coti.Guia =
-
-
+            coti.ValorManoObra = infoCoti.ValorManoObra;
+            coti.TecEmisor = infoCoti.TecEmisor;
+            coti.ValorRepuestos = infoCoti.ValorRepuestos;
+            coti.ValorTerceros = infoCoti.ValorTerceros;
+            coti.DuracionTrabajo = infoCoti.DuracionTrabajo;
 
             //triple validacion, si tiene datos de contabilidad
             //facturacion (partial aparte)
@@ -299,5 +300,19 @@ namespace Sertec.View.Controllers
             }
             return PartialView("Contabilidad", coti);
         }
+
+
+
+        public PartialViewResult Facturacion(int id)
+        {
+            return PartialView("Facturacion");
+        }
+
+        public PartialViewResult CondicionVenta(int id)
+        {
+            return PartialView("CondicionVenta");
+        }
+
+
     }
-}
+    }

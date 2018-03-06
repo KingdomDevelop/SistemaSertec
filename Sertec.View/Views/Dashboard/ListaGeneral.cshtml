@@ -9,6 +9,8 @@
 }
 <script type="text/javascript" language="javascript">
     var urlVerContabilidad = "@Url.Action("Contabilidad", "Dashboard")";
+    var urlVerFacturacion = "@Url.Action("Facturacion", "Dashboard")";
+    var urlVerCondicionVenta = "@Url.Action("CondicionVenta", "Dashboard")";
 </script>
 
 @section Scripts
@@ -82,7 +84,7 @@
                     </div>
                     <div id="aprobacion"></div>
                     <div id="facturacion"></div>
-                    <div id="condiciionVenta"></div>
+                    <div id="condicionVenta" ></div>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="employment">
@@ -193,200 +195,6 @@
 
                         <!--/col-span-6-->
                         <!-- COLUMNA DERECHA-->
-                        <div class="col-md-6">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4>FACTURACIÓN EN CUOTAS</h4>
-                                </div>
-                                <div class="table-responsive">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>N° CUOTA</th>
-                                                <th>N° FACTURA</th>
-                                                <th>VALOR</th>
-                                                <th>MES</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>...</td>
-                                                <td>...</td>
-                                                <td>...</td>
-                                                <td>...</td>
-                                            </tr>
-                                            <tr>
-                                                <td>...</td>
-                                                <td>...</td>
-                                                <td>...</td>
-                                                <td>...</td>
-                                            </tr>
-                                            <tr>
-                                                <td>...</td>
-                                                <td>...</td>
-                                                <td>...</td>
-                                                <td>...</td>
-                                            </tr>
-                                            <tr>
-                                                <td>...</td>
-                                                <td>...</td>
-                                                <td>...</td>
-                                                <td>...</td>
-                                            </tr>
-                                            <tr>
-                                                <td>...</td>
-                                                <td>...</td>
-                                                <td>...</td>
-                                                <td>...</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <!--/panel-->
-                            <div id="foreign_checkbox" class="panel panel-default">
-                                <div class="panel-heading">
-                                    <div class="panel-title">
-                                        <h4>CONDICIONES DE VENTA</h4>
-                                    </div>
-                                </div>
-                                <div class="panel-body">
-                                    <table class="table table-striped">
-                                        <tr>
-                                            <td>
-                                                <div><a href="#">Descuentos Ofrecidos</a> </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <div class="col-xs-4 text-center" style="width:100%">
-                                        <table class="table table-striped">
-                                            <tr>
-                                                <td>
-                                                    <input type="checkbox" class="radio" value="1" name="fooby[3][]" />
-                                                </td>
-                                                <td>
-                                                    5%
-                                                </td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <input type="checkbox" class="radio" value="1" name="fooby[3][]" />
-                                                </td>
-                                                <td>
-                                                    15%
-                                                </td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <input type="checkbox" class="radio" value="1" name="fooby[3][]" />
-                                                </td>
-                                                <td>
-                                                    OTRO
-                                                </td>
-                                                <td>
-                                                    <input type="text" id="TextBox_Otro" name="Otro">
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                    <HR />
-                                    <table class="table table-striped">
-                                        <tr>
-                                            <td>
-                                                <div><a href="#">Forma de Pago</a> </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <div class="col-xs-4" style="width:100%">
-                                        <table class="table table-striped" style="width:100%">
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <input type="checkbox" class="radio" value="1" name="fooby[2][]" />
-                                                    </td>
-                                                    <td>
-                                                        100% Contra factura al termino de los trabajos
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <input type="checkbox" class="radio" value="1" name="fooby[2][]" />
-                                                    </td>
-                                                    <td>
-                                                        50% Con la orden y saldo contra factura
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <input type="checkbox" class="radio" value="1" name="fooby[2][]" />
-                                                    </td>
-                                                    <td>N° Cuotas</td>
-                                                    <td><input type="text" id="TextBox_Cuotas" name="Cuotas"></td>
-                                                </tr>
-                                                <tr style="width:90%">
-                                                    <td style="width:10%">
-                                                        <input type="checkbox" class="radio" value="1" name="fooby[2][]" />
-                                                    </td>
-                                                    <td>
-                                                        Otro (Indicar)
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" id="TextBox_Otros" name="Otros">
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <hr />
-                                    <hr />
-                                    <div>
-                                        <table class="table table-striped">
-                                            <tr>
-                                                <td>
-                                                    <a href="#">Medio de Aprobación</a>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                    <div class="col-xs-4" style="width:100%">
-                                        <table class="table table-striped">
-                                            <tr>
-                                                <td>
-                                                    <input type="checkbox" class="radio" value="1" name="fooby[1][]" />
-                                                </td>
-                                                <td>
-                                                    Copia de presupuesto firmado
-                                                </td>
-                                                <td></td>
-                                            <tr>
-                                                <td>
-                                                    <input type="checkbox" class="radio" value="2" name="fooby[1][]" />
-                                                </td>
-                                                <td>
-                                                    Orden de compra a travez de Chile Compra
-                                                </td>
-                                                <td></td>
-                                            <tr>
-                                                <td>
-                                                    <input type="checkbox" class="radio" value="3" name="fooby[1][]" />
-                                                </td>
-                                                <td>
-                                                    Otro (Indicar)
-                                                </td>
-                                                <td>
-                                                    <input type="text" id="TextBox_OtroMedioApro" name="OtroMedioApro">
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/panel-->
-                        </div>
                     </div>
                     <!--/row-->
                 </div>

@@ -127,5 +127,6 @@ namespace Sertec.View.Models
 
         public decimal Subtotal { get; set; }
         public decimal TotalnetoComisiones { get; set; }
+        public int DuracionTrabajo { get; set; }
     }
 }

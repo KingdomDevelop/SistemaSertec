@@ -282,6 +282,8 @@
     <Content Include="Views\Dashboard\PerfilUsuario.cshtml" />
     <Content Include="Views\Dashboard\ListadoGeneralRegistro.cshtml" />
     <Content Include="Views\Dashboard\Contabilidad.cshtml" />
+    <Content Include="Views\Dashboard\Facturacion.cshtml" />
+    <Content Include="Views\Dashboard\CondicionVenta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
