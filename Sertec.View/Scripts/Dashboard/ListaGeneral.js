@@ -1,5 +1,5 @@
 ﻿$(function () {
-    $contenido = $("#contenido");
+    $contenido = $("#contabilidad");
     $facturacion = $("#facturacion");
     $conVenta = $("#condicionVenta");
     $apro = $("#aprobacion");
@@ -17,9 +17,10 @@ function verContabilidad($cotizacionId) {
         },
         success: function (response) {
             $($contenido).html(response);
+            document.getElementById('tabEmpl').click();
+            verAprobacion($cotizacionId);
             verFacturacion($cotizacionId);
             verCondicionVenta($cotizacionId);
-            verAprobacion($cotizacionId);
         }
     });
 

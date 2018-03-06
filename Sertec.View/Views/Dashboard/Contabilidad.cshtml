@@ -5,64 +5,6 @@
     <div class="panel panel-default">
         <div class="table-responsive">
             <table class="table table-striped">
-                <tbody>
-                    <tr>
-                        <td>HORAS PAREJAS VENDIDAS</td>
-                        <td>@Model.HorasParejas</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>FLETES</td>
-                        <td>@Model.CantidadFletes</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>DURACIÓN DE TRABAJOS (días)</td>
-                        <td>@Model.DuracionTrabajo</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>FECHA PROBABLE DE EJECUCIÓN</td>
-                        <td>02-OCT</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>TECNICO ASIGNADO</td>
-                        <td>@Model.TecEmisor</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>FECHA INICIO</td>
-                        <td>01-OCT</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>FECHA TERMINO</td>
-                        <td>01-OCT</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>GUIA DE DESPACHO N°</td>
-                        <td>256</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>FACTURA N°</td>
-                        <td>1009</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>MES FACTURACIÓN</td>
-                        <td>OCTUBRE</td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="table-responsive">
-            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th style="width:60%">RESUMEN</th>
@@ -88,12 +30,12 @@
                     </tr>
                     <tr>
                         <td>FLETES</td>
-                        <td>20.250</td>
+                        <td>@Model.CantidadFletes</td>
                         <td></td>
                     </tr>
                     <tr>
                         <td>SUB-TOTAL</td>
-                        <td>426.750</td>
+                        <td>@Model.Subtotal</td>
                         <td>..</td>
                     </tr>
                 </tbody>
@@ -134,5 +76,65 @@
             </table>
         </div>
     </div>
-    <!--/panel-->
 </div>
+
+<div class="col-md-6">
+    <div class="panel panel-default">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <td>HORAS PAREJAS VENDIDAS</td>
+                        <td>@Model.HorasParejas</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>FLETES</td>
+                        <td>@Model.CantidadFletes</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DURACIÓN DE TRABAJOS (días)</td>
+                        <td>@Model.DuracionTrabajo</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>FECHA PROBABLE DE EJECUCIÓN</td>
+                        <td>@Model.FechaInicio</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TECNICO ASIGNADO</td>
+                        <td>@Model.TecEmisor</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>FECHA INICIO</td>
+                        <td>@Model.FechaInicio</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>FECHA TERMINO</td>
+                        <td>@Model.FechaFin</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>GUIA DE DESPACHO N°</td>
+                        <td>@Model.Guia</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>FACTURA N°</td>
+                        <td>@Model.Factura</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>MES FACTURACIÓN</td>
+                        <td>@Model.MesFacturacion</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>

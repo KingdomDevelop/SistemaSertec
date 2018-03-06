@@ -73,6 +73,15 @@ namespace Sertec.View.Controllers
                 TotalNeto = cotizacion.TotalNeto
             }).ToList();
 
+            //Datos Pruebas
+             GeneralList = new List<ListaGeneralViewModel>();
+
+            GeneralList.Add(new ListaGeneralViewModel { CotizacionId = 1, Ascensor = "Hotel abc", NumeroPresupuesto = "101", TotalNeto = 200000, EstadoFinalizado = "EN CURSO" });
+            GeneralList.Add(new ListaGeneralViewModel { CotizacionId = 2, Ascensor = "CUARTEL MILITAL 1", NumeroPresupuesto = "102", TotalNeto = 50000, EstadoFinalizado = "FINALIZADO" });
+            GeneralList.Add(new ListaGeneralViewModel { CotizacionId = 3, Ascensor = "Holden", NumeroPresupuesto = "103", TotalNeto = 870000, EstadoFinalizado = "NULO" });
+            GeneralList.Add(new ListaGeneralViewModel { CotizacionId = 4, Ascensor = "ASCESORIAS X", NumeroPresupuesto = "104", TotalNeto = 150000, EstadoFinalizado = "RECHAZADO" });
+            GeneralList.Add(new ListaGeneralViewModel { CotizacionId = 5, Ascensor = "Otro", NumeroPresupuesto = "105", TotalNeto = 90000, EstadoFinalizado = "" });
+
             ViewBag.ListGeneral = GeneralList;
 
             return View();

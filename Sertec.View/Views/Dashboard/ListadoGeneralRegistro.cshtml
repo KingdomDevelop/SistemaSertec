@@ -5,45 +5,46 @@
     prueba = (List<PresupuestoTrabajoTercerosViewModel>)Session["terceros"];
 }*@
 
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        <h3 class="panel-title">Registro</h3>
-        <div class="pull-right">
-            <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
-                @*<i class="glyphicon glyphicon-filter"></i>*@
-            </span>
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Registro</h3>
+            <div class="pull-right">
+                <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+                    @*<i class="glyphicon glyphicon-filter"></i>*@
+                </span>
+            </div>
         </div>
-    </div>
-    <div class="panel-body">
-        <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Buscar en la lista" />
-    </div>
-    <table class="table table-hover" id="dev-table">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>CLIENTE</th>
-                <th>N° PPTO</th>
-                <th>MONTO</th>
-                <th>ESTADO</th>
-                <th>ACCION</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var name in Model)
-            {
+        <div class="panel-body">
+            <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Buscar en la lista" />
+        </div>
+        <table class="table table-hover" id="dev-table">
+            <thead>
                 <tr>
-                    <td>@name.CotizacionId</td>
-                    <td>@name.Ascensor</td>
-                    <td>@name.NumeroPresupuesto</td>
-                    <td>@name.TotalNeto</td>
-                    <td>@name.EstadoFinalizado</td>
-                    <td>
-                        <input class="hidden repuestoId" value=">@name.CotizacionId" />
-                        <button class="btn btn-info btn-sm" onclick="verContabilidad(@name.CotizacionId)">Ver</button>
-                    </td>
+                    <th>#</th>
+                    <th>CLIENTE</th>
+                    <th>N° PPTO</th>
+                    <th>MONTO</th>
+                    <th>ESTADO</th>
+                    <th>ACCION</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var name in Model)
+            {
+                    <tr>
+                        <td>@name.CotizacionId</td>
+                        <td>@name.Ascensor</td>
+                        <td>@name.NumeroPresupuesto</td>
+                        <td>@name.TotalNeto</td>
+                        <td>@name.EstadoFinalizado</td>
+                        <td>
+                            <input class="hidden repuestoId" value=">@name.CotizacionId" />
+                            <button class="btn btn-info btn-sm" onclick="verContabilidad(@name.CotizacionId)">Ver</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
-
