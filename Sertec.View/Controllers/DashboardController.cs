@@ -313,6 +313,10 @@ namespace Sertec.View.Controllers
             return PartialView("CondicionVenta");
         }
 
+        public PartialViewResult Aprobacion(int id)
+        {
+            return PartialView("Aprobacion");
+        }
 
     }
     }

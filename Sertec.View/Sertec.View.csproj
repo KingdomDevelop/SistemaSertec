@@ -284,6 +284,7 @@
     <Content Include="Views\Dashboard\Contabilidad.cshtml" />
     <Content Include="Views\Dashboard\Facturacion.cshtml" />
     <Content Include="Views\Dashboard\CondicionVenta.cshtml" />
+    <Content Include="Views\Dashboard\Aprobacion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
