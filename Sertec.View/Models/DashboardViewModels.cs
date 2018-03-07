@@ -159,6 +159,23 @@ namespace Sertec.View.Models
     }
     public class ListaOperacionViewModel
     {
+        public string Obra { get; set; }
+        public DateTime FechaEmision { get; set; }
+        public string Ascensor { get; set; }
+        public string TecEmisor { get; set; }
+        public string Supervisor { get; set; }
+        public string RutEmpresa { get; set; }//No existe
+        public string Respuesto { get; set; }
+        public string Vendedor { get; set; } //No existe
+        public string DetalleDescrip { get; set; }
 
+        //Lista de Repuesto/Reparacion Ingresados
+
+        public string TrabajosTerceros { get; set; }
+
+        //Control Termino de Trabajos
+        public int Guia { get; set; }
     }
+
+
 }

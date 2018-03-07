@@ -61,7 +61,6 @@ namespace Sertec.View.Controllers
         public ActionResult ListaGeneral()
         {
             var GeneralList = new List<ListaGeneralViewModel>();
-            var OperacionList = new List<ListaOperacionViewModel>();
 
             var listado = _presupuestoSvc.obtenerListadoCotizaciones();
 
@@ -307,6 +306,24 @@ namespace Sertec.View.Controllers
             {
                 conta.ExisteDatos = true;
             }
+
+            var OperacionList = new List<ListaOperacionViewModel>();
+
+            OperacionList.Add(new ListaOperacionViewModel
+            {
+                Obra = "1",
+                FechaEmision = DateTime.Now,
+                Ascensor = "Ascensor ABC",
+                TecEmisor = "AGC",
+                Supervisor = "LLN",
+                RutEmpresa = "",
+                Respuesto = "Repuesto ABC 1, Repuesto ABC 2",
+                Vendedor = "QWE",
+                DetalleDescrip = "Detalle Descripcion 1,2 y 3",
+                TrabajosTerceros = "Trabajos Terceros Detalle",
+                Guia =  123
+            });
+
             return PartialView("Contabilidad", coti);
         }
 

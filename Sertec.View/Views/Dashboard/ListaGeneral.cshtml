@@ -221,38 +221,39 @@
                                 <div class="table-responsive">
                                     <table class="table table-striped">
                                         <tbody>
+                                            @foreach (var name in Model)
+                                            {
                                             <tr>
                                                 <td>Obra</td>
-                                                <td> TxtObra</td>
+                                                <td>@name.Obra</td>
                                                 <td>Empresa</td>
                                                 <td>Rut</td>
                                             </tr>
                                             <tr>
                                                 <td>Fecha Aprobación</td>
-                                                <td>
-                                                    <input id="CalendarFechaApro" type="datetime-local" style="height:25px" />
-                                                </td>
+                                                <td>@name.FechaEmision </td>
                                                 <td> TxtEmpresa</td>
-                                                <td> TxtRut</td>
+                                                <td>@name.RutEmpresa</td>
                                             </tr>
                                             <tr>
                                                 <td>Ascensor</td>
-                                                <td>TxtAscen</td>
+                                                <td>@name.Ascensor</td>
                                                 <td>Dirección</td>
                                                 <td>..</td>
                                             </tr>
                                             <tr>
                                                 <td>Tecnico Emisor</td>
-                                                <td> TxtTecEm</td>
+                                                <td> @name.TecEmisor</td>
                                                 <td> TxtDireccion</td>
                                                 <td>..</td>
                                             </tr>
                                             <tr>
                                                 <td>Supervisor</td>
-                                                <td>TxtSupervisor</td>
+                                                <td>@name.Supervisor</td>
                                                 <td>..</td>
                                                 <td>..</td>
                                             </tr>
+                                            }
                                         </tbody>
                                     </table>
                                 </div>
