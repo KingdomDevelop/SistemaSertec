@@ -350,7 +350,7 @@ namespace Sertec.View.Controllers
         {
             ContabilidadViewModel contabilidad = new ContabilidadViewModel() { ExisteDatos = false };
 
-            return PartialView("Aprobacion");
+            return PartialView("ContabilidadAprobacion");
         }
 
         public PartialViewResult IngresarCondicionVenta(CondicionVentaViewModel model)

@@ -1,1 +1,468 @@
 ﻿
+@using Sertec.View.Models
+@{
+    ViewBag.Title = "ContabilidadAprobacion";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div role="tabpanel" class="tab-pane" id="employment">
+    <div class="col-sm-12">
+
+        <!-- column 2 -->
+        <hr />
+        <div class="row">
+            <!-- center left-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>DETALLE:</h4>
+                </div>
+                <div class="panel-body">
+                    <!--      Primera Tabla --->
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+
+                            <tbody>
+                                <tr>
+                                    <td>Obra</td>
+                                    <td> <input type="text" id="TxtObra" name="Obra"></td>
+                                    <td>Empresa</td>
+                                    <td>Rut</td>
+                                </tr>
+                                <tr>
+                                    <td>Fecha Aprobación</td>
+                                    <td><input type="text" id="TxtFechaApro" name="FechaApro"></td>
+                                    <td><input type="text" id="TxtEmpresa" name="Empresa"></td>
+                                    <td><input type="text" id="TxtRut" name="Rut"></td>
+                                </tr>
+                                <tr>
+                                    <td>Ascensor</td>
+                                    <td> <input type="text" id="TxtAscen" name="Ascen"></td>
+                                    <td>Dirección</td>
+                                    <td>..</td>
+                                </tr>
+                                <tr>
+                                    <td>Tecnico Emisor</td>
+                                    <td> <input type="text" id="TxtTecEm" name="TecEm"></td>
+                                    <td> <input type="text" id="TxtDireccion" name="Direccion"></td>
+                                    <td>..</td>
+                                </tr>
+                                <tr>
+                                    <td>Supervisor</td>
+                                    <td> <input type="text" id="TxtSupervisor" name="Supervisor"></td>
+                                    <td>..</td>
+                                    <td>..</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+                <!--/panel-body-->
+            </div>
+            <!--/panel-->
+
+            <hr />
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>New Requests</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item active">INFORMO A UD. QUE CON ESTA FECHA SE HA APROBADO LO SIGUIENTE:</a>
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <td style="width:10%"></td>
+                                    <td style="width:10%"></td>
+                                    <td style="width:10%"></td>
+                                    <td style="width:10%"></td>
+                                    <td style="width:30%">PRESUPUESTO REP N°</td>
+                                    <td style="width:40%"><input type="text" id="TextFechaApro" name="FechaApro"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <td style="width:20%">APROBADO POR</td>
+                                    <td style="width:50%"><input type="text" id="Txt_APROBPOR" name="APROBPOR"></td>
+
+                                    Anne, [07.03.18 00:43]
+                                    <td style="width:30%"> VENDEDOR</td>
+                                </tr>
+                                <tr>
+                                    <td style="width:20%">TELEFONO CONTACTO</td>
+                                    <td style="width:50%">
+                                        <input type="text" id="Txt_TELCONTA" name="TELCONTA">
+                                    </td>
+                                    <td style="width:30%">
+                                        <input type="text" id="Txt_VENDEDOR" name="VENDEDOR">
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                        <a href="#" class="list-group-item">BREVE DESCRIPCION DE LA REPARACIÓN A EFECTUAR</a>
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <textarea name="detalleArea" id="tf_detalleArea" rows="4" cols="50">Enter text here...</textarea>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!--/col-->
+            <!-- COLUMNA IZQUIERDA-->
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <td>HORAS PAREJAS VENDIDAS</td>
+                                    <td>2 </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>FLETES</td>
+                                    <td>56</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>DURACIÓN DE TRABAJOS (días)</td>
+                                    <td>25</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>FECHA PROBABLE DE EJECUCIÓN</td>
+                                    <td>02-OCT</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>TECNICO ASIGNADO</td>
+                                    <td>AG</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>FECHA INICIO</td>
+                                    <td>01-OCT</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>FECHA TERMINO</td>
+                                    <td>01-OCT</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>GUIA DE DESPACHO N°</td>
+                                    <td>256</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>FACTURA N°</td>
+                                    <td>1009</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>MES FACTURACIÓN</td>
+                                    <td>OCTUBRE</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th style="width:60%">RESUMEN</th>
+                                    <th style="width:30%">VALOR</th>
+                                    <th style="width:10%"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>MANO DE OBRA</td>
+                                    <td>121.500 </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>REPUESTOS</td>
+                                    <td>285.00</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>TERCEROS</td>
+                                    <td>0</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>FLETES</td>
+                                    <td>20.250</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>SUB-TOTAL</td>
+                                    <td>426.750</td>
+                                    <td>..</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <hr />
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th style="width:60%">COMISIONES</th>
+                                    <th style="width:30%"></th>
+                                    <th style="width:10%"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>3% VENDEDOR</td>
+                                    <td>12.803</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>1.8% OTROS</td>
+                                    <td>85.350</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>TOTAL NETO</td>
+                                    <td>524.903</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>..</td>
+                                    <td>..</td>
+                                    <td>..</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--/panel-->
+
+            </div>
+
+            <!--/col-span-6-->
+            <!-- COLUMNA DERECHA-->
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>FACTURACIÓN EN CUOTAS</h4>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>N° CUOTA</th>
+                                    <th>N° FACTURA</th>
+                                    <th>VALOR</th>
+                                    <th>MES</th>
+
+                                    Anne, [07.03.18 00:43]
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>...</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                </tr>
+                                <tr>
+                                    <td>...</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                </tr>
+                                <tr>
+                                    <td>...</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                </tr>
+                                <tr>
+                                    <td>...</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                </tr>
+                                <tr>
+                                    <td>...</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--/panel-->
+                <div id="foreign_checkbox" class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <h4>CONDICIONES DE VENTA</h4>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-striped">
+                            <tr>
+                                <td>
+                                    <div><a href="#">Descuentos Ofrecidos</a> </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="col-xs-4 text-center" style="width:100%">
+                            <table class="table table-striped">
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="radio" value="1" name="fooby[3][]" />
+                                    </td>
+                                    <td>
+                                        5%
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="radio" value="1" name="fooby[3][]" />
+                                    </td>
+                                    <td>
+                                        15%
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="radio" value="1" name="fooby[3][]" />
+                                    </td>
+                                    <td>
+                                        OTRO
+                                    </td>
+                                    <td>
+                                        <input type="text" id="TextBox_Otro" name="Otro">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <HR />
+                        <table class="table table-striped">
+                            <tr>
+                                <td>
+<div><a href="#">Forma de Pago</a> </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="col-xs-4" style="width:100%">
+                            <table class="table table-striped" style="width:100%">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" class="radio" value="1" name="fooby[2][]" />
+                                        </td>
+                                        <td>
+                                            100% Contra factura al termino de los trabajos
+                                        </td>
+                                        <td></td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" class="radio" value="1" name="fooby[2][]" />
+                                        </td>
+                                        <td>
+                                            50% Con la orden y saldo contra factura
+                                        </td>
+
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" class="radio" value="1" name="fooby[2][]" />
+                                        </td>
+                                        <td>N° Cuotas</td>
+                                        <td><input type="text" id="TextBox_Cuotas" name="Cuotas"></td>
+                                    </tr>
+                                    <tr style="width:90%">
+                                        <td style="width:10%">
+                                            <input type="checkbox" class="radio" value="1" name="fooby[2][]" />
+                                        </td>
+                                        <td>
+                                            Otro (Indicar)
+                                        </td>
+                                        <td>
+                                            <input type="text" id="TextBox_Otros" name="Otros">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <hr />
+                        <hr />
+                        <div>
+                            <table class="table table-striped">
+                                <tr>
+                                    <td>
+                                        <a href="#">Medio de Aprobación</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="col-xs-4" style="width:100%">
+                            <table class="table table-striped">
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="radio" value="1" name="fooby[1][]" />
+                                    </td>
+                                    <td>
+                                        Copia de presupuesto firmado
+                                    </td>
+                                    <td></td>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="radio" value="2" name="fooby[1][]" />
+                                    </td>
+                                    <td>
+                                        Orden de compra a travez de Chile Compra
+                                    </td>
+                                    <td></td>
+                                <tr>
+
+                                    <td>
+                                        <input type="checkbox" class="radio" value="3" name="fooby[1][]" />
+                                    </td>
+                                    <td>
+                                        Otro (Indicar)
+                                    </td>
+                                    <td>
+                                        <input type="text" id="TextBox_OtroMedioApro" name="OtroMedioApro">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+                <!--/panel-->
+            </div>
+        </div>
+        <!--/row-->
+    </div>
+    <!--/col-span-9-->
+</div>
