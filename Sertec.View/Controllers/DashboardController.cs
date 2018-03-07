@@ -304,8 +304,6 @@ namespace Sertec.View.Controllers
             if (infoConta.Cotizacion == 0)
             {
                 conta.ExisteDatos = true;
-                conta.ComisionOtros = infoConta.ComisionOtros;
-
             }
             return PartialView("Contabilidad", coti);
         }
@@ -350,6 +348,8 @@ namespace Sertec.View.Controllers
 
         public PartialViewResult Aprobacion(int id)
         {
+            ContabilidadViewModel contabilidad = new ContabilidadViewModel() { ExisteDatos = false };
+
             return PartialView("Aprobacion");
         }
 
