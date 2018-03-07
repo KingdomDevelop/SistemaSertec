@@ -74,7 +74,7 @@ namespace Sertec.View.Controllers
             }).ToList();
 
             //Datos Pruebas
-             GeneralList = new List<ListaGeneralViewModel>();
+            GeneralList = new List<ListaGeneralViewModel>();
 
             GeneralList.Add(new ListaGeneralViewModel { CotizacionId = 1, Ascensor = "Hotel abc", NumeroPresupuesto = "101", TotalNeto = 200000, EstadoFinalizado = "EN CURSO" });
             GeneralList.Add(new ListaGeneralViewModel { CotizacionId = 2, Ascensor = "CUARTEL MILITAL 1", NumeroPresupuesto = "102", TotalNeto = 50000, EstadoFinalizado = "FINALIZADO" });
@@ -319,7 +319,33 @@ namespace Sertec.View.Controllers
 
         public PartialViewResult CondicionVenta(int id)
         {
-            return PartialView("CondicionVenta");
+            CondicionVentaViewModel conta = new CondicionVentaViewModel() { ExisteDatos = false, NumeroContabilidad = id };
+
+            var condicion = _presupuestoSvc.obtenerFormaPago(id);
+
+            #region [mapeamos los datos]
+            if (condicion.NumeroContabilidad != 0)
+            {
+                conta.ExisteDatos = true;
+                conta.DescuentoCinco = condicion.DescuentoCinco;
+                conta.DescuentoQuince = condicion.DescuentoQuince;
+                conta.PresupuestoFirmado = condicion.PresupuestoFirmado;
+                conta.NumeroContabilidad = condicion.NumeroContabilidad;
+                conta.NumeroCuotas = condicion.NumeroCuotas;
+                conta.OrdenCompra = condicion.OrdenCompra;
+                conta.OtraAprobacion = condicion.OtraAprobacion;
+                conta.OtraAprobacionDescripcion = condicion.OtraAprobacionDescripcion;
+                conta.OtroDescuentoDescripcion = condicion.OtroDescuentoDescripcion;
+                conta.OtroDescuentos = condicion.OtroDescuentos;
+                conta.OtroPago = condicion.OtroPago;
+                conta.OtroPagoDescripcion = condicion.OtroPagoDescripcion;
+                conta.PagoCien = condicion.PagoCien;
+                conta.PagoCincuenta = condicion.PagoCincuenta;
+                conta.PagoCuotas = condicion.PagoCuotas;
+            }
+            #endregion
+
+            return PartialView("CondicionVenta", conta);
         }
 
         public PartialViewResult Aprobacion(int id)
@@ -327,5 +353,55 @@ namespace Sertec.View.Controllers
             return PartialView("Aprobacion");
         }
 
+        public PartialViewResult IngresarCondicionVenta(CondicionVentaViewModel model)
+        {
+            CondicionVentaViewModel conta = new CondicionVentaViewModel();
+
+            _presupuestoSvc.guardarFormaPago(new FormaPagoDto
+            {
+                DescuentoCinco = model.DescuentoCinco,
+                DescuentoQuince = model.DescuentoQuince,
+                NumeroContabilidad = model.NumeroContabilidad,
+                NumeroCuotas = model.NumeroCuotas,
+                OrdenCompra = model.OrdenCompra,
+                OtraAprobacion = model.OtraAprobacion,
+                OtraAprobacionDescripcion = model.OtraAprobacionDescripcion,
+                OtroDescuentoDescripcion = model.OtroDescuentoDescripcion,
+                OtroDescuentos = model.OtroDescuentos,
+                OtroPago = model.OtroPago,
+                OtroPagoDescripcion = model.OtroPagoDescripcion,
+                PagoCien = model.PagoCien,
+                PagoCincuenta = model.PagoCincuenta,
+                PagoCuotas = model.PagoCuotas,
+                PresupuestoFirmado = model.PresupuestoFirmado
+            });
+
+
+            var condicion = _presupuestoSvc.obtenerFormaPago(model.NumeroContabilidad);
+
+            #region [mapeamos los datos]
+            if (condicion.NumeroContabilidad != 0)
+            {
+                conta.ExisteDatos = true;
+                conta.DescuentoCinco = condicion.DescuentoCinco;
+                conta.DescuentoQuince = condicion.DescuentoQuince;
+                conta.PresupuestoFirmado = condicion.PresupuestoFirmado;
+                conta.NumeroContabilidad = condicion.NumeroContabilidad;
+                conta.NumeroCuotas = condicion.NumeroCuotas;
+                conta.OrdenCompra = condicion.OrdenCompra;
+                conta.OtraAprobacion = condicion.OtraAprobacion;
+                conta.OtraAprobacionDescripcion = condicion.OtraAprobacionDescripcion;
+                conta.OtroDescuentoDescripcion = condicion.OtroDescuentoDescripcion;
+                conta.OtroDescuentos = condicion.OtroDescuentos;
+                conta.OtroPago = condicion.OtroPago;
+                conta.OtroPagoDescripcion = condicion.OtroPagoDescripcion;
+                conta.PagoCien = condicion.PagoCien;
+                conta.PagoCincuenta = condicion.PagoCincuenta;
+                conta.PagoCuotas = condicion.PagoCuotas;
+            }
+            #endregion
+
+            return PartialView("CondicionVenta", conta);
+        }
     }
-    }
+}

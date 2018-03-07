@@ -69,3 +69,106 @@ function verAprobacion($cotizacionId) {
         }
     });
 }
+
+function SeleccionTexto() {
+    if (document.getElementById('descOtro').checked) {
+        document.getElementById("TextBox_DescOtro").disabled = false;
+    } else {
+        document.getElementById("TextBox_DescOtro").disabled = true;
+    }
+}
+
+function SeleccionTextoFP() {
+
+    if (document.getElementById('apCuota').checked) {
+        document.getElementById("TextBox_Cuotas").disabled = false;
+    } else {
+        document.getElementById("TextBox_Cuotas").disabled = true;
+    }
+    if (document.getElementById('apOtro').checked) {
+        document.getElementById("TextBox_Otros").disabled = false;
+    } else {
+        document.getElementById("TextBox_Otros").disabled = true;
+    }
+}
+
+function SeleccionTextoMA() {
+    if (document.getElementById('maOtro').checked) {
+        document.getElementById("TextBox_OtroMedioApro").disabled = false;
+    } else {
+        document.getElementById("TextBox_OtroMedioApro").disabled = true;
+    }
+}
+
+
+function CrearCondicionVenta($contabilidad) {
+
+    var descCinco = false;
+    var descQuince = false;
+    var descOtro = false;
+    var textOtro = null;
+
+    var pagoCien = false;
+    var pagoCincuenta = false;
+    var pagoCuota = false;
+    var txtCuotas = null;
+    var otroPago = false;
+    var txtOtroPago = null;
+
+    var firmado = false;
+    var orden = false;
+    var otraApro = false;
+    var txtOtraApro = null;
+
+    if (document.getElementById('descCinco').checked) { descCinco = true; }
+    if (document.getElementById('descQuince').checked) { descQuince = true; }
+    if (document.getElementById('descOtro').checked) { descOtro = true; }
+    if (document.getElementById('descOtro').checked) { textOtro = document.getElementById('TextBox_DescOtro').value; }
+
+    if (document.getElementById('apCien').checked) { pagoCien = true; }
+    if (document.getElementById('apCincuenta').checked) { pagoCincuenta = true; }
+    if (document.getElementById('apCuota').checked) { pagoCuota = true; }
+    if (document.getElementById('apCuota').checked) { txtCuotas = document.getElementById('TextBox_Cuotas').value; }
+    if (document.getElementById('apOtro').checked) { otroPago = true; }
+    if (document.getElementById('apOtro').checked) { txtOtroPago = document.getElementById('TextBox_Otros').value; }
+
+    if (document.getElementById('maCopia').checked) { firmado = true; }
+    if (document.getElementById('maOrden').checked) { orden = true; }
+    if (document.getElementById('maOtro').checked) { otraApro = true; }
+    if (document.getElementById('maOtro').checked) { txtOtraApro = document.getElementById('TextBox_DescOtro').value; }
+
+
+    var dataType = 'application/json; charset=utf-8';
+    var data = {
+        ExisteDatos: true,
+        NumeroContabilidad: $contabilidad,
+        DescuentoCinco: descCinco,
+        DescuentoQuince: descQuince,
+        OtroDescuentos: descOtro,
+        OtroDescuentoDescripcion: textOtro,
+        PagoCien: pagoCien,
+        PagoCincuenta: pagoCincuenta,
+        PagoCuotas: pagoCuota,
+        NumeroCuotas: txtCuotas,
+        OtroPago: otroPago,
+        OtroPagoDescripcion: txtOtroPago,
+        PresupuestoFirmado: firmado,
+        OrdenCompra: orden,
+        OtraAprobacion: otraApro,
+        OtraAprobacionDescripcion: txtOtraApro
+    }
+
+
+    $.ajax({
+        type: "POST",
+        url: urlCrearCondicionVenta,
+        datatype: "json",
+        data: data,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Error");
+        },
+        success: function (response) {
+            verCondicionVenta($contabilidad);
+        }
+    });
+}
