@@ -61,6 +61,8 @@ namespace Sertec.View.Controllers
         public ActionResult ListaGeneral()
         {
             var GeneralList = new List<ListaGeneralViewModel>();
+            var OperacionList = new List<ListaOperacionViewModel>();
+
             var listado = _presupuestoSvc.obtenerListadoCotizaciones();
 
 
@@ -312,7 +314,13 @@ namespace Sertec.View.Controllers
 
         public PartialViewResult Facturacion(int id)
         {
-            return PartialView("Facturacion");
+            //Datos Pruebas
+            var FacturaList = new List<FacturacionViewModel>();
+
+            FacturaList.Add(new FacturacionViewModel { NumeroCuotas = 1, Factura = 1, Valor = 100000, Mes = "FEBRERO" });
+            FacturaList.Add(new FacturacionViewModel { NumeroCuotas = 2, Factura =2, Valor =500000, Mes ="MARZO"});
+                
+            return PartialView("Facturacion", FacturaList);
         }
 
         public PartialViewResult CondicionVenta(int id)
@@ -350,7 +358,7 @@ namespace Sertec.View.Controllers
         {
             ContabilidadViewModel contabilidad = new ContabilidadViewModel() { ExisteDatos = false };
 
-            return PartialView("ContabilidadAprobacion");
+            return PartialView("Aprobacion");// ContabilidadAprobacion");
         }
 
         public PartialViewResult IngresarCondicionVenta(CondicionVentaViewModel model)

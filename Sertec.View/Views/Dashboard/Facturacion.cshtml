@@ -1,4 +1,6 @@
-﻿<div class="col-md-12">
+﻿@using Sertec.View.Models
+@model IList<FacturacionViewModel>
+<div class="col-md-12">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4>FACTURACIÓN EN CUOTAS</h4>
@@ -14,36 +16,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach (var name in Model)
+                    {
                     <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
+                        <td>@name.NumeroCuotas</td>
+                        <td>@name.Factura</td>
+                        <td>@name.Valor</td>
+                        <td>@name.Mes</td>
                     </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
+                    }
+                    
                 </tbody>
             </table>
         </div>
