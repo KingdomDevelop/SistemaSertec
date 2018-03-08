@@ -61,6 +61,25 @@ namespace Sertec.View.Controllers
         public ActionResult ListaGeneral()
         {
             var GeneralList = new List<ListaGeneralViewModel>();
+            var OperacionList = new List<ListaOperacionViewModel>();
+
+            OperacionList.Add(new ListaOperacionViewModel
+            {
+                Obra = "1",
+                FechaEmision = DateTime.Now,
+                Ascensor = "Ascensor ABC",
+                TecEmisor = "AGC",
+                Supervisor = "LLN",
+                RutEmpresa = "",
+                Respuesto = "Repuesto ABC 1, Repuesto ABC 2",
+                Vendedor = "QWE",
+                DetalleDescrip = "Detalle Descripcion 1,2 y 3",
+                TrabajosTerceros = "Trabajos Terceros Detalle",
+                Guia = 123
+            });
+
+
+
 
             var listado = _presupuestoSvc.obtenerListadoCotizaciones();
 
@@ -85,7 +104,7 @@ namespace Sertec.View.Controllers
 
             ViewBag.ListGeneral = GeneralList;
 
-            return View();
+            return View("ListaGeneral", OperacionList);
         }
 
         public ActionResult AgregarCotizacion(CotizacionViewModel model)
@@ -285,7 +304,7 @@ namespace Sertec.View.Controllers
 
         public PartialViewResult Contabilidad(int id)
         {
-            ContabilidadViewModel conta = new ContabilidadViewModel() { ExisteDatos = false };
+            //ContabilidadViewModel conta = new ContabilidadViewModel() { ExisteDatos = false };
             CotizacionContabilidadViewModel coti = new CotizacionContabilidadViewModel();
 
             var infoCoti = _presupuestoSvc.obtenerPresupuestos(id);
@@ -302,10 +321,10 @@ namespace Sertec.View.Controllers
             //triple validacion, si tiene datos de contabilidad
             //facturacion (partial aparte)
             //condiciones de pago (partial aparte)
-            if (infoConta.Cotizacion == 0)
-            {
-                conta.ExisteDatos = true;
-            }
+            //if (infoConta.Cotizacion == 0)
+            //{
+            //    conta.ExisteDatos = true;
+            //}
 
             var OperacionList = new List<ListaOperacionViewModel>();
 
@@ -373,9 +392,9 @@ namespace Sertec.View.Controllers
 
         public PartialViewResult Aprobacion(int id)
         {
-            ContabilidadViewModel contabilidad = new ContabilidadViewModel() { ExisteDatos = false };
+            ContabilidadViewModel contabilidad = new ContabilidadViewModel() { Activado = "disabled" };
 
-            return PartialView("Aprobacion");// ContabilidadAprobacion");
+            return PartialView("ContabilidadAprobacion");// ContabilidadAprobacion");
         }
 
         public PartialViewResult IngresarCondicionVenta(CondicionVentaViewModel model)

@@ -93,9 +93,12 @@ namespace Sertec.View.Models
 
     public class ContabilidadViewModel
     {
-        public bool ExisteDatos { get; set; }
+        public string Activado { get; set; }
         public int Cotizacion { get; set; }
+        public string Obra { get; set; }
         public string Direccion { get; set; }
+        public string PresupuestoNumero { get; set; }
+        public string DetalleDescrip { get; set; }
         public string PersonaAprobacion { get; set; }
         public string TelefonoContacto { get; set; }
         public string Vendedor { get; set; }
