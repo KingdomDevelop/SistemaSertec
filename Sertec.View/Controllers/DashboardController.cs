@@ -78,9 +78,6 @@ namespace Sertec.View.Controllers
                 Guia = 123
             });
 
-
-
-
             var listado = _presupuestoSvc.obtenerListadoCotizaciones();
 
 
@@ -94,13 +91,13 @@ namespace Sertec.View.Controllers
             }).ToList();
 
             //Datos Pruebas
-            GeneralList = new List<ListaGeneralViewModel>();
+            //GeneralList = new List<ListaGeneralViewModel>();
 
-            GeneralList.Add(new ListaGeneralViewModel { CotizacionId = 1, Ascensor = "Hotel abc", NumeroPresupuesto = "101", TotalNeto = 200000, EstadoFinalizado = "EN CURSO" });
-            GeneralList.Add(new ListaGeneralViewModel { CotizacionId = 2, Ascensor = "CUARTEL MILITAL 1", NumeroPresupuesto = "102", TotalNeto = 50000, EstadoFinalizado = "FINALIZADO" });
-            GeneralList.Add(new ListaGeneralViewModel { CotizacionId = 3, Ascensor = "Holden", NumeroPresupuesto = "103", TotalNeto = 870000, EstadoFinalizado = "NULO" });
-            GeneralList.Add(new ListaGeneralViewModel { CotizacionId = 4, Ascensor = "ASCESORIAS X", NumeroPresupuesto = "104", TotalNeto = 150000, EstadoFinalizado = "RECHAZADO" });
-            GeneralList.Add(new ListaGeneralViewModel { CotizacionId = 5, Ascensor = "Otro", NumeroPresupuesto = "105", TotalNeto = 90000, EstadoFinalizado = "" });
+            //GeneralList.Add(new ListaGeneralViewModel { CotizacionId = 1, Ascensor = "Hotel abc", NumeroPresupuesto = "101", TotalNeto = 200000, EstadoFinalizado = "EN CURSO" });
+            //GeneralList.Add(new ListaGeneralViewModel { CotizacionId = 2, Ascensor = "CUARTEL MILITAL 1", NumeroPresupuesto = "102", TotalNeto = 50000, EstadoFinalizado = "FINALIZADO" });
+            //GeneralList.Add(new ListaGeneralViewModel { CotizacionId = 3, Ascensor = "Holden", NumeroPresupuesto = "103", TotalNeto = 870000, EstadoFinalizado = "NULO" });
+            //GeneralList.Add(new ListaGeneralViewModel { CotizacionId = 4, Ascensor = "ASCESORIAS X", NumeroPresupuesto = "104", TotalNeto = 150000, EstadoFinalizado = "RECHAZADO" });
+            //GeneralList.Add(new ListaGeneralViewModel { CotizacionId = 5, Ascensor = "Otro", NumeroPresupuesto = "105", TotalNeto = 90000, EstadoFinalizado = "" });
 
             ViewBag.ListGeneral = GeneralList;
 
@@ -340,7 +337,7 @@ namespace Sertec.View.Controllers
                 Vendedor = "QWE",
                 DetalleDescrip = "Detalle Descripcion 1,2 y 3",
                 TrabajosTerceros = "Trabajos Terceros Detalle",
-                Guia =  123
+                Guia = 123
             });
 
             return PartialView("Contabilidad", coti);
@@ -354,8 +351,8 @@ namespace Sertec.View.Controllers
             var FacturaList = new List<FacturacionViewModel>();
 
             FacturaList.Add(new FacturacionViewModel { NumeroCuotas = 1, Factura = 1, Valor = 100000, Mes = "FEBRERO" });
-            FacturaList.Add(new FacturacionViewModel { NumeroCuotas = 2, Factura =2, Valor =500000, Mes ="MARZO"});
-                
+            FacturaList.Add(new FacturacionViewModel { NumeroCuotas = 2, Factura = 2, Valor = 500000, Mes = "MARZO" });
+
             return PartialView("Facturacion", FacturaList);
         }
 
@@ -392,9 +389,28 @@ namespace Sertec.View.Controllers
 
         public PartialViewResult Aprobacion(int id)
         {
-            ContabilidadViewModel contabilidad = new ContabilidadViewModel() { Activado = "disabled" };
+            ContabilidadViewModel contabilidad = new ContabilidadViewModel();
 
-            return PartialView("ContabilidadAprobacion");// ContabilidadAprobacion");
+            var infoCoti = _presupuestoSvc.obtenerPresupuestos(id);
+            var aprobacion = _presupuestoSvc.obtenerContabilidadInfo(id);
+
+            contabilidad.Activado = "visible";
+            contabilidad.Cotizacion = id;
+            contabilidad.DetalleDescrip = infoCoti.DetalleDescrip;
+            contabilidad.Obra = infoCoti.Obra;
+            contabilidad.Ascensor = infoCoti.Ascensor;
+            contabilidad.PresupuestoNumero = infoCoti.PresupuestoNumero;
+            contabilidad.TecEmisor = infoCoti.TecEmisor;
+
+            if (aprobacion.Direccion != null)
+            {
+                contabilidad.Direccion = aprobacion.Direccion;
+                contabilidad.PersonaAprobacion = aprobacion.PersonaAprobacion;
+                contabilidad.TelefonoContacto = aprobacion.TelefonoContacto;
+                contabilidad.Activado = "none";
+            }
+
+            return PartialView("ContabilidadAprobacion", contabilidad);
         }
 
         public PartialViewResult IngresarCondicionVenta(CondicionVentaViewModel model)
@@ -446,6 +462,34 @@ namespace Sertec.View.Controllers
             #endregion
 
             return PartialView("CondicionVenta", conta);
+        }
+
+        public PartialViewResult IngresarAprobacion(ContabilidadViewModel model)
+        {
+
+            var idContable = _presupuestoSvc.guardarContabilidadInfo(new ContabilidadDto
+            {
+                Cotizacion = model.Cotizacion,
+                Direccion = model.Direccion,
+                PersonaAprobacion = model.PersonaAprobacion,
+                TelefonoContacto = model.TelefonoContacto
+            });
+
+            var infoCoti = _presupuestoSvc.obtenerPresupuestos(model.Cotizacion);
+
+            ContabilidadViewModel contabilidad = new ContabilidadViewModel()
+            {
+                Activado = "none",
+                DetalleDescrip = "Ingrese una Descripción",
+                Obra = infoCoti.Obra,
+                Direccion = model.Direccion,
+                Supervisor = model.Supervisor,
+                Ascensor = infoCoti.Ascensor,
+                PresupuestoNumero = infoCoti.PresupuestoNumero,
+                TecEmisor = infoCoti.TecEmisor
+            };
+
+            return PartialView("ContabilidadAprobacion", contabilidad);
         }
     }
 }

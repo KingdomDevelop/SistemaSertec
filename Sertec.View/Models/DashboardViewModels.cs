@@ -94,8 +94,10 @@ namespace Sertec.View.Models
     public class ContabilidadViewModel
     {
         public string Activado { get; set; }
+        public string Ascensor { get; set; }
         public int Cotizacion { get; set; }
         public string Obra { get; set; }
+
         public string Direccion { get; set; }
         public string PresupuestoNumero { get; set; }
         public string DetalleDescrip { get; set; }
@@ -105,6 +107,8 @@ namespace Sertec.View.Models
         public DateTime? FechaEjecucion { get; set; }
         public DateTime? FechaInicio { get; set; }
         public DateTime? FechaTermino { get; set; }
+        public string TecEmisor { get; set; }
+        public string Supervisor { get; set; }
         public int GuiaDespacho { get; set; }
         public int Factura { get; set; }
         public int MesFacturacion { get; set; }

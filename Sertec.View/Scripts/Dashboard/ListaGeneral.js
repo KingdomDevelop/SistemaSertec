@@ -17,10 +17,10 @@ function verContabilidad($cotizacionId) {
         },
         success: function (response) {
             $($contenido).html(response);
-            document.getElementById('tabEmpl').click();
             verAprobacion($cotizacionId);
             verFacturacion($cotizacionId);
             verCondicionVenta($cotizacionId);
+            document.getElementById('tabEmpl').click();
         }
     });
 
@@ -169,6 +169,32 @@ function CrearCondicionVenta($contabilidad) {
         },
         success: function (response) {
             verCondicionVenta($contabilidad);
+        }
+    });
+}
+
+
+
+function CrearAprobacion($cotizacion) {
+
+    var dataType = 'application/json; charset=utf-8';
+    var data = {
+        Direccion: document.getElementById('TxtDire').value,
+        PersonaAprobacion: document.getElementById('Txt_APROBPOR').value,
+        TelefonoContacto: document.getElementById('Txt_TELCONTA').value,
+        Cotizacion: $cotizacion
+    }
+
+    $.ajax({
+        type: "POST",
+        url: urlCrearAprobacion,
+        datatype: "json",
+        data: data,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Error");
+        },
+        success: function (response) {
+            $($apro).html(response);
         }
     });
 }

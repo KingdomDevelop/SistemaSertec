@@ -13,7 +13,7 @@
                         <tr>
                             <td>Obra</td>
                             <td>
-                                @Html.TextBoxFor(m => m.Obra, new { id = "TxtObra" })
+                                @Html.TextBoxFor(m => m.Obra, new { id = "TxtObra", @readonly = "readonly" })
                             </td>
                             <td>Empresa</td>
                             <td>Rut</td>
@@ -33,20 +33,23 @@
                         <tr>
                             <td>Ascensor</td>
                             <td>
-                                <input type="text" id="TxtAscen" name="Ascen">
+                                @Html.TextBoxFor(m => m.Ascensor, new { id = "TxtAscen", @readonly = "readonly" })
+
                             </td>
                             <td>Dirección</td>
-                            <td></td>
+                            <td>@Html.TextBoxFor(m => m.Direccion, new { id = "TxtDire" })</td>
                         </tr>
                         <tr>
                             <td>Tecnico Emisor</td>
-                            <td> <input type="text" id="TxtTecEm" name="TecEm"></td>
-                            <td> @Html.TextBoxFor(m => m.Direccion, new { id = "TxtDireccion" })</td>
+                            <td> @Html.TextBoxFor(m => m.TecEmisor, new { id = "TxtTecEm" })</td>
+                            <td> </td>
                             <td>..</td>
                         </tr>
                         <tr>
                             <td>Supervisor</td>
-                            <td> <input type="text" id="TxtSupervisor" name="Supervisor"></td>
+                            <td>
+                                @Html.TextBoxFor(m => m.Supervisor, new { id = "TxtSupervisor" })
+                            </td>
                             <td>..</td>
                             <td>..</td>
                         </tr>
@@ -81,7 +84,9 @@
                     <tbody>
                         <tr>
                             <td style="width:20%">APROBADO POR</td>
-                            <td style="width:50%"><input type="text" id="Txt_APROBPOR" name="APROBPOR"></td>
+                            <td style="width:50%">
+                                @Html.TextBoxFor(m => m.PersonaAprobacion, new { id = "Txt_APROBPOR" })
+                            </td>
                             <td style="width:30%"> VENDEDOR</td>
                         </tr>
                         <tr>
@@ -90,8 +95,7 @@
                                 @Html.TextBoxFor(m => m.TelefonoContacto, new { id = "Txt_TELCONTA" })
                             </td>
                             <td style="width:30%">
-                                <input type="text" id="Txt_VENDEDOR" name="VENDEDOR">
-                                @Html.TextBoxFor(m => m.Vendedor, new { id = "Txt_TELCONTA" })
+                                @Html.TextBoxFor(m => m.Vendedor, new { id = "Txt_VENDEDOR" })
                             </td>
                         </tr>
                     </tbody>
@@ -106,6 +110,14 @@
                             </td>
                         </tr>
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td colspan="2" style="text-align: right;">
+                                <button id="btnCrearTer" class="btn btn-success btn-sm" style="display: @Model.Activado;" onclick="CrearAprobacion(@Model.Cotizacion)">Agregar Aprobación</button>
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>

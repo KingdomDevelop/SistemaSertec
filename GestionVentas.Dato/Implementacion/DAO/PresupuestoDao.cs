@@ -17,71 +17,71 @@ namespace GestionVentas.Dato.DAO
         {
             var lstPresupuesto = new PresupuestoEntity();
 
-            lstPresupuesto.Obra = "Nueva Obra";
-            lstPresupuesto.Ascensor = "Ascensor Final";
-            lstPresupuesto.Supervisor = "Gran Jefe";
-            lstPresupuesto.TecEmisor = "Terrile Pollo";
-            lstPresupuesto.PresupuestoNumero = "15964";
-            lstPresupuesto.DetalleDescrip = "Cambio de linea";
-            lstPresupuesto.DuracionTrabajo = 6;
-            lstPresupuesto.FechaCalculo = Convert.ToDateTime("06-03-2018");
-            lstPresupuesto.ValorRepuestos = 3698;
-            lstPresupuesto.ValorTerceros = 36;
-            lstPresupuesto.ValorManoObra = 100;
-            lstPresupuesto.CantidadFletes = 1;
-            lstPresupuesto.HorasParejas = 12;
-            lstPresupuesto.Subtotal = 300;
-            lstPresupuesto.TotalnetoComisiones = 169;
+            //lstPresupuesto.Obra = "Nueva Obra";
+            //lstPresupuesto.Ascensor = "Ascensor Final";
+            //lstPresupuesto.Supervisor = "Gran Jefe";
+            //lstPresupuesto.TecEmisor = "Terrile Pollo";
+            //lstPresupuesto.PresupuestoNumero = "15964";
+            //lstPresupuesto.DetalleDescrip = "Cambio de linea";
+            //lstPresupuesto.DuracionTrabajo = 6;
+            //lstPresupuesto.FechaCalculo = Convert.ToDateTime("06-03-2018");
+            //lstPresupuesto.ValorRepuestos = 3698;
+            //lstPresupuesto.ValorTerceros = 36;
+            //lstPresupuesto.ValorManoObra = 100;
+            //lstPresupuesto.CantidadFletes = 1;
+            //lstPresupuesto.HorasParejas = 12;
+            //lstPresupuesto.Subtotal = 300;
+            //lstPresupuesto.TotalnetoComisiones = 169;
 
-            //using (var context = new ContextoBdSantiago())
-            //{
-            //    var datos = context.Cotizacion;
+            using (var context = new ContextoBdSantiago())
+            {
+                var datos = context.Cotizacion;
 
-            //    if (datos.Any())
-            //    {
-            //        lstPresupuesto = datos.Where(c => c.PK_Cotizacion_ID == cotizacionID).Select(c => new PresupuestoEntity
-            //        {
-            //            Obra = c.Obra,
-            //            Ascensor = c.Ascensor,
-            //            Supervisor = c.Supervisor,
-            //            TecEmisor = c.TecnicoEmisor,
-            //            PresupuestoNumero = c.PresupuestoNumero,
-            //            DetalleDescrip = c.DescripcionDetalle,
-            //            DuracionTrabajo = (int)c.DuracionTrabajo,
-            //            FechaCalculo = c.FechaCalculo,
-            //            ValorRepuestos = (int)c.ValorRepuestos,
-            //            ValorTerceros = (int)c.ValorTerceros,
-            //            ValorManoObra = (int)c.ValorManoObra,
-            //            CantidadFletes = (int)c.CantidadFletes,
+                if (datos.Any())
+                {
+                    lstPresupuesto = datos.Where(c => c.PK_Cotizacion_ID == cotizacionID).Select(c => new PresupuestoEntity
+                    {
+                        Obra = c.Obra,
+                        Ascensor = c.Ascensor,
+                        Supervisor = c.Supervisor,
+                        TecEmisor = c.TecnicoEmisor,
+                        PresupuestoNumero = c.PresupuestoNumero,
+                        DetalleDescrip = c.DescripcionDetalle,
+                        DuracionTrabajo = (int)c.DuracionTrabajo,
+                        FechaCalculo = c.FechaCalculo,
+                        ValorRepuestos = (int)c.ValorRepuestos,
+                        ValorTerceros = (int)c.ValorTerceros,
+                        ValorManoObra = (int)c.ValorManoObra,
+                        CantidadFletes = (int)c.CantidadFletes,
 
 
-            //            //FechaEmision = c.FechaEmision,
-            //            //HorasParejas = (decimal)c.HorasParejas,
+                        //FechaEmision = c.FechaEmision,
+                        //HorasParejas = (decimal)c.HorasParejas,
 
-            //            //PresupuestoId = c.PK_Cotizacion_ID,
+                        //PresupuestoId = c.PK_Cotizacion_ID,
 
-            //            //RecargoHHEE = (decimal)c.RecargoHHEE,
-            //            //Subtotal = (decimal)c.SubTotal,
-            //            //SubtotalManoObra = (decimal)c.SubTotalManoObra,
+                        //RecargoHHEE = (decimal)c.RecargoHHEE,
+                        //Subtotal = (decimal)c.SubTotal,
+                        //SubtotalManoObra = (decimal)c.SubTotalManoObra,
 
-            //            //Total = (decimal)c.Total,
-            //            //TotalFletes = (decimal)c.TotalFletes,
-            //            //TotalnetoComisiones = (decimal)c.TotalNetoComisiones,
-            //            //ValorFlete = Convert.ToInt32(c.ValorFlete),
-            //            //ValorFletes = Convert.ToInt32(c.ValorFletes),
-            //            //ValorHH = Convert.ToInt32(c.ValorHH),
-            //            //ValorHP = c.ValorHP,
+                        //Total = (decimal)c.Total,
+                        //TotalFletes = (decimal)c.TotalFletes,
+                        //TotalnetoComisiones = (decimal)c.TotalNetoComisiones,
+                        //ValorFlete = Convert.ToInt32(c.ValorFlete),
+                        //ValorFletes = Convert.ToInt32(c.ValorFletes),
+                        //ValorHH = Convert.ToInt32(c.ValorHH),
+                        //ValorHP = c.ValorHP,
 
-            //            //ValorMargenVenta = (decimal)c.ValorMargenVenta,
-            //            //ValorMoneda = Convert.ToInt32(c.ValorMoneda),
+                        //ValorMargenVenta = (decimal)c.ValorMargenVenta,
+                        //ValorMoneda = Convert.ToInt32(c.ValorMoneda),
 
-            //            //ValorUf = c.ValorUf,
-            //            //ValorVenta = (decimal)c.ValorVenta
-            //        }).FirstOrDefault();
-            //    }
-            //    //solo para asegurarnos que cierre la conexion
-            //    context.Dispose();
-            //}
+                        //ValorUf = c.ValorUf,
+                        //ValorVenta = (decimal)c.ValorVenta
+                    }).FirstOrDefault();
+                }
+                //solo para asegurarnos que cierre la conexion
+                context.Dispose();
+            }
 
             return lstPresupuesto;
         }
@@ -91,35 +91,35 @@ namespace GestionVentas.Dato.DAO
             var lstCotizacion = new List<ListadoCotizacionEntity>();
 
 
-            var dato = new ListadoCotizacionEntity { Ascensor = "prueba", CotizacionId = 1, NumeroPresupuesto = "12587", EstadoFinalizado = true, TotalNeto = 100 };
-            var dato2 = new ListadoCotizacionEntity { Ascensor = "efectivo", CotizacionId = 2, NumeroPresupuesto = "9688", EstadoFinalizado = false, TotalNeto = 650 };
+            //var dato = new ListadoCotizacionEntity { Ascensor = "prueba", CotizacionId = 1, NumeroPresupuesto = "12587", EstadoFinalizado = true, TotalNeto = 100 };
+            //var dato2 = new ListadoCotizacionEntity { Ascensor = "efectivo", CotizacionId = 2, NumeroPresupuesto = "9688", EstadoFinalizado = false, TotalNeto = 650 };
 
-            lstCotizacion.Add(dato);
-            lstCotizacion.Add(dato2);
+            //lstCotizacion.Add(dato);
+            //lstCotizacion.Add(dato2);
 
-            //using (var context = new ContextoBdSantiago())
-            //{
-            //    var cotizacion = context.Cotizacion;
-            //    var contabilidad = context.Contabilidad;
+            using (var context = new ContextoBdSantiago())
+            {
+                var cotizacion = context.Cotizacion;
+                var contabilidad = context.Contabilidad;
 
-            //    if (cotizacion.Any())
-            //    {
-            //        lstCotizacion = (from cot in cotizacion
-            //                         join conta in contabilidad on cot.PK_Cotizacion_ID equals conta.PK_Cotizacion_ID into Relacion
-            //                         from rel in Relacion.DefaultIfEmpty()
-            //                         select new ListadoCotizacionEntity
-            //                         {
-            //                             Ascensor = cot.Ascensor,
-            //                             CotizacionId = cot.PK_Cotizacion_ID,
-            //                             NumeroPresupuesto = cot.PresupuestoNumero,
-            //                             TotalNeto = (decimal)cot.TotalNetoComisiones,
-            //                             EstadoFinalizado = (rel == null) ? false : true
-            //                         }).ToList();
-            //    }
+                if (cotizacion.Any())
+                {
+                    lstCotizacion = (from cot in cotizacion
+                                     join conta in contabilidad on cot.PK_Cotizacion_ID equals conta.PK_Cotizacion_ID into Relacion
+                                     from rel in Relacion.DefaultIfEmpty()
+                                     select new ListadoCotizacionEntity
+                                     {
+                                         Ascensor = cot.Ascensor,
+                                         CotizacionId = cot.PK_Cotizacion_ID,
+                                         NumeroPresupuesto = cot.PresupuestoNumero,
+                                         TotalNeto = (decimal)cot.TotalNetoComisiones,
+                                         EstadoFinalizado = (rel == null) ? false : true
+                                     }).ToList();
+                }
 
-            //    //solo para asegurarnos que cierre la conexion
-            //    context.Dispose();
-            //}
+                //solo para asegurarnos que cierre la conexion
+                context.Dispose();
+            }
             return lstCotizacion;
         }
 
@@ -310,48 +310,48 @@ namespace GestionVentas.Dato.DAO
         {
             var FormaPago = new FormaPagoEntity();
 
-            //using (var context = new ContextoBdSantiago())
-            //{
+            using (var context = new ContextoBdSantiago())
+            {
 
-            //    var contabilidad = context.Contabilidad;
-            //    var aprobacion = context.ContabilidadAprobacion;
-            //    var formaPago = context.ContabilidadFormaPago;
-            //    var descuentos = context.ContabilidadDescuentos;
+                var contabilidad = context.Contabilidad;
+                var aprobacion = context.ContabilidadAprobacion;
+                var formaPago = context.ContabilidadFormaPago;
+                var descuentos = context.ContabilidadDescuentos;
 
 
-            //    if (contabilidad.Any())
-            //    {
-            //        FormaPago = (from conta in contabilidad
-            //                     join aproba in aprobacion on conta.PK_ContabilidadID equals aproba.PK_ContabilidadID into ContaAprobacion
-            //                     from apro in ContaAprobacion.DefaultIfEmpty()
-            //                     join formaPag in formaPago on conta.PK_ContabilidadID equals formaPag.PK_ContabilidadID into ContaPago
-            //                     from pago in ContaPago.DefaultIfEmpty()
-            //                     join descuen in descuentos on conta.PK_ContabilidadID equals descuen.PK_ContabilidadID into ContaDesc
-            //                     from desc in ContaDesc.DefaultIfEmpty()
-            //                     select new FormaPagoEntity
-            //                     {
-            //                         DescuentoCinco = (bool)desc.Cinco,
-            //                         DescuentoQuince = (bool)desc.Quince,
-            //                         NumeroContabilidad = conta.PK_ContabilidadID,
-            //                         NumeroCuotas = pago.CantidadCuotas.ToString(),
-            //                         OrdenCompra = (bool)apro.OrdenCompra,
-            //                         OtraAprobacion = (bool)apro.Otro,
-            //                         OtraAprobacionDescripcion = apro.DescripcionOtro,
-            //                         OtroDescuentos = (bool)desc.Otro,
-            //                         OtroDescuentoDescripcion = desc.ValorOtro.ToString(),
-            //                         OtroPago = (bool)pago.Otro,
-            //                         OtroPagoDescripcion = pago.DescripcionOtro,
-            //                         PagoCien = (bool)pago.Cien,
-            //                         PagoCincuenta = (bool)pago.Cincuenta,
-            //                         PagoCuotas = (bool)pago.Cuotas,
-            //                         PresupuestoFirmado = (bool)apro.PresupuestoFirmado
+                if (contabilidad.Any())
+                {
+                    FormaPago = (from conta in contabilidad
+                                 join aproba in aprobacion on conta.PK_ContabilidadID equals aproba.PK_ContabilidadID into ContaAprobacion
+                                 from apro in ContaAprobacion.DefaultIfEmpty()
+                                 join formaPag in formaPago on conta.PK_ContabilidadID equals formaPag.PK_ContabilidadID into ContaPago
+                                 from pago in ContaPago.DefaultIfEmpty()
+                                 join descuen in descuentos on conta.PK_ContabilidadID equals descuen.PK_ContabilidadID into ContaDesc
+                                 from desc in ContaDesc.DefaultIfEmpty()
+                                 select new FormaPagoEntity
+                                 {
+                                     DescuentoCinco = desc.Cinco ?? false,
+                                     DescuentoQuince = desc.Quince ?? false,
+                                     NumeroContabilidad = pago == null ? 0 : conta.PK_ContabilidadID,
+                                     NumeroCuotas = pago.CantidadCuotas.ToString(),
+                                     OrdenCompra = apro.OrdenCompra ?? false,
+                                     OtraAprobacion = apro.Otro ?? false,
+                                     OtraAprobacionDescripcion = apro.DescripcionOtro,
+                                     OtroDescuentos = desc.Otro ?? false,
+                                     OtroDescuentoDescripcion = desc.ValorOtro.ToString(),
+                                     OtroPago = pago.Otro ?? false,
+                                     OtroPagoDescripcion = pago.DescripcionOtro,
+                                     PagoCien = pago.Cien ?? false,
+                                     PagoCincuenta = pago.Cincuenta ?? false,
+                                     PagoCuotas = pago.Cuotas ?? false,
+                                     PresupuestoFirmado = apro.PresupuestoFirmado ?? false
 
-            //                     }).FirstOrDefault();
+                                 }).FirstOrDefault();
 
-            //    }
-            //    //solo para asegurarnos que cierre la conexion
-            //    context.Dispose();
-            //}
+                }
+                //solo para asegurarnos que cierre la conexion
+                context.Dispose();
+            }
 
             return FormaPago;
         }
@@ -392,31 +392,31 @@ namespace GestionVentas.Dato.DAO
         {
             var conta = new ContabilidadEntity();
 
-            //using (var context = new ContextoBdSantiago())
-            //{
-            //    var datos = context.Contabilidad;
+            using (var context = new ContextoBdSantiago())
+            {
+                var datos = context.Contabilidad;
 
-            //    if (datos.Any())
-            //    {
-            //        conta = datos.Where(x => x.PK_Cotizacion_ID == cotizacionID).Select(c => new ContabilidadEntity
-            //        {
-            //            ComisionOtros = (int)c.ComisionOtros,
-            //            MesFacturacion = (int)c.MesFacturacion,
-            //            ComisionVendedor = (int)c.ComisionVendedor,
-            //            Direccion = c.Direccion,
-            //            Factura = (int)c.Factura,
-            //            FechaEjecucion = c.FechaEjecucion,
-            //            FechaInicio = c.FechaInicio,
-            //            FechaTermino = c.FechaTermino,
-            //            GuiaDespacho = c.GuiaDespacho,
-            //            PersonaAprobacion = c.PersonaAprobacion,
-            //            TelefonoContacto = c.TelefonoContacto,
-            //            Vendedor = c.Vendedor
-            //        }).FirstOrDefault();
-            //    }
-            //    //solo para asegurarnos que cierre la conexion
-            //    context.Dispose();
-            //}
+                if (datos.Any())
+                {
+                    conta = datos.Where(x => x.PK_Cotizacion_ID == cotizacionID).Select(c => new ContabilidadEntity
+                    {
+                        ComisionOtros = (int)c.ComisionOtros,
+                        MesFacturacion = (int)c.MesFacturacion,
+                        ComisionVendedor = (int)c.ComisionVendedor,
+                        Direccion = c.Direccion,
+                        Factura = (int)c.Factura,
+                        FechaEjecucion = c.FechaEjecucion,
+                        FechaInicio = c.FechaInicio,
+                        FechaTermino = c.FechaTermino,
+                        GuiaDespacho = c.GuiaDespacho,
+                        PersonaAprobacion = c.PersonaAprobacion,
+                        TelefonoContacto = c.TelefonoContacto,
+                        Vendedor = c.Vendedor
+                    }).FirstOrDefault();
+                }
+                //solo para asegurarnos que cierre la conexion
+                context.Dispose();
+            }
 
             return conta;
         }
