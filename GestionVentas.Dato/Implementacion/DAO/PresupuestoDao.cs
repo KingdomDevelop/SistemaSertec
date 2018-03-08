@@ -321,7 +321,7 @@ namespace GestionVentas.Dato.DAO
 
                 if (contabilidad.Any())
                 {
-                    FormaPago = (from conta in contabilidad
+                    FormaPago = (from conta in contabilidad.Where(c => c.PK_Cotizacion_ID == contabilidadID)
                                  join aproba in aprobacion on conta.PK_ContabilidadID equals aproba.PK_ContabilidadID into ContaAprobacion
                                  from apro in ContaAprobacion.DefaultIfEmpty()
                                  join formaPag in formaPago on conta.PK_ContabilidadID equals formaPag.PK_ContabilidadID into ContaPago

@@ -178,11 +178,11 @@
                                 <td>
                                     @if (Model.DescuentoCinco)
                                     {
-                                        @Html.RadioButtonFor(m => m.DescuentoCinco, "1", new { @id = "descCinco", @class = "radio", @readonly = "readonly", @checked = true })
+                                        @Html.RadioButtonFor(m => m.DescuentoCinco, "1", new { @id = "descCinco", @class = "radio", disabled = "disabled", @checked = true })
                                     }
                                     else
                                     {
-                                        @Html.RadioButtonFor(m => m.DescuentoCinco, "1", new { @id = "descCinco", @class = "radio", @readonly = "readonly" })
+                                        @Html.RadioButtonFor(m => m.DescuentoCinco, "1", new { @id = "descCinco", @class = "radio", disabled = "disabled" })
                                     }
 
                                 </td>
@@ -195,11 +195,11 @@
                                 <td>
                                     @if (Model.DescuentoQuince)
                                     {
-                                        @Html.RadioButtonFor(m => m.DescuentoQuince, "2", new { @id = "descQuince", @class = "radio", @readonly = "readonly", @checked = true })
+                                        @Html.RadioButtonFor(m => m.DescuentoQuince, "2", new { @id = "descQuince", @class = "radio", disabled = "disabled", @checked = true })
                                     }
                                     else
                                     {
-                                        @Html.RadioButtonFor(m => m.DescuentoQuince, "2", new { @id = "descQuince", @class = "radio", @readonly = "readonly" })
+                                        @Html.RadioButtonFor(m => m.DescuentoQuince, "2", new { @id = "descQuince", @class = "radio", disabled = "disabled" })
                                     }
 
                                 </td>
@@ -212,11 +212,11 @@
                                 <td>
                                     @if (Model.OtroDescuentos)
                                     {
-                                        @Html.RadioButtonFor(m => m.DescuentoQuince, "3", new { @id = "descOtro", @class = "radio", @readonly = "readonly", @checked = true })
+                                        @Html.RadioButtonFor(m => m.DescuentoQuince, "3", new { @id = "descOtro", @class = "radio", disabled = "disabled", @checked = true })
                                     }
                                     else
                                     {
-                                        @Html.RadioButtonFor(m => m.DescuentoQuince, "3", new { @id = "descOtro", @class = "radio", @readonly = "readonly" })
+                                        @Html.RadioButtonFor(m => m.DescuentoQuince, "3", new { @id = "descOtro", @class = "radio", disabled = "disabled" })
                                     }
 
                                 </td>
@@ -244,11 +244,11 @@
                                     <td>
                                         @if (Model.PagoCien)
                                         {
-                                            @Html.RadioButtonFor(m => m.PagoCien, "1", new { @id = "apCien", @class = "radio", @readonly = "readonly", @checked = true })
+                                            @Html.RadioButtonFor(m => m.PagoCien, "1", new { @id = "apCien", @class = "radio", disabled = "disabled", @checked = true })
                                         }
                                         else
                                         {
-                                            @Html.RadioButtonFor(m => m.PagoCien, "1", new { @id = "apCien", @class = "radio", @readonly = "readonly" })
+                                            @Html.RadioButtonFor(m => m.PagoCien, "1", new { @id = "apCien", @class = "radio", disabled = "disabled" })
                                         }
 
                                     </td>
@@ -261,11 +261,11 @@
                                     <td>
                                         @if (Model.PagoCincuenta)
                                         {
-                                            @Html.RadioButtonFor(m => m.PagoCincuenta, "2", new { @id = "apCincuenta", @class = "radio", @readonly = "readonly", @checked = true })
+                                            @Html.RadioButtonFor(m => m.PagoCincuenta, "2", new { @id = "apCincuenta", @class = "radio", disabled = "disabled", @checked = true })
                                         }
                                         else
                                         {
-                                            @Html.RadioButtonFor(m => m.PagoCincuenta, "2", new { @id = "apCincuenta", @class = "radio", @readonly = "readonly" })
+                                            @Html.RadioButtonFor(m => m.PagoCincuenta, "2", new { @id = "apCincuenta", @class = "radio", disabled = "disabled" })
                                         }
                                     </td>
                                     <td>
@@ -277,11 +277,11 @@
                                     <td>
                                         @if (Model.PagoCuotas)
                                         {
-                                            @Html.RadioButtonFor(m => m.PagoCuotas, "3", new { @id = "apCuota", @class = "radio", @readonly = "readonly", @checked = true })
+                                            @Html.RadioButtonFor(m => m.PagoCuotas, "3", new { @id = "apCuota", @class = "radio", disabled = "disabled", @checked = true })
                                         }
                                         else
                                         {
-                                            @Html.RadioButtonFor(m => m.PagoCuotas, "3", new { @id = "apCuota", @class = "radio", @readonly = "readonly" })
+                                            @Html.RadioButtonFor(m => m.PagoCuotas, "3", new { @id = "apCuota", @class = "radio", disabled = "disabled" })
                                         }
 
                                     </td>
@@ -294,11 +294,11 @@
                                     <td style="width:10%">
                                         @if (Model.OtroPago)
                                         {
-                                            @Html.RadioButtonFor(m => m.OtroPago, "4", new { @id = "apOtro", @class = "radio", @readonly = "readonly", @checked = true })
+                                            @Html.RadioButtonFor(m => m.OtroPago, "4", new { @id = "apOtro", @class = "radio", disabled = "disabled", @checked = true })
                                         }
                                         else
                                         {
-                                            @Html.RadioButtonFor(m => m.OtroPago, "4", new { @id = "apOtro", @class = "radio", @readonly = "readonly" })
+                                            @Html.RadioButtonFor(m => m.OtroPago, "4", new { @id = "apOtro", @class = "radio", disabled = "disabled" })
                                         }
                                     </td>
                                     <td>
@@ -328,11 +328,11 @@
                                 <td>
                                     @if (Model.PresupuestoFirmado)
                                     {
-                                        @Html.RadioButtonFor(m => m.PresupuestoFirmado, "1", new { @id = "maCopia", @class = "radio", @readonly = "readonly", @checked = true })
+                                        @Html.RadioButtonFor(m => m.PresupuestoFirmado, "1", new { @id = "maCopia", @class = "radio", disabled = "disabled", @checked = true })
                                     }
                                     else
                                     {
-                                        @Html.RadioButtonFor(m => m.PresupuestoFirmado, "1", new { @id = "maCopia", @class = "radio", @readonly = "readonly" })
+                                        @Html.RadioButtonFor(m => m.PresupuestoFirmado, "1", new { @id = "maCopia", @class = "radio", disabled = "disabled" })
                                     }
 
                                 </td>
@@ -344,11 +344,11 @@
                                 <td>
                                     @if (Model.OrdenCompra)
                                     {
-                                        @Html.RadioButtonFor(m => m.PresupuestoFirmado, "2", new { @id = "maOrden", @class = "radio", @readonly = "readonly", @checked = true })
+                                        @Html.RadioButtonFor(m => m.PresupuestoFirmado, "2", new { @id = "maOrden", @class = "radio", disabled = "disabled", @checked = true })
                                     }
                                     else
                                     {
-                                        @Html.RadioButtonFor(m => m.PresupuestoFirmado, "2", new { @id = "maOrden", @class = "radio", @readonly = "readonly" })
+                                        @Html.RadioButtonFor(m => m.PresupuestoFirmado, "2", new { @id = "maOrden", @class = "radio", disabled = "disabled" })
                                     }
 
                                 </td>
@@ -360,11 +360,11 @@
                                 <td>
                                     @if (Model.OtroPago)
                                     {
-                                        @Html.RadioButtonFor(m => m.OtroPago, "2", new { @id = "maOtro", @class = "radio", @readonly = "readonly", @checked = true })
+                                        @Html.RadioButtonFor(m => m.OtroPago, "2", new { @id = "maOtro", @class = "radio", disabled = "disabled", @checked = true })
                                     }
                                     else
                                     {
-                                        @Html.RadioButtonFor(m => m.OtroPago, "2", new { @id = "maOtro", @class = "radio", @readonly = "readonly" })
+                                        @Html.RadioButtonFor(m => m.OtroPago, "2", new { @id = "maOtro", @class = "radio", disabled = "disabled" })
                                     }
 
                                 </td>

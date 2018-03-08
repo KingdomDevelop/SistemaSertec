@@ -343,24 +343,26 @@ namespace GestionVentas.Negocio.Mappers
 
         public static FormaPagoDto FormaPagoToDto(FormaPagoEntity entidad)
         {
-            return new FormaPagoDto
+            FormaPagoDto forma = new FormaPagoDto();
+            if (entidad != null)
             {
-                DescuentoCinco = entidad.DescuentoCinco,
-                DescuentoQuince = entidad.DescuentoQuince,
-                NumeroContabilidad = entidad.NumeroContabilidad,
-                NumeroCuotas = entidad.NumeroCuotas,
-                OrdenCompra = entidad.OrdenCompra,
-                OtraAprobacion = entidad.OtraAprobacion,
-                OtraAprobacionDescripcion = entidad.OtraAprobacionDescripcion,
-                OtroDescuentoDescripcion = entidad.OtroDescuentoDescripcion,
-                OtroDescuentos = entidad.OtroDescuentos,
-                OtroPago = entidad.OtroPago,
-                OtroPagoDescripcion = entidad.OtroPagoDescripcion,
-                PagoCien = entidad.PagoCien,
-                PagoCincuenta = entidad.PagoCincuenta,
-                PagoCuotas = entidad.PagoCuotas,
-                PresupuestoFirmado = entidad.PresupuestoFirmado
-            };
+                forma.DescuentoCinco = entidad.DescuentoCinco;
+                forma.DescuentoQuince = entidad.DescuentoQuince;
+                forma.NumeroContabilidad = entidad.NumeroContabilidad;
+                forma.NumeroCuotas = entidad.NumeroCuotas;
+                forma.OrdenCompra = entidad.OrdenCompra;
+                forma.OtraAprobacion = entidad.OtraAprobacion;
+                forma.OtraAprobacionDescripcion = entidad.OtraAprobacionDescripcion;
+                forma.OtroDescuentoDescripcion = entidad.OtroDescuentoDescripcion;
+                forma.OtroDescuentos = entidad.OtroDescuentos;
+                forma.OtroPago = entidad.OtroPago;
+                forma.OtroPagoDescripcion = entidad.OtroPagoDescripcion;
+                forma.PagoCien = entidad.PagoCien;
+                forma.PagoCincuenta = entidad.PagoCincuenta;
+                forma.PagoCuotas = entidad.PagoCuotas;
+                forma.PresupuestoFirmado = entidad.PresupuestoFirmado;
+}
+            return forma;
         }
 
         public static FormaPagoEntity FormaPagoToEntity(FormaPagoDto dto)
@@ -387,22 +389,26 @@ namespace GestionVentas.Negocio.Mappers
 
         public static ContabilidadDto ContabilidadToDto(ContabilidadEntity entidad)
         {
-            return new ContabilidadDto
+            ContabilidadDto conta = new ContabilidadDto();
+
+            if (entidad != null)
             {
-                ComisionOtros = entidad.ComisionOtros,
-                ComisionVendedor = entidad.ComisionVendedor,
-                Cotizacion = entidad.Cotizacion,
-                Direccion = entidad.Direccion,
-                Factura = entidad.Factura,
-                FechaEjecucion = entidad.FechaEjecucion,
-                FechaInicio = entidad.FechaInicio,
-                FechaTermino = entidad.FechaTermino,
-                GuiaDespacho = entidad.GuiaDespacho,
-                MesFacturacion = entidad.MesFacturacion,
-                PersonaAprobacion = entidad.PersonaAprobacion,
-                TelefonoContacto = entidad.TelefonoContacto,
-                Vendedor = entidad.Vendedor
-            };
+                conta.ComisionOtros = entidad.ComisionOtros;
+                conta.ComisionVendedor = entidad.ComisionVendedor;
+                conta.Cotizacion = entidad.Cotizacion;
+                conta.Direccion = entidad.Direccion;
+                conta.Factura = entidad.Factura;
+                conta.FechaEjecucion = entidad.FechaEjecucion;
+                conta.FechaInicio = entidad.FechaInicio;
+                conta.FechaTermino = entidad.FechaTermino;
+                conta.GuiaDespacho = entidad.GuiaDespacho;
+                conta.MesFacturacion = entidad.MesFacturacion;
+                conta.PersonaAprobacion = entidad.PersonaAprobacion;
+                conta.TelefonoContacto = entidad.TelefonoContacto;
+                conta.Vendedor = entidad.Vendedor;
+            }
+            
+            return conta;
         }
 
         public static ContabilidadEntity ContabilidadToEntity(ContabilidadDto dto)

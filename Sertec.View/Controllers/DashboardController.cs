@@ -480,7 +480,6 @@ namespace Sertec.View.Controllers
             ContabilidadViewModel contabilidad = new ContabilidadViewModel()
             {
                 Activado = "none",
-                DetalleDescrip = "Ingrese una Descripción",
                 Obra = infoCoti.Obra,
                 Direccion = model.Direccion,
                 Supervisor = model.Supervisor,
