@@ -157,7 +157,7 @@
     }
     else
     {
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div id="foreign_checkbox" class="panel panel-default">
                 <div class="panel-heading">
                     <div class="panel-title">
@@ -176,7 +176,15 @@
                         <table class="table table-striped">
                             <tr>
                                 <td>
-                                    <input type="checkbox" class="radio" value="1" name="fooby[3][]" />
+                                    @if (Model.DescuentoCinco)
+                                    {
+                                        @Html.RadioButtonFor(m => m.DescuentoCinco, "1", new { @id = "descCinco", @class = "radio", @readonly = "readonly", @checked = true })
+                                    }
+                                    else
+                                    {
+                                        @Html.RadioButtonFor(m => m.DescuentoCinco, "1", new { @id = "descCinco", @class = "radio", @readonly = "readonly" })
+                                    }
+
                                 </td>
                                 <td>
                                     5%
@@ -185,7 +193,15 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="checkbox" class="radio" value="1" name="fooby[3][]" />
+                                    @if (Model.DescuentoQuince)
+                                    {
+                                        @Html.RadioButtonFor(m => m.DescuentoQuince, "2", new { @id = "descQuince", @class = "radio", @readonly = "readonly", @checked = true })
+                                    }
+                                    else
+                                    {
+                                        @Html.RadioButtonFor(m => m.DescuentoQuince, "2", new { @id = "descQuince", @class = "radio", @readonly = "readonly" })
+                                    }
+
                                 </td>
                                 <td>
                                     15%
@@ -194,13 +210,21 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="checkbox" class="radio" value="1" name="fooby[3][]" />
+                                    @if (Model.OtroDescuentos)
+                                    {
+                                        @Html.RadioButtonFor(m => m.DescuentoQuince, "3", new { @id = "descOtro", @class = "radio", @readonly = "readonly", @checked = true })
+                                    }
+                                    else
+                                    {
+                                        @Html.RadioButtonFor(m => m.DescuentoQuince, "3", new { @id = "descOtro", @class = "radio", @readonly = "readonly" })
+                                    }
+
                                 </td>
                                 <td>
                                     OTRO
                                 </td>
                                 <td>
-                                    <input type="text" id="TextBox_Otro" name="Otro" disabled="disabled" value="@Model.OtroDescuentoDescripcion">
+                                    @Html.TextBoxFor(m => m.OtroDescuentos, new { id = "TextBox_DescOtro", @readonly = "readonly" })
                                 </td>
                             </tr>
                         </table>
@@ -218,7 +242,15 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <input type="checkbox" class="radio" value="1" name="fooby[2][]" />
+                                        @if (Model.PagoCien)
+                                        {
+                                            @Html.RadioButtonFor(m => m.PagoCien, "1", new { @id = "apCien", @class = "radio", @readonly = "readonly", @checked = true })
+                                        }
+                                        else
+                                        {
+                                            @Html.RadioButtonFor(m => m.PagoCien, "1", new { @id = "apCien", @class = "radio", @readonly = "readonly" })
+                                        }
+
                                     </td>
                                     <td>
                                         100% Contra factura al termino de los trabajos
@@ -227,7 +259,14 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="checkbox" class="radio" value="1" name="fooby[2][]" />
+                                        @if (Model.PagoCincuenta)
+                                        {
+                                            @Html.RadioButtonFor(m => m.PagoCincuenta, "2", new { @id = "apCincuenta", @class = "radio", @readonly = "readonly", @checked = true })
+                                        }
+                                        else
+                                        {
+                                            @Html.RadioButtonFor(m => m.PagoCincuenta, "2", new { @id = "apCincuenta", @class = "radio", @readonly = "readonly" })
+                                        }
                                     </td>
                                     <td>
                                         50% Con la orden y saldo contra factura
@@ -236,20 +275,37 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="checkbox" class="radio" value="1" name="fooby[2][]" />
+                                        @if (Model.PagoCuotas)
+                                        {
+                                            @Html.RadioButtonFor(m => m.PagoCuotas, "3", new { @id = "apCuota", @class = "radio", @readonly = "readonly", @checked = true })
+                                        }
+                                        else
+                                        {
+                                            @Html.RadioButtonFor(m => m.PagoCuotas, "3", new { @id = "apCuota", @class = "radio", @readonly = "readonly" })
+                                        }
+
                                     </td>
                                     <td>N° Cuotas</td>
-                                    <td><input type="text" id="TextBox_Cuotas" name="Cuotas"></td>
+                                    <td>
+                                        @Html.TextBoxFor(m => m.NumeroCuotas, new { id = "TextBox_Cuotas", @readonly = "readonly" })
+                                    </td>
                                 </tr>
                                 <tr style="width:90%">
                                     <td style="width:10%">
-                                        <input type="checkbox" class="radio" value="1" name="fooby[2][]" />
+                                        @if (Model.OtroPago)
+                                        {
+                                            @Html.RadioButtonFor(m => m.OtroPago, "4", new { @id = "apOtro", @class = "radio", @readonly = "readonly", @checked = true })
+                                        }
+                                        else
+                                        {
+                                            @Html.RadioButtonFor(m => m.OtroPago, "4", new { @id = "apOtro", @class = "radio", @readonly = "readonly" })
+                                        }
                                     </td>
                                     <td>
                                         Otro (Indicar)
                                     </td>
                                     <td>
-                                        <input type="text" id="TextBox_Otros" name="Otros">
+                                        @Html.TextBoxFor(m => m.OtroPagoDescripcion, new { id = "TextBox_Otros", @readonly = "readonly" })
                                     </td>
                                 </tr>
                             </tbody>
@@ -270,7 +326,15 @@
                         <table class="table table-striped">
                             <tr>
                                 <td>
-                                    <input type="checkbox" class="radio" value="1" name="fooby[1][]" />
+                                    @if (Model.PresupuestoFirmado)
+                                    {
+                                        @Html.RadioButtonFor(m => m.PresupuestoFirmado, "1", new { @id = "maCopia", @class = "radio", @readonly = "readonly", @checked = true })
+                                    }
+                                    else
+                                    {
+                                        @Html.RadioButtonFor(m => m.PresupuestoFirmado, "1", new { @id = "maCopia", @class = "radio", @readonly = "readonly" })
+                                    }
+
                                 </td>
                                 <td>
                                     Copia de presupuesto firmado
@@ -278,7 +342,15 @@
                                 <td></td>
                             <tr>
                                 <td>
-                                    <input type="checkbox" class="radio" value="2" name="fooby[1][]" />
+                                    @if (Model.OrdenCompra)
+                                    {
+                                        @Html.RadioButtonFor(m => m.PresupuestoFirmado, "2", new { @id = "maOrden", @class = "radio", @readonly = "readonly", @checked = true })
+                                    }
+                                    else
+                                    {
+                                        @Html.RadioButtonFor(m => m.PresupuestoFirmado, "2", new { @id = "maOrden", @class = "radio", @readonly = "readonly" })
+                                    }
+
                                 </td>
                                 <td>
                                     Orden de compra a travez de Chile Compra
@@ -286,16 +358,23 @@
                                 <td></td>
                             <tr>
                                 <td>
-                                    <input type="checkbox" class="radio" value="3" name="fooby[1][]" />
+                                    @if (Model.OtroPago)
+                                    {
+                                        @Html.RadioButtonFor(m => m.OtroPago, "2", new { @id = "maOtro", @class = "radio", @readonly = "readonly", @checked = true })
+                                    }
+                                    else
+                                    {
+                                        @Html.RadioButtonFor(m => m.OtroPago, "2", new { @id = "maOtro", @class = "radio", @readonly = "readonly" })
+                                    }
+
                                 </td>
                                 <td>
                                     Otro (Indicar)
                                 </td>
                                 <td>
-                                    <input type="text" id="TextBox_OtroMedioApro" name="OtroMedioApro">
+                                    @Html.TextBoxFor(m => m.OtraAprobacionDescripcion, new { id = "TextBox_OtroMedioApro", @readonly = "readonly" })
                                 </td>
                             </tr>
-
                         </table>
                     </div>
                 </div>
