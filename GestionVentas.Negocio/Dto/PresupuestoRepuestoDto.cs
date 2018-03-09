@@ -10,7 +10,7 @@ namespace GestionVentas.Negocio.Dto
     {
         public int PresupuestoRepuestoId { get; set; }
         public int Presupuesto { get; set; }
-        public int Repuesto { get; set; }
+        public string Repuesto { get; set; }
         public int Cantidad { get; set; }
         public int Codigo { get; set; }
         public int ValorUnitario { get; set; }

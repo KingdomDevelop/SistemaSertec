@@ -361,7 +361,7 @@ namespace GestionVentas.Negocio.Mappers
                 forma.PagoCincuenta = entidad.PagoCincuenta;
                 forma.PagoCuotas = entidad.PagoCuotas;
                 forma.PresupuestoFirmado = entidad.PresupuestoFirmado;
-}
+            }
             return forma;
         }
 
@@ -407,9 +407,9 @@ namespace GestionVentas.Negocio.Mappers
                 conta.PersonaAprobacion = entidad.PersonaAprobacion;
                 conta.TelefonoContacto = entidad.TelefonoContacto;
                 conta.Vendedor = entidad.Vendedor;
-                
+
             }
-            
+
             return conta;
         }
 
@@ -431,6 +431,46 @@ namespace GestionVentas.Negocio.Mappers
                 PersonaAprobacion = dto.PersonaAprobacion,
                 TelefonoContacto = dto.TelefonoContacto
             };
+        }
+
+        public static PresupuestoRepuestoDto RepuestoToDto(PresupuestoRepuestoEntity entidad)
+        {
+            return new PresupuestoRepuestoDto
+            {
+                Cantidad = entidad.Cantidad,
+                Codigo = entidad.Codigo,
+                HoraParHombre = Convert.ToInt32(entidad.HoraParHombre),
+                Presupuesto = entidad.Presupuesto,
+                PresupuestoRepuestoId = entidad.PresupuestoRepuestoId,
+                Repuesto = entidad.Repuesto,
+                SubTotal = Convert.ToInt32(entidad.SubTotal),
+                ValorUnitario = Convert.ToInt32(entidad.ValorUnitario)
+            };
+        }
+
+        public static IList<PresupuestoRepuestoDto> RepuestoToDto(IList<PresupuestoRepuestoEntity> lstDto)
+        {
+            var lstRepuesto = lstDto.Select(RepuestoToDto).ToList();
+
+            return lstRepuesto;
+        }
+
+        public static PresupuestoTercerosDto TercerosToDto(PresupuestoTercerosEntity entidad)
+        {
+            return new PresupuestoTercerosDto
+            {
+                Descripcion = entidad.Descripcion,
+                Presupuesto = entidad.Presupuesto,
+                PresupuestoTerceroId = entidad.PresupuestoTerceroId,
+                Valor = entidad.Valor
+            };
+        }
+
+        public static IList<PresupuestoTercerosDto> TercerosToDto(IList<PresupuestoTercerosEntity> lstDto)
+        {
+            var lstTerceros = lstDto.Select(TercerosToDto).ToList();
+
+            return lstTerceros;
         }
     }
 }

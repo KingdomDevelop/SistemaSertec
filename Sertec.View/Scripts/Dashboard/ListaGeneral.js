@@ -3,6 +3,7 @@
     $facturacion = $("#facturacion");
     $conVenta = $("#condicionVenta");
     $apro = $("#aprobacion");
+    $ope = $("#operaciones");
 });
 
 function verContabilidad($cotizacionId) {
@@ -20,6 +21,7 @@ function verContabilidad($cotizacionId) {
             verAprobacion($cotizacionId);
             verFacturacion($cotizacionId);
             verCondicionVenta($cotizacionId);
+            verOperaciones($cotizacionId);
             document.getElementById('tabEmpl').click();
         }
     });
@@ -66,6 +68,20 @@ function verAprobacion($cotizacionId) {
         },
         success: function (response) {
             $($apro).html(response);
+        }
+    });
+}
+
+function verOperaciones($cotizacionId) {
+    $.ajax({
+        type: "POST",
+        url: urlVerOperaciones + "/" + $cotizacionId,
+        datatype: "json",
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Error");
+        },
+        success: function (response) {
+            $($ope).html(response);
         }
     });
 }

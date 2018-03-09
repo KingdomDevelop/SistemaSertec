@@ -178,10 +178,16 @@ namespace Sertec.View.Models
         public string Respuesto { get; set; }
         public string Vendedor { get; set; } //No existe
         public string DetalleDescrip { get; set; }
+        public string direccion { get; set; }
+
+        public string PresupuestoNumero { get; set; }
+        public string PersonaAprobado { get; set; }
+        public string Telefono { get; set; }
 
         //Lista de Repuesto/Reparacion Ingresados
+        public IList<PresupuestoRepuestoViewModel> Repuesto { get; set; }
 
-        public string TrabajosTerceros { get; set; }
+        public IList<PresupuestoTrabajoTercerosViewModel> Terceros { get; set; }
 
         //Control Termino de Trabajos
         public int Guia { get; set; }

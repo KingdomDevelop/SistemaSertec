@@ -187,7 +187,7 @@ namespace GestionVentas.Dato.DAO
                     Codigo = entidad.Codigo,
                     HoraParHombre = entidad.HoraParHombre,
                     PK_Cotizacion_ID = entidad.Presupuesto,
-                    Repuesto = entidad.Repuesto.ToString(),
+                    Repuesto = entidad.Repuesto,
                     SubTotal = entidad.SubTotal,
                     ValorUnitario = entidad.ValorUnitario
                 };
@@ -199,6 +199,34 @@ namespace GestionVentas.Dato.DAO
             }
 
             return idResultado;
+        }
+        public IList<PresupuestoRepuestoEntity> obtenerRepuestos(int idCotizacion)
+        {
+            var lstRepuestos = new List<PresupuestoRepuestoEntity>();
+
+            using (var context = new ContextoBdSantiago())
+            {
+                var repuesto = context.CotizacionRepuesto;
+
+                if (repuesto.Any())
+                {
+                    lstRepuestos = repuesto.Where(x => x.PK_Cotizacion_ID == idCotizacion).Select(c => new PresupuestoRepuestoEntity
+                    {
+                        Cantidad = c.Cantidad,
+                        Codigo = c.Codigo ?? 0,
+                        HoraParHombre = c.HoraParHombre ?? 0,
+                        ValorUnitario = c.ValorUnitario ?? 0,
+                        Repuesto = c.Repuesto,
+                        Presupuesto = c.PK_Cotizacion_ID ?? 0,
+                        PresupuestoRepuestoId = c.CotizacionRepuestoID,
+                        SubTotal = c.SubTotal
+                    }).ToList();
+                }
+
+                //solo para asegurarnos que cierre la conexion
+                context.Dispose();
+            }
+            return lstRepuestos;
         }
 
         public int guardarPresupuestoTerceros(PresupuestoTercerosEntity entidad)
@@ -221,6 +249,31 @@ namespace GestionVentas.Dato.DAO
             }
 
             return idResultado;
+        }
+
+        public IList<PresupuestoTercerosEntity> obtenerTerceros(int idCotizacion)
+        {
+            var lstTerceros = new List<PresupuestoTercerosEntity>();
+
+            using (var context = new ContextoBdSantiago())
+            {
+                var terceros = context.CotizacionTerceros;
+
+                if (terceros.Any())
+                {
+                    lstTerceros = terceros.Where(x => x.PK_Cotizacion_ID == idCotizacion).Select(c => new PresupuestoTercerosEntity
+                    {
+                        Descripcion = c.Terceros,
+                        Presupuesto = (int)c.PK_Cotizacion_ID,
+                        PresupuestoTerceroId = c.CotizacionTercerosID,
+                        Valor = (decimal)c.ValorTerceros
+                    }).ToList();
+                }
+
+                //solo para asegurarnos que cierre la conexion
+                context.Dispose();
+            }
+            return lstTerceros;
         }
 
         public void guardarFacturacion(FacturacionEntity entidad)

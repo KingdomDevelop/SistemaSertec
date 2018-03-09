@@ -128,5 +128,15 @@ namespace GestionVentas.Negocio.Implementacion
         {
             presupuestoDao.guardarFacturacion(NegocioMapper.FacturacionToEntity(facturacion));
         }
+
+        public IList<PresupuestoTercerosDto> obtenerTerceros(int idCotizacion)
+        {
+            return NegocioMapper.TercerosToDto(presupuestoDao.obtenerTerceros(idCotizacion));
+        }
+
+        public IList<PresupuestoRepuestoDto> obtenerRepuestos(int idCotizacion)
+        {
+            return NegocioMapper.RepuestoToDto(presupuestoDao.obtenerRepuestos(idCotizacion));
+        }
     }
 }

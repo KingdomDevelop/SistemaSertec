@@ -75,7 +75,7 @@ namespace Sertec.View.Controllers
                 Respuesto = "Repuesto ABC 1, Repuesto ABC 2",
                 Vendedor = "QWE",
                 DetalleDescrip = "Detalle Descripcion 1,2 y 3",
-                TrabajosTerceros = "Trabajos Terceros Detalle",
+                //TrabajosTerceros = "Trabajos Terceros Detalle",
                 Guia = 123
             });
 
@@ -167,7 +167,7 @@ namespace Sertec.View.Controllers
                         Codigo = repuesto.Codigo,
                         HoraParHombre = repuesto.HoraParHombre,
                         Presupuesto = idCot,
-                        Repuesto = 1, // valor fijo esperando validacion
+                        Repuesto = "asdasd", // valor fijo esperando validacion
                         SubTotal = repuesto.SubTotal,
                         ValorUnitario = repuesto.ValorUnitario
                     });
@@ -308,7 +308,6 @@ namespace Sertec.View.Controllers
             var infoCoti = _presupuestoSvc.obtenerPresupuestos(id);
             var infoConta = _presupuestoSvc.obtenerContabilidadInfo(id);
 
-
             coti.CantidadFletes = infoCoti.CantidadFletes;
             coti.ValorManoObra = infoCoti.ValorManoObra;
             coti.TecEmisor = infoCoti.TecEmisor;
@@ -316,35 +315,10 @@ namespace Sertec.View.Controllers
             coti.ValorTerceros = infoCoti.ValorTerceros;
             coti.DuracionTrabajo = infoCoti.DuracionTrabajo;
 
-            //triple validacion, si tiene datos de contabilidad
-            //facturacion (partial aparte)
-            //condiciones de pago (partial aparte)
-            //if (infoConta.Cotizacion == 0)
-            //{
-            //    conta.ExisteDatos = true;
-            //}
 
-            var OperacionList = new List<ListaOperacionViewModel>();
-
-            OperacionList.Add(new ListaOperacionViewModel
-            {
-                Obra = "1",
-                FechaEmision = DateTime.Now,
-                Ascensor = "Ascensor ABC",
-                TecEmisor = "AGC",
-                Supervisor = "LLN",
-                RutEmpresa = "",
-                Respuesto = "Repuesto ABC 1, Repuesto ABC 2",
-                Vendedor = "QWE",
-                DetalleDescrip = "Detalle Descripcion 1,2 y 3",
-                TrabajosTerceros = "Trabajos Terceros Detalle",
-                Guia = 123
-            });
 
             return PartialView("Contabilidad", coti);
         }
-
-
 
         public PartialViewResult Facturacion(int id)
         {
@@ -377,9 +351,6 @@ namespace Sertec.View.Controllers
                     FacturaList.Add(new FacturacionViewModel { Contabilidad = conta.Contabilidad, Cotizacion = -1 });
                 }
             }
-
-
-
 
             return PartialView("Facturacion", FacturaList);
         }
@@ -557,6 +528,69 @@ namespace Sertec.View.Controllers
             Session["Facturacion"] = FacturaList;
 
             return PartialView("Facturacion", FacturaList);
+        }
+
+        public PartialViewResult Operaciones(int id)
+        {
+            var OperacionList = new ListaOperacionViewModel();
+
+            var infoCotizacion = _presupuestoSvc.obtenerPresupuestos(id);
+            var conta = _presupuestoSvc.obtenerContabilidadInfo(id);
+            var terceros = _presupuestoSvc.obtenerTerceros(id);
+            var repuesto = _presupuestoSvc.obtenerRepuestos(id);
+
+            #region [Presupuesto]
+                OperacionList.Ascensor = infoCotizacion.Ascensor;
+                OperacionList.DetalleDescrip = infoCotizacion.DetalleDescrip;
+                OperacionList.FechaEmision = infoCotizacion.FechaEmision;
+                OperacionList.Obra = infoCotizacion.Obra;
+                OperacionList.PresupuestoNumero = infoCotizacion.PresupuestoNumero;
+                OperacionList.Supervisor = infoCotizacion.Supervisor;
+                OperacionList.TecEmisor = infoCotizacion.TecEmisor;
+            #endregion
+
+            #region [Contabilidad]
+            if (conta.Contabilidad != 0)
+            {
+                OperacionList.direccion = conta.Direccion;
+                OperacionList.Guia = conta.GuiaDespacho;
+                OperacionList.PersonaAprobado = conta.PersonaAprobacion;
+                OperacionList.Telefono = conta.TelefonoContacto;
+                OperacionList.Vendedor = conta.Vendedor;
+
+            }
+            #endregion
+
+            #region [Terceros]
+            if (terceros.Any())
+            {
+                OperacionList.Terceros = terceros.Select(ter => new PresupuestoTrabajoTercerosViewModel
+                {
+                    Terceros = ter.Descripcion,
+                    ValTer = Convert.ToInt32(ter.Valor),
+                    TercerosId = ter.PresupuestoTerceroId
+                }).ToList();
+            }
+            #endregion
+
+            #region [Repuestos]
+            if (repuesto.Any())
+            {
+                OperacionList.Repuesto = repuesto.Select(rep => new PresupuestoRepuestoViewModel
+                {
+                    Cantidad = rep.Cantidad,
+                    Codigo = rep.Codigo,
+                    HoraParHombre = rep.HoraParHombre,
+                    RepuestoId = rep.PresupuestoRepuestoId,
+                    Respuesto = rep.Repuesto,
+                    SubTotal = rep.SubTotal,
+                    ValorUnitario = rep.ValorUnitario
+                }).ToList();
+            }
+            #endregion
+
+
+            return PartialView("Operaciones", OperacionList);
         }
 
     }

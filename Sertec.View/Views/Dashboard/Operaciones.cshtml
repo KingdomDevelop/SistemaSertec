@@ -1,0 +1,268 @@
+﻿@using Sertec.View.Models
+@model ListaOperacionViewModel
+
+<div class="col-sm-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>DETALLE:</h4>
+        </div>
+        <div class="panel-body">
+            <!--      Primera Tabla --->
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tbody>
+
+                        <tr>
+                            <td>Obra</td>
+                            <td>
+                                @Html.TextBoxFor(m => m.Obra, new { id = "TxtObra", @readonly = "readonly" })
+                            </td>
+                            <td>Empresa</td>
+                            <td>Rut</td>
+                        </tr>
+                        <tr>
+                            <td>Fecha Aprobación</td>
+                            <td>
+                                @Html.TextBoxFor(m => m.FechaEmision, new { id = "TxtFechaEmision", @readonly = "readonly" })
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(m => m.RutEmpresa, new { id = "TxtRutEmpresa", @readonly = "readonly" })
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Ascensor</td>
+                            <td>
+                                @Html.TextBoxFor(m => m.Ascensor, new { id = "TxtAscensor", @readonly = "readonly" })
+                            </td>
+                            <td>Dirección</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Tecnico Emisor</td>
+                            <td>
+                                @Html.TextBoxFor(m => m.TecEmisor, new { id = "TxtEmisor", @readonly = "readonly" })
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(m => m.direccion, new { id = "TxtDir", @readonly = "readonly" })
+                            </td>
+                            <td>..</td>
+                        </tr>
+                        <tr>
+                            <td>Supervisor</td>
+                            <td>
+                                @Html.TextBoxFor(m => m.Supervisor, new { id = "TxtSupe", @readonly = "readonly" })
+                            </td>
+                            <td>..</td>
+                            <td>..</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--/panel-body-->
+    </div>
+    <!--/panel-->
+    <hr />
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>New Requests</h4>
+        </div>
+        <div class="panel-body">
+            <div class="list-group">
+                <a href="#" class="list-group-item active">INFORMO A UD. QUE CON ESTA FECHA SE HA APROBADO LO SIGUIENTE:</a>
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <td style="width:10%"></td>
+                            <td style="width:10%"></td>
+                            <td style="width:10%"></td>
+                            <td style="width:10%"></td>
+                            <td style="width:30%">PRESUPUESTO REP N°</td>
+                            <td style="width:30%"></td>
+                        </tr>
+                        <tr>
+                            <td style="width:10%"></td>
+                            <td style="width:10%"></td>
+                            <td style="width:10%"></td>
+                            <td style="width:10%"></td>
+                            <td style="width:20%"></td>
+                            <td style="width:40%">
+                                @Html.TextBoxFor(m => m.PresupuestoNumero, new { id = "TxtPrepNumero", @readonly = "readonly" })
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <td style="width:20%">APROBADO POR</td>
+                            <td style="width:50%">
+                                @Html.TextBoxFor(m => m.PersonaAprobado, new { id = "TxtPerAprobado", @readonly = "readonly" })
+                            </td>
+                            <td style="width:30%"> VENDEDOR</td>
+                        </tr>
+                        <tr>
+                            <td style="width:20%">TELEFONO CONTACTO</td>
+                            <td style="width:50%">
+                                @Html.TextBoxFor(m => m.Telefono, new { id = "TxtPrepNumero", @readonly = "readonly" })
+                            </td>
+                            <td style="width:30%">
+                                @Html.TextBoxFor(m => m.Vendedor, new { id = "TxtVendedor", @readonly = "readonly" })
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="#" class="list-group-item">BREVE DESCRIPCION DE LA REPARACIÓN A EFECTUAR</a>
+                <table class="table table-striped">
+                    <tr>
+                        <td>
+                            @Html.TextBoxFor(m => m.DetalleDescrip, new { id = "tf_detalleArea", @readonly = "readonly", @rows = 4, @cols = 5 })
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--/col-->
+
+    <div class="panel panel-default">
+        <div class="table-responsive">
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width:60%">REPUESTOS Y/O REPARACIÓN</th>
+                            <th style="width:20%">CANT.</th>
+                            <th style="width:20%">CODIGO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Repuesto != null)
+                        {
+                            foreach (PresupuestoRepuestoViewModel item in Model.Repuesto)
+                            {
+
+                                <tr>
+                                    <td>
+                                        @item.Respuesto
+                                    </td>
+                                    <td>
+                                        @item.Cantidad
+                                    </td>
+                                    <td>
+                                        @item.Codigo
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="3" class="mensaje">
+                                    No existen repuestos ingresados.
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr />
+        <hr />
+        <div class="table-responsive">
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width:10%"></th>
+                            <th style="width:80%">TRABAJOS TERCEROS</th>
+                            <th style="width:10%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Terceros != null)
+                        {
+                            foreach (PresupuestoTrabajoTercerosViewModel item in Model.Terceros)
+                            {
+
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        @item.Terceros
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="3" class="mensaje">
+                                    No existen información de Trabajo Terceros.
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--/panel-->
+    <!--/col-span-6-->
+    <!-- COLUMNA DERECHA-->
+    <div class="panel-body">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>CONTROL DE TERMINO DE TRABAJOS</h4>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <td>FECHA</td>
+                            <td>...</td>
+                            <td>GUIA N°</td>
+                            <td>
+                                @Html.TextBoxFor(m => m.Guia, new { id = "TxtGuia", @readonly = "readonly" })
+                            </td>
+                            <td>TECNICO</td>
+                            <td>
+                                @Html.TextBoxFor(m => m.TecEmisor, new { id = "TxtEmisor", @readonly = "readonly" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>SUPERVISOR</td>
+                            <td>
+                                @Html.TextBoxFor(m => m.Supervisor, new { id = "TxtSuper", @readonly = "readonly" })
+                            </td>
+                            <td>FECHA</td>
+                            <td>...</td>
+                            <td>FIRMA</td>
+                            <td>...</td>
+                        </tr>
+                        <tr>
+                            <td>VENTAS</td>
+                            <td>TxtBoxNumVen </td>
+                            <td>FECHA</td>
+                            <td>02-OCT</td>
+                            <td>FIRMA</td>
+                            <td>...</td>
+                        </tr>
+                        <tr>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <hr />
+</div>

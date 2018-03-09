@@ -23,5 +23,7 @@ namespace GestionVentas.Dato.Interfaz.IDAO
         int guardarContabilidad(ContabilidadEntity entidad);
         ContabilidadEntity obtenerContabilidad(int cotizacionID);
 
+        IList<PresupuestoRepuestoEntity> obtenerRepuestos(int idCotizacion);
+        IList<PresupuestoTercerosEntity> obtenerTerceros(int idCotizacion);
     }
 }

@@ -10,11 +10,11 @@ namespace GestionVentas.Dato.Entidades
     {
         public int PresupuestoRepuestoId { get; set; }
         public int Presupuesto { get; set; }
-        public int Repuesto { get; set; }
+        public string Repuesto { get; set; }
         public int Cantidad { get; set; }
         public int Codigo { get; set; }
-        public int ValorUnitario { get; set; }
-        public int SubTotal { get; set; }
-        public int HoraParHombre { get; set; }
+        public decimal ValorUnitario { get; set; }
+        public decimal SubTotal { get; set; }
+        public decimal HoraParHombre { get; set; }
     }
 }

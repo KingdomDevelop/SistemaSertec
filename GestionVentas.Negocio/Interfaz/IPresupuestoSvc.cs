@@ -29,5 +29,8 @@ namespace GestionVentas.Negocio.Interfaz
         void guardarFormaPago(FormaPagoDto formaPago);
         IList<FacturacionDto> obtenerFacturacion(int idContabilidad);
         void guardarFacturacion(FacturacionDto facturacion);
+
+        IList<PresupuestoTercerosDto> obtenerTerceros(int idCotizacion);
+        IList<PresupuestoRepuestoDto> obtenerRepuestos(int idCotizacion);
     }
 }

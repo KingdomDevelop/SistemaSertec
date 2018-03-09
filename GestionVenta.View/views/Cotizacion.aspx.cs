@@ -215,7 +215,7 @@ namespace GestionVenta.View.Layout
             var Result = ppto.guardarPresupuestoOrdenTrabajo(NewPto);
 
             NewPtoRep.Presupuesto = idCot;
-            NewPtoRep.Repuesto = 1;
+            NewPtoRep.Repuesto = "asda";
             //NewPtoRep.Cantidad = Convert.ToInt32(tf_cantidad.Text);
             //NewPtoRep.Codigo=Convert.ToInt32(tf_codigo.Text);
             //NewPtoRep.ValorUnitario = Convert.ToInt32(tf_valor.Text);
