@@ -393,6 +393,7 @@ namespace GestionVentas.Negocio.Mappers
 
             if (entidad != null)
             {
+                conta.Contabilidad = entidad.Contabilidad;
                 conta.ComisionOtros = entidad.ComisionOtros;
                 conta.ComisionVendedor = entidad.ComisionVendedor;
                 conta.Cotizacion = entidad.Cotizacion;
@@ -406,6 +407,7 @@ namespace GestionVentas.Negocio.Mappers
                 conta.PersonaAprobacion = entidad.PersonaAprobacion;
                 conta.TelefonoContacto = entidad.TelefonoContacto;
                 conta.Vendedor = entidad.Vendedor;
+                
             }
             
             return conta;

@@ -60,6 +60,7 @@ namespace Sertec.View.Controllers
 
         public ActionResult ListaGeneral()
         {
+            Session["Facturacion"] = null;
             var GeneralList = new List<ListaGeneralViewModel>();
             var OperacionList = new List<ListaOperacionViewModel>();
 
@@ -350,8 +351,35 @@ namespace Sertec.View.Controllers
             //Datos Pruebas
             var FacturaList = new List<FacturacionViewModel>();
 
-            FacturaList.Add(new FacturacionViewModel { NumeroCuotas = 1, Factura = 1, Valor = 100000, Mes = "FEBRERO" });
-            FacturaList.Add(new FacturacionViewModel { NumeroCuotas = 2, Factura = 2, Valor = 500000, Mes = "MARZO" });
+            //FacturaList.Add(new FacturacionViewModel { NumeroCuotas = 1, Factura = 1, Valor = 100000, Mes = "FEBRERO" });
+            //FacturaList.Add(new FacturacionViewModel { NumeroCuotas = 2, Factura = 2, Valor = 500000, Mes = "MARZO" });
+
+            var conta = _presupuestoSvc.obtenerContabilidadInfo(id);
+
+            if (conta.Contabilidad != 0)
+            {
+                var fact = _presupuestoSvc.obtenerFacturacion(conta.Contabilidad);
+                if (fact.Any())
+                {
+                    FacturaList = fact.Select(f => new FacturacionViewModel
+                    {
+                        Contabilidad = f.NumeroContabilidad,
+                        Factura = f.NumeroGuia,
+                        Mes = f.Mes.ToString(),
+                        NumeroCuotas = f.NumeroCuota,
+                        Valor = Convert.ToInt32(f.ValorCuota)
+                    }).ToList();
+
+                    Session["Facturacion"] = FacturaList;
+                }
+                else
+                {
+                    FacturaList.Add(new FacturacionViewModel { Contabilidad = conta.Contabilidad, Cotizacion = -1 });
+                }
+            }
+
+
+
 
             return PartialView("Facturacion", FacturaList);
         }
@@ -490,5 +518,46 @@ namespace Sertec.View.Controllers
 
             return PartialView("ContabilidadAprobacion", contabilidad);
         }
+        public PartialViewResult IngresarFacturacion(FacturacionViewModel model)
+        {
+            //Datos Pruebas
+            var FacturaList = new List<FacturacionViewModel>();
+
+            if (model != null)
+            {
+                _presupuestoSvc.guardarFacturacion(new FacturacionDto
+                {
+                    Mes = Convert.ToInt32(model.Mes),
+                    NumeroContabilidad = model.Contabilidad,
+                    NumeroCuota = model.NumeroCuotas,
+                    NumeroGuia = model.Factura,
+                    ValorCuota = model.Valor
+                });
+            }
+
+            var fact = _presupuestoSvc.obtenerFacturacion(model.Contabilidad);
+            if (fact.Any())
+            {
+                FacturaList = fact.Select(f => new FacturacionViewModel
+                {
+                    Contabilidad = f.NumeroContabilidad,
+                    Factura = f.NumeroGuia,
+                    Mes = f.Mes.ToString(),
+                    NumeroCuotas = f.NumeroCuota,
+                    Valor = Convert.ToInt32(f.ValorCuota)
+                }).ToList();
+            }
+
+            if (Session["Facturacion"] != null)
+            {
+                FacturaList = (List<FacturacionViewModel>)Session["Facturacion"];
+            }
+            FacturaList.Add(model);
+
+            Session["Facturacion"] = FacturaList;
+
+            return PartialView("Facturacion", FacturaList);
+        }
+
     }
 }

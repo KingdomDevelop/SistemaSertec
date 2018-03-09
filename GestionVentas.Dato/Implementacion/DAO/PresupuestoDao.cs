@@ -411,7 +411,9 @@ namespace GestionVentas.Dato.DAO
                         GuiaDespacho = c.GuiaDespacho,
                         PersonaAprobacion = c.PersonaAprobacion,
                         TelefonoContacto = c.TelefonoContacto,
-                        Vendedor = c.Vendedor
+                        Vendedor = c.Vendedor,
+                        Contabilidad = c.PK_ContabilidadID,
+                        Cotizacion = cotizacionID
                     }).FirstOrDefault();
                 }
                 //solo para asegurarnos que cierre la conexion

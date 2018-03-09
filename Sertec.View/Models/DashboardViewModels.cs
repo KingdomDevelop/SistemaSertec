@@ -158,8 +158,11 @@ namespace Sertec.View.Models
         public bool OtraAprobacion { get; set; }
         public string OtraAprobacionDescripcion { get; set; }
     }
-    public class FacturacionViewModel {
+    public class FacturacionViewModel
+    {
         public int NumeroCuotas { get; set; }
+        public int Cotizacion { get; set; }
+        public int Contabilidad { get; set; }
         public int Factura { get; set; }
         public int Valor { get; set; }
         public string Mes { get; set; }

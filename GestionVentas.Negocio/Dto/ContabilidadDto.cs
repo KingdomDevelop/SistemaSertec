@@ -9,6 +9,7 @@ namespace GestionVentas.Negocio.Dto
     public class ContabilidadDto
     {
         public int Cotizacion { get; set; }
+        public int Contabilidad { get; set; }
         public string Direccion { get; set; }
         public string PersonaAprobacion { get; set; }
         public string TelefonoContacto { get; set; }

@@ -198,3 +198,32 @@ function CrearAprobacion($cotizacion) {
         }
     });
 }
+
+
+function CrearFacturacion($contabilidad) {
+
+    var dataType = 'application/json; charset=utf-8';
+    var data = {
+        NumeroCuotas: document.getElementById('txtNumCuota').value,
+        Factura: document.getElementById('txtNumFact').value,
+        Valor: document.getElementById('txtValor').value,
+        Mes: document.getElementById('txtMes').value,
+        Contabilidad: $contabilidad
+    }
+
+    $.ajax({
+        type: "POST",
+        url: urlCrearFacturacion,
+        datatype: "json",
+        data: data,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Error");
+        },
+        success: function (response) {
+            $($facturacion).html(response);
+            $("#txtValor").val("");
+            $("#txtMes").val("");
+        }
+    });
+}
+
