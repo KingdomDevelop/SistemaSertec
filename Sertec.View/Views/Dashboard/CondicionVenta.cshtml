@@ -2,7 +2,7 @@
 @model CondicionVentaViewModel
 @{ if (Model.ExisteDatos == false)
     {
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div id="foreign_checkbox" class="panel panel-default">
                 <div class="panel-heading">
                     <div class="panel-title">
@@ -15,6 +15,13 @@
                             <td>
                                 <div><a href="#">Descuentos Ofrecidos</a> </div>
                             </td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <div><a href="#">Forma de Pago</a> </div>
+                            </td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     </table>
                     <div class="col-xs-4 text-center" style="width:100%">
@@ -27,6 +34,14 @@
                                     5%
                                 </td>
                                 <td></td>
+                                <td>
+                                    @Html.RadioButtonFor(m => m.PagoCien, "1", new { @id = "apCien", @class = "radio", onclick = "SeleccionTextoFP()" })
+                                </td>
+                                <td>
+                                    100% Contra factura al termino de los trabajos
+                                </td>
+                                <td></td>
+
                             </tr>
                             <tr>
                                 <td>
@@ -34,6 +49,13 @@
                                 </td>
                                 <td>
                                     15%
+                                </td>
+                                <td></td>
+                                <td>
+                                    @Html.RadioButtonFor(m => m.PagoCien, "2", new { @id = "apCincuenta", @class = "radio", onclick = "SeleccionTextoFP()" })
+                                </td>
+                                <td>
+                                    50% Con la orden y saldo contra factura
                                 </td>
                                 <td></td>
                             </tr>
@@ -170,6 +192,9 @@
                             <td>
                                 <div><a href="#">Descuentos Ofrecidos</a> </div>
                             </td>
+                            <td>
+                                <div><a href="#">Forma de Pago</a> </div>
+                            </td>
                         </tr>
                     </table>
                     <div class="col-xs-4 text-center" style="width:100%">
@@ -188,6 +213,21 @@
                                 </td>
                                 <td>
                                     5%
+                                </td>
+                                <td></td>
+                                <td>
+                                    @if (Model.PagoCien)
+                                    {
+                                        @Html.RadioButtonFor(m => m.PagoCien, "1", new { @id = "apCien", @class = "radio", disabled = "disabled", @checked = true })
+                                    }
+                                    else
+                                    {
+                                        @Html.RadioButtonFor(m => m.PagoCien, "1", new { @id = "apCien", @class = "radio", disabled = "disabled" })
+                                    }
+
+                                </td>
+                                <td>
+                                    100% Contra factura al termino de los trabajos
                                 </td>
                                 <td></td>
                             </tr>

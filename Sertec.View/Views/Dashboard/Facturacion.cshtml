@@ -9,7 +9,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>N° CUOTA</th>
+                        <th style="width: 15%">N° CUOTA</th>
                         <th>N° FACTURA</th>
                         <th>VALOR</th>
                         <th>MES</th>
@@ -21,7 +21,7 @@
                         foreach (var name in Model)
                         {
                             <tr>
-                                <td>@name.NumeroCuotas</td>
+                                <td style="width: 15%">@name.NumeroCuotas</td>
                                 <td>@name.Factura</td>
                                 <td>@name.Valor</td>
                                 <td>@name.Mes</td>
@@ -30,7 +30,7 @@
                         }
                     }
                     <tr>
-                        <td>@Html.TextBox("NumeroCuota", "", new { id = "txtNumCuota" })</td>
+                        <td>@Html.TextBox("NumeroCuota", "", new { id = "txtNumCuota", style = "width: 90%" })</td>
                         <td>@Html.TextBox("NumeroFactura", "", new { id = "txtNumFact" })</td>
                         <td>@Html.TextBox("Valor", "", new { id = "txtValor" })</td>
                         <td>@Html.TextBox("Mes", "", new { id = "txtMes" })</td>
