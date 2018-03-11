@@ -192,7 +192,6 @@ function actualizarTotalHP() {
             } else {
                 actualizaTotalManoObra();
             }
-
         }
     });
 }
