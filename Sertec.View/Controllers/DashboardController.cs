@@ -34,6 +34,8 @@ namespace Sertec.View.Controllers
         {
             Session["repuesto"] = null;
             Session["terceros"] = null;
+            Session["TotalRepRep"] = null;
+            Session["ValorHP"] = null;
 
             var tecnicosList = new List<TecnicoViewModel>();
 
@@ -226,6 +228,9 @@ namespace Sertec.View.Controllers
                 listModel.Add(model);
                 Session["repuesto"] = listModel;
             }
+
+
+
             #endregion
             return PartialView("PresupuestoRepuestoList");
         }
@@ -465,6 +470,9 @@ namespace Sertec.View.Controllers
 
         public PartialViewResult IngresarAprobacion(ContabilidadViewModel model)
         {
+
+            //Valido campos ingresados
+            string vende = model.Vendedor;
 
             var idContable = _presupuestoSvc.guardarContabilidadInfo(new ContabilidadDto
             {

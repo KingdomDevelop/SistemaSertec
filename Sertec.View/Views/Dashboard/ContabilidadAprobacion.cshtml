@@ -67,7 +67,7 @@
         </div>
         <div class="panel-body">
             <div class="list-group">
-                <a href="#" class="list-group-item active">INFORMO A UD. QUE CON ESTA FECHA SE HA APROBADO LO SIGUIENTE:</a>
+                <a class="list-group-item active">INFORMO A UD. QUE CON ESTA FECHA SE HA APROBADO LO SIGUIENTE:</a>
                 <table class="table table-striped">
                     <tbody>
                         <tr>
@@ -100,13 +100,13 @@
                         </tr>
                     </tbody>
                 </table>
-                <a href="#" class="list-group-item">BREVE DESCRIPCION DE LA REPARACIÓN A EFECTUAR</a>
+                <a class="list-group-item">BREVE DESCRIPCION DE LA REPARACIÓN A EFECTUAR</a>
                 <table class="table table-striped">
                     <tbody>
                         <tr>
-                            <td>
+                            <td style="width: 90%">
                                 @*<textarea name="detalleArea" id="tf_detalleArea" rows="4" cols="50">Enter text here...</textarea>*@
-                                @Html.TextBoxFor(m => m.DetalleDescrip, new { id = "tf_detalleArea", @readonly = "readonly", @rows = 4, @cols = 5 })
+                                @Html.TextAreaFor(m => m.DetalleDescrip, new { id = "tf_detalleArea",style="width: 100%", @readonly = "readonly", @rows = 4, @cols = 6 })
                             </td>
                         </tr>
                     </tbody>

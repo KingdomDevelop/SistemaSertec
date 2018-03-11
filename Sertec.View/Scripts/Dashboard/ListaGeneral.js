@@ -198,6 +198,8 @@ function CrearAprobacion($cotizacion) {
         Direccion: document.getElementById('TxtDire').value,
         PersonaAprobacion: document.getElementById('Txt_APROBPOR').value,
         TelefonoContacto: document.getElementById('Txt_TELCONTA').value,
+        Vendedor: document.getElementById("Txt_VENDEDOR").value,
+        //RutEmpresa: document.getElementById("Txt_VENDEDOR").value,
         Cotizacion: $cotizacion
     }
 

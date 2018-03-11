@@ -77,14 +77,14 @@
                     <tr>
                         <td>VALOR UF</td>
                         <td>
-                            @Html.TextBoxFor(m => m.ValorUf, new { @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
+                            @Html.TextBoxFor(m => m.ValorUf, new { @class = "form-control", id="ValorUF", onchange = "ObtValores('1',this.value);", Style = "width:90%", required = "required", maxlength = 50 })
                             @Html.ValidationMessageFor(m => m.ValorUf, "", new { @class = "text-danger" })
                         </td>
                     </tr>
                     <tr>
                         <td>VALOR HP</td>
                         <td>
-                            @Html.TextBoxFor(m => m.ValorHP, new { @class = "form-control", Style = "width:90%", required = "required", maxlength = 50 })
+                            @Html.TextBoxFor(m => m.ValorHP, new { @class = "form-control", id = "ValorHP", onchange = "ObtValores('2',this.value);", Style = "width:90%", required = "required", maxlength = 50 })
                             @Html.ValidationMessageFor(m => m.ValorHP, "", new { @class = "text-danger" })
                         </td>
                     </tr>
@@ -164,7 +164,7 @@
             <tr>
                 <td>MANO DE OBRA</td>
                 <td>
-                    @Html.TextBoxFor(m => m.ValorManoObra, new { @class = "form-control", onKeyPress = "return soloNumeros(event)", Style = "width:100%", required = "required", maxlength = 25 })
+                    @Html.TextBoxFor(m => m.ValorManoObra, new { @class = "form-control", id = "TotalValorManoObra", onKeyPress = "return soloNumeros(event)", Style = "width:100%", required = "required", maxlength = 25 })
                     @Html.ValidationMessageFor(m => m.ValorManoObra, "", new { @class = "text-danger" })
                 </td>
                 <td><input type="text" name="mano2" value="0" style="width:100%" disabled="disabled" /></td>
@@ -224,7 +224,7 @@
                 <td><input type="text" name="sub2" value="0" style="width:100%" disabled="disabled" /></td>
                 <td>TOTAL MANO DE OBRA</td>
                 <td>
-                    @Html.TextBoxFor(m => m.ValorManoObra, new { @class = "form-control", onKeyPress = "return soloNumeros(event)", Style = "width:100%", required = "required", maxlength = 25 })
+                    @Html.TextBoxFor(m => m.ValorManoObra, new { @class = "form-control", onKeyPress = "return soloNumeros(event)", onchange = "document.getElementById('TotalValorManoObra').value=this.value", Style = "width:100%", required = "required", maxlength = 25 })
                     @Html.ValidationMessageFor(m => m.ValorManoObra, "", new { @class = "text-danger" })
                 </td>
             </tr>

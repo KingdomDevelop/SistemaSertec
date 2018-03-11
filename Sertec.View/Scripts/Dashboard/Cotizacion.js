@@ -103,6 +103,18 @@ function soloNumeros(e) {
     return ((key >= 48 && key <= 57) || (key == 8))
 }
 
+/*Obt Valor Unidad de Fomento y Hora Par a Resumen Mano Obra*/
+function ObtValores(n,valor) {
+    var total = 0;
+    valor = parseInt(valor); // Convertir el valor a un entero (número).
+    if (n == 1) {
+        n1 = document.getElementById('ValorUF').value;
+    } else if (n == 2) {
+        n2 = document.getElementById('ValorHP').value;
+    }
+
+}
+
 /* Sumar dos números. */
 function sumar(n, valor) {
 
