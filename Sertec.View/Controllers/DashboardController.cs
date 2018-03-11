@@ -37,6 +37,8 @@ namespace Sertec.View.Controllers
             Session["TotalRepRep"] = null;
             Session["DatosCalculo"] = null;
 
+            ViewBag.HpRep = "0";
+
             var tecnicosList = new List<TecnicoViewModel>();
 
             tecnicosList.Add(new TecnicoViewModel { Id = "AGC", Nombre = "AGC" });
@@ -214,7 +216,13 @@ namespace Sertec.View.Controllers
                 Session["repuesto"] = listModel;
             }
 
+            var DataHP =  model.HoraParHombre.ToString();
 
+  
+            var DataUF = TempData["DUF"];
+
+
+            ViewBag.HpRep = Convert.ToInt64(DataHP)* Convert.ToInt64(DataUF);
 
             #endregion
             return PartialView("PresupuestoRepuestoList");
@@ -304,8 +312,6 @@ namespace Sertec.View.Controllers
             coti.ValorRepuestos = infoCoti.ValorRepuestos;
             coti.ValorTerceros = infoCoti.ValorTerceros;
             coti.DuracionTrabajo = infoCoti.DuracionTrabajo;
-
-
 
             return PartialView("Contabilidad", coti);
         }
@@ -588,10 +594,12 @@ namespace Sertec.View.Controllers
 
         public void GuardarDatosCalculo(DatosVistaCalculoViewModel model)
         {
+            var datosCalculo = new DatosCalculoViewModel();
+
             #region [Validar Session]
             if (Session["DatosCalculo"] != null)
             {
-                var datosCalculo = (DatosCalculoViewModel)Session["DatosCalculo"];
+                datosCalculo = (DatosCalculoViewModel)Session["DatosCalculo"];
             }
             #endregion
 
@@ -613,6 +621,9 @@ namespace Sertec.View.Controllers
                 {
                     datosCalculo.ValorUF = Convert.ToDecimal(model.ValorUF.Trim().Replace(".", ","));
                 }
+
+                TempData["DUF"] = Convert.ToDecimal(model.ValorUF.Trim().Replace(".", ",")); ;
+
                 Session["DatosCalculo"] = datosCalculo;
                 #endregion
             }

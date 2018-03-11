@@ -148,10 +148,10 @@
             <tr>
                 <td>DURACION DE TRABAJOS</td>
                 <td>
-                    @Html.TextBoxFor(m => m.DuracionTrabajo, new { @class = "form-control", onKeyPress = "return soloNumeros(event)", Style = "width:100%", required = "required", maxlength = 250 })
+                    @Html.TextBoxFor(m => m.DuracionTrabajo, new { @class = "form-control", onKeyPress = "return soloNumeros(event)", Style = "width:50%", required = "required", maxlength = 250 })
                     @Html.ValidationMessageFor(m => m.DuracionTrabajo, "", new { @class = "text-danger" })
                 </td>
-                <td></td>
+                <td>DÍAS</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -168,7 +168,7 @@
                     @Html.TextBoxFor(m => m.ValorManoObra, new { @class = "form-control", id = "TotalValorManoObra", onKeyPress = "return soloNumeros(event)", Style = "width:100%", required = "required", maxlength = 25 })
                     @Html.ValidationMessageFor(m => m.ValorManoObra, "", new { @class = "text-danger" })
                 </td>
-                <td><input type="text" name="mano2" value="0" style="width:100%" disabled="disabled" /></td>
+                <td><input type="text" name="mano2" value="0" style="width:50%" disabled="disabled" /></td>
                 <td>SUB TOTAL</td>
                 <td>
                     @Html.TextBoxFor(m => m.Subtotal, new { @class = "form-control", onKeyPress = "return soloNumeros(event)", Style = "width:100%", required = "required", maxlength = 25 })
@@ -181,11 +181,12 @@
                     @Html.TextBoxFor(m => m.ValorRepuestos, new { @class = "form-control", onKeyPress = "return soloNumeros(event)", Style = "width:100%", required = "required", maxlength = 25 })
                     @Html.ValidationMessageFor(m => m.ValorRepuestos, "", new { @class = "text-danger" })
                 </td>
-                <td><input type="text" name="rep2" value="0" style="width:100%" disabled="disabled" /></td>
+                <td><input type="text" name="rep2" value="0" style="width:50%" disabled="disabled" /></td>
                 <td>HORAS PAREJA</td>
                 <td>
-                    @Html.TextBoxFor(m => m.HorasParejas, new { @class = "form-control", onKeyPress = "return soloNumeros(event)", Style = "width:100%", required = "required", maxlength = 25 })
-                    @Html.ValidationMessageFor(m => m.HorasParejas, "", new { @class = "text-danger" })
+                    @ViewBag.HpRep
+                    @*@Html.TextBoxFor(m => m.HorasParejas, new { @class = "form-control", onKeyPress = "return soloNumeros(event)", Style = "width:100%", required = "required", maxlength = 25 })
+                    @Html.ValidationMessageFor(m => m.HorasParejas, "", new { @class = "text-danger" })*@
                 </td>
             </tr>
             <tr>
@@ -194,7 +195,7 @@
                     @Html.TextBoxFor(m => m.ValorTerceros, new { @class = "form-control", onKeyPress = "return soloNumeros(event)", Style = "width:100%", required = "required", maxlength = 25 })
                     @Html.ValidationMessageFor(m => m.ValorTerceros, "", new { @class = "text-danger" })
                 </td>
-                <td><input type="text" name="ter2" value="0" style="width:100%" disabled="disabled" /></td>
+                <td><input type="text" name="ter2" value="0" style="width:50%" disabled="disabled" /></td>
                 <td>RECARGO HH.EE.</td>
                 <td>
                     @Html.TextBoxFor(m => m.RecargoHHEE, new { @class = "form-control", onKeyPress = "return soloNumeros(event)", Style = "width:100%", required = "required", maxlength = 25 })
@@ -208,7 +209,7 @@
                     @Html.ValidationMessageFor(m => m.ValorFlete, "", new { @class = "text-danger" })
                 </td>
                 <td>
-                    <input type="text" name="fle2" value="0" style="width:100%" disabled="disabled" />
+                    <input type="text" name="fle2" value="0" style="width:50%" disabled="disabled" />
                 </td>
                 <td>VALOR RECARGO</td>
                 <td>
@@ -222,7 +223,8 @@
                     @Html.TextBoxFor(m => m.Subtotal, new { @class = "form-control", onKeyPress = "return soloNumeros(event)", Style = "width:100%", required = "required", maxlength = 25 })
                     @Html.ValidationMessageFor(m => m.Subtotal, "", new { @class = "text-danger" })
                 </td>
-                <td><input type="text" name="sub2" value="0" style="width:100%" disabled="disabled" /></td>
+                <td></td>
+                @*<td><input type="text" name="sub2" value="0" style="width:50%" disabled="disabled" /></td>*@
                 <td>TOTAL MANO DE OBRA</td>
                 <td>
                     @Html.TextBoxFor(m => m.ValorManoObra, new { @class = "form-control", onKeyPress = "return soloNumeros(event)", onchange = "document.getElementById('TotalValorManoObra').value=this.value", Style = "width:100%", required = "required", maxlength = 25 })
@@ -242,7 +244,7 @@
                     @Html.TextBoxFor(m => m.ValorVenta, new { @class = "form-control", onKeyPress = "return soloNumeros(event)", Style = "width:100%", required = "required", maxlength = 25 })
                     @Html.ValidationMessageFor(m => m.ValorVenta, "", new { @class = "text-danger" })
                 </td>
-                <td><input type="text" name="venta2" value="0" style="width:100%" disabled="disabled" /></td>
+                <td><input type="text" name="venta2" value="3 %" style="width:50%" disabled="disabled" /></td>
                 <td>FLETES (CANTIDAD)</td>
                 <td>
                     @Html.TextBoxFor(m => m.CantidadFletes, new { @class = "form-control", onKeyPress = "return soloNumeros(event)", Style = "width:100%", required = "required", maxlength = 25 })
@@ -255,7 +257,7 @@
                     @Html.TextBoxFor(m => m.ValorMargenVenta, new { @class = "form-control", onKeyPress = "return soloNumeros(event)", Style = "width:100%", required = "required", maxlength = 25 })
                     @Html.ValidationMessageFor(m => m.ValorMargenVenta, "", new { @class = "text-danger" })
                 </td>
-                <td><input type="text" name="margen2" value="0" style="width:100%" disabled="disabled" /></td>
+                <td><input type="text" name="margen2" value="20 %" style="width:50%" disabled="disabled" /></td>
                 <td>TOTAL</td>
                 <td>
                     @Html.TextBoxFor(m => m.Total, new { @class = "form-control", onKeyPress = "return soloNumeros(event)", Style = "width:100%", required = "required", maxlength = 25 })
@@ -268,7 +270,7 @@
                     @Html.TextBoxFor(m => m.TotalnetoComisiones, new { @class = "form-control", onKeyPress = "return soloNumeros(event)", Style = "width:100%", required = "required", maxlength = 25 })
                     @Html.ValidationMessageFor(m => m.TotalnetoComisiones, "", new { @class = "text-danger" })
                 </td>
-                <td><input type="text" name="tn2" value="0" style="width:100%" disabled="disabled" /></td>
+                <td><input type="text" name="tn2" value="100 %" style="width:50%" disabled="disabled" /></td>
                 <td></td>
                 <td></td>
             </tr>
