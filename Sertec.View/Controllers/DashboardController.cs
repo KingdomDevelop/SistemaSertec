@@ -35,7 +35,7 @@ namespace Sertec.View.Controllers
             Session["repuesto"] = null;
             Session["terceros"] = null;
             Session["TotalRepRep"] = null;
-            Session["ValorHP"] = null;
+            Session["DatosCalculo"] = null;
 
             var tecnicosList = new List<TecnicoViewModel>();
 
@@ -110,6 +110,9 @@ namespace Sertec.View.Controllers
         public ActionResult AgregarCotizacion(CotizacionViewModel model)
         {
 
+
+            #region [Datos Cotizacion]
+
             var idCot = _presupuestoSvc.guardarPresupuesto(new PresupuestoDto
             {
                 DetalleDescrip = model.DetalleDescrip,
@@ -140,26 +143,16 @@ namespace Sertec.View.Controllers
                 ValorTerceros = model.ValorTerceros,
                 ValorUf = Convert.ToDecimal(model.ValorUf),
                 ValorVenta = model.ValorVenta
-
-
             });
 
-            //var pptoOt = _presupuestoSvc.guardarPresupuestoOrdenTrabajo(new PresupuestoOrdenTrabajoDto
-            //{
-            //    Presupuesto = idCot,
-            //    Obra = model.Obra,
-            //    Fecha = model.FechaCalculo,
-            //    Ascensor = model.Ascensor,
-            //    TecnicoEmisor = model.TecEmisor,
-            //    Supervisor = model.Supervisor,
-            //    Descripcion = model.DetalleDescrip,
-            //    FechaAprobacion = model.FechaEmision,
-            //});
+            #endregion
+
+            #region [Repuesto]
+
             if (Session["repuesto"] != null)
             {
                 IList<PresupuestoRepuestoViewModel> listRepuesto = new List<PresupuestoRepuestoViewModel>();
                 listRepuesto = (List<PresupuestoRepuestoViewModel>)Session["repuesto"];
-
 
                 foreach (var repuesto in listRepuesto)
                 {
@@ -173,10 +166,11 @@ namespace Sertec.View.Controllers
                         SubTotal = repuesto.SubTotal,
                         ValorUnitario = repuesto.ValorUnitario
                     });
-
                 }
             }
+            #endregion
 
+            #region [Terceros]
             if (Session["terceros"] != null)
             {
                 IList<PresupuestoTrabajoTercerosViewModel> listTercero = new List<PresupuestoTrabajoTercerosViewModel>();
@@ -191,21 +185,12 @@ namespace Sertec.View.Controllers
                         Descripcion = tercero.Terceros,
                         Valor = tercero.ValTer
                     });
-
                 }
             }
-
-            //var resumenId = _presupuestoSvc.guardarPresupuestoResumen(new PresupuestoTrabajoResumenDto
-            //{
-            //    Presupuesto = idCot
-
-            //});
-
+            #endregion
 
             return RedirectToAction("Cotizacion");
         }
-
-
 
         public PartialViewResult IngresarRepuesto_Submit(PresupuestoRepuestoViewModel model)
         {
@@ -234,6 +219,7 @@ namespace Sertec.View.Controllers
             #endregion
             return PartialView("PresupuestoRepuestoList");
         }
+
         public PartialViewResult EliminarRepuesto_Submit(int id)
         {
             #region[Se incrementa el repuesto]
@@ -253,7 +239,6 @@ namespace Sertec.View.Controllers
             #endregion
             return PartialView("PresupuestoRepuestoList");
         }
-
 
         public PartialViewResult IngresarTerceros_Submit(PresupuestoTrabajoTercerosViewModel model)
         {
@@ -548,13 +533,13 @@ namespace Sertec.View.Controllers
             var repuesto = _presupuestoSvc.obtenerRepuestos(id);
 
             #region [Presupuesto]
-                OperacionList.Ascensor = infoCotizacion.Ascensor;
-                OperacionList.DetalleDescrip = infoCotizacion.DetalleDescrip;
-                OperacionList.FechaEmision = infoCotizacion.FechaEmision;
-                OperacionList.Obra = infoCotizacion.Obra;
-                OperacionList.PresupuestoNumero = infoCotizacion.PresupuestoNumero;
-                OperacionList.Supervisor = infoCotizacion.Supervisor;
-                OperacionList.TecEmisor = infoCotizacion.TecEmisor;
+            OperacionList.Ascensor = infoCotizacion.Ascensor;
+            OperacionList.DetalleDescrip = infoCotizacion.DetalleDescrip;
+            OperacionList.FechaEmision = infoCotizacion.FechaEmision;
+            OperacionList.Obra = infoCotizacion.Obra;
+            OperacionList.PresupuestoNumero = infoCotizacion.PresupuestoNumero;
+            OperacionList.Supervisor = infoCotizacion.Supervisor;
+            OperacionList.TecEmisor = infoCotizacion.TecEmisor;
             #endregion
 
             #region [Contabilidad]
@@ -601,5 +586,37 @@ namespace Sertec.View.Controllers
             return PartialView("Operaciones", OperacionList);
         }
 
+        public void GuardarDatosCalculo(DatosVistaCalculoViewModel model)
+        {
+            #region [Validar Session]
+            if (Session["DatosCalculo"] != null)
+            {
+                var datosCalculo = (DatosCalculoViewModel)Session["DatosCalculo"];
+            }
+            #endregion
+
+            if (model != null)
+            {
+                #region [Validación]
+
+                if (!String.IsNullOrEmpty(model.ValorHP) && Convert.ToDecimal(model.ValorHP.Trim().Replace(".", ",")) >= 0)
+                {
+                    datosCalculo.ValorHP = Convert.ToDecimal(model.ValorHP.Trim().Replace(".", ","));
+                }
+
+                if (!String.IsNullOrEmpty(model.ValorFlete) && Convert.ToDecimal(model.ValorFlete.Trim().Replace(".", ",")) >= 0)
+                {
+                    datosCalculo.ValorFlete = Convert.ToDecimal(model.ValorFlete.Trim().Replace(".", ","));
+                }
+
+                if (!String.IsNullOrEmpty(model.ValorUF) && Convert.ToDecimal(model.ValorUF.Trim().Replace(".", ",")) >= 0)
+                {
+                    datosCalculo.ValorUF = Convert.ToDecimal(model.ValorUF.Trim().Replace(".", ","));
+                }
+                Session["DatosCalculo"] = datosCalculo;
+                #endregion
+            }
+
+        }
     }
 }

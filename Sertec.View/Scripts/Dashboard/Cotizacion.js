@@ -10,7 +10,6 @@ $(function () {
 
 });
 
-
 function btnCrearPresupuesto() {
 
     var dataType = 'application/json; charset=utf-8';
@@ -22,7 +21,6 @@ function btnCrearPresupuesto() {
         SubTotal: document.getElementById('SubTotalId').value,
         HoraParHombre: document.getElementById('HhId').value
     }
-
 
     $.ajax({
         type: "POST",
@@ -69,7 +67,7 @@ function btnCrearTerceros() {
 }
 
 function eliminarRepuesto($repuestoId) {
-    
+
     $.ajax({
         type: "POST",
         url: urlEliminarRepuesto + "/" + $repuestoId,
@@ -79,7 +77,7 @@ function eliminarRepuesto($repuestoId) {
         },
         success: function (response) {
             $($divRepuesto).html(response);
-        }            
+        }
     });
 
 }
@@ -104,7 +102,7 @@ function soloNumeros(e) {
 }
 
 /*Obt Valor Unidad de Fomento y Hora Par a Resumen Mano Obra*/
-function ObtValores(n,valor) {
+function ObtValores(n, valor) {
     var total = 0;
     valor = parseInt(valor); // Convertir el valor a un entero (número).
     if (n == 1) {
@@ -136,4 +134,26 @@ function sumar(n, valor) {
         total = (parseInt(n1) * parseInt(n2));
     // Colocar el resultado de la suma en el control "span".
     document.getElementById('SubTotalId').value = total;
+}
+
+function guardaDatosCalculo() {
+    var dataType = 'application/json; charset=utf-8';
+
+    var model = {
+        ValorUF: document.getElementById('ValorUF').value,
+        ValorHP: document.getElementById('ValorHP').value,
+        ValorFlete: document.getElementById('ValorFlete').value
+    }
+
+    $.ajax({
+        type: "POST",
+        url: urlDatosCalculo,
+        datatype: "json",
+        data: model,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Error");
+        },
+        success: function (response) {
+        }
+    });
 }

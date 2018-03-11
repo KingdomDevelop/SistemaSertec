@@ -9,6 +9,7 @@
     var urlEliminarRepuesto = "@Url.Action("EliminarRepuesto_Submit", "Dashboard")";
     var urlAgregarTerceros = "@Url.Action("IngresarTerceros_Submit", "Dashboard")";
     var urlEliminarTerceros = "@Url.Action("EliminarTrabajoTerceros_Submit", "Dashboard")";
+    var urlDatosCalculo = "@Url.Action("GuardarDatosCalculo", "Dashboard")";
 </script>
 <a href="#"><strong>NUEVA COTIZACION</strong></a>
 <hr />
@@ -51,7 +52,7 @@
                     <tr>
                         <td>TECNICO EMISOR</td>
                         <td>
-                            @Html.DropDownListFor(s=>s.TecEmisor, new SelectList(ViewBag.Supervisor, "IdSupervisor", "NombreSupervisor"), new { @class = "form-control input-md", Style = "width:90%" })
+                            @Html.DropDownListFor(s => s.TecEmisor, new SelectList(ViewBag.Supervisor, "IdSupervisor", "NombreSupervisor"), new { @class = "form-control input-md", Style = "width:90%" })
                         </td>
                         <td style="width: 8px"></td>
                     </tr>
@@ -77,21 +78,21 @@
                     <tr>
                         <td>VALOR UF</td>
                         <td>
-                            @Html.TextBoxFor(m => m.ValorUf, new { @class = "form-control", id="ValorUF", onchange = "ObtValores('1',this.value);", Style = "width:90%", required = "required", maxlength = 50 })
+                            @Html.TextBoxFor(m => m.ValorUf, new { @class = "form-control", id = "ValorUF", onchange = "guardaDatosCalculo()", Style = "width:90%", required = "required", maxlength = 50 })
                             @Html.ValidationMessageFor(m => m.ValorUf, "", new { @class = "text-danger" })
                         </td>
                     </tr>
                     <tr>
                         <td>VALOR HP</td>
                         <td>
-                            @Html.TextBoxFor(m => m.ValorHP, new { @class = "form-control", id = "ValorHP", onchange = "ObtValores('2',this.value);", Style = "width:90%", required = "required", maxlength = 50 })
+                            @Html.TextBoxFor(m => m.ValorHP, new { @class = "form-control", id = "ValorHP", onchange = "guardaDatosCalculo()", Style = "width:90%", required = "required", maxlength = 50 })
                             @Html.ValidationMessageFor(m => m.ValorHP, "", new { @class = "text-danger" })
                         </td>
                     </tr>
                     <tr>
                         <td>VALOR FLETE</td>
                         <td>
-                            @Html.TextBoxFor(m => m.ValorFlete, new { @class = "form-control", onKeyPress = "return soloNumeros(event)", Style = "width:90%", required = "required", maxlength = 50 })
+                            @Html.TextBoxFor(m => m.ValorFlete, new { @class = "form-control", id = "ValorFlete", onchange = "guardaDatosCalculo()", onKeyPress = "return soloNumeros(event)", Style = "width:90%", required = "required", maxlength = 50 })
                             @Html.ValidationMessageFor(m => m.ValorFlete, "", new { @class = "text-danger" })
                         </td>
                     </tr>

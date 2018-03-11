@@ -193,5 +193,18 @@ namespace Sertec.View.Models
         public int Guia { get; set; }
     }
 
+    public class DatosVistaCalculoViewModel
+    {
+        public string ValorUF { get; set; }
+        public string ValorHP { get; set; }
+        public string ValorFlete { get; set; }
+    }
+
+    public class DatosCalculoViewModel
+    {
+        public decimal ValorUF { get; set; }
+        public decimal ValorHP { get; set; }
+        public decimal ValorFlete { get; set; }
+    }
 
 }
