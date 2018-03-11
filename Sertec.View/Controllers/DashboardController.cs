@@ -218,13 +218,13 @@ namespace Sertec.View.Controllers
                 Session["repuesto"] = listModel;
             }
 
-            var DataHP =  model.HoraParHombre.ToString();
+            var DataHP = model.HoraParHombre.ToString();
 
-  
+
             var DataUF = TempData["DUF"];
 
 
-            ViewBag.HpRep = Convert.ToInt64(DataHP)* Convert.ToInt64(DataUF);
+            ViewBag.HpRep = Convert.ToInt64(DataHP) * Convert.ToInt64(DataUF);
 
             #endregion
             return PartialView("PresupuestoRepuestoList");
@@ -404,6 +404,7 @@ namespace Sertec.View.Controllers
                 contabilidad.Direccion = aprobacion.Direccion;
                 contabilidad.PersonaAprobacion = aprobacion.PersonaAprobacion;
                 contabilidad.TelefonoContacto = aprobacion.TelefonoContacto;
+                contabilidad.Vendedor = aprobacion.Vendedor;
                 contabilidad.Activado = "none";
             }
 
@@ -464,15 +465,13 @@ namespace Sertec.View.Controllers
         public PartialViewResult IngresarAprobacion(ContabilidadViewModel model)
         {
 
-            //Valido campos ingresados
-            string vende = model.Vendedor;
-
             var idContable = _presupuestoSvc.guardarContabilidadInfo(new ContabilidadDto
             {
                 Cotizacion = model.Cotizacion,
                 Direccion = model.Direccion,
                 PersonaAprobacion = model.PersonaAprobacion,
-                TelefonoContacto = model.TelefonoContacto
+                TelefonoContacto = model.TelefonoContacto,
+                Vendedor = model.Vendedor
             });
 
             var infoCoti = _presupuestoSvc.obtenerPresupuestos(model.Cotizacion);
@@ -624,12 +623,43 @@ namespace Sertec.View.Controllers
                     datosCalculo.ValorUF = Convert.ToDecimal(model.ValorUF.Trim().Replace(".", ","));
                 }
 
-                TempData["DUF"] = Convert.ToDecimal(model.ValorUF.Trim().Replace(".", ",")); ;
-
                 Session["DatosCalculo"] = datosCalculo;
                 #endregion
             }
-
         }
+
+        public decimal ObtenerHpRepuesto()
+        {
+            decimal total = 0.0m;
+
+            #region [Obtenemos el total]
+            if (Session["repuesto"] != null)
+            {
+                var listModel = (List<PresupuestoRepuestoViewModel>)Session["repuesto"];
+
+                total = listModel.Sum(c => c.HoraParHombre);
+            }
+            #endregion
+
+            return total;
+        }
+
+        public decimal ObtenerSubTotalRepuesto()
+        {
+            decimal total = 0.0m;
+
+            #region [Obtenemos el total]
+            if (Session["repuesto"] != null)
+            {
+                var listModel = (List<PresupuestoRepuestoViewModel>)Session["repuesto"];
+
+                total = listModel.Sum(c => c.SubTotal);
+            }
+            #endregion
+
+            return total;
+        }
+
+
     }
 }

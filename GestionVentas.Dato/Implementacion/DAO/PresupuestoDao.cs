@@ -451,7 +451,7 @@ namespace GestionVentas.Dato.DAO
 
                 if (datos.Any())
                 {
-                    conta = datos.Where(x => x.PK_Cotizacion_ID == cotizacionID).Select(c => new ContabilidadEntity
+                    conta = datos.Where(x => x.PK_Cotizacion_ID == cotizacionID).OrderByDescending(c => c.PK_ContabilidadID).Select(c => new ContabilidadEntity
                     {
                         ComisionOtros = (int)c.ComisionOtros,
                         MesFacturacion = (int)c.MesFacturacion,

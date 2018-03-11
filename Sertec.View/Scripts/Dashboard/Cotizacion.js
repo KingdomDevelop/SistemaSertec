@@ -1,4 +1,7 @@
-﻿
+﻿var Uf = null;
+var Flete = null;
+var valorHP = null;
+
 $(function () {
     $divRepuesto = $("#repuestoList");
     $divTerceros = $("#terceroList");
@@ -38,6 +41,8 @@ function btnCrearPresupuesto() {
             $("#SubTotalId").val("");
             $("#HhId").val("");
             $($divRepuesto).html(response);
+            actualizarTotalHP();
+            actualizarTotalRep();
         }
     });
 }
@@ -77,6 +82,8 @@ function eliminarRepuesto($repuestoId) {
         },
         success: function (response) {
             $($divRepuesto).html(response);
+            actualizarTotalHP();
+            actualizarTotalRep();
         }
     });
 
@@ -139,6 +146,16 @@ function sumar(n, valor) {
 function guardaDatosCalculo() {
     var dataType = 'application/json; charset=utf-8';
 
+    if (document.getElementById('ValorUF').value != "") {
+        Uf = document.getElementById('ValorUF').value;
+    }
+    if (document.getElementById('ValorFlete').value != "") {
+        Flete = document.getElementById('ValorFlete').value;
+    }
+
+    if (document.getElementById('ValorFlete').value != "") {
+        valorHP = document.getElementById('ValorFlete').value;
+    }
     var model = {
         ValorUF: document.getElementById('ValorUF').value,
         ValorHP: document.getElementById('ValorHP').value,
@@ -156,4 +173,115 @@ function guardaDatosCalculo() {
         success: function (response) {
         }
     });
+}
+
+function actualizarTotalHP() {
+    $.ajax({
+        type: "GET",
+        url: urlTotalHP,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Error");
+        },
+        success: function (response) {
+            $("#TotalHP").val(response);
+            var result = valorHP * response;
+            $("#idSubtotalHP").val(result);
+            var valor = document.getElementById('idRecargoHHEE');
+            if (valor.value != "") {
+                actualizarTotalRecargo(valor);
+            } else {
+                actualizaTotalManoObra();
+            }
+
+        }
+    });
+}
+
+function actualizarTotalRecargo($valor) {
+    if ($valor != "") {
+        var subtotalHP = document.getElementById('idSubtotalHP').value;
+        var total = subtotalHP * (($valor.value) / 100);
+        $("#idValorRecargo").val(total);
+        actualizaTotalManoObra();
+    } else {
+        $("#idValorRecargo").val("");
+    }
+}
+
+function actualizaTotalManoObra() {
+    var recargo = null;
+    var subtotalHP = document.getElementById('idSubtotalHP').value;
+    var total = document.getElementById('idValorRecargo');
+    if (total.value == "") {
+        recargo = "0";
+    }
+    var manoObra = parseInt(recargo) + parseInt(subtotalHP);
+    $("#idTotalManoObra").val(manoObra);
+    $("#TotalValorManoObra").val(manoObra);
+    calculaSubTotal();
+}
+
+function actualizarTotalRep() {
+    $.ajax({
+        type: "GET",
+        url: urlSubTotalRep,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Error");
+        },
+        success: function (response) {
+            $("#idTotalRepuestos").val(response);
+            calculaSubTotal();
+        }
+    });
+}
+
+function actualizaTotalFletes($fletes) {
+    if ($fletes.value != "") {
+        if (Flete != null) {
+            var totalFlete = parseInt($fletes.value) * Flete;
+            $("#idTotalFletes").val(totalFlete);
+            $("#idFlete").val(totalFlete);
+            calculaSubTotal();
+        }
+    }
+}
+
+function calculaSubTotal() {
+
+    var totalManoObra = null;
+    var totalRepuesto = null;
+    var totalTercero = null;
+    var totalFletes = null;
+
+    var manoObra = document.getElementById('TotalValorManoObra');
+    if (manoObra.value != "") {
+        totalManoObra = manoObra.value
+    } else {
+        totalManoObra = "0";
+    }
+
+    var repuesto = document.getElementById('idTotalRepuestos');
+    if (repuesto.value != "") {
+        totalRepuesto = repuesto.value
+    } else {
+        totalRepuesto = "0";
+    }
+
+    var fletes = document.getElementById('idFlete');
+    if (fletes.value != "") {
+        totalFletes = fletes.value
+    } else {
+        totalFletes = "0";
+    }
+
+    var subtotal = parseInt(totalManoObra) + parseInt(totalRepuesto) + parseInt(totalFletes);
+
+    $("#idSubtotal").val(subtotal);
+    var valVenta = parseInt(subtotal * (3 / 100));
+    $("#idValorVenta").val(valVenta);
+    var marVenta = parseInt(subtotal * (20 / 100));
+    $("#idMargenVenta").val(marVenta);
+
+    var total = subtotal + valVenta + marVenta;
+    $("#idTotalNeto").val(total);
 }
