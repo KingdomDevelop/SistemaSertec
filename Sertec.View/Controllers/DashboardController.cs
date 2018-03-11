@@ -37,7 +37,9 @@ namespace Sertec.View.Controllers
             Session["TotalRepRep"] = null;
             Session["DatosCalculo"] = null;
 
-            ViewBag.HpRep = "0";
+            ViewBag.HpRep = "0"; //Suma de todas las hp agregados en Repuestos y/o Reparacion
+            ViewBag.TotalHpUF = "0";//El total hp por uf
+            ViewBag.ValorRecargo = "0";//La Multiplicacion del Sub Total por el Recargo RREE
 
             var tecnicosList = new List<TecnicoViewModel>();
 

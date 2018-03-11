@@ -171,8 +171,9 @@
                 <td><input type="text" name="mano2" value="0" style="width:50%" disabled="disabled" /></td>
                 <td>SUB TOTAL</td>
                 <td>
-                    @Html.TextBoxFor(m => m.Subtotal, new { @class = "form-control", onKeyPress = "return soloNumeros(event)", Style = "width:100%", required = "required", maxlength = 25 })
-                    @Html.ValidationMessageFor(m => m.Subtotal, "", new { @class = "text-danger" })
+                    @ViewBag.TotalHpUF
+                    @*@Html.TextBoxFor(m => m.Subtotal, new { @class = "form-control",id="idTotalHP", onKeyPress = "return soloNumeros(event)", Style = "width:100%", required = "required", maxlength = 25 })
+                    @Html.ValidationMessageFor(m => m.Subtotal, "", new { @class = "text-danger" })*@
                 </td>
             </tr>
             <tr>
@@ -213,8 +214,8 @@
                 </td>
                 <td>VALOR RECARGO</td>
                 <td>
-                    <input type="text" name="valorecargo" value="0" style="width:100%" />
-
+                    @ViewBag.ValorRecargo
+                    @*<input type="text" name="valorecargo" value="0" style="width:100%" />*@
                 </td>
             </tr>
             <tr>
