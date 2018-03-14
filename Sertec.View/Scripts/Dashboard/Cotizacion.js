@@ -213,6 +213,8 @@ function actualizaTotalManoObra() {
     var total = document.getElementById('idValorRecargo');
     if (total.value == "") {
         recargo = "0";
+    } else {
+        recargo = total.value;
     }
     var manoObra = parseInt(recargo) + parseInt(subtotalHP);
     $("#idTotalManoObra").val(manoObra);

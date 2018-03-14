@@ -66,6 +66,7 @@ namespace Sertec.View.Controllers
 
         public ActionResult ListaGeneral()
         {
+            Session["NuevaContabilidad"] = null;
             Session["Facturacion"] = null;
             var GeneralList = new List<ListaGeneralViewModel>();
             var OperacionList = new List<ListaOperacionViewModel>();
@@ -166,7 +167,7 @@ namespace Sertec.View.Controllers
                         Codigo = repuesto.Codigo,
                         HoraParHombre = repuesto.HoraParHombre,
                         Presupuesto = idCot,
-                        Repuesto = "asdasd", // valor fijo esperando validacion
+                        Repuesto = repuesto.Respuesto, // valor fijo esperando validacion
                         SubTotal = repuesto.SubTotal,
                         ValorUnitario = repuesto.ValorUnitario
                     });
@@ -414,7 +415,10 @@ namespace Sertec.View.Controllers
         public PartialViewResult IngresarCondicionVenta(CondicionVentaViewModel model)
         {
             CondicionVentaViewModel conta = new CondicionVentaViewModel();
-
+            if (model.NumeroContabilidad == 0)
+            {
+                model.NumeroContabilidad = (int)Session["NuevaContabilidad"];
+            }
             _presupuestoSvc.guardarFormaPago(new FormaPagoDto
             {
                 DescuentoCinco = model.DescuentoCinco,
@@ -473,6 +477,7 @@ namespace Sertec.View.Controllers
                 TelefonoContacto = model.TelefonoContacto,
                 Vendedor = model.Vendedor
             });
+            Session["NuevaContabilidad"] = idContable;
 
             var infoCoti = _presupuestoSvc.obtenerPresupuestos(model.Cotizacion);
 
@@ -496,6 +501,10 @@ namespace Sertec.View.Controllers
 
             if (model != null)
             {
+                if (model.Contabilidad == 0)
+                {
+                    model.Contabilidad = (int)Session["NuevaContabilidad"];
+                }
                 _presupuestoSvc.guardarFacturacion(new FacturacionDto
                 {
                     Mes = Convert.ToInt32(model.Mes),
@@ -518,12 +527,15 @@ namespace Sertec.View.Controllers
                     Valor = Convert.ToInt32(f.ValorCuota)
                 }).ToList();
             }
-
-            if (Session["Facturacion"] != null)
+            else
             {
-                FacturaList = (List<FacturacionViewModel>)Session["Facturacion"];
+
+                if (Session["Facturacion"] != null)
+                {
+                    FacturaList = (List<FacturacionViewModel>)Session["Facturacion"];
+                }
+                FacturaList.Add(model);
             }
-            FacturaList.Add(model);
 
             Session["Facturacion"] = FacturaList;
 
