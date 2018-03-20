@@ -184,6 +184,7 @@ function actualizarTotalHP() {
         },
         success: function (response) {
             $("#TotalHP").val(response);
+            $("#hdTotalHp").val(response);
             var result = valorHP * response;
             $("#idSubtotalHP").val(result);
             var valor = document.getElementById('idRecargoHHEE');
@@ -218,7 +219,9 @@ function actualizaTotalManoObra() {
     }
     var manoObra = parseInt(recargo) + parseInt(subtotalHP);
     $("#idTotalManoObra").val(manoObra);
+    $("#hdValorMo").val(manoObra);
     $("#TotalValorManoObra").val(manoObra);
+    $("#hdValorManoObra").val(manoObra);
     calculaSubTotal();
 }
 
@@ -231,6 +234,7 @@ function actualizarTotalRep() {
         },
         success: function (response) {
             $("#idTotalRepuestos").val(response);
+            $("#hdValorRepuestos").val(response);
             calculaSubTotal();
         }
     });
@@ -241,7 +245,9 @@ function actualizaTotalFletes($fletes) {
         if (Flete != null) {
             var totalFlete = parseInt($fletes.value) * Flete;
             $("#idTotalFletes").val(totalFlete);
+            $("#hdTotal").val(totalFlete);
             $("#idFlete").val(totalFlete);
+            $("#hdFlete").val(totalFlete);
             calculaSubTotal();
         }
     }
@@ -278,11 +284,16 @@ function calculaSubTotal() {
     var subtotal = parseInt(totalManoObra) + parseInt(totalRepuesto) + parseInt(totalFletes);
 
     $("#idSubtotal").val(subtotal);
+    $("#hdSubTotal").val(subtotal);
     var valVenta = parseInt(subtotal * (3 / 100));
     $("#idValorVenta").val(valVenta);
+    $("#hdValorVenta").val(valVenta);
     var marVenta = parseInt(subtotal * (20 / 100));
     $("#idMargenVenta").val(marVenta);
+    $("#hdMargenTotal").val(marVenta);
 
     var total = subtotal + valVenta + marVenta;
     $("#idTotalNeto").val(total);
+    $("#hdTotalNeto").val(total);
+
 }

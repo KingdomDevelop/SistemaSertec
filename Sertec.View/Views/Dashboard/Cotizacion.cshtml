@@ -167,22 +167,26 @@
             <tr>
                 <td>MANO DE OBRA</td>
                 <td>
+                    @Html.HiddenFor(m => m.ValorManoObra, new { id = "hdValorManoObra" })
                     @Html.TextBoxFor(m => m.ValorManoObra, new { @class = "form-control", id = "TotalValorManoObra", disabled = "disabled", Style = "width:100%" })
                 </td>
                 <td><input type="text" name="mano2" value="0" style="width:50%" disabled="disabled" /></td>
                 <td>SUB TOTAL</td>
                 <td>
+                    @Html.HiddenFor(m => m.Subtotal, new { id = "hdValorRepuestos" })
                     @Html.TextBoxFor(m => m.Subtotal, new { @class = "form-control", id = "idSubtotalHP", disabled = "disabled", Style = "width:100%" })
                 </td>
             </tr>
             <tr>
                 <td>REPUESTOS</td>
                 <td>
+                    @Html.HiddenFor(m => m.ValorRepuestos, new { id = "hdValorRepuestos" })
                     @Html.TextBoxFor(m => m.ValorRepuestos, new { @class = "form-control", id = "idTotalRepuestos", disabled = "disabled", Style = "width:100%" })
                 </td>
                 <td><input type="text" name="rep2" value="0" style="width:50%" disabled="disabled" /></td>
                 <td>HORAS PAREJA</td>
                 <td>
+                    @Html.HiddenFor(m => m.HorasParejas, new { id = "hdTotalHp" })
                     @Html.TextBoxFor(m => m.HorasParejas, new { @class = "form-control", id = "TotalHP", disabled = "disabled", Style = "width:100%" })
                 </td>
             </tr>
@@ -202,6 +206,7 @@
             <tr>
                 <td>FLETES</td>
                 <td>
+                    @Html.HiddenFor(m => m.ValorFlete, new { id = "hdFlete" })
                     @Html.TextBoxFor(m => m.ValorFlete, new { @class = "form-control", id = "idFlete", disabled = "disabled", Style = "width:100%" })
                 </td>
                 <td>
@@ -215,12 +220,14 @@
             <tr>
                 <td>SUB-TOTAL</td>
                 <td>
+                    @Html.HiddenFor(m => m.Subtotal, new { id = "hdSubTotal" })
                     @Html.TextBoxFor(m => m.Subtotal, new { @class = "form-control", id = "idSubtotal", disabled = "disabled", Style = "width:100%" })
                 </td>
                 <td></td>
                 @*<td><input type="text" name="sub2" value="0" style="width:50%" disabled="disabled" /></td>*@
                 <td>TOTAL MANO DE OBRA</td>
                 <td>
+                    @Html.HiddenFor(m => m.ValorManoObra, new { id = "hdValorMo" })
                     @Html.TextBoxFor(m => m.ValorManoObra, new { @class = "form-control", id = "idTotalManoObra", disabled = "disabled", onKeyPress = "return soloNumeros(event)", Style = "width:100%" })
                 </td>
             </tr>
@@ -234,6 +241,7 @@
             <tr>
                 <td>VENTAS (3%)</td>
                 <td>
+                    @Html.HiddenFor(m => m.ValorVenta, new { id = "hdValorVenta" })
                     @Html.TextBoxFor(m => m.ValorVenta, new { @class = "form-control", id = "idValorVenta", disabled = "disabled", Style = "width:100%" })
                 </td>
                 <td><input type="text" name="venta2" value="3 %" style="width:50%" disabled="disabled" /></td>
@@ -246,18 +254,22 @@
             <tr>
                 <td>MARGEN DE VENTA (20%)</td>
                 <td>
+                    @Html.HiddenFor(m => m.ValorMargenVenta, new { id = "hdMargenTotal" })
                     @Html.TextBoxFor(m => m.ValorMargenVenta, new { @class = "form-control", id = "idMargenVenta", disabled = "disabled", Style = "width:100%" })
                 </td>
                 <td><input type="text" name="margen2" value="20 %" style="width:50%" disabled="disabled" /></td>
                 <td>TOTAL</td>
                 <td>
+                    @Html.HiddenFor(m => m.Total, new { id = "hdTotal" })
                     @Html.TextBoxFor(m => m.Total, new { @class = "form-control", id = "idTotalFletes", disabled = "disabled", Style = "width:100%" })
                 </td>
             </tr>
             <tr>
                 <td>TOTAL NETO</td>
                 <td>
+                    @Html.HiddenFor(m => m.TotalnetoComisiones, new { id = "hdTotalNeto" })
                     @Html.TextBoxFor(m => m.TotalnetoComisiones, new { @class = "form-control", id = "idTotalNeto", disabled = "disabled", Style = "width:100%" })
+
                 </td>
                 <td><input type="text" name="tn2" value="100 %" style="width:50%" disabled="disabled" /></td>
                 <td></td>
