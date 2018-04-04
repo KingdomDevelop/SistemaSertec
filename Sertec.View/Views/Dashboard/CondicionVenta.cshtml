@@ -37,7 +37,7 @@
                                 <td>
                                     @Html.RadioButtonFor(m => m.PagoCien, "1", new { @id = "apCien", @class = "radio", onclick = "SeleccionTextoFP()" })
                                 </td>
-                                <td>
+                                <td style="text-align:left">
                                     100% Contra factura al termino de los trabajos
                                 </td>
                                 <td></td>
@@ -54,7 +54,7 @@
                                 <td>
                                     @Html.RadioButtonFor(m => m.PagoCien, "2", new { @id = "apCincuenta", @class = "radio", onclick = "SeleccionTextoFP()" })
                                 </td>
-                                <td>
+                                <td style="text-align:left">
                                     50% Con la orden y saldo contra factura
                                 </td>
                                 <td></td>
@@ -64,16 +64,35 @@
                                     @Html.RadioButtonFor(m => m.DescuentoQuince, "3", new { @id = "descOtro", @class = "radio", onclick = "SeleccionTexto()" })
                                 </td>
                                 <td>
-                                    OTRO
+                                    Otro
                                 </td>
                                 <td>
                                     <input type="text" id="TextBox_DescOtro" name="Otro" disabled="disabled">
                                 </td>
+                                <td>
+                                    @Html.RadioButtonFor(m => m.PagoCien, "3", new { @id = "apCuota", @class = "radio", onclick = "SeleccionTextoFP()" })
+                                </td>
+                                <td style="text-align:left">N° Cuotas</td>
+                                <td><input type="text" id="TextBox_Cuotas" name="Cuotas" disabled="disabled"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    @Html.RadioButtonFor(m => m.PagoCien, "4", new { @id = "apOtro", @class = "radio", onclick = "SeleccionTextoFP()" })
+                                </td>
+                                <td style="text-align:left">
+                                    Otro (Indicar)
+                                </td>
+                                <td>
+                                    <input type="text" id="TextBox_Otros" name="Otros" disabled="disabled">
+                                </td>
                             </tr>
                         </table>
                     </div>
-                    <HR />
-                    <table class="table table-striped">
+                    <hr />
+                    @*<table class="table table-striped">
                         <tr>
                             <td>
                                 <div><a href="#">Forma de Pago</a> </div>
@@ -122,7 +141,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <hr />
+                    <hr />*@
                     <hr />
                     <div>
                         <table class="table table-striped">
